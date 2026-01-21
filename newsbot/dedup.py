@@ -1,94 +1,219 @@
 import hashlib
 import re
-import time
 from dataclasses import dataclass
-from typing import Any, Dict, Optional
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Set, Tuple
 
-STOP = {
-    "the", "and", "for", "with", "that", "this", "from", "into", "over", "under", "will",
-    "та", "і", "й", "але", "що", "це", "в", "у", "на", "про", "як", "до", "не", "за", "від", "з", "по",
-    "и", "но", "что", "это", "в", "на", "про", "как", "до", "не", "за", "от", "из", "по",
-}
+import mmh3
 
-_URL_RE = re.compile(r"https?://\S+", re.IGNORECASE)
-_AT_RE = re.compile(r"@\w+", re.IGNORECASE)
-_HASH_RE = re.compile(r"#\w+", re.IGNORECASE)
-_NON_RE = re.compile(r"[^a-zа-яіїє0-9\s$%.-]", re.IGNORECASE)
-_WS_RE = re.compile(r"\s+")
-
-def _now() -> float:
-    return time.time()
-
-def normalize_text(text: str) -> str:
-    t = (text or "").lower()
-    t = _URL_RE.sub(" ", t)
-    t = _AT_RE.sub(" ", t)
-    t = _HASH_RE.sub(" ", t)
-    t = _NON_RE.sub(" ", t)
-    t = _WS_RE.sub(" ", t).strip()
-    words = [w for w in t.split() if w not in STOP and len(w) > 2]
-    return " ".join(words)
-
-def cache_key(text: str) -> str:
-    """
-    Ключ для AI-cache: sha256 от нормализованного текста.
-    Один инфоповод из разных источников даст один ключ → ускорение.
-    """
-    norm = normalize_text(text)
-    return hashlib.sha256(norm.encode("utf-8")).hexdigest()
-
-def simhash64(text: str) -> int:
-    norm = normalize_text(text)
-    if not norm:
-        return 0
-    v = [0] * 64
-    for token in norm.split():
-        h = int(hashlib.md5(token.encode("utf-8")).hexdigest(), 16)
-        for i in range(64):
-            v[i] += 1 if ((h >> i) & 1) else -1
-    fp = 0
-    for i in range(64):
-        if v[i] > 0:
-            fp |= (1 << i)
-    return fp
-
-def hamming(a: int, b: int) -> int:
-    return (a ^ b).bit_count()
 
 @dataclass
 class DedupResult:
-    ok: bool
+    is_duplicate: bool
+    similarity: float
     reason: str
+    matched_with: Optional[str] = None
 
-def is_duplicate(state: Dict[str, Any], raw_text: str, link: Optional[str], max_hamming: int = 6) -> DedupResult:
-    """
-    Дедуп:
-    - по ссылке (если есть)
-    - по похожести текста (simhash)
-    """
-    if link:
-        seen_links = state.setdefault("seen_links", {})
-        if link in seen_links:
-            return DedupResult(False, "dup_link")
 
-    fp = simhash64(raw_text)
-    seen = state.setdefault("seen_fps", [])
-    for old in seen[-800:]:
-        if hamming(fp, old) <= max_hamming:
-            return DedupResult(False, "dup_similar")
-
-    return DedupResult(True, "ok")
-
-def mark_seen(state: Dict[str, Any], raw_text: str, link: Optional[str]) -> None:
-    """
-    Теперь seen_links хранит timestamp (для TTL-очистки в state.py).
-    """
-    ts = _now()
-    if link:
-        state.setdefault("seen_links", {})[link] = ts
-
-    state.setdefault("seen_fps", []).append(simhash64(raw_text))
-
-    # ограничиваем рост
-    if len(state["seen_fps"]) > 3000:
-        state["seen_fps"] = state["seen_fps"][-2000:]
+class DeduplicationEngine:
+    def __init__(self, max_history: int = 1000, similarity_threshold: float = 0.8):
+        self.max_history = max_history
+        self.similarity_threshold = similarity_threshold
+        
+        # Хранилище сигнатур
+        self.signatures: Dict[str, Dict] = {}
+        self.shingle_cache: Dict[str, Set[int]] = {}
+        
+        # Временное окно для дедупликации
+        self.time_window_hours = 24
+        
+    def _normalize_text(self, text: str) -> str:
+        """Нормализация текста для сравнения"""
+        if not text:
+            return ""
+            
+        # Приведение к нижнему регистру
+        text = text.lower()
+        
+        # Удаление ссылок
+        text = re.sub(r'https?://\S+|www\.\S+', '', text)
+        
+        # Удаление упоминаний и хештегов
+        text = re.sub(r'[@#]\w+', '', text)
+        
+        # Удаление специальных символов
+        text = re.sub(r'[^\w\s]', ' ', text)
+        
+        # Удаление лишних пробелов
+        text = re.sub(r'\s+', ' ', text).strip()
+        
+        # Удаление стоп-слов
+        stop_words = {
+            'the', 'and', 'for', 'with', 'that', 'this', 'from',
+            'в', 'на', 'и', 'или', 'но', 'а', 'то', 'же', 'бы', 'ли'
+        }
+        words = [w for w in text.split() if w not in stop_words and len(w) > 2]
+        
+        return ' '.join(words)
+        
+    def _create_shingles(self, text: str, k: int = 3) -> Set[int]:
+        """Создание шинглов для MinHash"""
+        if not text:
+            return set()
+            
+        # Используем кеш
+        cache_key = f"{hashlib.md5(text.encode()).hexdigest()}_{k}"
+        if cache_key in self.shingle_cache:
+            return self.shingle_cache[cache_key]
+            
+        words = text.split()
+        if len(words) < k:
+            shingles = {hash(' '.join(words))}
+        else:
+            shingles = set()
+            for i in range(len(words) - k + 1):
+                shingle = ' '.join(words[i:i + k])
+                shingles.add(mmh3.hash(shingle))
+                
+        self.shingle_cache[cache_key] = shingles
+        return shingles
+        
+    def _jaccard_similarity(self, set1: Set[int], set2: Set[int]) -> float:
+        """Расчет коэффициента Жаккара"""
+        if not set1 or not set2:
+            return 0.0
+            
+        intersection = len(set1.intersection(set2))
+        union = len(set1.union(set2))
+        
+        return intersection / union if union > 0 else 0.0
+        
+    def _create_signature(self, text: str) -> Dict:
+        """Создание сигнатуры текста"""
+        normalized = self._normalize_text(text)
+        
+        if not normalized:
+            return {}
+            
+        # MinHash с несколькими хеш-функциями
+        hashes = []
+        for seed in range(10):  # 10 хеш-функций
+            min_hash = float('inf')
+            words = normalized.split()
+            
+            for i in range(0, len(words), 3):
+                chunk = ' '.join(words[i:i+3])
+                hash_val = mmh3.hash(chunk, seed)
+                min_hash = min(min_hash, hash_val)
+                
+            hashes.append(min_hash)
+            
+        # TF-IDF like вектор (упрощенный)
+        word_freq = {}
+        words = normalized.split()
+        for word in words:
+            word_freq[word] = word_freq.get(word, 0) + 1
+            
+        # Основные сущности
+        entities = re.findall(r'\b[A-Z][a-z]+\b', text)
+        
+        return {
+            'minhash': hashes,
+            'word_freq': word_freq,
+            'entities': list(set(entities)),
+            'length': len(normalized),
+            'hash': hashlib.md5(normalized.encode()).hexdigest()
+        }
+        
+    def check(self, news_item) -> DedupResult:
+        """Проверка на дубликаты"""
+        from .types import NewsItem
+        
+        if not isinstance(news_item, NewsItem):
+            return DedupResult(False, 0.0, "invalid_type")
+            
+        # Проверка по ссылке (самая быстрая)
+        if news_item.source_link and news_item.source_link in self.signatures:
+            return DedupResult(True, 1.0, "exact_link", news_item.source_link)
+            
+        # Создание сигнатуры
+        signature = self._create_signature(news_item.raw_text)
+        if not signature:
+            return DedupResult(False, 0.0, "empty_signature")
+            
+        # Поиск похожих
+        best_match = None
+        best_similarity = 0.0
+        
+        for existing_id, existing_sig in list(self.signatures.items()):
+            # Проверка по MinHash
+            minhash_sim = sum(
+                1 for a, b in zip(signature['minhash'], existing_sig['minhash'])
+                if a == b
+            ) / len(signature['minhash'])
+            
+            if minhash_sim > best_similarity:
+                best_similarity = minhash_sim
+                best_match = existing_id
+                
+            # Если найдено явное совпадение
+            if minhash_sim > self.similarity_threshold:
+                return DedupResult(
+                    True, minhash_sim, "similar_content", existing_id
+                )
+                
+        # Проверка по шинглам (более точная)
+        if best_similarity > 0.5:
+            text1 = self._normalize_text(news_item.raw_text)
+            existing_text = None
+            
+            # Получаем текст существующего элемента
+            for item in self.signatures.values():
+                if 'original_text' in item:
+                    existing_text = item['original_text']
+                    break
+                    
+            if existing_text:
+                shingles1 = self._create_shingles(text1)
+                shingles2 = self._create_shingles(self._normalize_text(existing_text))
+                
+                jaccard = self._jaccard_similarity(shingles1, shingles2)
+                
+                if jaccard > self.similarity_threshold:
+                    return DedupResult(True, jaccard, "similar_shingles", best_match)
+                    
+        # Сохраняем сигнатуру
+        sig_id = signature['hash']
+        signature['original_text'] = news_item.raw_text
+        signature['timestamp'] = datetime.now().timestamp()
+        signature['source'] = news_item.source
+        
+        self.signatures[sig_id] = signature
+        
+        # Очистка старых записей
+        self._cleanup_old_signatures()
+        
+        return DedupResult(False, best_similarity, "unique")
+        
+    def _cleanup_old_signatures(self):
+        """Очистка старых сигнатур"""
+        current_time = datetime.now().timestamp()
+        cutoff = current_time - (self.time_window_hours * 3600)
+        
+        to_remove = []
+        for sig_id, sig_data in self.signatures.items():
+            if sig_data.get('timestamp', 0) < cutoff:
+                to_remove.append(sig_id)
+                
+        for sig_id in to_remove:
+            self.signatures.pop(sig_id, None)
+            
+        # Ограничение размера
+        if len(self.signatures) > self.max_history:
+            # Удаляем самые старые
+            sorted_items = sorted(
+                self.signatures.items(),
+                key=lambda x: x[1].get('timestamp', 0)
+            )
+            for sig_id, _ in sorted_items[:len(self.signatures) - self.max_history]:
+                self.signatures.pop(sig_id, None)       
