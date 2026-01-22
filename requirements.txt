@@ -1,0 +1,7 @@
+telethon==1.34.0
+python-dotenv==1.0.0
+feedparser==6.0.10
+aiohttp==3.9.1
+mistralai==0.1.5
+python-dateutil==2.8.2
+mmh3==4.0.1

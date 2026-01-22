@@ -16,7 +16,8 @@ from newsbot.publishers.telegram_publisher import (ConsolePublisher,
                                                    PublisherManager)
 from newsbot.sources.telegram_source import TelegramSource
 from newsbot.sources.twitter_source import TwitterRSSSource
-from newsbot.types import NewsItem, ProcessedNews
+from newsbot.types import (AnalyzedNews, NewsItem, ProcessedNews,
+                           create_processed_news)
 
 # Настройка логирования
 logging.basicConfig(
@@ -133,12 +134,13 @@ class NewsBot:
                 telegram_publisher = TelegramPublisher(
                     client=telegram_client,
                     channel=self.config.TARGET_CHANNEL,
-                    max_media_per_post=4,
-                    parse_mode='html'
+                    max_media_per_post=getattr(self.config, 'MAX_MEDIA_PER_POST', 4),
+                    parse_mode='html',
+                    always_include_media=getattr(self.config, 'ALWAYS_INCLUDE_MEDIA', True)
                 )
                 
                 self.publisher_manager.add_publisher('telegram', telegram_publisher)
-                self.logger.info(f"✅ Telegram публикатор: {self.config.TARGET_CHANNEL}")
+                self.logger.info(f"✅ Telegram публикатор: {self.config.TARGET_CHANNEL} (медиа: включено)")
                 
             except Exception as e:
                 self.logger.error(f"❌ Ошибка инициализации Telegram публикатора: {e}")
@@ -212,33 +214,33 @@ class NewsBot:
                 self.logger.debug(f"🤖 AI отклонил: {ai_response.relevance_reason}")
                 return None
             
+            # Создаем AnalyzedNews из AI ответа
+            analyzed_news = AnalyzedNews.from_ai_response(news_item, ai_response)
+            
             # Форматирование текста в чистом формате
-            formatted_text = self._format_for_telegram(news_item, ai_response)
+            formatted_text = self._format_for_telegram(news_item, analyzed_news)
             
             # Создание обработанной новости
-            processed = ProcessedNews(
-                source_item=news_item,
-                analysis=ai_response,
-                formatted_text=formatted_text,
-                editor_note=ai_response.editor_note,
-                publish_time=datetime.now(timezone.utc),
-                metadata={
-                    'confidence': ai_response.confidence,
-                    'market_impact': ai_response.market_impact,
-                    'tags': ai_response.tags,
-                    'has_media': bool(news_item.media_urls),
-                    'filter_score': filter_analysis['score'],
-                    'entities': filter_analysis.get('entities', {}),
-                    'numbers_count': filter_analysis['statistics'].get('numbers_count', 0),
-                    'signals_count': filter_analysis['statistics'].get('signals_count', 0)
-                }
-            )
+            processed = create_processed_news(news_item, analyzed_news, formatted_text)
+            
+            # Добавляем данные фильтра в метаданные
+            processed.metadata.update({
+                'filter_score': filter_analysis['score'],
+                'entities': filter_analysis.get('entities', {}),
+                'numbers_count': filter_analysis['statistics'].get('numbers_count', 0),
+                'signals_count': filter_analysis['statistics'].get('signals_count', 0),
+                'media_count': len(news_item.media_items)
+            })
+            
+            # Копируем медиа из source_item
+            processed.media_items = news_item.media_items[:5]
             
             self.cache.mark_processed(news_item, 'approved', "passed_all_filters")
             self.stats['total_processed'] += 1
             
             self.logger.info(f"✅ Новость обработана: оценка фильтра {filter_analysis['score']:.2f}, "
-                           f"сигналов: {filter_analysis['statistics']['signals_count']}")
+                           f"сигналов: {filter_analysis['statistics']['signals_count']}, "
+                           f"медиа: {len(news_item.media_items)}")
             
             return processed
             
@@ -246,12 +248,12 @@ class NewsBot:
             self.logger.error(f"❌ Ошибка обработки новости: {e}", exc_info=True)
             return None
     
-    def _format_for_telegram(self, news_item: NewsItem, ai_response) -> str:
+    def _format_for_telegram(self, news_item: NewsItem, analyzed_news: AnalyzedNews) -> str:
         """Простое форматирование поста: текст, мысль AI, ссылки"""
         
         # 1. Основной текст новости (от AI или оригинал)
-        if ai_response.translated_text:
-            main_text = ai_response.translated_text
+        if analyzed_news.translated_text:
+            main_text = analyzed_news.translated_text
         else:
             main_text = news_item.raw_text[:500]
             if len(news_item.raw_text) > 500:
@@ -259,8 +261,8 @@ class NewsBot:
         
         # 2. Мысль AI (если есть editor_note)
         ai_thought = ""
-        if ai_response.editor_note:
-            ai_thought = ai_response.editor_note
+        if analyzed_news.editor_note:
+            ai_thought = analyzed_news.editor_note
         else:
             # Генерация простой мысли на основе контента
             ai_thought = self._generate_simple_thought(news_item.raw_text)
@@ -354,7 +356,10 @@ class NewsBot:
                 if processed_news:
                     avg_score = sum(n.metadata.get('filter_score', 0) for n in processed_news) / len(processed_news)
                     total_signals = sum(n.metadata.get('signals_count', 0) for n in processed_news)
-                    self.logger.info(f"📊 Средняя оценка: {avg_score:.2f}, всего сигналов: {total_signals}")
+                    total_media = sum(n.metadata.get('media_count', 0) for n in processed_news)
+                    self.logger.info(f"📊 Средняя оценка: {avg_score:.2f}, "
+                                   f"сигналов: {total_signals}, "
+                                   f"медиа: {total_media}")
         else:
             self.logger.info("📭 Новостей не найдено")
     
@@ -422,6 +427,7 @@ class NewsBot:
 ├─ Отклонено: {self.stats['total_rejected']}
 ├─ Фильтров: {self.stats['filter_stats'].get('hard_reject_patterns', 0)}
 ├─ Сигналов: {self.stats['filter_stats'].get('required_signals', 0)}
+├─ Медиа включено: {getattr(self.config, 'ALWAYS_INCLUDE_MEDIA', True)}
 └─ Время работы: {int(hours)}ч {int(minutes)}мин
 """
         self.logger.info(stats_text.strip())
@@ -510,25 +516,13 @@ async def test_filter_mode(bot: NewsBot):
         
         # Детальный анализ фильтра
         if basic_pass:
-            try:
-                # Пробуем AI анализ
-                market_signals = {
-                    'score': 0.8,
-                    'signals_count': 2,
-                    'numbers_count': 2,
-                    'entities': {},
-                    'passed': True,
-                    'reason': 'test'
-                }
-                
-                ai_response = await bot.ai_analyzer.analyze_news(test_item, market_signals)
-                logger.info(f"   AI анализ: {'✅ РЕЛЕВАНТНО' if ai_response.is_relevant else '❌ НЕ РЕЛЕВАНТНО'}")
-                if not ai_response.is_relevant:
-                    logger.info(f"   Причина: {ai_response.relevance_reason}")
-                    
-            except Exception as e:
-                logger.info(f"   Ошибка AI анализа: {e}")
+            analysis = bot.market_filter.analyze_content_quality(text)
+            logger.info(f"   Оценка: {analysis['score']:.2f}")
+            logger.info(f"   Сигналы: {analysis['statistics']['signals_count']}")
+            logger.info(f"   Числа: {analysis['statistics']['numbers_count']}")
+            if analysis.get('entities'):
+                logger.info(f"   Сущности: {analysis['entities']}")
 
 
 if __name__ == "__main__":
-    asyncio.run(main()) 
+    asyncio.run(main())  

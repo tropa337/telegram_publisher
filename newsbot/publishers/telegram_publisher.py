@@ -6,9 +6,9 @@ from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 
 from telethon import TelegramClient, errors
-from telethon.tl.types import InputMediaDocument, InputMediaPhoto, Message
+from telethon.tl.types import InputMediaDocument, InputMediaPhoto
 
-from newsbot.types import ProcessedNews
+from newsbot.types import MediaItem, ProcessedNews
 
 logger = logging.getLogger(__name__)
 
@@ -65,6 +65,12 @@ class ConsolePublisher:
             text = self._strip_html(news_item.formatted_text)
             print(f"📝 Текст:\n{text}")
         
+        # Информация о медиа
+        if hasattr(news_item, 'media_items') and news_item.media_items:
+            print(f"\n🖼️ Медиа: {len(news_item.media_items)} файлов")
+            for i, media in enumerate(news_item.media_items[:3], 1):
+                print(f"  {i}. {media.type}: {media.url[:60]}...")
+        
         # Метаданные
         if hasattr(news_item, 'metadata') and news_item.metadata:
             print(f"\n📊 Метаданные:")
@@ -83,7 +89,7 @@ class ConsolePublisher:
             print(f"  Актуальность: {'✅ Да' if analysis.is_relevant else '❌ Нет'}")
             if analysis.confidence:
                 print(f"  Уверенность: {analysis.confidence:.2f}")
-            if analysis.market_impact:
+            if hasattr(analysis, 'market_impact'):
                 print(f"  Влияние на рынок: {analysis.market_impact}")
             if analysis.tags:
                 print(f"  Теги: {', '.join(analysis.tags)}")
@@ -110,7 +116,11 @@ class ConsolePublisher:
             text = self._strip_html(news_item.formatted_text)
             text_preview = text[:100] + "..." if len(text) > 100 else text
         
-        print(f"[{index}] {time_str} | {source}: {text_preview}")
+        media_info = ""
+        if hasattr(news_item, 'media_items') and news_item.media_items:
+            media_info = f" [🖼️ {len(news_item.media_items)}]"
+        
+        print(f"[{index}] {time_str} | {source}: {text_preview}{media_info}")
     
     def _strip_html(self, text: str) -> str:
         """Удаление HTML тегов из текста"""
@@ -133,20 +143,22 @@ class ConsolePublisher:
 
 
 class TelegramPublisher:
-    """Публикатор для Telegram"""
+    """Публикатор для Telegram с поддержкой медиа"""
     
     def __init__(self, 
                  client: TelegramClient,
                  channel: str,
                  max_media_per_post: int = 4,
                  parse_mode: str = 'html',
-                 rate_limit_delay: float = 1.0):
+                 rate_limit_delay: float = 1.0,
+                 always_include_media: bool = True):
         
         self.client = client
         self.channel = channel
         self.max_media_per_post = max_media_per_post
         self.parse_mode = parse_mode
         self.rate_limit_delay = rate_limit_delay
+        self.always_include_media = always_include_media  # Всегда публиковать с медиа если есть
         
         self.is_connected = False
         self.last_post_time = datetime.now() - timedelta(seconds=10)
@@ -174,7 +186,7 @@ class TelegramPublisher:
             success_count = 0
             for news_item in news_items:
                 try:
-                    await self._post_single(news_item)
+                    await self._post_with_media(news_item)
                     success_count += 1
                     
                     # Задержка для избежания лимитов
@@ -191,8 +203,8 @@ class TelegramPublisher:
             logger.error(f"❌ Критическая ошибка публикатора Telegram: {e}")
             return False
     
-    async def _post_single(self, news_item: ProcessedNews):
-        """Публикация одной новости"""
+    async def _post_with_media(self, news_item: ProcessedNews):
+        """Публикация новости с медиа"""
         try:
             text = news_item.formatted_text
             
@@ -203,16 +215,12 @@ class TelegramPublisher:
             # Получение медиа
             media = await self._prepare_media(news_item)
             
-            # Публикация
-            if media:
-                await self.client.send_file(
-                    entity=self.channel,
-                    file=media,
-                    caption=text,
-                    parse_mode=self.parse_mode
-                )
-                logger.debug(f"📤 Опубликовано с медиа: {len(media)} файлов")
+            # Публикация с медиа или без
+            if media and self.always_include_media:
+                await self._send_with_media(text, media)
+                logger.debug(f"📤 Опубликовано с {len(media)} медиа")
             else:
+                # Публикуем только текст
                 await self.client.send_message(
                     entity=self.channel,
                     message=text,
@@ -227,37 +235,93 @@ class TelegramPublisher:
             wait_time = e.seconds
             logger.warning(f"⚠️ Flood wait: ждем {wait_time} секунд")
             await asyncio.sleep(wait_time)
-            await self._post_single(news_item)  # Повторная попытка
+            await self._post_with_media(news_item)  # Повторная попытка
             
         except Exception as e:
             logger.error(f"❌ Ошибка публикации в Telegram: {e}")
             raise
     
+    async def _send_with_media(self, text: str, media_list: List):
+        """Отправка сообщения с медиа"""
+        if len(media_list) == 1:
+            # Одно медиа с подписью
+            await self.client.send_file(
+                entity=self.channel,
+                file=media_list[0],
+                caption=text,
+                parse_mode=self.parse_mode
+            )
+        else:
+            # Галерея медиа
+            await self.client.send_file(
+                entity=self.channel,
+                file=media_list,
+                caption=text,
+                parse_mode=self.parse_mode
+            )
+    
     async def _prepare_media(self, news_item: ProcessedNews) -> Optional[List]:
         """Подготовка медиафайлов для публикации"""
-        if not hasattr(news_item, 'source_item') or not news_item.source_item.media_urls:
+        # Используем media_items из ProcessedNews или из source_item
+        media_items = []
+        
+        # 1. Проверяем media_items в ProcessedNews
+        if hasattr(news_item, 'media_items') and news_item.media_items:
+            media_items = news_item.media_items
+        # 2. Проверяем media_items в source_item
+        elif hasattr(news_item.source_item, 'media_items') and news_item.source_item.media_items:
+            media_items = news_item.source_item.media_items
+        # 3. Проверяем старый формат media_urls
+        elif hasattr(news_item.source_item, 'media_urls') and news_item.source_item.media_urls:
+            # Конвертируем media_urls в media_items
+            media_items = self._convert_media_urls_to_items(news_item.source_item.media_urls)
+        
+        if not media_items:
             return None
         
-        media_urls = news_item.source_item.media_urls[:self.max_media_per_post]
-        if not media_urls:
-            return None
+        # Ограничиваем количество медиа
+        media_items = media_items[:self.max_media_per_post]
         
-        media_list = []
-        for url in media_urls:
+        # Создаем Telegram медиа объекты
+        telegram_media = []
+        for media_item in media_items:
             try:
-                # Определяем тип медиа по расширению
-                if url.lower().endswith(('.jpg', '.jpeg', '.png', '.gif')):
-                    media = InputMediaPhoto(url)
-                else:
-                    media = InputMediaDocument(url)
-                
-                media_list.append(media)
-                
+                telegram_media.append(self._create_telegram_media(media_item))
             except Exception as e:
-                logger.warning(f"⚠️ Не удалось загрузить медиа {url}: {e}")
+                logger.warning(f"⚠️ Не удалось создать медиа объект для {media_item.url}: {e}")
                 continue
         
-        return media_list if media_list else None
+        return telegram_media if telegram_media else None
+    
+    def _convert_media_urls_to_items(self, media_urls: List[str]) -> List[MediaItem]:
+        """Конвертация старых media_urls в MediaItem"""
+        media_items = []
+        
+        for url in media_urls[:self.max_media_per_post]:
+            url_lower = url.lower()
+            
+            # Определяем тип медиа по расширению
+            if any(ext in url_lower for ext in ['.jpg', '.jpeg', '.png', '.webp', '.gif']):
+                media_type = 'photo'
+            elif any(ext in url_lower for ext in ['.mp4', '.mov', '.avi', '.webm']):
+                media_type = 'document'  # Используем документ для видео
+            else:
+                media_type = 'document'
+            
+            media_items.append(MediaItem(
+                url=url,
+                type=media_type
+            ))
+        
+        return media_items
+    
+    def _create_telegram_media(self, media_item: MediaItem):
+        """Создание Telegram медиа объекта"""
+        if media_item.type == 'photo':
+            return InputMediaPhoto(media_item.url)
+        else:
+            # Для video и document используем InputMediaDocument
+            return InputMediaDocument(media_item.url)
     
     async def test_connection(self) -> bool:
         """Тестирование соединения с Telegram"""
@@ -267,6 +331,14 @@ class TelegramPublisher:
             # Проверка доступности канала
             entity = await self.client.get_entity(self.channel)
             logger.info(f"✅ Telegram канал доступен: {entity.title}")
+            
+            # Тестовая публикация (опционально)
+            try:
+                test_message = "🤖 Бот запущен и готов к работе!"
+                await self.client.send_message(entity, test_message)
+                logger.info(f"✅ Тестовая публикация успешна")
+            except Exception as e:
+                logger.warning(f"⚠️ Тестовая публикация не удалась: {e}")
             
             return True
             
@@ -310,7 +382,7 @@ class PublisherManager:
                 results[name] = result
                 
                 if result:
-                    logger.info(f"✅ {name}: успешно опубликовано")
+                    logger.info(f"✅ {name}: успешно опубликовано {len(news_items)} новостей")
                 else:
                     logger.warning(f"⚠️ {name}: ошибка публикации")
                     

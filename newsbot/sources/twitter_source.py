@@ -1,3 +1,4 @@
+
 import asyncio
 import logging
 import re
@@ -10,7 +11,7 @@ import aiohttp
 import feedparser
 from dateutil import parser
 
-from ..types import NewsItem
+from ..types import MediaItem, NewsItem
 
 
 class TwitterRSSSource:
@@ -209,18 +210,21 @@ class TwitterRSSSource:
             
         # Извлечение медиа
         media_urls = self._extract_media_urls(entry)
-        primary_media_url = media_urls[0] if media_urls else None
         
         # Извлечение автора
         author = self._extract_author(entry)
         
-        # Создание объекта новости (только с разрешенными параметрами)
+        # Получение ссылки
+        url = getattr(entry, 'link', None)
+        if not url:
+            url = f"twitter_rss:{source_label}:{entry_id}"
+        
+        # Создание объекта новости с правильными параметрами
         news_item = NewsItem(
-            source=f"twitter_rss:{source_label}",
-            created_at=created_at,
             raw_text=raw_text,
-            source_link=getattr(entry, 'link', None),
-            media_url=primary_media_url,
+            source=f"twitter_rss:{source_label}",
+            url=url,
+            created_at=created_at,
             media_urls=media_urls,
             author=author
         )
@@ -599,4 +603,4 @@ class TwitterRSSSource:
             del self.feeds[label]
             self.logger.info(f"Удален фидер: {label}")
         else:
-            self.logger.warning(f"Фидер с меткой '{label}' не найден") 
+            self.logger.warning(f"Фидер с меткой '{label}' не найден")

@@ -6159,13 +6159,343 @@
         "text_preview": "JUST IN: 🇺🇸 $700,000,000,000 added to the US stock market today. pic.",
         "created_at": "2026-01-21T21:07:00+00:00"
       }
+    },
+    "78c5f8066a262516b5db6b017da8cc33": {
+      "item_hash": "78c5f8066a262516b5db6b017da8cc33",
+      "timestamp": 1769031729.660636,
+      "status": "rejected",
+      "reason": "Обнаружены запрещенные паттерны: \\b(top|топ|лучший)\\b.*\\d+\\b.*\\b(coin|token|монет|токен)\\b, \\b(airdrop|раздача|referral|promo|промо|bonus|бонус)\\b, \\b(poll|опрос|vote|голосование)\\b",
+      "metadata": {
+        "source": "twitter_rss:twitter_8",
+        "text_preview": "RT by @CoinDesk: Today's top stories on \"CoinDesk Daily\": Bitmine shareholders approve stock sale pl",
+        "created_at": "2026-01-21T21:00:00+00:00"
+      }
+    },
+    "331e55aabf5a5cedd7a2e70d0ef66c8b": {
+      "item_hash": "331e55aabf5a5cedd7a2e70d0ef66c8b",
+      "timestamp": 1769031729.6612034,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 ALERT: Bitcoin is facing rising selling pressure as negative net taker volume on Binance derivativ",
+        "created_at": "2026-01-21T21:30:00+00:00"
+      }
+    },
+    "08f175c97ef495875d94ec792ffb025f": {
+      "item_hash": "08f175c97ef495875d94ec792ffb025f",
+      "timestamp": 1769031729.661773,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_10",
+        "text_preview": "Breaking News: A House panel voted to charge Bill and Hillary Clinton with criminal contempt of Cong",
+        "created_at": "2026-01-21T21:17:00+00:00"
+      }
+    },
+    "1c420fb07dd194b4c3abb93143d8c0a8": {
+      "item_hash": "1c420fb07dd194b4c3abb93143d8c0a8",
+      "timestamp": 1769031729.664327,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_12",
+        "text_preview": "F/m Investments seeks to become first ETF issuer to tokenize shares",
+        "created_at": "2026-01-21T20:57:00+00:00"
+      }
+    },
+    "7dde7f263e850d9bbb4bfc55d447b86c": {
+      "item_hash": "7dde7f263e850d9bbb4bfc55d447b86c",
+      "timestamp": 1769031729.6645992,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_14",
+        "text_preview": "*TRUMP GREENLAND DEAL SAID TO INVOLVE SMALL POCKETS OF LAND: NYT",
+        "created_at": "2026-01-21T21:14:00+00:00"
+      }
+    },
+    "0ece55fe78641cb426134c1b8b62868a": {
+      "item_hash": "0ece55fe78641cb426134c1b8b62868a",
+      "timestamp": 1769031729.664819,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_14",
+        "text_preview": "*GERMAN FINANCE MINISTER ON TRUMP GREENLAND DEAL: WE HAVE TO WAIT A BIT AND NOT GET OUR HOPES UP TOO",
+        "created_at": "2026-01-21T21:12:00+00:00"
+      }
+    },
+    "9eb9edd9c8e3fb59f98e96a510f5ea0c": {
+      "item_hash": "9eb9edd9c8e3fb59f98e96a510f5ea0c",
+      "timestamp": 1769031731.1193593,
+      "status": "rejected",
+      "reason": "AI определил как нерелевантную",
+      "metadata": {
+        "source": "twitter_rss:twitter_11",
+        "text_preview": "Strategy just crossed 700k BTC but its “circular” Bitcoin funding loop risks a massive high-yield cr",
+        "created_at": "2026-01-20T21:50:00+00:00"
+      }
+    },
+    "4cde2ac39b8a30def1894a90501adc2b": {
+      "item_hash": "4cde2ac39b8a30def1894a90501adc2b",
+      "timestamp": 1769031913.9092593,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_14",
+        "text_preview": "*THERANOS FOUNDER ELIZABETH HOLMES ASKS TRUMP FOR PARDON",
+        "created_at": "2026-01-21T21:25:00+00:00"
+      }
+    },
+    "d36e912d24b6a5fd938a899055aa2f6b": {
+      "item_hash": "d36e912d24b6a5fd938a899055aa2f6b",
+      "timestamp": 1769032157.5149155,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_12",
+        "text_preview": "RT by @TheBlock__: Neynar, a startup focused on decentralized social media infrastructure, is acquir",
+        "created_at": "2026-01-21T21:16:00+00:00"
+      }
+    },
+    "ff149897d9d610a98ba6acbb0b546351": {
+      "item_hash": "ff149897d9d610a98ba6acbb0b546351",
+      "timestamp": 1769032705.4708037,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_10",
+        "text_preview": "Breaking News: A federal judge ordered the government not to review materials seized during the sear",
+        "created_at": "2026-01-21T21:49:00+00:00"
+      }
+    },
+    "ffce57aec008dc483e8262294ff29394": {
+      "item_hash": "ffce57aec008dc483e8262294ff29394",
+      "timestamp": 1769033491.8972106,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 TODAY: The U.S. stock market added roughly $700 billion in market capitalization today. pic.",
+        "created_at": "2026-01-21T21:59:00+00:00"
+      }
+    },
+    "42ec167fe7bb88d7e6ced27173e53e96": {
+      "item_hash": "42ec167fe7bb88d7e6ced27173e53e96",
+      "timestamp": 1769033491.8975542,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_11",
+        "text_preview": "Ripple’s RLUSD just got Binance’s strongest growth lever, can that catapult it into a top 3 asset? v",
+        "created_at": "2026-01-21T21:50:00+00:00"
+      }
+    },
+    "aecde0295610f51b35255319845d0143": {
+      "item_hash": "aecde0295610f51b35255319845d0143",
+      "timestamp": 1769033491.8977914,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_12",
+        "text_preview": "Ethereum reclaims $3,000 amid minor crypto rebound as Trump calls off Greenland tariff threat",
+        "created_at": "2026-01-21T21:53:00+00:00"
+      }
+    },
+    "ec87ac8a480ec3355f1d65e2ad517875": {
+      "item_hash": "ec87ac8a480ec3355f1d65e2ad517875",
+      "timestamp": 1769033613.5294323,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🚨TOM LEE: $250,000 BITCOIN THIS YEAR Tom Lee expects $BTC to hit $250K and print a new all-time high",
+        "created_at": "2026-01-21T22:00:00+00:00"
+      }
+    },
+    "c36add4dae7ae27fd803048756ce8165": {
+      "item_hash": "c36add4dae7ae27fd803048756ce8165",
+      "timestamp": 1769033978.7165616,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_12",
+        "text_preview": "Tokenized assets could surpass $11 trillion by 2030, Ark Invest says",
+        "created_at": "2026-01-21T22:07:00+00:00"
+      }
+    },
+    "e2e5403e1c407e27213eaf36e8091371": {
+      "item_hash": "e2e5403e1c407e27213eaf36e8091371",
+      "timestamp": 1769034834.7512932,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_12",
+        "text_preview": "RT by @TheBlock__: Trillion-dollar forecasts are piling up around tokenization.@CathieDWood's @ARKIn",
+        "created_at": "2026-01-21T22:17:00+00:00"
+      }
+    },
+    "391819674508defe74df12404719588a": {
+      "item_hash": "391819674508defe74df12404719588a",
+      "timestamp": 1769035261.2415743,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🇺🇸 UPDATE: Polymarket traders are pricing a 98% probability that the Fed leaves rates unchanged at i",
+        "created_at": "2026-01-21T22:30:00+00:00"
+      }
+    },
+    "550c25a43745993e8f8aa081b4fbbad5": {
+      "item_hash": "550c25a43745993e8f8aa081b4fbbad5",
+      "timestamp": 1769036236.3206298,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "Pinned: Why DeFi Needs to Be Private to Succeed [Feat. Zama] #CHAINREACTION",
+        "created_at": "2026-01-21T22:54:00+00:00"
+      }
+    },
+    "d396601d4e4524848294080102ae5637": {
+      "item_hash": "d396601d4e4524848294080102ae5637",
+      "timestamp": 1769037151.1251042,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 ALERT: Crypto markets saw $648.6 million in liquidations over the past 24 hours, split between $31",
+        "created_at": "2026-01-21T23:00:00+00:00"
+      }
+    },
+    "f4fe6318b6b9b3ad31603fdc2960b1db": {
+      "item_hash": "f4fe6318b6b9b3ad31603fdc2960b1db",
+      "timestamp": 1769037273.0607104,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_11",
+        "text_preview": "US Treasurys face a $1.7 trillion EU “dump” over Greenland, forcing shift to Bitcoin if dollar safet",
+        "created_at": "2026-01-21T23:10:00+00:00"
+      }
+    },
+    "9196d4968eb575b0417919627c2dc069": {
+      "item_hash": "9196d4968eb575b0417919627c2dc069",
+      "timestamp": 1769038065.7584379,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "RT by @Cointelegraph: The privacy narrative is reaching far and wide these days, and it's becoming a",
+        "created_at": "2026-01-21T23:13:00+00:00"
+      }
+    },
+    "eabf249ccf26d3d0290cc850e519b090": {
+      "item_hash": "eabf249ccf26d3d0290cc850e519b090",
+      "timestamp": 1769038979.461055,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🐋 INSIGHT: $BTC has slipped to $89.4K as gold and silver surge, but onchain data shows whales contin",
+        "created_at": "2026-01-21T23:30:00+00:00"
+      }
+    },
+    "d811bae88643de2b965914ce62d78965": {
+      "item_hash": "d811bae88643de2b965914ce62d78965",
+      "timestamp": 1769039101.3053303,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_10",
+        "text_preview": "RT by @nytimes: Trump Calls Out Mark Carney’s Davos Speech in Rebuke to Canada (but actually just ec",
+        "created_at": "2026-01-21T17:40:00+00:00"
+      }
+    },
+    "3cc645be412b594ff057661b651e16bf": {
+      "item_hash": "3cc645be412b594ff057661b651e16bf",
+      "timestamp": 1769039162.1965666,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "According to Bloomberg, the U.S. crypto market structure bill is expected to be delayed by several w",
+        "created_at": "2026-01-21T23:38:00+00:00"
+      }
+    },
+    "e82c06b2555da386b5cb04199647d5d1": {
+      "item_hash": "e82c06b2555da386b5cb04199647d5d1",
+      "timestamp": 1769040320.7072327,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 LATEST: F/m Investments is seeking U.S. Securities and Exchange Commission approval to tokenize it",
+        "created_at": "2026-01-22T00:00:00+00:00"
+      }
+    },
+    "3a569c0b596255306a6a1652a599ea3b": {
+      "item_hash": "3a569c0b596255306a6a1652a599ea3b",
+      "timestamp": 1769040931.5946057,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_12",
+        "text_preview": "RT by @TheBlock__: ARK Invest: \"Ethereum Remains The Preferred Blockchain For On-Chain Assets\" RWA m",
+        "created_at": "2026-01-22T00:06:00+00:00"
+      }
+    },
+    "713a5c0ee6a7fe32b2425c4ff983bd3b": {
+      "item_hash": "713a5c0ee6a7fe32b2425c4ff983bd3b",
+      "timestamp": 1769042762.1940005,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 BULLISH: Cathie Wood's Ark Invest predicts digital assets could reach $28 trillion by 2030, with B",
+        "created_at": "2026-01-22T00:30:00+00:00"
+      }
+    },
+    "c2ac8b638589f93fc64808ea13a2ee08": {
+      "item_hash": "c2ac8b638589f93fc64808ea13a2ee08",
+      "timestamp": 1769042762.1943555,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_12",
+        "text_preview": "Vivek Ramaswamy's Strive looks to raise $150 million in secondary stock offering theblock.co/post/38",
+        "created_at": "2026-01-22T00:42:00+00:00"
+      }
+    },
+    "1eb4af7a26ef423001f98cce9459e9c7": {
+      "item_hash": "1eb4af7a26ef423001f98cce9459e9c7",
+      "timestamp": 1769042762.1946099,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_12",
+        "text_preview": "Vietnam opens crypto exchange licensing with nearly $400 million capital barrier to entry",
+        "created_at": "2026-01-22T00:31:00+00:00"
+      }
+    },
+    "76dc4b12fd90470bfbc23edd39056d28": {
+      "item_hash": "76dc4b12fd90470bfbc23edd39056d28",
+      "timestamp": 1769043675.8960657,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 LATEST: X Head of Product Nikita Bier says the platform is rolling out \"Starterpacks\" to help user",
+        "created_at": "2026-01-22T01:00:00+00:00"
+      }
     }
   },
   "stats": {
-    "hits": 808,
-    "misses": 668,
-    "total_processed": 560,
+    "hits": 1221,
+    "misses": 725,
+    "total_processed": 590,
     "total_published": 0
   },
-  "timestamp": 1769030161.8804233
+  "timestamp": 1769043675.9022062
 }
