@@ -2895,3 +2895,124 @@ AttributeError: 'AnalyzedNews' object has no attribute 'reason'
 2026-01-21 23:41:25,682 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_14: 0 новостей
 2026-01-21 23:41:25,687 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 0 новостей после фильтрации
 2026-01-21 23:42:00,547 - __main__ - INFO - 👋 Остановка по запросу пользователя
+2026-01-21 23:42:08,207 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Инициализирован источник Twitter RSS с 14 фидами
+2026-01-21 23:42:08,207 - __main__ - INFO - ✅ Twitter RSS: 14 фидов
+2026-01-21 23:42:08,208 - __main__ - INFO - ✅ Telegram: 3 каналов
+2026-01-21 23:42:08,209 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: console
+2026-01-21 23:42:08,210 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: telegram
+2026-01-21 23:42:08,211 - __main__ - INFO - ✅ Telegram публикатор: @aitop1234
+2026-01-21 23:42:08,211 - __main__ - INFO - 🤖 Новостной бот инициализирован
+2026-01-21 23:42:08,211 - __main__ - INFO - 📊 Статистика фильтров:
+2026-01-21 23:42:08,211 - __main__ - INFO -   ├─ Паттернов отклонения: 20
+2026-01-21 23:42:08,211 - __main__ - INFO -   ├─ Мягких отклонений: 4
+2026-01-21 23:42:08,212 - __main__ - INFO -   ├─ Обязательных сигналов: 16
+2026-01-21 23:42:08,212 - __main__ - INFO -   ├─ Буст-паттернов: 5
+2026-01-21 23:42:08,212 - __main__ - INFO -   └─ Типов сущностей: 5
+2026-01-21 23:42:08,212 - __main__ - INFO - 🔍 Тестирование соединений...
+2026-01-21 23:42:08,213 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.92:443/TcpFull...
+2026-01-21 23:42:08,256 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.92:443/TcpFull complete!
+2026-01-21 23:42:08,591 - newsbot.publishers.telegram_publisher - INFO - ✅ Telegram подключен к каналу: @aitop1234
+2026-01-21 23:42:08,646 - newsbot.publishers.telegram_publisher - INFO - ✅ Telegram канал доступен: Ai
+2026-01-21 23:42:08,647 - __main__ - INFO - 👁️ Запуск постоянного мониторинга...
+2026-01-21 23:42:08,647 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Запуск периодического опроса с интервалом 60 секунд
+2026-01-21 23:42:08,647 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 14 источников
+2026-01-21 23:42:09,159 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_2: HTTP 404
+2026-01-21 23:42:09,494 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_4: HTTP 404
+2026-01-21 23:42:09,653 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 0 новостей
+2026-01-21 23:42:09,653 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_2: 0 новостей
+2026-01-21 23:42:09,653 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_3: 1 новостей
+2026-01-21 23:42:09,654 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_4: 0 новостей
+2026-01-21 23:42:09,654 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_5: 50 новостей
+2026-01-21 23:42:09,654 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_6: 49 новостей
+2026-01-21 23:42:09,655 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_7: 50 новостей
+2026-01-21 23:42:09,655 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_8: 49 новостей
+2026-01-21 23:42:09,655 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_9: 49 новостей
+2026-01-21 23:42:09,655 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_10: 50 новостей
+2026-01-21 23:42:09,656 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_11: 50 новостей
+2026-01-21 23:42:09,656 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_12: 49 новостей
+2026-01-21 23:42:09,656 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_13: 0 новостей
+2026-01-21 23:42:09,656 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_14: 50 новостей
+2026-01-21 23:42:09,664 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 1 новостей после фильтрации
+2026-01-21 23:42:09,665 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Найдено 1 новых новостей
+2026-01-21 23:42:09,665 - __main__ - INFO - 📥 RSS: получено 1 новых новостей
+2026-01-21 23:42:11,117 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-21 23:43:11,134 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 14 источников
+2026-01-21 23:43:11,356 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_4: HTTP 404
+2026-01-21 23:43:11,361 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_2: HTTP 404
+2026-01-21 23:43:11,984 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 0 новостей
+2026-01-21 23:43:11,985 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_2: 0 новостей
+2026-01-21 23:43:11,985 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_3: 0 новостей
+2026-01-21 23:43:11,985 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_4: 0 новостей
+2026-01-21 23:43:11,986 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_5: 0 новостей
+2026-01-21 23:43:11,986 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_6: 0 новостей
+2026-01-21 23:43:11,986 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_7: 0 новостей
+2026-01-21 23:43:11,986 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_8: 0 новостей
+2026-01-21 23:43:11,987 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_9: 0 новостей
+2026-01-21 23:43:11,987 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_10: 0 новостей
+2026-01-21 23:43:11,987 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_11: 0 новостей
+2026-01-21 23:43:11,988 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_12: 0 новостей
+2026-01-21 23:43:11,988 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_13: 0 новостей
+2026-01-21 23:43:11,988 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_14: 0 новостей
+2026-01-21 23:43:11,991 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 0 новостей после фильтрации
+2026-01-21 23:44:11,995 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 14 источников
+2026-01-21 23:44:12,426 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_4: HTTP 404
+2026-01-21 23:44:12,643 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_2: HTTP 404
+2026-01-21 23:44:12,931 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 0 новостей
+2026-01-21 23:44:12,931 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_2: 0 новостей
+2026-01-21 23:44:12,931 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_3: 0 новостей
+2026-01-21 23:44:12,932 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_4: 0 новостей
+2026-01-21 23:44:12,932 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_5: 0 новостей
+2026-01-21 23:44:12,932 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_6: 0 новостей
+2026-01-21 23:44:12,933 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_7: 0 новостей
+2026-01-21 23:44:12,933 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_8: 0 новостей
+2026-01-21 23:44:12,933 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_9: 0 новостей
+2026-01-21 23:44:12,933 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_10: 0 новостей
+2026-01-21 23:44:12,934 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_11: 0 новостей
+2026-01-21 23:44:12,934 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_12: 0 новостей
+2026-01-21 23:44:12,934 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_13: 0 новостей
+2026-01-21 23:44:12,935 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_14: 0 новостей
+2026-01-21 23:44:12,938 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 0 новостей после фильтрации
+2026-01-21 23:45:12,945 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 14 источников
+2026-01-21 23:45:13,193 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_2: HTTP 404
+2026-01-21 23:45:13,591 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_4: HTTP 404
+2026-01-21 23:45:13,901 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 0 новостей
+2026-01-21 23:45:13,902 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_2: 0 новостей
+2026-01-21 23:45:13,902 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_3: 0 новостей
+2026-01-21 23:45:13,902 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_4: 0 новостей
+2026-01-21 23:45:13,903 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_5: 0 новостей
+2026-01-21 23:45:13,903 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_6: 0 новостей
+2026-01-21 23:45:13,903 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_7: 0 новостей
+2026-01-21 23:45:13,904 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_8: 0 новостей
+2026-01-21 23:45:13,904 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_9: 0 новостей
+2026-01-21 23:45:13,904 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_10: 0 новостей
+2026-01-21 23:45:13,905 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_11: 0 новостей
+2026-01-21 23:45:13,905 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_12: 0 новостей
+2026-01-21 23:45:13,905 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_13: 0 новостей
+2026-01-21 23:45:13,906 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_14: 1 новостей
+2026-01-21 23:45:13,909 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 0 новостей после фильтрации
+2026-01-21 23:46:13,924 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 14 источников
+2026-01-21 23:46:14,198 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_2: HTTP 404
+2026-01-21 23:46:14,514 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_4: HTTP 404
+2026-01-21 23:46:14,809 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 0 новостей
+2026-01-21 23:46:14,809 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_2: 0 новостей
+2026-01-21 23:46:14,810 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_3: 0 новостей
+2026-01-21 23:46:14,810 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_4: 0 новостей
+2026-01-21 23:46:14,810 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_5: 0 новостей
+2026-01-21 23:46:14,811 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_6: 0 новостей
+2026-01-21 23:46:14,811 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_7: 0 новостей
+2026-01-21 23:46:14,811 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_8: 0 новостей
+2026-01-21 23:46:14,811 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_9: 0 новостей
+2026-01-21 23:46:14,812 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_10: 0 новостей
+2026-01-21 23:46:14,812 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_11: 0 новостей
+2026-01-21 23:46:14,812 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_12: 0 новостей
+2026-01-21 23:46:14,813 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_13: 0 новостей
+2026-01-21 23:46:14,813 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_14: 0 новостей
+2026-01-21 23:46:14,816 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 0 новостей после фильтрации
+2026-01-21 23:47:08,651 - __main__ - INFO - 📊 СТАТИСТИКА БОТА:
+├─ Получено: 0
+├─ Обработано: 0
+├─ Опубликовано: 0
+├─ Отклонено: 8
+├─ Фильтров: 20
+├─ Сигналов: 16
+└─ Время работы: 0ч 5мин
