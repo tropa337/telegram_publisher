@@ -132,12 +132,23 @@ class DeduplicationEngine:
         if not isinstance(news_item, NewsItem):
             return DedupResult(False, 0.0, "invalid_type")
             
-        # Проверка по ссылке (самая быстрая)
-        if news_item.source_link and news_item.source_link in self.signatures:
+        # Проверка по ссылке (самая быстрая) - ИСПРАВЛЕННАЯ СТРОКА
+        if hasattr(news_item, 'source_link') and news_item.source_link and news_item.source_link in self.signatures:
             return DedupResult(True, 1.0, "exact_link", news_item.source_link)
             
         # Создание сигнатуры
-        signature = self._create_signature(news_item.raw_text)
+        # Проверяем наличие атрибута raw_text
+        text_to_check = ""
+        if hasattr(news_item, 'raw_text'):
+            text_to_check = news_item.raw_text
+        elif hasattr(news_item, 'text'):
+            text_to_check = news_item.text
+        elif hasattr(news_item, 'content'):
+            text_to_check = news_item.content
+        elif hasattr(news_item, 'title'):
+            text_to_check = news_item.title
+            
+        signature = self._create_signature(text_to_check)
         if not signature:
             return DedupResult(False, 0.0, "empty_signature")
             
@@ -164,7 +175,7 @@ class DeduplicationEngine:
                 
         # Проверка по шинглам (более точная)
         if best_similarity > 0.5:
-            text1 = self._normalize_text(news_item.raw_text)
+            text1 = self._normalize_text(text_to_check)
             existing_text = None
             
             # Получаем текст существующего элемента
@@ -184,9 +195,12 @@ class DeduplicationEngine:
                     
         # Сохраняем сигнатуру
         sig_id = signature['hash']
-        signature['original_text'] = news_item.raw_text
+        signature['original_text'] = text_to_check
         signature['timestamp'] = datetime.now().timestamp()
-        signature['source'] = news_item.source
+        
+        # Добавляем source если есть
+        if hasattr(news_item, 'source'):
+            signature['source'] = news_item.source
         
         self.signatures[sig_id] = signature
         
@@ -216,4 +230,4 @@ class DeduplicationEngine:
                 key=lambda x: x[1].get('timestamp', 0)
             )
             for sig_id, _ in sorted_items[:len(self.signatures) - self.max_history]:
-                self.signatures.pop(sig_id, None)       
+                self.signatures.pop(sig_id, None)
