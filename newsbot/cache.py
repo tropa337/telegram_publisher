@@ -88,14 +88,14 @@ class NewsCache:
         """Генерация хеша для новости"""
         import hashlib
 
-        # Собираем доступные поля для создания уникального хеша
+        # Собираем доступные поля
         content_parts = []
         
-        # Добавляем source если есть
+        # Источник
         if hasattr(news_item, 'source') and news_item.source:
             content_parts.append(str(news_item.source))
         
-        # Добавляем текст из доступных полей
+        # Текст
         text = ""
         if hasattr(news_item, 'raw_text') and news_item.raw_text:
             text = news_item.raw_text[:200]
@@ -105,10 +105,9 @@ class NewsCache:
             text = news_item.content[:200]
         elif hasattr(news_item, 'title') and news_item.title:
             text = news_item.title
-        
         content_parts.append(text)
         
-        # Добавляем ссылку из доступных полей (ВАЖНО: проверяем через hasattr!)
+        # Ссылка (с проверкой атрибута)
         if hasattr(news_item, 'source_link') and news_item.source_link:
             content_parts.append(news_item.source_link)
         elif hasattr(news_item, 'link') and news_item.link:
@@ -116,11 +115,11 @@ class NewsCache:
         elif hasattr(news_item, 'url') and news_item.url:
             content_parts.append(news_item.url)
         
-        # Добавляем другие уникальные идентификаторы
+        # ID
         if hasattr(news_item, 'id') and news_item.id:
             content_parts.append(str(news_item.id))
         
-        # Создаем хеш из всех частей
+        # Хеш
         content = ":".join(content_parts)
         return hashlib.md5(content.encode('utf-8')).hexdigest()
         
@@ -139,12 +138,12 @@ class NewsCache:
         """Пометка новости как обработанной"""
         item_hash = self._generate_hash(news_item)
         
-        # Собираем метаданные
+        # Метаданные
         metadata = {}
         if hasattr(news_item, 'source'):
             metadata['source'] = news_item.source
         
-        # Добавляем текст превью
+        # Превью текста
         if hasattr(news_item, 'raw_text'):
             metadata['text_preview'] = news_item.raw_text[:100]
         elif hasattr(news_item, 'text'):
@@ -154,7 +153,7 @@ class NewsCache:
         elif hasattr(news_item, 'title'):
             metadata['text_preview'] = news_item.title
         
-        # Добавляем дату создания если есть
+        # Дата создания
         if hasattr(news_item, 'created_at') and news_item.created_at:
             if hasattr(news_item.created_at, 'isoformat'):
                 metadata['created_at'] = news_item.created_at.isoformat()

@@ -132,20 +132,19 @@ class DeduplicationEngine:
         if not isinstance(news_item, NewsItem):
             return DedupResult(False, 0.0, "invalid_type")
             
-        # Проверка по ссылке (самая быстрая) - ИСПРАВЛЕННАЯ СТРОКА
+        # Проверка по ссылке (с проверкой атрибута)
         if hasattr(news_item, 'source_link') and news_item.source_link and news_item.source_link in self.signatures:
             return DedupResult(True, 1.0, "exact_link", news_item.source_link)
             
         # Создание сигнатуры
-        # Проверяем наличие атрибута raw_text
         text_to_check = ""
-        if hasattr(news_item, 'raw_text'):
+        if hasattr(news_item, 'raw_text') and news_item.raw_text:
             text_to_check = news_item.raw_text
-        elif hasattr(news_item, 'text'):
+        elif hasattr(news_item, 'text') and news_item.text:
             text_to_check = news_item.text
-        elif hasattr(news_item, 'content'):
+        elif hasattr(news_item, 'content') and news_item.content:
             text_to_check = news_item.content
-        elif hasattr(news_item, 'title'):
+        elif hasattr(news_item, 'title') and news_item.title:
             text_to_check = news_item.title
             
         signature = self._create_signature(text_to_check)
@@ -173,12 +172,11 @@ class DeduplicationEngine:
                     True, minhash_sim, "similar_content", existing_id
                 )
                 
-        # Проверка по шинглам (более точная)
+        # Проверка по шинглам
         if best_similarity > 0.5:
             text1 = self._normalize_text(text_to_check)
             existing_text = None
             
-            # Получаем текст существующего элемента
             for item in self.signatures.values():
                 if 'original_text' in item:
                     existing_text = item['original_text']
@@ -198,10 +196,9 @@ class DeduplicationEngine:
         signature['original_text'] = text_to_check
         signature['timestamp'] = datetime.now().timestamp()
         
-        # Добавляем source если есть
         if hasattr(news_item, 'source'):
             signature['source'] = news_item.source
-        
+            
         self.signatures[sig_id] = signature
         
         # Очистка старых записей
@@ -224,7 +221,6 @@ class DeduplicationEngine:
             
         # Ограничение размера
         if len(self.signatures) > self.max_history:
-            # Удаляем самые старые
             sorted_items = sorted(
                 self.signatures.items(),
                 key=lambda x: x[1].get('timestamp', 0)

@@ -13,7 +13,8 @@ from newsbot.dedup import DeduplicationEngine
 from newsbot.filters import StrictMarketFilter
 from newsbot.market_filter import looks_market_moving
 from newsbot.publishers.telegram_publisher import (ConsolePublisher,
-                                                   PublisherManager)
+                                                   PublisherManager,
+                                                   TelegramPublisher)
 from newsbot.sources.telegram_source import TelegramSource
 from newsbot.sources.twitter_source import TwitterRSSSource
 from newsbot.types import (AnalyzedNews, NewsItem, ProcessedNews,
@@ -122,9 +123,6 @@ class NewsBot:
            hasattr(self.config, 'TG_API_HASH') and self.config.TG_API_HASH and \
            hasattr(self.config, 'TARGET_CHANNEL') and self.config.TARGET_CHANNEL:
             try:
-                from newsbot.publishers.telegram_publisher import \
-                    TelegramPublisher
-                
                 telegram_client = TelegramClient(
                     'publisher_session',
                     self.config.TG_API_ID,
@@ -214,26 +212,33 @@ class NewsBot:
                 self.logger.debug(f"🤖 AI отклонил: {ai_response.relevance_reason}")
                 return None
             
-            # Создаем AnalyzedNews из AI ответа
-            analyzed_news = AnalyzedNews.from_ai_response(news_item, ai_response)
-            
-            # Форматирование текста в чистом формате
-            formatted_text = self._format_for_telegram(news_item, analyzed_news)
+            # ФОРМАТИРОВАНИЕ для Telegram
+            formatted_text = self._format_for_telegram(news_item, ai_response)
             
             # Создание обработанной новости
-            processed = create_processed_news(news_item, analyzed_news, formatted_text)
-            
-            # Добавляем данные фильтра в метаданные
-            processed.metadata.update({
-                'filter_score': filter_analysis['score'],
-                'entities': filter_analysis.get('entities', {}),
-                'numbers_count': filter_analysis['statistics'].get('numbers_count', 0),
-                'signals_count': filter_analysis['statistics'].get('signals_count', 0),
-                'media_count': len(news_item.media_items)
-            })
-            
-            # Копируем медиа из source_item
-            processed.media_items = news_item.media_items[:5]
+            processed = ProcessedNews(
+                source_item=news_item,
+                is_relevant=True,
+                relevance_reason=ai_response.relevance_reason,
+                formatted_text=formatted_text,
+                summary=ai_response.summary,
+                editor_note=ai_response.editor_note,
+                tags=ai_response.tags,
+                entities=ai_response.entities,
+                confidence=ai_response.confidence,
+                market_impact=ai_response.market_impact,
+                metadata={
+                    'filter_score': filter_analysis['score'],
+                    'entities': filter_analysis.get('entities', {}),
+                    'numbers_count': filter_analysis['statistics'].get('numbers_count', 0),
+                    'signals_count': filter_analysis['statistics'].get('signals_count', 0),
+                    'media_count': len(news_item.media_items),
+                    'ai_analysis': ai_response.metadata.get('ai_analysis', {}) if ai_response.metadata else {},
+                    'impact_level': ai_response.metadata.get('impact_level', 'medium') if ai_response.metadata else 'medium',
+                    'market_signals': market_signals
+                },
+                media_items=news_item.media_items[:5] if hasattr(news_item, 'media_items') else []
+            )
             
             self.cache.mark_processed(news_item, 'approved', "passed_all_filters")
             self.stats['total_processed'] += 1
@@ -249,32 +254,41 @@ class NewsBot:
             return None
     
     def _format_for_telegram(self, news_item: NewsItem, analyzed_news: AnalyzedNews) -> str:
-        """Простое форматирование поста: текст, мысль AI, ссылки"""
+        """Форматирование в HTML для Telegram с использованием AI-перевода"""
         
-        # 1. Основной текст новости (от AI или оригинал)
+        # Используем AI-переведенный текст если есть
         if analyzed_news.translated_text:
-            main_text = analyzed_news.translated_text
+            content = analyzed_news.translated_text
         else:
-            main_text = news_item.raw_text[:500]
-            if len(news_item.raw_text) > 500:
-                main_text += "..."
+            content = news_item.raw_text
         
-        # 2. Мысль AI (если есть editor_note)
-        ai_thought = ""
+        # Добавляем заметку редактора если есть
         if analyzed_news.editor_note:
-            ai_thought = analyzed_news.editor_note
+            editor_block = f"\n\n💭 <i>{analyzed_news.editor_note}</i>"
         else:
-            # Генерация простой мысли на основе контента
-            ai_thought = self._generate_simple_thought(news_item.raw_text)
+            editor_block = ""
         
-        # 3. Формируем чистый пост
-        formatted_post = f"""{main_text}
-
-"{ai_thought}"
-
-🗽OnChain News | 🌐 Bing X"""
+        # Добавляем маркет-импакт если есть
+        if analyzed_news.market_impact:
+            impact_block = f"\n\n📊 <b>Влияние на рынок:</b> {analyzed_news.market_impact}"
+        else:
+            impact_block = ""
         
-        return formatted_post
+        # Добавляем теги если есть
+        if analyzed_news.tags:
+            tags_text = " ".join([f"#{tag.lower().replace(' ', '_').replace('-', '_')}" 
+                                 for tag in analyzed_news.tags[:5]])
+            tags_block = f"\n\n🏷️ {tags_text}"
+        else:
+            tags_block = ""
+        
+        # Форматируем полный пост
+        formatted = f"{content}{editor_block}{impact_block}{tags_block}"
+        
+        # Добавляем фиксированную подпись
+        formatted += "\n\n🗽 OnChain News (https://t.me/aitop1234) | 🌐 Bing X (https://bingx.com)"
+        
+        return formatted
     
     def _generate_simple_thought(self, text: str) -> str:
         """Генерация простой мысли AI"""
@@ -283,23 +297,23 @@ class NewsBot:
         
         # Простые шаблоны мыслей для разных типов новостей
         if any(word in text_lower for word in ['usdc', 'usdt', 'stablecoin', 'стейблкоин']):
-            return "рост выпуска стейблкоинов указывает на увеличение ликвидности и использования сети, что усиливает её роль в экосистеме стейблкоинов и DeFi"
+            return "рост выпуска стейблкоинов указывает на увеличение ликвидности и использования сети"
         elif any(word in text_lower for word in ['btc', 'bitcoin', 'биткоин']):
-            return "движения биткоина отражают изменение настроений институциональных инвесторов и могут указывать на формирование нового тренда"
+            return "движения биткоина отражают изменение настроений институциональных инвесторов"
         elif any(word in text_lower for word in ['sec', 'regulation', 'регуляция', 'одобрил', 'запретил']):
-            return "регуляторные решения оказывают значительное влияние на доверие инвесторов и определяют вектор развития рынка"
+            return "регуляторные решения оказывают значительное влияние на доверие инвесторов"
         elif any(word in text_lower for word in ['etf', 'фонд']):
-            return "одобрение ETF является ключевым фактором для привлечения институционального капитала и легитимизации рынка"
+            return "одобрение ETF является ключевым фактором для привлечения институционального капитала"
         elif any(word in text_lower for word in ['hack', 'взлом', 'украдено', 'stolen']):
             return "инциденты безопасности подчеркивают важность усиления мер защиты в криптоиндустрии"
         elif any(word in text_lower for word in ['transfer', 'перевод', 'трансфер']):
-            return "крупные переводы могут указывать на действия институциональных игроков и изменение стратегий хранения активов"
+            return "крупные переводы могут указывать на действия институциональных игроков"
         elif any(word in text_lower for word in ['blackrock', 'fidelity', 'vanguard']):
             return "действия крупных финансовых институтов формируют вектор развития рынка криптовалют"
         elif any(word in text_lower for word in ['solana', 'eth', 'ethereum', 'arbitrum']):
             return "активность в сети отражает рост экосистемы и усиление её конкурентных позиций"
         else:
-            return "это изменение отражает эволюцию крипто-экосистемы и растущую интеграцию с традиционными финансами"
+            return "это изменение отражает эволюцию крипто-экосистемы и интеграцию с традиционными финансами"
     
     async def _process_batch(self, news_items: List[NewsItem]) -> List[ProcessedNews]:
         """Обработка партии новостей"""
@@ -352,7 +366,7 @@ class NewsBot:
                     else:
                         self.logger.warning(f"⚠️ {pub_name}: ошибка публикации")
                         
-                # Детальная статистика по обработанным новостей
+                # Детальная статистика по обработанным новостям
                 if processed_news:
                     avg_score = sum(n.metadata.get('filter_score', 0) for n in processed_news) / len(processed_news)
                     total_signals = sum(n.metadata.get('signals_count', 0) for n in processed_news)
@@ -525,4 +539,4 @@ async def test_filter_mode(bot: NewsBot):
 
 
 if __name__ == "__main__":
-    asyncio.run(main())  
+    asyncio.run(main())

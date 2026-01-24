@@ -49,7 +49,7 @@ class MediaItem:
 
 @dataclass
 class AIResponse:
-    """Ответ от AI анализа (старая структура)"""
+    """Ответ от AI анализа"""
     is_relevant: bool
     reason: str
     translated_text: str = ""
@@ -73,13 +73,13 @@ class MarketSignal:
         """Создание MarketSignal из данных фильтра"""
         return cls(
             type="filter_analysis",
-            confidence=filter_data.get('score', 0.5),
-            impact_score=min(filter_data.get('score', 0.5) * 2, 1.0),
+            confidence=float(filter_data.get('score', 0.5)),
+            impact_score=min(float(filter_data.get('score', 0.5)) * 2, 1.0),
             details={
                 'signals_count': filter_data.get('signals_count', 0),
                 'numbers_count': filter_data.get('numbers_count', 0),
                 'entities': filter_data.get('entities', {}),
-                'score': filter_data.get('score', 0.0)
+                'score': float(filter_data.get('score', 0.0))
             }
         )
 
@@ -92,7 +92,7 @@ class NewsItem:
     url: str
     created_at: datetime
     media_urls: List[str] = field(default_factory=list)
-    media_items: List[MediaItem] = field(default_factory=list)  # Новая структурированная версия
+    media_items: List[MediaItem] = field(default_factory=list)
     author: Optional[str] = None
     language: Optional[str] = None
     
@@ -109,7 +109,6 @@ class NewsItem:
         self.media_urls.append(url)
         
         if not media_type:
-            # Автоопределение типа по расширению
             url_lower = url.lower()
             if any(ext in url_lower for ext in ['.jpg', '.jpeg', '.png', '.webp']):
                 media_type = 'photo'
@@ -154,7 +153,7 @@ class ContentAnalysis:
 
 @dataclass
 class AnalyzedNews:
-    """Проанализированная новость (новая улучшенная структура)"""
+    """Проанализированная новость"""
     source_item: NewsItem
     is_relevant: bool
     relevance_reason: str
@@ -176,41 +175,88 @@ class AnalyzedNews:
     metadata: Dict[str, Any] = field(default_factory=dict)
     
     @classmethod
-    def from_ai_response(cls, news_item: NewsItem, ai_response: AIResponse) -> 'AnalyzedNews':
-        """Создание AnalyzedNews из старого AIResponse"""
-        # Определяем MarketImpact на основе market_impact
-        if ai_response.market_impact > 0.8:
+    def from_ai_response(cls, news_item: NewsItem, ai_response) -> 'AnalyzedNews':
+        """Создание AnalyzedNews из AIResponse или любого объекта с похожими атрибутами"""
+        import re
+        
+        def safe_float(value, default=0.0):
+            """Безопасное преобразование в float"""
+            try:
+                # Пробуем напрямую
+                return float(value)
+            except (ValueError, TypeError):
+                # Если не получилось, ищем число в строке
+                if isinstance(value, str):
+                    numbers = re.findall(r'\d+\.?\d*', value)
+                    if numbers:
+                        num = float(numbers[0])
+                        # Обработка процентов
+                        if '%' in value:
+                            return num / 100
+                        return num
+                    # Пытаемся определить по тексту
+                    text = value.lower()
+                    if any(word in text for word in ['высокий', 'high', 'сильный', 'extreme']):
+                        return 0.9
+                    elif any(word in text for word in ['средний', 'medium', 'умеренный', 'среднее']):
+                        return 0.5
+                    elif any(word in text for word in ['низкий', 'low', 'слабый']):
+                        return 0.2
+                return default
+        
+        # Безопасное получение атрибутов
+        def get_attr(obj, attr, default):
+            try:
+                return getattr(obj, attr)
+            except AttributeError:
+                return default
+        
+        is_relevant = get_attr(ai_response, 'is_relevant', True)
+        reason = get_attr(ai_response, 'reason', '')
+        translated_text = get_attr(ai_response, 'translated_text', '')
+        editor_note = get_attr(ai_response, 'editor_note', '')
+        
+        market_impact_value = get_attr(ai_response, 'market_impact', '0.5')
+        confidence_value = get_attr(ai_response, 'confidence', '0.8')
+        tags = get_attr(ai_response, 'tags', [])
+        
+        market_impact_float = safe_float(market_impact_value, 0.5)
+        confidence_float = safe_float(confidence_value, 0.8)
+        
+        # Определяем MarketImpact
+        if market_impact_float > 0.8:
             market_impact = MarketImpact.EXTREME
-        elif ai_response.market_impact > 0.6:
+        elif market_impact_float > 0.6:
             market_impact = MarketImpact.HIGH
-        elif ai_response.market_impact > 0.4:
+        elif market_impact_float > 0.4:
             market_impact = MarketImpact.MEDIUM
-        elif ai_response.market_impact > 0.2:
+        elif market_impact_float > 0.2:
             market_impact = MarketImpact.LOW
         else:
             market_impact = MarketImpact.NONE
         
-        # Определяем NewsPriority на основе confidence
-        if ai_response.confidence > 0.8:
+        # Определяем NewsPriority
+        if confidence_float > 0.8:
             priority = NewsPriority.HIGH
-        elif ai_response.confidence > 0.6:
+        elif confidence_float > 0.6:
             priority = NewsPriority.MEDIUM
         else:
             priority = NewsPriority.LOW
         
         return cls(
             source_item=news_item,
-            is_relevant=ai_response.is_relevant,
-            relevance_reason=ai_response.reason,
-            translated_text=ai_response.translated_text,
-            editor_note=ai_response.editor_note,
-            confidence=ai_response.confidence,
+            is_relevant=is_relevant,
+            relevance_reason=reason,
+            translated_text=translated_text,
+            editor_note=editor_note,
+            confidence=confidence_float,
             market_impact=market_impact,
             priority=priority,
-            tags=ai_response.tags,
+            tags=tags,
             metadata={
                 'ai_analysis': True,
-                'old_structure': True
+                'original_market_impact': str(market_impact_value),
+                'original_confidence': str(confidence_value)
             }
         )
     
@@ -251,33 +297,29 @@ class AnalyzedNews:
 class ProcessedNews:
     """Обработанная готовая новость"""
     source_item: NewsItem
-    analysis: Union[AnalyzedNews, AIResponse, ContentAnalysis]  # Поддержка разных форматов анализа
+    analysis: Union[AnalyzedNews, AIResponse, ContentAnalysis]
     formatted_text: str = ""
     editor_note: Optional[str] = None
     publish_time: Optional[datetime] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
-    media_items: List[MediaItem] = field(default_factory=list)  # Медиа для публикации
+    media_items: List[MediaItem] = field(default_factory=list)
     
     def __post_init__(self):
         if self.publish_time is None:
             self.publish_time = datetime.now()
         
-        # Копируем медиа из source_item если не указаны
         if not self.media_items and hasattr(self.source_item, 'media_items'):
-            self.media_items = self.source_item.media_items[:5]  # Ограничиваем 5 медиа
+            self.media_items = self.source_item.media_items[:5]
         
-        # Извлекаем editor_note из анализа если не указан
         if not self.editor_note:
             if isinstance(self.analysis, AnalyzedNews) and self.analysis.editor_note:
                 self.editor_note = self.analysis.editor_note
             elif isinstance(self.analysis, AIResponse) and self.analysis.editor_note:
                 self.editor_note = self.analysis.editor_note
         
-        # Добавляем информацию об анализе в метаданные
         if 'analysis_type' not in self.metadata:
             self.metadata['analysis_type'] = type(self.analysis).__name__
         
-        # Добавляем информацию о медиа
         self.metadata['has_media'] = bool(self.media_items)
         self.metadata['media_count'] = len(self.media_items)
     
@@ -335,7 +377,6 @@ class PublishResult:
         return self.success
 
 
-# Вспомогательные функции
 def create_news_item(raw_text: str, source: str, url: str = "", 
                     media_urls: List[str] = None, author: str = None) -> NewsItem:
     """Создание NewsItem с минимальными параметрами"""
@@ -368,7 +409,6 @@ def create_processed_news(news_item: NewsItem, analyzed_news: AnalyzedNews,
     )
 
 
-# Экспорт всех классов
 __all__ = [
     'NewsPriority',
     'NewsCategory',
