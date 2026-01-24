@@ -1,3 +1,4 @@
+import hashlib
 import json
 import time
 from dataclasses import asdict, dataclass
@@ -87,14 +88,40 @@ class NewsCache:
             
     def _generate_hash(self, news_item) -> str:
         """Генерация хеша для новости"""
-        import hashlib
-
-        # Используем основные поля для создания уникального хеша
-        content = f"{news_item.source}:{news_item.raw_text[:200]}"
+        # Собираем доступные поля для создания уникального хеша
+        content_parts = []
         
-        if news_item.source_link:
-            content += f":{news_item.source_link}"
-            
+        # Добавляем source если есть
+        if hasattr(news_item, 'source') and news_item.source:
+            content_parts.append(str(news_item.source))
+        
+        # Добавляем текст из доступных полей
+        text = ""
+        if hasattr(news_item, 'raw_text') and news_item.raw_text:
+            text = news_item.raw_text[:200]
+        elif hasattr(news_item, 'text') and news_item.text:
+            text = news_item.text[:200]
+        elif hasattr(news_item, 'content') and news_item.content:
+            text = news_item.content[:200]
+        elif hasattr(news_item, 'title') and news_item.title:
+            text = news_item.title
+        
+        content_parts.append(text)
+        
+        # Добавляем ссылку из доступных полей
+        if hasattr(news_item, 'source_link') and news_item.source_link:
+            content_parts.append(news_item.source_link)
+        elif hasattr(news_item, 'link') and news_item.link:
+            content_parts.append(news_item.link)
+        elif hasattr(news_item, 'url') and news_item.url:
+            content_parts.append(news_item.url)
+        
+        # Добавляем другие уникальные идентификаторы
+        if hasattr(news_item, 'id') and news_item.id:
+            content_parts.append(str(news_item.id))
+        
+        # Создаем хеш из всех частей
+        content = ":".join(content_parts)
         return hashlib.md5(content.encode('utf-8')).hexdigest()
         
     def is_processed(self, news_item) -> bool:
@@ -112,16 +139,34 @@ class NewsCache:
         """Пометка новости как обработанной"""
         item_hash = self._generate_hash(news_item)
         
+        # Собираем метаданные
+        metadata = {}
+        if hasattr(news_item, 'source'):
+            metadata['source'] = news_item.source
+        
+        # Добавляем текст превью
+        if hasattr(news_item, 'raw_text'):
+            metadata['text_preview'] = news_item.raw_text[:100]
+        elif hasattr(news_item, 'text'):
+            metadata['text_preview'] = news_item.text[:100]
+        elif hasattr(news_item, 'content'):
+            metadata['text_preview'] = news_item.content[:100]
+        elif hasattr(news_item, 'title'):
+            metadata['text_preview'] = news_item.title
+        
+        # Добавляем дату создания если есть
+        if hasattr(news_item, 'created_at') and news_item.created_at:
+            if hasattr(news_item.created_at, 'isoformat'):
+                metadata['created_at'] = news_item.created_at.isoformat()
+            else:
+                metadata['created_at'] = str(news_item.created_at)
+        
         entry = CacheEntry(
             item_hash=item_hash,
             timestamp=time.time(),
             status=status,
             reason=reason,
-            metadata={
-                'source': news_item.source,
-                'text_preview': news_item.raw_text[:100],
-                'created_at': news_item.created_at.isoformat()
-            }
+            metadata=metadata if metadata else None
         )
         
         self.entries[item_hash] = entry
@@ -139,14 +184,20 @@ class NewsCache:
         
     def get_stats(self) -> Dict:
         """Получение статистики"""
+        total = max(1, self.stats['hits'] + self.stats['misses'])
         return {
             **self.stats,
             'cache_size': len(self.entries),
-            'hit_rate': self.stats['hits'] / max(1, self.stats['hits'] + self.stats['misses'])
+            'hit_rate': self.stats['hits'] / total
         }
         
     def clear(self):
         """Очистка кеша"""
         self.entries.clear()
         self.processed_hashes.clear()
+        self.stats = {'hits': 0, 'misses': 0, 'total_processed': 0, 'total_published': 0}
+        self._save_cache()
+        
+    def save_now(self):
+        """Немедленное сохранение кеша"""
         self._save_cache()
