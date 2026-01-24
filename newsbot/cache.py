@@ -1,17 +1,8 @@
 import json
 import time
 from dataclasses import asdict, dataclass
-from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Set
-
-# Проверяем, какой хеширующий модуль используется
-try:
-    import mmh3
-    USE_MMH3 = True
-except ImportError:
-    import hashlib
-    USE_MMH3 = False
 
 
 @dataclass
@@ -95,6 +86,8 @@ class NewsCache:
             
     def _generate_hash(self, news_item) -> str:
         """Генерация хеша для новости"""
+        import hashlib
+
         # Собираем доступные поля для создания уникального хеша
         content_parts = []
         
@@ -115,7 +108,7 @@ class NewsCache:
         
         content_parts.append(text)
         
-        # Добавляем ссылку из доступных полей
+        # Добавляем ссылку из доступных полей (ВАЖНО: проверяем через hasattr!)
         if hasattr(news_item, 'source_link') and news_item.source_link:
             content_parts.append(news_item.source_link)
         elif hasattr(news_item, 'link') and news_item.link:
@@ -129,11 +122,7 @@ class NewsCache:
         
         # Создаем хеш из всех частей
         content = ":".join(content_parts)
-        
-        if USE_MMH3:
-            return str(mmh3.hash(content, signed=False))
-        else:
-            return hashlib.md5(content.encode('utf-8')).hexdigest()
+        return hashlib.md5(content.encode('utf-8')).hexdigest()
         
     def is_processed(self, news_item) -> bool:
         """Проверка, обрабатывалась ли уже новость"""
