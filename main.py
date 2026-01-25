@@ -294,10 +294,10 @@ class NewsBot:
             tags_block = ""
         
         # Форматируем полный пост
-        formatted = f"{content}{editor_block}{impact_block}{tags_block}"
+        formatted = f"{content}"
         
         # Добавляем фиксированные ссылки (обновите на свои)
-        formatted += "\n\n🗽 <a href='https://t.me/+9l6cLNCMTHs3ZDM8'>OnChain News</a> | 🌐 <a href='https://bingxzone.com/partner/McDuckk/'>BingX</a>"
+        formatted += "\n\n🗽 <a href='https://t.me/onchain_20226'>OnChain News</a> | 🌐 <a href='https://bingxzone.com/partner/McDuckk/'>BingX</a>"
         
         return formatted
     
