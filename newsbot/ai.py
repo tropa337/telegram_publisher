@@ -56,7 +56,7 @@ class CryptoNewsAnalyzer:
         1. 🔥 ВСЕГДА выделяй жирным (<b>...</b>):
            - Суммы денег: $10M, 500 BTC
            - Проценты: +5%, -10%
-           - Компании: Binance, SEC, Blackrock
+           - Компании: Binance, SEC, Blackrock, OpenAI, ChatGPT
            - Действия: запретили, одобрили, взломали
         
         2. 🚫 НИКОГДА не включай:
@@ -69,7 +69,7 @@ class CryptoNewsAnalyzer:
            - Только факты
            - Конкретные цифры
         
-        Переведи и отформатируй текст:"""
+        Переведи и отформатируй текст для русскоязычной аудитории:"""
         
         self.editor_note_prompt = """Напиши ОДНУ мысль редактора для блока цитаты:
         
@@ -105,7 +105,6 @@ class CryptoNewsAnalyzer:
             
             # Извлечение тегов
             tags = ai_analysis.get('tags', [])
-            entities = self._extract_entities(news_item.raw_text)
             
             # Дополнительные поля из анализа
             confidence = ai_analysis.get('confidence', 0.5)
@@ -114,12 +113,15 @@ class CryptoNewsAnalyzer:
             # Определяем market_impact на основе impact_level
             impact_mapping = {
                 'critical': '🚨 Критическое',
-                'high': '🔥 Высокое',
+                'high': '🔥 Высокое', 
                 'medium': '📈 Среднее',
                 'low': '📉 Низкое',
                 'none': '⚪ Незначительное'
             }
             market_impact = impact_mapping.get(impact_level, '📈 Среднее')
+            
+            # Извлекаем сущности из текста
+            entities = self._extract_entities(news_item.raw_text)
             
             # Создание результата
             analyzed_news = AnalyzedNews(
@@ -158,7 +160,7 @@ class CryptoNewsAnalyzer:
                 model=self.model,
                 messages=[
                     {"role": "system", "content": self.analysis_prompt},
-                    {"role": "user", "content": f"Новость: {text[:2000]}"}
+                    {"role": "user", "content": f"Новость для анализа: {text[:2000]}"}
                 ],
                 temperature=0.1,
                 max_tokens=500
@@ -166,21 +168,25 @@ class CryptoNewsAnalyzer:
             
             result_text = response.choices[0].message.content.strip()
             
+            # Удаляем возможные маркеры кода
+            result_text = result_text.strip('```json').strip('```')
+            
             try:
                 return json.loads(result_text)
             except json.JSONDecodeError:
+                self.logger.warning(f"Не удалось распарсить JSON, используем текстовый парсинг: {result_text[:100]}")
                 return self._parse_text_response(result_text)
                 
         except Exception as e:
             self.logger.error(f"❌ Ошибка AI анализа: {e}")
-            return {"is_relevant": False, "reason": "Ошибка AI анализа"}
+            return {"is_relevant": False, "reason": "Ошибка AI анализа", "confidence": 0.0}
     
     def _parse_text_response(self, text: str) -> Dict:
         """Парсинг текстового ответа"""
         text_lower = text.lower()
         
-        positive_indicators = ['relevant', 'важн', 'публику', 'approve', 'reject', 'hack']
-        negative_indicators = ['not relevant', 'не relev', 'opinion', 'прогноз', 'digest']
+        positive_indicators = ['relevant', 'важн', 'публику', 'approve', 'reject', 'hack', 'да', 'yes']
+        negative_indicators = ['not relevant', 'не relev', 'opinion', 'прогноз', 'digest', 'нет', 'no', 'реклама']
         
         pos_count = sum(1 for indicator in positive_indicators if indicator in text_lower)
         neg_count = sum(1 for indicator in negative_indicators if indicator in text_lower)
@@ -188,17 +194,28 @@ class CryptoNewsAnalyzer:
         if pos_count > neg_count:
             is_relevant = True
             reason = "AI определил как релевантную новость"
+            impact_level = "medium"
+            confidence = 0.6
         else:
             is_relevant = False
             reason = "AI определил как нерелевантную"
+            impact_level = "none"
+            confidence = 0.4
+        
+        # Извлекаем теги из текста
+        tags = []
+        tag_keywords = ['bitcoin', 'btc', 'ethereum', 'eth', 'sec', 'etf', 'regulation', 'hack']
+        for keyword in tag_keywords:
+            if keyword in text_lower:
+                tags.append(keyword)
         
         return {
             "is_relevant": is_relevant,
             "reason": reason,
-            "summary": text[:100],
-            "impact_level": "medium" if is_relevant else "none",
-            "confidence": 0.6,
-            "tags": []
+            "summary": text[:150] + "..." if len(text) > 150 else text,
+            "impact_level": impact_level,
+            "confidence": confidence,
+            "tags": tags[:5]
         }
     
     async def _translate_and_format(self, text: str) -> str:
@@ -208,28 +225,76 @@ class CryptoNewsAnalyzer:
                 model=self.model,
                 messages=[
                     {"role": "system", "content": self.translation_prompt},
-                    {"role": "user", "content": text[:1500]}
+                    {"role": "user", "content": f"Текст для перевода и форматирования: {text[:1500]}"}
                 ],
                 temperature=0.05,
-                max_tokens=300
+                max_tokens=400
             )
             
             result = response.choices[0].message.content.strip()
             result = self._clean_formatted_text(result)
             
+            # Гарантируем, что текст на русском
+            if not self._is_russian_text(result):
+                # Если AI не перевел, делаем простой перевод ключевых слов
+                result = self._simple_translate(text[:500])
+            
             return result
             
         except Exception as e:
             self.logger.error(f"❌ Ошибка перевода: {e}")
-            return text[:400] + ("..." if len(text) > 400 else "")
+            return self._simple_translate(text[:500])
+    
+    def _is_russian_text(self, text: str) -> bool:
+        """Проверка, является ли текст русским"""
+        # Простая проверка по наличию кириллических символов
+        return bool(re.search('[а-яА-Я]', text))
+    
+    def _simple_translate(self, text: str) -> str:
+        """Простой перевод для fallback"""
+        # Упрощенный перевод ключевых терминов
+        translations = {
+            'bitcoin': 'биткоин',
+            'ethereum': 'эфириум', 
+            'sec': 'SEC',
+            'etf': 'ETF',
+            'hack': 'взлом',
+            'approve': 'одобрил',
+            'reject': 'отклонил',
+            'openai': 'OpenAI',
+            'chatgpt': 'ChatGPT',
+            'age verification': 'проверка возраста',
+            'teen': 'подросток',
+            'minor': 'несовершеннолетний'
+        }
+        
+        result = text
+        for eng, rus in translations.items():
+            result = re.sub(f'\\b{eng}\\b', rus, result, flags=re.IGNORECASE)
+        
+        return result[:400] + ("..." if len(text) > 400 else "")
     
     def _clean_formatted_text(self, text: str) -> str:
         """Очистка отформатированного текста"""
-        import re
-        text = re.sub(r'<(?!\/?(b|i|code|strong|em)\b)[^>]+>', '', text)
+        # Удаляем лишние теги, кроме разрешенных
+        allowed_tags = ['b', 'i', 'strong', 'em', 'code']
+        for tag in allowed_tags:
+            text = re.sub(f'<{tag}\\s[^>]*>', f'<{tag}>', text)  # Убираем атрибуты
+        
+        # Удаляем запрещенные теги
+        text = re.sub(r'<(?!\/?(b|i|strong|em|code)\b)[^>]+>', '', text)
+        
+        # Удаляем ссылки
+        text = re.sub(r'https?://\S+', '', text)
+        
+        # Удаляем хештеги и упоминания
+        text = re.sub(r'[@#]\w+', '', text)
+        
+        # Удаляем лишние пробелы и переносы
         text = re.sub(r'\n{3,}', '\n\n', text)
         text = re.sub(r'\s+', ' ', text).strip()
         
+        # Ограничиваем длину
         if len(text) > 1000:
             text = text[:997] + "..."
         
@@ -242,36 +307,66 @@ class CryptoNewsAnalyzer:
                 model=self.model,
                 messages=[
                     {"role": "system", "content": self.editor_note_prompt},
-                    {"role": "user", "content": f"Новость: {text[:1000]}"}
+                    {"role": "user", "content": f"Контекст новости для редакторской заметки: {text[:1000]}"}
                 ],
                 temperature=0.3,
                 max_tokens=100
             )
             
             note = response.choices[0].message.content.strip()
-            note = note.strip('"\'')
+            note = note.strip('"\'').strip()
             
-            if len(note) < 10 or len(note) > 200:
-                return ""
+            # Проверяем качество заметки
+            if len(note) < 10 or len(note) > 200 or "возможно" in note.lower() or "вероятно" in note.lower():
+                # Генерируем простую заметку
+                note = self._generate_simple_note(text)
             
             return note
             
         except Exception as e:
             self.logger.warning(f"⚠️ Ошибка генерации заметки: {e}")
-            return ""
+            return self._generate_simple_note(text)
+    
+    def _generate_simple_note(self, text: str) -> str:
+        """Генерация простой заметки редактора"""
+        text_lower = text.lower()
+        
+        if 'bitcoin' in text_lower or 'btc' in text_lower:
+            return "Изменения в регулировании биткоина могут повлиять на институциональное принятие."
+        elif 'etf' in text_lower:
+            return "Одобрение ETF является ключевым драйвером для притока институционального капитала."
+        elif 'sec' in text_lower or 'regulation' in text_lower:
+            return "Регуляторные решения формируют правовую среду для развития криптоиндустрии."
+        elif 'hack' in text_lower or 'взлом' in text_lower:
+            return "Инциденты безопасности подчеркивают необходимость усиления мер защиты активов."
+        elif 'openai' in text_lower or 'chatgpt' in text_lower:
+            return "Внедрение возрастных ограничений в AI-сервисах влияет на доступность технологий для молодежи."
+        else:
+            return "Это изменение отражает эволюцию технологической экосистемы и её интеграцию в общество."
     
     def _extract_entities(self, text: str) -> List[str]:
         """Извлечение сущностей"""
         entities = []
         text_upper = text.upper()
         
-        cryptos = ['BTC', 'ETH', 'BNB', 'XRP', 'SOL', 'ADA', 'DOGE']
-        companies = ['SEC', 'CFTC', 'BINANCE', 'COINBASE', 'BLACKROCK', 'FIDELITY']
+        cryptos = ['BTC', 'BITCOIN', 'ETH', 'ETHEREUM', 'BNB', 'XRP', 'SOL', 'SOLANA', 'ADA', 'CARDANO', 'DOGE', 'DOGECOIN']
+        companies = ['SEC', 'CFTC', 'BINANCE', 'COINBASE', 'BLACKROCK', 'FIDELITY', 'OPENAI', 'CHATGPT']
+        actions = ['APPROVE', 'REJECT', 'BAN', 'HACK', 'TRANSFER', 'LIST', 'DELIST']
         
-        for entity_list in [cryptos, companies]:
-            for entity in entity_list:
-                if entity in text_upper:
-                    entities.append(entity)
+        # Проверяем криптовалюты
+        for crypto in cryptos:
+            if crypto in text_upper:
+                entities.append(crypto)
+        
+        # Проверяем компании
+        for company in companies:
+            if company in text_upper:
+                entities.append(company)
+        
+        # Проверяем действия
+        for action in actions:
+            if action in text_upper:
+                entities.append(action)
         
         return list(set(entities))[:10]
 

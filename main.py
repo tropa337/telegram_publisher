@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import re
 import sys
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
@@ -17,8 +18,7 @@ from newsbot.publishers.telegram_publisher import (ConsolePublisher,
                                                    TelegramPublisher)
 from newsbot.sources.telegram_source import TelegramSource
 from newsbot.sources.twitter_source import TwitterRSSSource
-from newsbot.types import (AnalyzedNews, NewsItem, ProcessedNews,
-                           create_processed_news)
+from newsbot.types import AnalyzedNews, NewsItem, ProcessedNews
 
 # Настройка логирования
 logging.basicConfig(
@@ -138,7 +138,7 @@ class NewsBot:
                 )
                 
                 self.publisher_manager.add_publisher('telegram', telegram_publisher)
-                self.logger.info(f"✅ Telegram публикатор: {self.config.TARGET_CHANNEL} (медиа: включено)")
+                self.logger.info(f"✅ Telegram публикатор: {self.config.TARGET_CHANNEL}")
                 
             except Exception as e:
                 self.logger.error(f"❌ Ошибка инициализации Telegram публикатора: {e}")
@@ -218,23 +218,17 @@ class NewsBot:
             # Создание обработанной новости
             processed = ProcessedNews(
                 source_item=news_item,
-                is_relevant=True,
-                relevance_reason=ai_response.relevance_reason,
+                analysis=ai_response,  # Используем ai_response напрямую
                 formatted_text=formatted_text,
-                summary=ai_response.summary,
                 editor_note=ai_response.editor_note,
-                tags=ai_response.tags,
-                entities=ai_response.entities,
-                confidence=ai_response.confidence,
-                market_impact=ai_response.market_impact,
                 metadata={
                     'filter_score': filter_analysis['score'],
                     'entities': filter_analysis.get('entities', {}),
                     'numbers_count': filter_analysis['statistics'].get('numbers_count', 0),
                     'signals_count': filter_analysis['statistics'].get('signals_count', 0),
-                    'media_count': len(news_item.media_items),
-                    'ai_analysis': ai_response.metadata.get('ai_analysis', {}) if ai_response.metadata else {},
-                    'impact_level': ai_response.metadata.get('impact_level', 'medium') if ai_response.metadata else 'medium',
+                    'media_count': len(news_item.media_items) if hasattr(news_item, 'media_items') else 0,
+                    'ai_analysis': ai_response.metadata.get('ai_analysis', {}) if hasattr(ai_response, 'metadata') else {},
+                    'impact_level': ai_response.metadata.get('impact_level', 'medium') if hasattr(ai_response, 'metadata') else 'medium',
                     'market_signals': market_signals
                 },
                 media_items=news_item.media_items[:5] if hasattr(news_item, 'media_items') else []
@@ -243,9 +237,10 @@ class NewsBot:
             self.cache.mark_processed(news_item, 'approved', "passed_all_filters")
             self.stats['total_processed'] += 1
             
+            media_count = len(news_item.media_items) if hasattr(news_item, 'media_items') else 0
             self.logger.info(f"✅ Новость обработана: оценка фильтра {filter_analysis['score']:.2f}, "
                            f"сигналов: {filter_analysis['statistics']['signals_count']}, "
-                           f"медиа: {len(news_item.media_items)}")
+                           f"медиа: {media_count}")
             
             return processed
             
@@ -261,6 +256,22 @@ class NewsBot:
             content = analyzed_news.translated_text
         else:
             content = news_item.raw_text
+        
+        # Дополнительное форматирование: выделяем заголовок если он есть
+        lines = content.split('\n')
+        if len(lines) > 1 and len(lines[0].strip()) < 100:
+            # Первая строка как заголовок
+            title = lines[0].strip()
+            body = '\n'.join(lines[1:]).strip()
+            
+            # Делаем заголовок жирным
+            if not title.startswith('<b>'):
+                title = f"<b>{title}</b>"
+            
+            content = f"{title}\n\n{body}"
+        
+        # Убедимся, что ключевые слова выделены жирным
+        content = self._enhance_formatting(content)
         
         # Добавляем заметку редактора если есть
         if analyzed_news.editor_note:
@@ -285,35 +296,31 @@ class NewsBot:
         # Форматируем полный пост
         formatted = f"{content}{editor_block}{impact_block}{tags_block}"
         
-        # Добавляем фиксированную подпись
-        formatted += "\n\n🗽 OnChain News (https://t.me/aitop1234) | 🌐 Bing X (https://bingx.com)"
+        # Добавляем фиксированные ссылки (обновите на свои)
+        formatted += "\n\n🗽 <a href='https://t.me/+9l6cLNCMTHs3ZDM8'>OnChain News</a> | 🌐 <a href='https://bingxzone.com/partner/McDuckk/'>BingX</a>"
         
         return formatted
     
-    def _generate_simple_thought(self, text: str) -> str:
-        """Генерация простой мысли AI"""
+    def _enhance_formatting(self, text: str) -> str:
+        """Улучшение форматирования текста"""
+        # Ключевые слова для выделения жирным
+        keywords = [
+            # Криптовалюты
+            r'\b(BTC|Bitcoin|ETH|Ethereum|XRP|SOL|Solana|ADA|Cardano|DOGE|Dogecoin)\b',
+            # Компании
+            r'\b(OpenAI|ChatGPT|SEC|Binance|Coinbase|BlackRock|Fidelity|Vanguard)\b',
+            # Действия
+            r'\b(approve|reject|ban|hack|transfer|list|delist|одобрил|отклонил|запретил|взлом)\b',
+            # Суммы
+            r'\$?\d+[.,]?\d*\s*(?:million|mln|billion|bln|тыс|млн|млрд)?\s*(?:USD|BTC|ETH)?\b',
+            # Проценты
+            r'[+-]?\d+[.,]?\d*\s*%\b'
+        ]
         
-        text_lower = text.lower()
+        for pattern in keywords:
+            text = re.sub(pattern, r'<b>\g<0></b>', text, flags=re.IGNORECASE)
         
-        # Простые шаблоны мыслей для разных типов новостей
-        if any(word in text_lower for word in ['usdc', 'usdt', 'stablecoin', 'стейблкоин']):
-            return "рост выпуска стейблкоинов указывает на увеличение ликвидности и использования сети"
-        elif any(word in text_lower for word in ['btc', 'bitcoin', 'биткоин']):
-            return "движения биткоина отражают изменение настроений институциональных инвесторов"
-        elif any(word in text_lower for word in ['sec', 'regulation', 'регуляция', 'одобрил', 'запретил']):
-            return "регуляторные решения оказывают значительное влияние на доверие инвесторов"
-        elif any(word in text_lower for word in ['etf', 'фонд']):
-            return "одобрение ETF является ключевым фактором для привлечения институционального капитала"
-        elif any(word in text_lower for word in ['hack', 'взлом', 'украдено', 'stolen']):
-            return "инциденты безопасности подчеркивают важность усиления мер защиты в криптоиндустрии"
-        elif any(word in text_lower for word in ['transfer', 'перевод', 'трансфер']):
-            return "крупные переводы могут указывать на действия институциональных игроков"
-        elif any(word in text_lower for word in ['blackrock', 'fidelity', 'vanguard']):
-            return "действия крупных финансовых институтов формируют вектор развития рынка криптовалют"
-        elif any(word in text_lower for word in ['solana', 'eth', 'ethereum', 'arbitrum']):
-            return "активность в сети отражает рост экосистемы и усиление её конкурентных позиций"
-        else:
-            return "это изменение отражает эволюцию крипто-экосистемы и интеграцию с традиционными финансами"
+        return text
     
     async def _process_batch(self, news_items: List[NewsItem]) -> List[ProcessedNews]:
         """Обработка партии новостей"""

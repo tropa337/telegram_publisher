@@ -4619,13 +4619,1003 @@
         "text_preview": "Strategy just crossed 700k BTC but its “circular” Bitcoin funding loop risks a massive high-yield cr",
         "created_at": "2026-01-20T21:50:00+00:00"
       }
+    },
+    "786a544b38229a526642904fb9e233e7": {
+      "item_hash": "786a544b38229a526642904fb9e233e7",
+      "timestamp": 1769377686.165534,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥CATHIE WOOD ON BTC: \"STILL IN IT TO WIN IT\" Cathie Wood says ARK is “in it to win it” on $BTC. She ",
+        "created_at": "2026-01-25T21:29:00+00:00"
+      }
+    },
+    "4d01919f4f9d4c4df20dbfd674625dc6": {
+      "item_hash": "4d01919f4f9d4c4df20dbfd674625dc6",
+      "timestamp": 1769377686.166241,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🇺🇸BLACKROCK CIO RICK RIEDER EMERGES AS FED CHAIR CONTENDER Rick Rieder, CIO at BlackRock, is rapidly",
+        "created_at": "2026-01-25T21:10:00+00:00"
+      }
+    },
+    "550c2b15c9d50cbbcf4ac0b664ed3b72": {
+      "item_hash": "550c2b15c9d50cbbcf4ac0b664ed3b72",
+      "timestamp": 1769377686.1669943,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥BITCOIN'S WEAKNESS ISN’T “LOOP THEORY” Analyst and Founder Charles Edwards says Bitcoin’s recent we",
+        "created_at": "2026-01-25T20:50:00+00:00"
+      }
+    },
+    "5fe9f5a32be0627b69c83a5a49a9ff92": {
+      "item_hash": "5fe9f5a32be0627b69c83a5a49a9ff92",
+      "timestamp": 1769377686.1674683,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "⚡️SHARPLINK: DISCIPLINE OVER ACCUMULATION CEO Joseph Chalom says SharpLink won’t chase accumulation ",
+        "created_at": "2026-01-25T20:20:00+00:00"
+      }
+    },
+    "87b7c99c9311e80cc8a82fadc62f7bbc": {
+      "item_hash": "87b7c99c9311e80cc8a82fadc62f7bbc",
+      "timestamp": 1769377686.167914,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🇯🇵JAPAN SET TO GREENLIGHT CRYPTO ETFs BY 2028 Japan could approve crypto ETFs as early as 2028, with",
+        "created_at": "2026-01-25T19:50:00+00:00"
+      }
+    },
+    "227b68f5c9f31d19269ae0274416aca0": {
+      "item_hash": "227b68f5c9f31d19269ae0274416aca0",
+      "timestamp": 1769377686.1710656,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "⚡️JUST IN: TRUMP ON CANADA & CHINA President Trump just posted on Truth Social: “China is successful",
+        "created_at": "2026-01-25T18:21:00+00:00"
+      }
+    },
+    "b06e5b0d0b2e9ccff74fadffc39dc3c4": {
+      "item_hash": "b06e5b0d0b2e9ccff74fadffc39dc3c4",
+      "timestamp": 1769377686.1715133,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "💧LIQUIDITY SWEEP UPDATE Bitcoin just cleared a major liquidity pocket around $87,800. Nearest liquid",
+        "created_at": "2026-01-25T18:10:00+00:00"
+      }
+    },
+    "508ab66b1a3d3565e52d968dc93cae0d": {
+      "item_hash": "508ab66b1a3d3565e52d968dc93cae0d",
+      "timestamp": 1769377686.1722217,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🚨🇯🇵 JAPAN MAY INTERVENE TO SUPPORT THE YEN! Markets are tense after PM Takaichi warned against “abno",
+        "created_at": "2026-01-25T17:51:00+00:00"
+      }
+    },
+    "3eeb01446026caac1762ba35d4d1e16c": {
+      "item_hash": "3eeb01446026caac1762ba35d4d1e16c",
+      "timestamp": 1769377686.176137,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥 “F*CK YOU, TED”: TRUMP ON LEAKED PRIVATE RECORDINGS Leaked recordings show Ted Cruz warning that T",
+        "created_at": "2026-01-25T17:31:00+00:00"
+      }
+    },
+    "2a6b5f9242dfdcf1b5e1a3cf85e23018": {
+      "item_hash": "2a6b5f9242dfdcf1b5e1a3cf85e23018",
+      "timestamp": 1769377686.1774888,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥 “F*CK YOU, TED”: TRUMP ON LEAKED PRIVATE RECORDINGS Leaked recordings show Ted Cruz warning that T",
+        "created_at": "2026-01-25T17:27:00+00:00"
+      }
+    },
+    "2a1bd2ac2059cc54e926c3d63a51f65e": {
+      "item_hash": "2a1bd2ac2059cc54e926c3d63a51f65e",
+      "timestamp": 1769377686.1917372,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🚨BREAKING: GEMINI’S NFT PLATFORM TO SHUT DOWN Nifty Gateway just announced that they will shut down ",
+        "created_at": "2026-01-25T17:10:00+00:00"
+      }
+    },
+    "abd5a8907cc1ed52139d7646a0387ec2": {
+      "item_hash": "abd5a8907cc1ed52139d7646a0387ec2",
+      "timestamp": 1769377686.192411,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🚨BREAKING: 🇨🇳🇺🇸China’s senior-most general is accused of leaking nuclear secrets to the U.S. General",
+        "created_at": "2026-01-25T17:09:00+00:00"
+      }
+    },
+    "64b9d5b49b0d80672daa1b4c80feac02": {
+      "item_hash": "64b9d5b49b0d80672daa1b4c80feac02",
+      "timestamp": 1769377686.192884,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🚨JUST NOW: $129 MILLION IN LONGS LIQUIDATED Over $128.59M in long positions were liquidated in the p",
+        "created_at": "2026-01-25T16:29:00+00:00"
+      }
+    },
+    "c9547b67146e8b2b4e70d206dbe1a2f8": {
+      "item_hash": "c9547b67146e8b2b4e70d206dbe1a2f8",
+      "timestamp": 1769377686.1929927,
+      "status": "rejected",
+      "reason": "Текст слишком короткий (менее 50 символов)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🚨ALERT: Bitcoin falls below $88,000! pic.",
+        "created_at": "2026-01-25T16:10:00+00:00"
+      }
+    },
+    "52c43e96dd314e0d3aa2536dc4aa8828": {
+      "item_hash": "52c43e96dd314e0d3aa2536dc4aa8828",
+      "timestamp": 1769377686.1934345,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥MEMECOIN SURGES AFTER WHITE HOUSE POST The Nietzschean Penguin (PENGUIN) token on Solana jumped abo",
+        "created_at": "2026-01-25T15:55:00+00:00"
+      }
+    },
+    "7e8caee0f4bd5e19739f5d080fe2c7d3": {
+      "item_hash": "7e8caee0f4bd5e19739f5d080fe2c7d3",
+      "timestamp": 1769377686.1940393,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🏦JPMORGAN BUYS PENSIONS & WEALTH FINTECH JPMorgan Chase has acquired UK fintech WealthOS, a cloud-na",
+        "created_at": "2026-01-25T15:20:00+00:00"
+      }
+    },
+    "925371cd4e31459242582385faae7f4c": {
+      "item_hash": "925371cd4e31459242582385faae7f4c",
+      "timestamp": 1769377686.1946726,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🚨PUSHBACK ON OECD’S CRYPTO FRAMEWORK HK crypto firms say adopting the Crypto-Asset Reporting Framewo",
+        "created_at": "2026-01-25T14:56:00+00:00"
+      }
+    },
+    "5e9ae1cb6312ba02c4ac24d0b3394d5c": {
+      "item_hash": "5e9ae1cb6312ba02c4ac24d0b3394d5c",
+      "timestamp": 1769377686.1956308,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥 KIYOSAKI SOLD SILVER FOR BITCOIN LAST YEAR Robert Kiyosaki said he’d been saving silver since 1964",
+        "created_at": "2026-01-25T13:40:00+00:00"
+      }
+    },
+    "a44cc22b7f2e913fa087504624ccc433": {
+      "item_hash": "a44cc22b7f2e913fa087504624ccc433",
+      "timestamp": 1769377686.195974,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "⚡️JUST IN: Michael Saylor hints at fresh Bitcoin buys with “Unstoppable Orange” pic.",
+        "created_at": "2026-01-25T13:29:00+00:00"
+      }
+    },
+    "76940e9b7d7bcf6a83b51e846f51b2d7": {
+      "item_hash": "76940e9b7d7bcf6a83b51e846f51b2d7",
+      "timestamp": 1769377686.1967158,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥 HOSKINSON: DEMOCRATS COULD WEAPONIZE CRYPTO BILL Hoskinson says Democrats are weaponizing the Clar",
+        "created_at": "2026-01-25T12:40:00+00:00"
+      }
+    },
+    "dfa60274cbd8bba13c8169b54b064cbd": {
+      "item_hash": "dfa60274cbd8bba13c8169b54b064cbd",
+      "timestamp": 1769377686.2104156,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "⚠️THE 2022 BEAR MARKET SIGNAL JUST RETURNED! CryptoQuant data shows BTC investors are losing money f",
+        "created_at": "2026-01-25T11:40:00+00:00"
+      }
+    },
+    "048b034ee222282652114a1924cb5624": {
+      "item_hash": "048b034ee222282652114a1924cb5624",
+      "timestamp": 1769377686.211071,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "Truly, a lot is breaking at the same time. It’s messy, it’s loud, and it’s unprecedented. Our advice",
+        "created_at": "2026-01-25T10:45:00+00:00"
+      }
+    },
+    "16fb392117b15ef63386b4fde14e25b8": {
+      "item_hash": "16fb392117b15ef63386b4fde14e25b8",
+      "timestamp": 1769377686.2117321,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "8️⃣ SUPREME COURT EYES TRUMP TARIFFS SCOTUS is currently deciding the legality of Trump’s tariffs. I",
+        "created_at": "2026-01-25T10:43:00+00:00"
+      }
+    },
+    "f420a541e60fdf06f62703695d27ba78": {
+      "item_hash": "f420a541e60fdf06f62703695d27ba78",
+      "timestamp": 1769377686.2126393,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "7️⃣ THE JAPANESE YEN IS BREAKING The Japanese yen has collapsed to 155–160 per dollar, levels not se",
+        "created_at": "2026-01-25T10:42:00+00:00"
+      }
+    },
+    "e0711903250bf0d0dd6485b693587637": {
+      "item_hash": "e0711903250bf0d0dd6485b693587637",
+      "timestamp": 1769377686.2133942,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "6️⃣ STIMULUS TALK IS BACK Trump confirmed a goal for $2,000 \"rebate checks\" (funded by tariffs) to h",
+        "created_at": "2026-01-25T10:42:00+00:00"
+      }
+    },
+    "37203eea2be10a415a02a0269c1d39c0": {
+      "item_hash": "37203eea2be10a415a02a0269c1d39c0",
+      "timestamp": 1769377686.2140834,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "5️⃣ DOJ SUBPOENAS FED CHAIR POWELL The DOJ has issued subpoenas tied to Powell’s congressional testi",
+        "created_at": "2026-01-25T10:40:00+00:00"
+      }
+    },
+    "b244d5b040032cc1f364c8b372f2d8b6": {
+      "item_hash": "b244d5b040032cc1f364c8b372f2d8b6",
+      "timestamp": 1769377686.2147858,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "4️⃣ NAVAL \"ARMADA\" TOWARD IRAN Oil prices jumped after Trump said a U.S. “armada” was heading toward",
+        "created_at": "2026-01-25T10:39:00+00:00"
+      }
+    },
+    "642a5d69652f716addf51f18d4507ebb": {
+      "item_hash": "642a5d69652f716addf51f18d4507ebb",
+      "timestamp": 1769377686.2155101,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "3️⃣ THE GREENLAND ACQUISITION & THE \"EURO-TAX\" Trump is leveraging a 10% tariff on Europe (up to 25%",
+        "created_at": "2026-01-25T10:38:00+00:00"
+      }
+    },
+    "e95eef95d9e8a2ec6ad4573b00552f60": {
+      "item_hash": "e95eef95d9e8a2ec6ad4573b00552f60",
+      "timestamp": 1769377686.2168753,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "2️⃣ 100% TARIFFS ON CANADA Trump says he could impose 100% tariffs if Canada deepens trade ties with",
+        "created_at": "2026-01-25T10:36:00+00:00"
+      }
+    },
+    "3965a482318cf8772f456d35e0431f8f": {
+      "item_hash": "3965a482318cf8772f456d35e0431f8f",
+      "timestamp": 1769377686.2182605,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "1️⃣ GOVERNMENT SHUTDOWN RISK Congress is fighting over the budget. If they don't agree, the governme",
+        "created_at": "2026-01-25T10:35:00+00:00"
+      }
+    },
+    "008460176e7132723e16f5152dc8685a": {
+      "item_hash": "008460176e7132723e16f5152dc8685a",
+      "timestamp": 1769377686.241539,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🚩 IS TRUMP A WALKING RED FLAG? Right now, the U.S. is the center of global chaos, and Trump is the m",
+        "created_at": "2026-01-25T10:33:00+00:00"
+      }
+    },
+    "7d7993d66201fc27ed9d1af993e2bce0": {
+      "item_hash": "7d7993d66201fc27ed9d1af993e2bce0",
+      "timestamp": 1769377686.2420022,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥COINBASE VS BINANCE: A COMPARISON Coinbase is the choice for regulatory certainty and peace of mind",
+        "created_at": "2026-01-25T09:10:00+00:00"
+      }
+    },
+    "12f8600cfabac63eaa27c38dfe184250": {
+      "item_hash": "12f8600cfabac63eaa27c38dfe184250",
+      "timestamp": 1769377686.2425747,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "📈🇺🇸 ODDS OF JANUARY U.S. GOV SHUTDOWN SPIKE TO 77% Polymarket traders now see about a 77% chance the",
+        "created_at": "2026-01-25T08:40:00+00:00"
+      }
+    },
+    "ffeaddb747d4a03bdea24064e3b41826": {
+      "item_hash": "ffeaddb747d4a03bdea24064e3b41826",
+      "timestamp": 1769377686.243074,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥CHINA: 🇨🇳 \"Countries should not have privileges based on strength.\" \"The world cannot return to the",
+        "created_at": "2026-01-25T07:40:00+00:00"
+      }
+    },
+    "7f6cdf86f67ff085233ef43bf95ba30d": {
+      "item_hash": "7f6cdf86f67ff085233ef43bf95ba30d",
+      "timestamp": 1769377686.2436602,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🟠🇨🇴 BITCOIN MOVES INTO PENSION SAVINGS IN COLOMBIA Colombia’s second-largest pension manager, AFP Pr",
+        "created_at": "2026-01-25T07:05:00+00:00"
+      }
+    },
+    "0f665e588a761c9cfda269ea2aa6b799": {
+      "item_hash": "0f665e588a761c9cfda269ea2aa6b799",
+      "timestamp": 1769377686.2439268,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥 CZ: Very few can beat the simple \"buy and hold\", which is what I do. pic.",
+        "created_at": "2026-01-25T06:30:00+00:00"
+      }
+    },
+    "c44e742eeff99e1028c5482235ee38aa": {
+      "item_hash": "c44e742eeff99e1028c5482235ee38aa",
+      "timestamp": 1769377686.2450354,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "🔥ETHZILLA BUYS JET ENGINES AFTER SELLING ETH ETHZilla has bought two jet engines for $12.2M via a ne",
+        "created_at": "2026-01-25T05:40:00+00:00"
+      }
+    },
+    "aca5a200c872487dd5ef2b129b07fa40": {
+      "item_hash": "aca5a200c872487dd5ef2b129b07fa40",
+      "timestamp": 1769377686.245712,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_5",
+        "text_preview": "📉 BITCOIN ETF INVESTORS SOLD $1.7B FOR 5 STRAIGHT DAYS Bitcoin ETFs have now seen five consecutive d",
+        "created_at": "2026-01-25T05:05:00+00:00"
+      }
+    },
+    "57511be5671dfb9b3581f8373f4bdb93": {
+      "item_hash": "57511be5671dfb9b3581f8373f4bdb93",
+      "timestamp": 1769377686.2461436,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_6",
+        "text_preview": "JUST IN: 🇺🇸 Odds of the US government shutting down by Friday reaches new all-time high. pic.",
+        "created_at": "2026-01-25T19:29:00+00:00"
+      }
+    },
+    "55232c7866b0a2c2685acea54ce5e0d5": {
+      "item_hash": "55232c7866b0a2c2685acea54ce5e0d5",
+      "timestamp": 1769377686.2463808,
+      "status": "rejected",
+      "reason": "Текст слишком короткий (менее 50 символов)",
+      "metadata": {
+        "source": "twitter_rss:twitter_6",
+        "text_preview": "JUST IN: Bitcoin falls under $87,000 pic.",
+        "created_at": "2026-01-25T18:46:00+00:00"
+      }
+    },
+    "59c445cc7586f9d54400a0e77ca2ad0a": {
+      "item_hash": "59c445cc7586f9d54400a0e77ca2ad0a",
+      "timestamp": 1769377686.2621446,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_6",
+        "text_preview": "JUST IN: $130,000,000 worth of crypto longs liquidated in the past 60 minutes.",
+        "created_at": "2026-01-25T16:24:00+00:00"
+      }
+    },
+    "ca7a1703f6749bf0f1faa5348f9579c6": {
+      "item_hash": "ca7a1703f6749bf0f1faa5348f9579c6",
+      "timestamp": 1769377686.262495,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_6",
+        "text_preview": "JUST IN: Michael Saylor hints at buying more Bitcoin. \"Unstoppable Orange.\" pic.",
+        "created_at": "2026-01-25T13:16:00+00:00"
+      }
+    },
+    "7064cbbe3fbabb54ccd80d8f0c960146": {
+      "item_hash": "7064cbbe3fbabb54ccd80d8f0c960146",
+      "timestamp": 1769377686.2627819,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_6",
+        "text_preview": "JUST IN: Binance Founder CZ says very few trading strategies beat the simple \"buy and hold\" strategy",
+        "created_at": "2026-01-25T01:03:00+00:00"
+      }
+    },
+    "1829a5e387788da7aaeaf3af46296fc0": {
+      "item_hash": "1829a5e387788da7aaeaf3af46296fc0",
+      "timestamp": 1769377686.2631423,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_6",
+        "text_preview": "JUST IN: 🇺🇸 Senate Democrats to shut down US government if DHS & ICE funding is included, following ",
+        "created_at": "2026-01-25T00:28:00+00:00"
+      }
+    },
+    "9833c8c3d7f9007b813f537bb0110715": {
+      "item_hash": "9833c8c3d7f9007b813f537bb0110715",
+      "timestamp": 1769377686.2639706,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "Asia’s Weekly TOP10 Crypto News: Vietnam Launches Crypto Exchange Licensing Pilot; Indonesia 2025 Cr",
+        "created_at": "2026-01-25T13:29:00+00:00"
+      }
+    },
+    "93d1a0d737b2343333f8d230c1bc66b3": {
+      "item_hash": "93d1a0d737b2343333f8d230c1bc66b3",
+      "timestamp": 1769377686.2643158,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "Community members reported receiving similar phishing DMs today, with attackers impersonating accoun",
+        "created_at": "2026-01-25T12:22:00+00:00"
+      }
+    },
+    "06e867a10674f92e4d0595ec82cc9d62": {
+      "item_hash": "06e867a10674f92e4d0595ec82cc9d62",
+      "timestamp": 1769377686.2651577,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "According to CoinGecko Research, Tether led crypto protocol revenue in 2025 with about $5.2B, accoun",
+        "created_at": "2026-01-25T09:07:00+00:00"
+      }
+    },
+    "85aaf3662573f0f46cae8c56c58186e6": {
+      "item_hash": "85aaf3662573f0f46cae8c56c58186e6",
+      "timestamp": 1769377686.2657998,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "Scroll co-founder @shenhaichen's X account has been hacked and is currently sending phishing private",
+        "created_at": "2026-01-25T08:15:00+00:00"
+      }
+    },
+    "98d9a6b2d065695efaffe981ce515af6": {
+      "item_hash": "98d9a6b2d065695efaffe981ce515af6",
+      "timestamp": 1769377686.266472,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "Russia’s Prosecutor General has designated Ukrainian crypto exchange WhiteBit as an “undesirable org",
+        "created_at": "2026-01-25T07:36:00+00:00"
+      }
+    },
+    "3500ac4ef9378ebf587dc2f47bbdd2ff": {
+      "item_hash": "3500ac4ef9378ebf587dc2f47bbdd2ff",
+      "timestamp": 1769377686.2671597,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "According to Our Crypto Talk, by early 2026 most SocialFi platforms have either been abandoned, acqu",
+        "created_at": "2026-01-25T07:04:00+00:00"
+      }
+    },
+    "0282c814cb99accd0d515439375de36c": {
+      "item_hash": "0282c814cb99accd0d515439375de36c",
+      "timestamp": 1769377686.2797241,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "Eric Trump: Crypto More Needed in Developing World Than US On November 14, Eric Trump said in an int",
+        "created_at": "2026-01-25T06:20:00+00:00"
+      }
+    },
+    "5c332442a54edf8c340c6ab8a6981d87": {
+      "item_hash": "5c332442a54edf8c340c6ab8a6981d87",
+      "timestamp": 1769377686.2802985,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "Colombia’s second-largest pension fund manager AFP Protección plans to launch a Bitcoin (BTC) exposu",
+        "created_at": "2026-01-25T05:21:00+00:00"
+      }
+    },
+    "2b146b23a42af74bd099e71e4c202224": {
+      "item_hash": "2b146b23a42af74bd099e71e4c202224",
+      "timestamp": 1769377686.2809274,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "During the trading week from Jan 19 to Jan 23 (ET), Bitcoin spot ETFs recorded net outflows of $1.33",
+        "created_at": "2026-01-25T04:25:00+00:00"
+      }
+    },
+    "010153d4942ffd501cb979a9e082ffb8": {
+      "item_hash": "010153d4942ffd501cb979a9e082ffb8",
+      "timestamp": 1769377686.2815068,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "Strategy Boss Rants at DAT Skeptics: Ignorant and Offensive On January 12, 2026, Strategy founder Mi",
+        "created_at": "2026-01-25T03:09:00+00:00"
+      }
+    },
+    "a2c04082de0954b6cd7252f12d3a34ef": {
+      "item_hash": "a2c04082de0954b6cd7252f12d3a34ef",
+      "timestamp": 1769377686.2821422,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "Ethereum treasury firm ETHZilla has purchased two CFM56-7B24 jet engines for $12.2 million through a",
+        "created_at": "2026-01-25T01:35:00+00:00"
+      }
+    },
+    "6c0ffc95e37fd10af394728efd90db14": {
+      "item_hash": "6c0ffc95e37fd10af394728efd90db14",
+      "timestamp": 1769377686.2827637,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_7",
+        "text_preview": "According to CNN, Donald Trump said the United States would impose a 100% tariff on Canadian goods i",
+        "created_at": "2026-01-24T23:54:00+00:00"
+      }
+    },
+    "a105715906499e126d54cc6d9ae12fc9": {
+      "item_hash": "a105715906499e126d54cc6d9ae12fc9",
+      "timestamp": 1769377686.2831905,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_8",
+        "text_preview": "Shark Tank investor @Kevinolearytv on the timing of crypto legislation: “I’ll give you my estimate",
+        "created_at": "2026-01-25T20:32:00+00:00"
+      }
+    },
+    "bbed9af4560a3b7ce5b7e5c6b5badef1": {
+      "item_hash": "bbed9af4560a3b7ce5b7e5c6b5badef1",
+      "timestamp": 1769377686.2834783,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_8",
+        "text_preview": "After exiting 27 crypto positions, @kevinolearytv says he's repositioned his portfolio to focus on p",
+        "created_at": "2026-01-25T15:31:00+00:00"
+      }
+    },
+    "151c93186d76e6bc7991311d1c4efc02": {
+      "item_hash": "151c93186d76e6bc7991311d1c4efc02",
+      "timestamp": 1769377686.2841487,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_8",
+        "text_preview": "RT by @CoinDesk: “ZBD raised $40 million in a Series C. It’s a Bitcoin company that made it to a Ser",
+        "created_at": "2026-01-25T01:03:00+00:00"
+      }
+    },
+    "54f924a3ded90d9beaa3cb710f82d625": {
+      "item_hash": "54f924a3ded90d9beaa3cb710f82d625",
+      "timestamp": 1769377686.2848048,
+      "status": "rejected",
+      "reason": "Недостаточно числовых данных (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_8",
+        "text_preview": "RT by @CoinDesk: 🎧 Catch the latest episode of 'The Blockspace Pod,’ in partnership with @blockspace",
+        "created_at": "2026-01-25T00:50:00+00:00"
+      }
+    },
+    "34c6fd0ae07c4a3453843a65034443c0": {
+      "item_hash": "34c6fd0ae07c4a3453843a65034443c0",
+      "timestamp": 1769377686.295585,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_8",
+        "text_preview": "OPINION: The stablecoin yield fight isn't about crypto—it's about who profits from consumer deposits",
+        "created_at": "2026-01-25T00:48:00+00:00"
+      }
+    },
+    "33613efa1276b565766e291493970a42": {
+      "item_hash": "33613efa1276b565766e291493970a42",
+      "timestamp": 1769377686.2964213,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_8",
+        "text_preview": "We are honored to welcome @USDGKC_Official as a 5 Block Sponsor for @consensus_hk. Join us in Februa",
+        "created_at": "2026-01-22T14:51:00+00:00"
+      }
+    },
+    "438c056b3f8a664d8dee2634fd593777": {
+      "item_hash": "438c056b3f8a664d8dee2634fd593777",
+      "timestamp": 1769377686.2968013,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "x.com/Cointelegraph/status/2… Cointelegraph (@Cointelegraph)👁‍🗨Not Dead Yet | S1E2",
+        "created_at": "2026-01-25T21:35:00+00:00"
+      }
+    },
+    "2c920ea12a103daf7c4156bdfeef4b9b": {
+      "item_hash": "2c920ea12a103daf7c4156bdfeef4b9b",
+      "timestamp": 1769377686.2973726,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "Why did @Zcash suddenly capture so much attention? What role does it serve? In episode 2 of Not Dead",
+        "created_at": "2026-01-25T21:35:00+00:00"
+      }
+    },
+    "ce6ccd19e2b5664d302e74720d1dfa2f": {
+      "item_hash": "ce6ccd19e2b5664d302e74720d1dfa2f",
+      "timestamp": 1769377686.2976398,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "⚡ NOW: ETH saw $382M in net inflows in the past 24 hours. pic.",
+        "created_at": "2026-01-25T21:00:00+00:00"
+      }
+    },
+    "28025d0b84238e2ac898ecc28c388097": {
+      "item_hash": "28025d0b84238e2ac898ecc28c388097",
+      "timestamp": 1769377686.297782,
+      "status": "rejected",
+      "reason": "Текст слишком короткий (менее 50 символов)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 NEW: $SOL is now 57% away from its ATH. pic.",
+        "created_at": "2026-01-25T20:00:00+00:00"
+      }
+    },
+    "4c71948d8ecf74a4b722e9d54f472d65": {
+      "item_hash": "4c71948d8ecf74a4b722e9d54f472d65",
+      "timestamp": 1769377686.2980762,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 HUGE: The total crypto market wiped out $40B in just 3 hours. pic.",
+        "created_at": "2026-01-25T19:00:00+00:00"
+      }
+    },
+    "9636f1d3e344d5349700185d99bea6ba": {
+      "item_hash": "9636f1d3e344d5349700185d99bea6ba",
+      "timestamp": 1769377686.2983387,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "⚡ REKT: $131M in longs were wiped out in the past hour. pic.",
+        "created_at": "2026-01-25T16:41:00+00:00"
+      }
+    },
+    "955f251557cfcf51c2c8803ad4674656": {
+      "item_hash": "955f251557cfcf51c2c8803ad4674656",
+      "timestamp": 1769377686.2987669,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 JUST IN: Ethereum leads onchain lending with around $28B in active loans, per Token Terminal. That",
+        "created_at": "2026-01-25T16:00:00+00:00"
+      }
+    },
+    "57bdd9c34782b112fbb59c5ea74fc224": {
+      "item_hash": "57bdd9c34782b112fbb59c5ea74fc224",
+      "timestamp": 1769377686.2990203,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 SAYLOR: \"Unstoppable Orange.\" Strategy's plans are unstoppable. pic.",
+        "created_at": "2026-01-25T15:01:00+00:00"
+      }
+    },
+    "0239d12c387bf3e9f001f974932d5703": {
+      "item_hash": "0239d12c387bf3e9f001f974932d5703",
+      "timestamp": 1769377686.3130455,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 HUGE: Gold has overtaken the US dollar as the largest Global Reserve Currency. pic.",
+        "created_at": "2026-01-25T14:00:00+00:00"
+      }
+    },
+    "f0ae06080b52e1b4e0eb6ce0dec12351": {
+      "item_hash": "f0ae06080b52e1b4e0eb6ce0dec12351",
+      "timestamp": 1769377686.313482,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🇨🇳 LATEST: Despite banning crypto, China is only 4,012 $BTC away from flipping the USA as the govern",
+        "created_at": "2026-01-25T13:00:00+00:00"
+      }
+    },
+    "127187b7272e31357783b8d7bad5ceb0": {
+      "item_hash": "127187b7272e31357783b8d7bad5ceb0",
+      "timestamp": 1769377686.313889,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🇺🇲 UPDATE: The US Government Wallet has lost $11.8B since Bitcoin's ATH. But they still hold $29.5B ",
+        "created_at": "2026-01-25T12:00:00+00:00"
+      }
+    },
+    "d52549eb6d0867ac50ea79af817b8ccc": {
+      "item_hash": "d52549eb6d0867ac50ea79af817b8ccc",
+      "timestamp": 1769377686.3142219,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 FACT: Steak n Shake employees will have more $BTC than most of the world's population. pic.",
+        "created_at": "2026-01-25T11:00:00+00:00"
+      }
+    },
+    "2c2eed6b7a1dd77c4b47132dab6089ab": {
+      "item_hash": "2c2eed6b7a1dd77c4b47132dab6089ab",
+      "timestamp": 1769377686.3145766,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🇺🇸 NOW: Polymarket users expect a 77% chance of another government shutdown at the end of the month.",
+        "created_at": "2026-01-25T10:00:00+00:00"
+      }
+    },
+    "c29a48ad0e7bbc07abef6accecc90100": {
+      "item_hash": "c29a48ad0e7bbc07abef6accecc90100",
+      "timestamp": 1769377686.3149815,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 THROWBACK: 8 years ago, someone took out a $325K mortgage to buy 191 $BTC. Today, that Bitcoin wou",
+        "created_at": "2026-01-25T09:00:00+00:00"
+      }
+    },
+    "c1edad34e31ce6a53406abad97ccaf05": {
+      "item_hash": "c1edad34e31ce6a53406abad97ccaf05",
+      "timestamp": 1769377686.3153288,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🇨🇴 ADOPTION: Colombia’s #2 pension fund manager, with $55B AUM, is preparing a Bitcoin exposure fund",
+        "created_at": "2026-01-25T08:00:00+00:00"
+      }
+    },
+    "64a0393b066e0e07dafc250408c45640": {
+      "item_hash": "64a0393b066e0e07dafc250408c45640",
+      "timestamp": 1769377686.3157184,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 BRIAN ARMSTRONG: Crypto is disrupting the financial system, and it's getting more rare to find tru",
+        "created_at": "2026-01-25T07:00:00+00:00"
+      }
+    },
+    "4a7ef777ece9715dc87a73deed0981ab": {
+      "item_hash": "4a7ef777ece9715dc87a73deed0981ab",
+      "timestamp": 1769377686.3159766,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "RT by @Cointelegraph: HUGE!!! APT fees are up 32% this week. pic.",
+        "created_at": "2026-01-25T06:21:00+00:00"
+      }
+    },
+    "a67b379320c3108743e7dd09ab27cca2": {
+      "item_hash": "a67b379320c3108743e7dd09ab27cca2",
+      "timestamp": 1769377686.3162372,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "⚡ NEW: SOL Staking Ratio hit a new ATH of 70%. pic.",
+        "created_at": "2026-01-25T06:00:00+00:00"
+      }
+    },
+    "751487e86582aea0d99f0e52b29eee82": {
+      "item_hash": "751487e86582aea0d99f0e52b29eee82",
+      "timestamp": 1769377686.3281317,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 BIG: CZ says that very few strategies can beat the simple \"buy and hold\". pic.",
+        "created_at": "2026-01-25T05:00:00+00:00"
+      }
+    },
+    "fc4eb52f8d9ab7306bc6fba13b2bed96": {
+      "item_hash": "fc4eb52f8d9ab7306bc6fba13b2bed96",
+      "timestamp": 1769377686.3284066,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 QUESTION: What would make you leave crypto behind forever?",
+        "created_at": "2026-01-25T04:00:00+00:00"
+      }
+    },
+    "eedcba68c5dd879d3dee42542fe80436": {
+      "item_hash": "eedcba68c5dd879d3dee42542fe80436",
+      "timestamp": 1769377686.328676,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 BIG: $SOL ETFs have been green for over 2 weeks. pic.",
+        "created_at": "2026-01-25T03:00:00+00:00"
+      }
+    },
+    "02dd15f091313d86b517a0c5e986404a": {
+      "item_hash": "02dd15f091313d86b517a0c5e986404a",
+      "timestamp": 1769377686.329004,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 UPDATE: $9.5B in shorts will be liquidated if $BTC can reclaim $100K. pic.",
+        "created_at": "2026-01-25T02:00:00+00:00"
+      }
+    },
+    "677b1f78b745cfc89f820b6f7fb25ba6": {
+      "item_hash": "677b1f78b745cfc89f820b6f7fb25ba6",
+      "timestamp": 1769377686.3292787,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 LATEST: Tokenized funds hit a new ATH of $14.4B. pic.",
+        "created_at": "2026-01-25T01:00:00+00:00"
+      }
+    },
+    "96a3d87dac2a47c686de1a2641ef5530": {
+      "item_hash": "96a3d87dac2a47c686de1a2641ef5530",
+      "timestamp": 1769377686.3296878,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🔥 JUST IN: Bill Miller IV of $350M Miller Value Partners says he’s still a huge Bitcoin bull. pic.",
+        "created_at": "2026-01-25T00:00:00+00:00"
+      }
+    },
+    "c44041455cea0166f10d2091af889429": {
+      "item_hash": "c44041455cea0166f10d2091af889429",
+      "timestamp": 1769377686.3303177,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_9",
+        "text_preview": "🚨 UPDATE: SharpLink Gaming's Strategic ETH Reserve has an unrealized loss of $197M, per Coinglass. p",
+        "created_at": "2026-01-24T23:00:00+00:00"
+      }
+    },
+    "ef83a3db4c6e2ad2b3cc2c084865f2ff": {
+      "item_hash": "ef83a3db4c6e2ad2b3cc2c084865f2ff",
+      "timestamp": 1769377686.3311505,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_10",
+        "text_preview": "In @nytopinion “Americans need to know why even the most powerful nation on Earth is strongest when ",
+        "created_at": "2026-01-25T17:45:00+00:00"
+      }
+    },
+    "b5b5f0d1e0d6a82f173374e75e7052fd": {
+      "item_hash": "b5b5f0d1e0d6a82f173374e75e7052fd",
+      "timestamp": 1769377686.331803,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_10",
+        "text_preview": "Breaking News: New York City school buildings will be closed on Monday and students will learn remot",
+        "created_at": "2026-01-25T15:09:00+00:00"
+      }
+    },
+    "686f563d1289be0435cbdc3c5472d8e2": {
+      "item_hash": "686f563d1289be0435cbdc3c5472d8e2",
+      "timestamp": 1769377686.3324525,
+      "status": "rejected",
+      "reason": "Недостаточно рыночных сигналов (найдено: 0, требуется: 1)",
+      "metadata": {
+        "source": "twitter_rss:twitter_11",
+        "text_preview": "How BlackRock just lost control of the $10B tokenized Treasury market to Circle for one simple, mech",
+        "created_at": "2026-01-25T20:25:00+00:00"
+      }
     }
   },
   "stats": {
-    "hits": 410,
-    "misses": 479,
-    "total_processed": 420,
+    "hits": 604,
+    "misses": 583,
+    "total_processed": 510,
     "total_published": 0
   },
-  "timestamp": 1769293806.8804538
+  "timestamp": 1769377686.3342166
 }
