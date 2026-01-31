@@ -143,6 +143,69 @@ class NewsBot:
             except Exception as e:
                 self.logger.error(f"❌ Ошибка инициализации Telegram публикатора: {e}")
     
+    def _is_target_news_type(self, text: str) -> bool:
+        """Проверяем, соответствует ли новость нужному формату"""
+        if not text:
+            return False
+            
+        text_lower = text.lower()
+        
+        # ТОЧНО ПУБЛИКУЕМ (как в примерах):
+        # - Финансовые отчеты и данные
+        if any(word in text_lower for word in ['отчет', 'report', 'данные', 'флоу', 'flow', 'статистика', 'поток']):
+            return True
+        
+        # - Крупные покупки/продажи
+        if any(word in text_lower for word in ['приобрел', 'купил', 'продал', 'покупка', 'продажа', 'куплено', 'приобрела']):
+            return True
+        
+        # - Регуляторные новости
+        if any(word in text_lower for word in ['sec', 'etf', 'регулятор', 'закон', 'одобрил', 'отклонил', 'регулирование']):
+            return True
+        
+        # - Крупные транзакции и переводы
+        if any(word in text_lower for word in ['перевел', 'транзакция', 'перевод', 'whale', 'кит', 'кошелек']):
+            return True
+        
+        # - Листинги/делистинги
+        if any(word in text_lower for word in ['листинг', 'listing', 'delist', 'делистинг', 'биржа']):
+            return True
+        
+        # - Инциденты безопасности
+        if any(word in text_lower for word in ['взлом', 'hack', 'кража', 'убыток', 'потерял', 'украл']):
+            return True
+        
+        # - Новости компаний
+        if any(word in text_lower for word in ['blackrock', 'vanguard', 'fidelity', 'tether', 'microstrategy', 'binance', 'coinbase']):
+            return True
+        
+        # - Рыночные индикаторы
+        if any(word in text_lower for word in ['индекс', 'страх', 'жадность', 'капитализация', 'объем']):
+            return True
+        
+        # НЕ ПУБЛИКУЕМ:
+        # - Мнения и прогнозы
+        if any(word in text_lower for word in ['мнение', 'прогноз', 'анализ', 'считаю', 'думаю', 'opinion', 'view', 'think']):
+            return False
+        
+        # - Реклама и промо
+        if any(word in text_lower for word in ['реклама', 'промо', 'скидка', 'bonus', 'airdrop', 'giveaway']):
+            return False
+        
+        # - Общие обзоры
+        if any(word in text_lower for word in ['обзор', 'дайджест', 'резюме', 'итоги', 'digest', 'summary', 'recap']):
+            return False
+        
+        # - Вопросы
+        if text_lower.strip().endswith('?') or any(word in text_lower for word in ['как вы думаете', 'что думаете', 'ваше мнение']):
+            return False
+        
+        # - Призывы к действию
+        if any(word in text_lower for word in ['подписывайтесь', 'подписка', 'subscribe', 'join us', 'follow']):
+            return False
+        
+        return True
+    
     def _basic_filter(self, news_item: NewsItem) -> bool:
         """Базовый фильтр новостей"""
         # Проверка кеша
@@ -153,10 +216,17 @@ class NewsBot:
         if not news_item.raw_text or len(news_item.raw_text.strip()) < 30:
             return False
         
+        # Проверка типа новости (наши критерии)
+        if not self._is_target_news_type(news_item.raw_text):
+            self.logger.debug("📄 Не соответствует типу целевых новостей")
+            self.cache.mark_processed(news_item, 'rejected', 'wrong_news_type')
+            return False
+        
         # Проверка дубликатов
         dedup_result = self.dedup.check(news_item)
         if dedup_result.is_duplicate:
             self.logger.debug(f"📄 Дубликат: {dedup_result.reason} ({dedup_result.similarity:.2f})")
+            self.cache.mark_processed(news_item, 'rejected', f'duplicate_{dedup_result.reason}')
             return False
         
         # Расширенный рыночный фильтр с детальным анализом
@@ -218,7 +288,7 @@ class NewsBot:
             # Создание обработанной новости
             processed = ProcessedNews(
                 source_item=news_item,
-                analysis=ai_response,  # Используем ai_response напрямую
+                analysis=ai_response,
                 formatted_text=formatted_text,
                 editor_note=ai_response.editor_note,
                 metadata={
@@ -231,7 +301,8 @@ class NewsBot:
                     'impact_level': ai_response.metadata.get('impact_level', 'medium') if hasattr(ai_response, 'metadata') else 'medium',
                     'market_signals': market_signals
                 },
-                media_items=news_item.media_items[:5] if hasattr(news_item, 'media_items') else []
+                # Исправляем получение медиа - проверяем наличие атрибута и что это не пустой список
+                media_items=news_item.media_items[:5] if hasattr(news_item, 'media_items') and news_item.media_items else []
             )
             
             self.cache.mark_processed(news_item, 'approved', "passed_all_filters")
@@ -248,8 +319,46 @@ class NewsBot:
             self.logger.error(f"❌ Ошибка обработки новости: {e}", exc_info=True)
             return None
     
+    def _get_emoji_prefix(self, text: str) -> str:
+        """Определяем эмодзи для начала поста на основе содержания"""
+        text_lower = text.lower()
+        
+        if any(word in text_lower for word in ['btc', 'bitcoin', 'биткоин']):
+            return "💰 "
+        elif any(word in text_lower for word in ['eth', 'ethereum', 'эфириум']):
+            return "🔷 "
+        elif any(word in text_lower for word in ['sec', 'etf', 'регулятор', 'regulation', 'закон', 'одобрил', 'отклонил']):
+            return "⚖️ "
+        elif any(word in text_lower for word in ['взлом', 'hack', 'кража', 'убыток', 'украл', 'потерял']):
+            return "🚨 "
+        elif any(word in text_lower for word in ['приобрел', 'купил', 'куплено', 'acquisition', 'покупка']):
+            return "🛒 "
+        elif any(word in text_lower for word in ['отчет', 'report', 'данные', 'статистика', 'флоу', 'поток']):
+            return "📊 "
+        elif any(word in text_lower for word in ['запуск', 'launch', 'новый', 'new', 'анонс']):
+            return "🚀 "
+        elif any(word in text_lower for word in ['листинг', 'listing', 'delist', 'делистинг']):
+            return "📈 "
+        elif any(word in text_lower for word in ['объем', 'капитализация', 'индекс', 'страх', 'жадность']):
+            return "📉 "
+        else:
+            return "📰 "
+    
+    def _clean_links(self, text: str) -> str:
+        """Очищаем текст от ссылок, которые Telegram показывает блоками"""
+        # Удаляем обычные ссылки
+        text = re.sub(r'https?://\S+', '', text)
+        # Удаляем telegram.me/t.me ссылки
+        text = re.sub(r't\.me/\S+', '', text)
+        text = re.sub(r'telegram\.me/\S+', '', text)
+        # Удаляем упоминания каналов
+        text = re.sub(r'@\w+', '', text)
+        # Удаляем хештеги
+        text = re.sub(r'#\w+', '', text)
+        return text.strip()
+    
     def _format_for_telegram(self, news_item: NewsItem, analyzed_news: AnalyzedNews) -> str:
-        """Форматирование в HTML для Telegram с использованием AI-перевода"""
+        """Форматирование в HTML для Telegram в стиле целевых каналов"""
         
         # Используем AI-переведенный текст если есть
         if analyzed_news.translated_text:
@@ -257,68 +366,65 @@ class NewsBot:
         else:
             content = news_item.raw_text
         
-        # Дополнительное форматирование: выделяем заголовок если он есть
-        lines = content.split('\n')
-        if len(lines) > 1 and len(lines[0].strip()) < 100:
-            # Первая строка как заголовок
-            title = lines[0].strip()
-            body = '\n'.join(lines[1:]).strip()
-            
-            # Делаем заголовок жирным
-            if not title.startswith('<b>'):
-                title = f"<b>{title}</b>"
-            
-            content = f"{title}\n\n{body}"
+        # Очищаем от лишних ссылок (телеграм показывает их блоком)
+        content = self._clean_links(content)
         
-        # Убедимся, что ключевые слова выделены жирным
+        # Добавляем эмодзи в начало
+        emoji_prefix = self._get_emoji_prefix(content)
+        
+        # Улучшаем форматирование
         content = self._enhance_formatting(content)
         
-        # Добавляем заметку редактора если есть
+        # Удаляем лишние пробелы и переносы
+        content = re.sub(r'\s+', ' ', content).strip()
+        
+        # Добавляем заметку редактора если есть (в виде отдельной строки с отступом)
         if analyzed_news.editor_note:
             editor_block = f"\n\n💭 <i>{analyzed_news.editor_note}</i>"
         else:
             editor_block = ""
         
-        # Добавляем маркет-импакт если есть
-        if analyzed_news.market_impact:
-            impact_block = f"\n\n📊 <b>Влияние на рынок:</b> {analyzed_news.market_impact}"
-        else:
-            impact_block = ""
-        
-        # Добавляем теги если есть
+        # Добавляем теги в конце (не больше 3-х)
         if analyzed_news.tags:
             tags_text = " ".join([f"#{tag.lower().replace(' ', '_').replace('-', '_')}" 
-                                 for tag in analyzed_news.tags[:5]])
+                                 for tag in analyzed_news.tags[:3]])
             tags_block = f"\n\n🏷️ {tags_text}"
         else:
             tags_block = ""
         
-        # Форматируем полный пост
-        formatted = f"{content}"
+        # Формируем финальный текст
+        formatted = f"{emoji_prefix}{content}"
         
-        # Добавляем фиксированные ссылки (обновите на свои)
+        if editor_block:
+            formatted += editor_block
+        
+        if tags_block:
+            formatted += tags_block
+        
+        # Фиксированные ссылки в конце
         formatted += "\n\n🗽 <a href='https://t.me/onchain_20226'>OnChain News</a> | 🌐 <a href='https://bingxzone.com/partner/McDuckk/'>BingX</a>"
         
         return formatted
     
     def _enhance_formatting(self, text: str) -> str:
-        """Улучшение форматирования текста"""
-        # Ключевые слова для выделения жирным
-        keywords = [
-            # Криптовалюты
-            r'\b(BTC|Bitcoin|ETH|Ethereum|XRP|SOL|Solana|ADA|Cardano|DOGE|Dogecoin)\b',
-            # Компании
-            r'\b(OpenAI|ChatGPT|SEC|Binance|Coinbase|BlackRock|Fidelity|Vanguard)\b',
-            # Действия
-            r'\b(approve|reject|ban|hack|transfer|list|delist|одобрил|отклонил|запретил|взлом)\b',
-            # Суммы
-            r'\$?\d+[.,]?\d*\s*(?:million|mln|billion|bln|тыс|млн|млрд)?\s*(?:USD|BTC|ETH)?\b',
+        """Улучшение форматирования текста - выделяем ключевые элементы"""
+        patterns = [
+            # Суммы денег (разные форматы)
+            (r'(\$?\d+(?:[.,]\d+)?\s*(?:млн|миллион|млрд|миллиард|тыс|т|M|B|K|m|b|k)?\s*(?:USD|\$)?)', r'<b>\1</b>'),
             # Проценты
-            r'[+-]?\d+[.,]?\d*\s*%\b'
+            (r'([+-]?\d+(?:[.,]\d+)?\s*%)', r'<b>\1</b>'),
+            # Криптовалюты
+            (r'\b(BTC|Bitcoin|ETH|Ethereum|XRP|SOL|Solana|ADA|Cardano|DOGE|Dogecoin|USDT|USDC|TRX|BNB)\b', r'<b>\1</b>'),
+            # Компании и организации
+            (r'\b(SEC|ETF|Binance|Coinbase|BlackRock|Fidelity|Vanguard|OpenAI|ChatGPT|Tether|MicroStrategy|Strategy|Tesla|GameStop|Gemini)\b', r'<b>\1</b>'),
+            # Действия
+            (r'\b(approve|reject|ban|hack|transfer|list|delist|buy|sell|acquire|одобрил|отклонил|запретил|взлом|купил|продал|приобрел)\b', r'<b>\1</b>'),
+            # Ключевые термины
+            (r'\b(ETF|staking|стейкинг|whale|кит|отчет|report|листинг|listing|регулятор|regulation)\b', r'<b>\1</b>'),
         ]
         
-        for pattern in keywords:
-            text = re.sub(pattern, r'<b>\g<0></b>', text, flags=re.IGNORECASE)
+        for pattern, replacement in patterns:
+            text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
         
         return text
     
@@ -490,6 +596,10 @@ async def main():
             # Тестовый режим фильтра
             logger.info("🧪 Тестовый режим фильтра")
             await test_filter_mode(bot)
+        elif len(sys.argv) > 1 and sys.argv[1] == '--test-format':
+            # Тестовый режим форматирования
+            logger.info("🧪 Тестовый режим форматирования")
+            await test_format_mode(bot)
         else:
             # Постоянный мониторинг
             try:
@@ -515,6 +625,10 @@ async def test_filter_mode(bot: NewsBot):
         "Daily crypto market recap for today.",
         "Tesla buys additional $500 million in Bitcoin according to filings.",
         "What do you think about the current market situation?",
+        "Отчет: ETF биткоина показали отток $1.33 млрд на прошлой неделе.",
+        "Bitmine приобрели 40,302 ETH на прошлой неделе.",
+        "Кит перевел 50,000 ETH ($146M) на Gemini.",
+        "Подписывайтесь на наш канал для получения новостей!",
     ]
     
     logger.info("🧪 Тестирование фильтров на примерах:")
@@ -545,5 +659,45 @@ async def test_filter_mode(bot: NewsBot):
                 logger.info(f"   Сущности: {analysis['entities']}")
 
 
+async def test_format_mode(bot: NewsBot):
+    """Тестовый режим для проверки форматирования"""
+    test_texts = [
+        "Bitcoin ETF отток составил $1.33 млрд на прошлой неделе - второй по величине в истории.",
+        "Кит перевел 50,000 ETH ($146M) на биржу Gemini после 9 лет бездействия.",
+        "Bitmine приобрели 40,302 ETH на прошлой неделе, увеличив свои запасы.",
+        "SEC одобрила новый Bitcoin ETF от BlackRock.",
+        "Отчет CoinShares: общий отток составил $1.73 млрд за неделю.",
+    ]
+    
+    logger.info("🧪 Тестирование форматирования:")
+    
+    for i, text in enumerate(test_texts, 1):
+        logger.info(f"\nПример {i}: {text}")
+        
+        # Создаем тестовый NewsItem
+        test_item = NewsItem(
+            raw_text=text,
+            source="test",
+            url=f"https://test.example.com/{i}",
+            created_at=datetime.now(timezone.utc),
+            media_urls=[]
+        )
+        
+        # Создаем тестовый AnalyzedNews
+        analyzed_news = AnalyzedNews(
+            source_item=test_item,
+            is_relevant=True,
+            relevance_reason="Тестовый пример",
+            translated_text=text,
+            editor_note="Это тестовая заметка редактора для проверки форматирования.",
+            tags=["BTC", "ETF", "Новости"],
+            market_impact="📈 Среднее"
+        )
+        
+        # Тестируем форматирование
+        formatted = bot._format_for_telegram(test_item, analyzed_news)
+        logger.info(f"\n   Отформатированный текст:\n{formatted}")
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main()) 

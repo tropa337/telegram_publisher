@@ -1,0 +1,98 @@
+2026-01-27 12:47:32,169 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Инициализирован источник Twitter RSS с 14 фидами
+2026-01-27 12:47:32,170 - __main__ - INFO - ✅ Twitter RSS: 14 фидов
+2026-01-27 12:47:32,223 - __main__ - INFO - ✅ Telegram: 3 каналов
+2026-01-27 12:47:32,224 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: console
+2026-01-27 12:47:32,265 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: telegram
+2026-01-27 12:47:32,265 - __main__ - INFO - ✅ Telegram публикатор: @aitop1234
+2026-01-27 12:47:32,265 - __main__ - INFO - 🤖 Новостной бот инициализирован
+2026-01-27 12:47:32,266 - __main__ - INFO - 📊 Статистика фильтров:
+2026-01-27 12:47:32,266 - __main__ - INFO -   ├─ Паттернов отклонения: 20
+2026-01-27 12:47:32,267 - __main__ - INFO -   ├─ Мягких отклонений: 4
+2026-01-27 12:47:32,267 - __main__ - INFO -   ├─ Обязательных сигналов: 16
+2026-01-27 12:47:32,267 - __main__ - INFO -   ├─ Буст-паттернов: 5
+2026-01-27 12:47:32,268 - __main__ - INFO -   └─ Типов сущностей: 5
+2026-01-27 12:47:32,268 - __main__ - INFO - 🔍 Тестирование соединений...
+2026-01-27 12:47:32,275 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2026-01-27 12:47:36,451 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2026-01-27 12:48:09,684 - telethon.client.users - INFO - Phone migrated to 4
+2026-01-27 12:48:10,007 - telethon.client.telegrambaseclient - INFO - Reconnecting to new data center 4
+2026-01-27 12:48:10,296 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2026-01-27 12:48:10,299 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2026-01-27 12:48:10,300 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.92:443/TcpFull...
+2026-01-27 12:48:14,178 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.92:443/TcpFull complete!
+2026-01-27 12:48:35,751 - newsbot.publishers.telegram_publisher - INFO - ✅ Telegram подключен к каналу: @aitop1234
+2026-01-27 12:48:36,459 - newsbot.publishers.telegram_publisher - INFO - ✅ Telegram канал доступен: Ai
+2026-01-27 12:48:37,797 - newsbot.publishers.telegram_publisher - INFO - ✅ Тестовая публикация успешна
+2026-01-27 12:48:37,798 - __main__ - INFO - 👁️ Запуск постоянного мониторинга...
+2026-01-27 12:48:37,799 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Запуск периодического опроса с интервалом 60 секунд
+2026-01-27 12:48:37,800 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 14 источников
+2026-01-27 12:48:38,602 - telethon.client.updates - INFO - Got difference for channel 3563240127 updates
+2026-01-27 12:48:39,327 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_4: HTTP 404
+2026-01-27 12:48:39,383 - newsbot.sources.twitter_source.TwitterRSSSource - WARNING - RSS twitter_2: HTTP 404
+2026-01-27 12:48:46,038 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 0 новостей
+2026-01-27 12:48:46,039 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_2: 0 новостей
+2026-01-27 12:48:46,039 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_3: 0 новостей
+2026-01-27 12:48:46,040 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_4: 0 новостей
+2026-01-27 12:48:46,041 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_5: 50 новостей
+2026-01-27 12:48:46,042 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_6: 49 новостей
+2026-01-27 12:48:46,043 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_7: 50 новостей
+2026-01-27 12:48:46,043 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_8: 48 новостей
+2026-01-27 12:48:46,044 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_9: 47 новостей
+2026-01-27 12:48:46,045 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_10: 50 новостей
+2026-01-27 12:48:46,046 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_11: 50 новостей
+2026-01-27 12:48:46,047 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_12: 50 новостей
+2026-01-27 12:48:46,047 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_13: 1 новостей
+2026-01-27 12:48:46,048 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_14: 50 новостей
+2026-01-27 12:48:46,940 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 15 новостей после фильтрации
+2026-01-27 12:48:46,941 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Найдено 15 новых новостей
+2026-01-27 12:48:46,941 - __main__ - INFO - 📥 RSS: получено 15 новых новостей
+2026-01-27 12:48:50,255 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:48:50,272 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:48:50,275 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:48:50,287 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.80, сигналов: 1, медиа: 0
+2026-01-27 12:48:51,927 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:48:51,933 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:48:51,934 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:48:51,936 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.70, сигналов: 1, медиа: 0
+2026-01-27 12:48:53,174 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:48:53,179 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:48:53,180 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:48:53,183 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.65, сигналов: 1, медиа: 0
+2026-01-27 12:48:54,683 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:48:56,303 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:48:56,308 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:48:56,309 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:48:56,311 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.70, сигналов: 1, медиа: 0
+2026-01-27 12:48:58,556 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:48:58,560 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:48:58,562 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:48:58,564 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.80, сигналов: 1, медиа: 0
+2026-01-27 12:49:00,633 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:00,639 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:49:00,640 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:49:00,643 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.80, сигналов: 1, медиа: 0
+2026-01-27 12:49:01,784 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:01,791 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:49:01,793 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:49:01,796 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.80, сигналов: 1, медиа: 0
+2026-01-27 12:49:03,694 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:05,523 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:07,186 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:07,194 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:49:07,195 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:49:07,205 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.80, сигналов: 1, медиа: 0
+2026-01-27 12:49:08,466 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:08,482 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:49:08,487 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:49:08,505 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.55, сигналов: 1, медиа: 0
+2026-01-27 12:49:09,750 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:11,356 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:12,968 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:49:12,981 - newsbot.ai - ERROR - ❌ Ошибка перевода: 'CryptoNewsAnalyzer' object has no attribute 'translation_prompt'
+2026-01-27 12:49:12,982 - newsbot.ai - WARNING - ⚠️ Ошибка генерации заметки: 'CryptoNewsAnalyzer' object has no attribute 'editor_note_prompt'
+2026-01-27 12:49:12,986 - __main__ - INFO - ✅ Новость обработана: оценка фильтра 0.80, сигналов: 1, медиа: 0
+2026-01-27 12:49:13,591 - newsbot.publishers.telegram_publisher - INFO - ✅ console: успешно опубликовано 10 новостей
+2026-01-27 12:49:26,873 - newsbot.publishers.telegram_publisher - INFO - ✅ Telegram: опубликовано 10/10 новостей
+2026-01-27 12:49:26,874 - newsbot.publishers.telegram_publisher - INFO - ✅ telegram: успешно опубликовано 10 новостей
+2026-01-27 12:49:26,875 - __main__ - INFO - ✅ console: опубликовано 10 новостей
+2026-01-27 12:49:26,876 - __main__ - INFO - ✅ telegram: опубликовано 10 новостей
