@@ -224,7 +224,8 @@ class TelegramPublisher:
                 await self.client.send_message(
                     entity=self.channel,
                     message=text,
-                    parse_mode=self.parse_mode
+                    parse_mode=self.parse_mode,
+                    link_preview=False
                 )
                 logger.debug("📤 Опубликовано текстовое сообщение")
             
@@ -249,7 +250,8 @@ class TelegramPublisher:
                 entity=self.channel,
                 file=media_list[0],
                 caption=text,
-                parse_mode=self.parse_mode
+                parse_mode=self.parse_mode,
+                link_preview=False
             )
         else:
             # Галерея медиа
@@ -257,7 +259,8 @@ class TelegramPublisher:
                 entity=self.channel,
                 file=media_list,
                 caption=text,
-                parse_mode=self.parse_mode
+                parse_mode=self.parse_mode,
+                link_preview=False
             )
     
     async def _prepare_media(self, news_item: ProcessedNews) -> Optional[List]:
@@ -355,6 +358,112 @@ class TelegramPublisher:
                 logger.info("📴 Telegram соединение закрыто")
         except Exception as e:
             logger.error(f"❌ Ошибка при закрытии Telegram: {e}")
+
+    async def publish_with_media(self, news_items: List[ProcessedNews]) -> bool:
+        """Публикация новостей с медиа если есть, без - если нет"""
+        try:
+            await self.connect()
+            
+            if not news_items:
+                logger.info("📭 Нет новостей для публикации в Telegram")
+                return True
+            
+            success_count = 0
+            for news_item in news_items:
+                try:
+                    # Получаем медиа если есть
+                    media_items = []
+                    if hasattr(news_item, 'media_items') and news_item.media_items:
+                        # Конвертируем MediaItem в Telegram медиа
+                        for media_item in news_item.media_items[:self.max_media_per_post]:
+                            try:
+                                telegram_media = self._create_telegram_media(media_item)
+                                media_items.append(telegram_media)
+                            except Exception as e:
+                                logger.warning(f"⚠️ Не удалось создать медиа объект: {e}")
+                    
+                    # Публикуем
+                    await self._post_with_or_without_media(news_item, media_items)
+                    success_count += 1
+                    
+                    # Задержка для избежания лимитов
+                    await asyncio.sleep(self.rate_limit_delay)
+                    
+                except Exception as e:
+                    logger.error(f"❌ Ошибка публикации новости: {e}")
+                    continue
+            
+            logger.info(f"✅ Telegram: опубликовано {success_count}/{len(news_items)} новостей")
+            return success_count > 0
+            
+        except Exception as e:
+            logger.error(f"❌ Критическая ошибка публикатора Telegram: {e}")
+            return False
+    
+    async def _post_with_or_without_media(self, news_item: ProcessedNews, media_items: List):
+        """Публикация новости с медиа если есть, без - если нет"""
+        try:
+            text = news_item.formatted_text
+            
+            # Ограничение длины текста для Telegram
+            if len(text) > 4000:
+                text = text[:3900] + "...\n\n[текст сокращен]"
+            
+            # Если есть медиа - публикуем с медиа
+            if media_items:
+                if len(media_items) == 1:
+                    # Одно медиа с подписью
+                    await self.client.send_file(
+                        entity=self.channel,
+                        file=media_items[0],
+                        caption=text,
+                        parse_mode=self.parse_mode,
+                        link_preview=False
+                    )
+                else:
+                    # Галерея медиа
+                    await self.client.send_file(
+                        entity=self.channel,
+                        file=media_items,
+                        caption=text,
+                        parse_mode=self.parse_mode,
+                        link_preview=False
+                    )
+                logger.info(f"📤 Опубликовано с {len(media_items)} медиа")
+            else:
+                # Нет медиа - публикуем только текст
+                await self.client.send_message(
+                    entity=self.channel,
+                    message=text,
+                    parse_mode=self.parse_mode,
+                    link_preview=False
+                )
+                logger.info("📤 Опубликовано текстовое сообщение")
+            
+            # Обновление времени последней публикации
+            self.last_post_time = datetime.now()
+            
+        except errors.FloodWaitError as e:
+            wait_time = e.seconds
+            logger.warning(f"⚠️ Flood wait: ждем {wait_time} секунд")
+            await asyncio.sleep(wait_time)
+            await self._post_with_or_without_media(news_item, media_items)  # Повторная попытка
+            
+        except Exception as e:
+            logger.error(f"❌ Ошибка публикации в Telegram: {e}")
+            raise
+    
+    def _create_telegram_media(self, media_item):
+        """Создание Telegram медиа объекта"""
+        from telethon.tl.types import InputMediaDocument, InputMediaPhoto
+        
+        if media_item.type == 'photo':
+            return InputMediaPhoto(media_item.url)
+        else:
+            # Для video и document используем InputMediaDocument
+            return InputMediaDocument(media_item.url)
+
+
 
 
 class PublisherManager:

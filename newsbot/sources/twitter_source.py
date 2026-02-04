@@ -183,7 +183,7 @@ class TwitterRSSSource:
                 continue
                 
         return items
-        
+
     def _parse_entry(self, entry, source_label: str) -> Optional[NewsItem]:
         """Парсинг одной RSS-записи"""
         # Получение уникального ID
@@ -208,8 +208,15 @@ class TwitterRSSSource:
         if not raw_text or len(raw_text.strip()) < 5:
             return None
             
-        # Извлечение медиа
+        # Извлечение медиа и создание MediaItem объектов
         media_urls = self._extract_media_urls(entry)
+        media_items = []
+        for url in media_urls[:5]:  # Максимум 5 медиа
+            media_type = self._detect_media_type(url)
+            media_items.append(MediaItem(
+                url=url,
+                type=media_type
+            ))
         
         # Извлечение автора
         author = self._extract_author(entry)
@@ -219,13 +226,13 @@ class TwitterRSSSource:
         if not url:
             url = f"twitter_rss:{source_label}:{entry_id}"
         
-        # Создание объекта новости с правильными параметрами
+        # Создание объекта новости с ПРАВИЛЬНЫМИ параметрами
         news_item = NewsItem(
             raw_text=raw_text,
             source=f"twitter_rss:{source_label}",
             url=url,
             created_at=created_at,
-            media_urls=media_urls,
+            media_items=media_items,  # Используем media_items, а не media_urls
             author=author
         )
         
@@ -234,6 +241,33 @@ class TwitterRSSSource:
         self._cleanup_cache()
         
         return news_item
+
+    def _detect_media_type(self, url: str) -> str:
+        """Определение типа медиа по URL"""
+        if not url:
+            return 'photo'
+        
+        url_lower = url.lower()
+        
+        # Изображения
+        if any(ext in url_lower for ext in ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.svg']):
+            return 'photo'
+        
+        # Видео
+        if any(ext in url_lower for ext in ['.mp4', '.webm', '.mov', '.avi', '.mkv']):
+            return 'video'
+        
+        # Документы
+        if any(ext in url_lower for ext in ['.pdf', '.doc', '.docx', '.txt']):
+            return 'document'
+        
+        # Проверяем домены
+        if any(domain in url_lower for domain in ['youtube.com', 'youtu.be', 'vimeo.com']):
+            return 'video'
+        
+        # По умолчанию фото
+        return 'photo'
+
         
     def _get_entry_id(self, entry) -> Optional[str]:
         """Получение уникального ID записи"""

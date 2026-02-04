@@ -1,74 +1,110 @@
+import logging
 import os
 from dataclasses import dataclass, field
-from typing import Dict, List
+from pathlib import Path
+from typing import Dict, List, Optional
 
 from dotenv import load_dotenv
 
+# Загрузка .env
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
 class BotConfig:
+    """Конфигурация бота с валидацией"""
+    
     # Telegram API
-    tg_api_id: int = int(os.getenv("TG_API_ID", "0"))
-    tg_api_hash: str = os.getenv("TG_API_HASH", "")
-    target_channel: str = os.getenv("TARGET_CHANNEL", "")
+    TG_API_ID: int = field(default_factory=lambda: int(os.getenv("TG_API_ID", "0")))
+    TG_API_HASH: str = field(default_factory=lambda: os.getenv("TG_API_HASH", ""))
+    TARGET_CHANNEL: str = field(default_factory=lambda: os.getenv("TARGET_CHANNEL", ""))
     
     # Mistral AI
-    mistral_api_key: str = os.getenv("MISTRAL_API_KEY", "")
-    mistral_model: str = os.getenv("MISTRAL_MODEL", "mistral-small-latest")
+    MISTRAL_API_KEY: str = field(default_factory=lambda: os.getenv("MISTRAL_API_KEY", ""))
+    MISTRAL_MODEL: str = field(default_factory=lambda: os.getenv("MISTRAL_MODEL", "mistral-small-latest"))
     
-    # Источники
-    source_tg_channels: List[str] = field(
-        default_factory=lambda: [
-            s.strip() for s in (os.getenv("SOURCE_TG_CHANNELS", "") or "").split(",") 
-            if s.strip()
-        ]
-    )
+    # Источники новостей
+    SOURCE_TG_CHANNELS: List[str] = field(default_factory=lambda: [
+        s.strip() for s in (os.getenv("SOURCE_TG_CHANNELS", "") or "").split(",") 
+        if s.strip()
+    ])
     
-    # RSS источники
-    twitter_rss_feeds: Dict[str, str] = field(default_factory=dict)
-    
-    # Опциональный токен для rss.app
-    rss_auth_token: str = os.getenv("RSS_AUTH_TOKEN", "")
+    TWITTER_RSS_FEEDS: Dict[str, str] = field(default_factory=dict)
+    RSS_AUTH_TOKEN: str = field(default_factory=lambda: os.getenv("RSS_AUTH_TOKEN", ""))
     
     # Интервалы
-    poll_interval_rss: int = int(os.getenv("POLL_INTERVAL_RSS", "60") or "60")
-    max_workers: int = int(os.getenv("MAX_WORKERS", "3") or "3")
+    POLL_INTERVAL_RSS: int = field(default_factory=lambda: int(os.getenv("POLL_INTERVAL_RSS", "300")))
+    MAX_WORKERS: int = field(default_factory=lambda: int(os.getenv("MAX_WORKERS", "3")))
     
     # Фильтры
-    min_priority_score: float = float(os.getenv("MIN_PRIORITY_SCORE", "0.7") or "0.7")
-    max_news_per_hour: int = int(os.getenv("MAX_NEWS_PER_HOUR", "10") or "10")
+    MIN_PRIORITY_SCORE: float = field(default_factory=lambda: float(os.getenv("MIN_PRIORITY_SCORE", "0.6")))
+    MAX_NEWS_PER_HOUR: int = field(default_factory=lambda: int(os.getenv("MAX_NEWS_PER_HOUR", "20")))
     
-    # Кеширование
-    cache_ttl_hours: int = int(os.getenv("CACHE_TTL_HOURS", "24") or "24")
-    state_path: str = os.getenv("STATE_PATH", "state.json")
+    # Кешевание и хранилище
+    CACHE_TTL_HOURS: int = field(default_factory=lambda: int(os.getenv("CACHE_TTL_HOURS", "24")))
+    STATE_PATH: str = field(default_factory=lambda: os.getenv("STATE_PATH", "state.json"))
     
     # Режим отладки
-    debug_mode: bool = os.getenv("DEBUG_MODE", "false").lower() == "true"
+    DEBUG_MODE: bool = field(default_factory=lambda: os.getenv("DEBUG_MODE", "false").lower() == "true")
+    
+    # Медиа
+    MAX_MEDIA_PER_POST: int = field(default_factory=lambda: int(os.getenv("MAX_MEDIA_PER_POST", "4")))
+    ALWAYS_INCLUDE_MEDIA: bool = field(default_factory=lambda: os.getenv("ALWAYS_INCLUDE_MEDIA", "true").lower() == "true")
     
     def __post_init__(self):
-        """Загрузка RSS фидов"""
+        """Инициализация и валидация конфигурации"""
+        # Загрузка RSS фидов
         i = 1
         while True:
             key = f"TWITTER_RSS_{i}"
             val = os.getenv(key, "").strip()
             if not val:
                 break
-            self.twitter_rss_feeds[f"twitter_{i}"] = val
+            self.TWITTER_RSS_FEEDS[f"twitter_{i}"] = val
             i += 1
+        
+        # Валидация критических параметров
+        self._validate()
+    
+    def _validate(self):
+        """Валидация конфигурации"""
+        errors = []
+        
+        if not self.TG_API_ID or self.TG_API_ID == 0:
+            errors.append("TG_API_ID не установлен")
+        
+        if not self.TG_API_HASH:
+            errors.append("TG_API_HASH не установлен")
+        
+        if not self.MISTRAL_API_KEY:
+            errors.append("MISTRAL_API_KEY не установлен")
+        
+        if not self.TARGET_CHANNEL:
+            errors.append("TARGET_CHANNEL не установлен")
+        
+        if not self.SOURCE_TG_CHANNELS and not self.TWITTER_RSS_FEEDS:
+            errors.append("Не настроены источники новостей")
+        
+        if errors:
+            error_msg = "\n".join(f"- {e}" for e in errors)
+            logger.error(f"❌ Ошибки конфигурации:\n{error_msg}")
+            raise ValueError(f"Конфигурация некорректна:\n{error_msg}")
+        
+        logger.info("✅ Конфигурация валидна")
+    
+    def get_log_level(self) -> int:
+        """Получение уровня логирования"""
+        return logging.DEBUG if self.DEBUG_MODE else logging.INFO
 
 
-# Глобальный конфиг
-config = BotConfig()
+# Глобальный экземпляр конфига
+config: Optional[BotConfig] = None
 
-# Экспорт настроек для обратной совместимости
-TG_API_ID = config.tg_api_id
-TG_API_HASH = config.tg_api_hash
-TARGET_CHANNEL = config.target_channel
-SOURCE_TG_CHANNELS = config.source_tg_channels
-TWITTER_RSS_FEEDS = config.twitter_rss_feeds
-RSS_AUTH_TOKEN = config.rss_auth_token
-POLL_INTERVAL_RSS = config.poll_interval_rss
-MIN_PRIORITY_SCORE = config.min_priority_score
-DEBUG_MODE = config.debug_mode
+def get_config() -> BotConfig:
+    """Получить глобальную конфигурацию"""
+    global config
+    if config is None:
+        config = BotConfig()
+    return config
