@@ -1,3 +1,4 @@
+
 import asyncio
 import logging
 import sys
@@ -66,7 +67,10 @@ class NewsBot:
             'rejected': 0,
             'rejected_reasons': {},
             'cycles': 0,
-            'start_time': datetime.now()
+            'start_time': datetime.now(),
+            'with_media': 0,
+            'without_media': 0,
+            'total_media_items': 0
         }
         
         # Флаг работы
@@ -75,7 +79,7 @@ class NewsBot:
         self._init_sources()
         self._init_publishers()
         
-        self.logger.info("🤖 Бот инициализирован с минималистичным форматированием")
+        self.logger.info("🤖 Бот инициализирован с логированием медиа")
     
     def _init_sources(self):
         """Инициализация источников"""
@@ -94,7 +98,7 @@ class NewsBot:
         console = ConsolePublisher(pretty_print=True, max_items=5)
         self.publisher_manager.add_publisher('console', console)
         
-        # Telegram
+        # Telegram - публикуем ВСЕ посты (с медиа и без)
         if self.config.TARGET_CHANNEL:
             try:
                 client = TelegramClient(
@@ -106,10 +110,10 @@ class NewsBot:
                     client=client,
                     channel=self.config.TARGET_CHANNEL,
                     max_media_per_post=self.config.MAX_MEDIA_PER_POST,
-                    always_include_media=True
+                    always_include_media=True  # Публиковать с медиа если есть
                 )
                 self.publisher_manager.add_publisher('telegram', telegram)
-                self.logger.info(f"✅ Telegram: {self.config.TARGET_CHANNEL}")
+                self.logger.info(f"✅ Telegram: {self.config.TARGET_CHANNEL} (публикуем все посты)")
             except Exception as e:
                 self.logger.error(f"❌ Ошибка Telegram: {e}")
     
@@ -172,7 +176,7 @@ class NewsBot:
             self.logger.info("📭 Новостей не найдено")
     
     async def _process_and_publish(self, news_items: List[NewsItem]):
-        """Обработка и публикация"""
+        """Обработка и публикация ВСЕХ новостей (с медиа и без)"""
         processed = []
         
         # Счетчики для отладки
@@ -183,7 +187,9 @@ class NewsBot:
             'filter': 0,
             'market': 0,
             'ai': 0,
-            'passed': 0
+            'passed': 0,
+            'with_media': 0,  # Новый счетчик для медиа
+            'without_media': 0  # Новый счетчик для постов без медиа
         }
         
         items_to_process = news_items[:50]
@@ -235,12 +241,35 @@ class NewsBot:
                 self.logger.error(f"❌ Ошибка AI анализа: {e}")
                 continue
             
-            # 6. Получение медиа
-            primary_media = None
+            # 6. ПРОВЕРКА МЕДИА (НЕ ОТКЛОНЯЕМ, А ПРОСТО ЛОГИРУЕМ)
+            media_items = []
             try:
-                primary_media = await self.media_handler.get_primary_media(item)
+                # Проверяем, есть ли медиа в самом NewsItem
+                if hasattr(item, 'media_items') and item.media_items:
+                    media_items = item.media_items
+                    self.logger.info(f"📸 Новость имеет {len(media_items)} медиа-элементов")
+                    self.stats['with_media'] += 1
+                    self.stats['total_media_items'] += len(media_items)
+                    counters['with_media'] += 1
+                else:
+                    # Если нет медиа в NewsItem, пробуем получить через media_handler
+                    primary_media = await self.media_handler.get_primary_media(item)
+                    if primary_media:
+                        media_items = [primary_media]
+                        self.logger.info(f"📸 Медиа найдено через media_handler")
+                        self.stats['with_media'] += 1
+                        self.stats['total_media_items'] += 1
+                        counters['with_media'] += 1
+                    else:
+                        # НЕТ МЕДИА - НЕ ОТКЛОНЯЕМ, ПРОСТО ЛОГИРУЕМ
+                        self.logger.info(f"📭 Новость без медиа (все равно публикуем)")
+                        self.stats['without_media'] += 1
+                        counters['without_media'] += 1
             except Exception as e:
                 self.logger.error(f"❌ Ошибка получения медиа: {e}")
+                # НЕ ОТКЛОНЯЕМ ИЗ-ЗА ОШИБКИ МЕДИА
+                self.stats['without_media'] += 1
+                counters['without_media'] += 1
             
             # 7. Форматирование текста
             try:
@@ -249,7 +278,7 @@ class NewsBot:
                         source_item=item,
                         analysis=analyzed,
                         formatted_text="",
-                        media_items=[primary_media] if primary_media else []
+                        media_items=media_items
                     )
                 )
             except Exception as e:
@@ -261,12 +290,13 @@ class NewsBot:
                 source_item=item,
                 analysis=analyzed,
                 formatted_text=formatted_text,
-                media_items=[primary_media] if primary_media else [],
+                media_items=media_items,
                 metadata={
                     'filter_score': filter_result.score,
                     'dedup_similarity': dedup_result.similarity,
                     'processed_at': datetime.now().isoformat(),
-                    'has_media': primary_media is not None
+                    'has_media': len(media_items) > 0,
+                    'media_count': len(media_items)
                 }
             )
             
@@ -274,8 +304,14 @@ class NewsBot:
             counters['passed'] += 1
             self.stats['processed'] += 1
             self.cache.mark_processed(item, 'approved', 'passed_all_filters')
+            
+            # Логируем результат с информацией о медиа
+            if media_items:
+                self.logger.info(f"✅ Новость прошла ({len(media_items)} медиа)")
+            else:
+                self.logger.info(f"✅ Новость прошла (без медиа)")
         
-        # Вывод статистики отсева
+        # Вывод статистики отсева с информацией о медиа
         self.logger.info("📊 ДЕТАЛЬНАЯ СТАТИСТИКА ОТСЕВА:")
         self.logger.info(f"  Всего новостей: {counters['total']}")
         self.logger.info(f"  Уже в кеше: {counters['cache']}")
@@ -283,11 +319,13 @@ class NewsBot:
         self.logger.info(f"  Не прошли фильтр: {counters['filter']}")
         self.logger.info(f"  Нет движения рынка: {counters['market']}")
         self.logger.info(f"  Отклонены AI: {counters['ai']}")
+        self.logger.info(f"  С МЕДИА: {counters['with_media']}")
+        self.logger.info(f"  БЕЗ МЕДИА: {counters['without_media']}")
         self.logger.info(f"  УСПЕШНО ПРОШЛИ: {counters['passed']}")
         
-        # 9. Публикация
+        # 9. Публикация ВСЕХ новостей (и с медиа, и без)
         if processed:
-            self.logger.info(f"📤 Публикация {len(processed)} новостей...")
+            self.logger.info(f"📤 Публикация {len(processed)} новостей (всех)...")
             
             for name, publisher in self.publisher_manager.publishers.items():
                 try:
@@ -297,9 +335,14 @@ class NewsBot:
                         self.stats['published'] += len(processed)
                         self.logger.info(f"✅ {name}: опубликовано {len(processed)} новостей")
                         
-                        if processed[0].formatted_text:
-                            preview = processed[0].formatted_text[:200].replace('\n', ' ')
-                            self.logger.info(f"📤 Пример поста: {preview}...")
+                        # Логируем информацию о медиа для каждого поста
+                        for i, post in enumerate(processed):
+                            media_count = len(post.media_items) if post.media_items else 0
+                            if media_count > 0:
+                                self.logger.info(f"📤 Пост {i+1}: {media_count} медиа")
+                            else:
+                                self.logger.info(f"📤 Пост {i+1}: без медиа")
+                            
                     else:
                         self.logger.warning(f"⚠️ {name}: ошибка публикации")
                         
@@ -326,6 +369,9 @@ class NewsBot:
         self.logger.info(f"🔧 Обработано: {self.stats['processed']}")
         self.logger.info(f"📤 Опубликовано: {self.stats['published']}")
         self.logger.info(f"❌ Отклонено: {self.stats['rejected']}")
+        self.logger.info(f"📸 С медиа: {self.stats['with_media']}")
+        self.logger.info(f"📭 Без медиа: {self.stats['without_media']}")
+        self.logger.info(f"🖼️ Всего медиа: {self.stats['total_media_items']}")
         
         if self.stats['rejected_reasons']:
             self.logger.info("📉 Причины отклонений:")
@@ -333,7 +379,7 @@ class NewsBot:
                 percentage = (count / max(1, self.stats['rejected'])) * 100
                 self.logger.info(f"  {reason}: {count} ({percentage:.1f}%)")
         
-        # Сбрасываем счетчики
+        # Сбрасываем счетчики (кроме статистики медиа)
         self.stats['fetched'] = 0
         self.stats['processed'] = 0
         self.stats['published'] = 0

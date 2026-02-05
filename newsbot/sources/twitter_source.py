@@ -1,4 +1,3 @@
-
 import asyncio
 import logging
 import re
@@ -59,7 +58,12 @@ class TwitterRSSSource:
             'total_processed': 0,
             'total_errors': 0,
             'last_fetch': None,
-            'feed_stats': {}
+            'feed_stats': {},
+            'media_stats': {
+                'with_media': 0,
+                'without_media': 0,
+                'total_media_items': 0
+            }
         }
         
         self.logger.info(f"Инициализирован источник Twitter RSS с {len(feeds)} фидами")
@@ -104,7 +108,9 @@ class TwitterRSSSource:
                 all_items.extend(items)
                 self.stats['feed_stats'][label] = len(items)
                 
-                self.logger.info(f"✅ RSS {label}: {len(items)} новостей")
+                # Логируем статистику медиа для этого фида
+                with_media = sum(1 for item in items if hasattr(item, 'media_items') and item.media_items)
+                self.logger.info(f"✅ RSS {label}: {len(items)} новостей ({with_media} с медиа)")
         
         # Фильтрация новостей
         if self.filters:
@@ -120,7 +126,18 @@ class TwitterRSSSource:
         self.stats['total_errors'] = self.error_count
         self.stats['last_fetch'] = datetime.now(timezone.utc).isoformat()
         
+        # Статистика медиа
+        for item in all_items:
+            if hasattr(item, 'media_items') and item.media_items:
+                self.stats['media_stats']['with_media'] += 1
+                self.stats['media_stats']['total_media_items'] += len(item.media_items)
+            else:
+                self.stats['media_stats']['without_media'] += 1
+        
         self.logger.info(f"Получено {len(all_items)} новостей после фильтрации")
+        self.logger.info(f"📊 Медиа статистика: {self.stats['media_stats']['with_media']} с медиа, "
+                        f"{self.stats['media_stats']['without_media']} без медиа")
+        
         return all_items
         
     async def _fetch_feed(self, 
@@ -217,6 +234,14 @@ class TwitterRSSSource:
                 url=url,
                 type=media_type
             ))
+        
+        # Логируем информацию о медиа
+        if media_items:
+            self.logger.debug(f"📸 Найдено {len(media_items)} медиа для записи: {entry_id}")
+            for i, media in enumerate(media_items):
+                self.logger.debug(f"   Медиа {i+1}: {media.type} - {media.url[:60]}...")
+        else:
+            self.logger.debug(f"🚫 Нет медиа для записи: {entry_id}")
         
         # Извлечение автора
         author = self._extract_author(entry)
@@ -371,21 +396,27 @@ class TwitterRSSSource:
         return text.strip()
         
     def _extract_media_urls(self, entry) -> List[str]:
-        """Извлечение ВСЕХ URL медиа из записи"""
+        """Извлечение ВСЕХ URL медиа из записи с улучшенным логированием"""
         media_urls = []
+        
+        self.logger.debug(f"=== Начало извлечения медиа ===")
         
         # 1. Медиа контент (стандартное поле RSS)
         if hasattr(entry, 'media_content'):
-            for media in entry.media_content:
+            self.logger.debug(f"Найдено media_content: {len(entry.media_content)} элементов")
+            for i, media in enumerate(entry.media_content):
                 if hasattr(media, 'url') and media.url:
                     media_urls.append(media.url)
+                    self.logger.debug(f"  Медиа из media_content[{i}]: {media.url[:80]}...")
         
         # 2. Вложения
         if hasattr(entry, 'enclosures'):
-            for enclosure in entry.enclosures:
+            self.logger.debug(f"Найдено enclosures: {len(entry.enclosures)} элементов")
+            for i, enclosure in enumerate(entry.enclosures):
                 url = getattr(enclosure, 'href', None) or getattr(enclosure, 'url', None)
                 if url and self._is_media_url(url):
                     media_urls.append(url)
+                    self.logger.debug(f"  Медиа из enclosure[{i}]: {url[:80]}...")
         
         # 3. Парсим HTML контент на наличие медиа
         content_fields = ['content', 'summary', 'description']
@@ -403,10 +434,16 @@ class TwitterRSSSource:
                 else:
                     html_content = str(field_value)
                     
-                media_urls.extend(self._extract_media_urls_from_html(html_content))
+                urls_from_html = self._extract_media_urls_from_html(html_content)
+                if urls_from_html:
+                    self.logger.debug(f"Найдено {len(urls_from_html)} медиа в поле {field}")
+                    media_urls.extend(urls_from_html)
         
         # 4. Twitter специфичные медиа
-        media_urls.extend(self._extract_twitter_media(entry))
+        twitter_media = self._extract_twitter_media(entry)
+        if twitter_media:
+            self.logger.debug(f"Найдено {len(twitter_media)} Twitter-специфичных медиа")
+            media_urls.extend(twitter_media)
         
         # Удаляем дубликаты и невалидные URL
         unique_urls = []
@@ -417,6 +454,8 @@ class TwitterRSSSource:
                 self._is_valid_url(url)):
                 unique_urls.append(url)
                 seen.add(url)
+        
+        self.logger.debug(f"Итог: {len(unique_urls)} уникальных медиа URL")
         
         return unique_urls[:10]  # Ограничиваем количество
         
@@ -620,6 +659,7 @@ class TwitterRSSSource:
                 'errors': self.error_count,
                 'last_fetch': self.stats['last_fetch']
             },
+            'media_stats': self.stats['media_stats'],
             'feed_stats': self.stats['feed_stats']
         }
     
