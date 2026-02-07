@@ -40,14 +40,28 @@ class MediaHandler:
             self.logger.error(f"❌ Ошибка получения медиа: {e}")
             return None
 
-
-    
     def _detect_media_type(self, url: str) -> str:
         """Определение типа медиа по URL"""
         if not url:
             return 'photo'
         
         url_lower = url.lower()
+        
+        # Для Twitter URL определяем тип более точно
+        if 'pbs.twimg.com' in url_lower:
+            if any(param in url_lower for param in ['format=jpg', 'format=png', 'name=large']):
+                return 'photo'
+            elif 'format=mp4' in url_lower:
+                return 'video'
+            elif 'format=gif' in url_lower:
+                return 'animation'
+            else:
+                # По умолчанию для twimg - фото
+                return 'photo'
+        
+        # pic.twitter.com всегда фото для Telegram
+        if 'pic.twitter.com' in url_lower:
+            return 'photo'
         
         # Изображения
         if any(ext in url_lower for ext in ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.bmp']):
@@ -69,11 +83,11 @@ class MediaHandler:
         if not text:
             return []
         
-        # Паттерны для медиа URL
+        # Паттерны для медиа URL с приоритетом для Twitter
         patterns = [
+            r'https?://(?:pbs\.twimg\.com|pic\.twitter\.com)/[^\s]+',
             r'https?://[^\s]+\.(?:jpg|jpeg|png|gif|webp|bmp)(?:\?[^\s]*)?',
             r'https?://[^\s]+\.(?:mp4|mov|avi|webm|mkv)(?:\?[^\s]*)?',
-            r'https?://(?:pbs\.twimg\.com|cdn\.discordapp\.com|i\.imgur\.com)/[^\s]+',
             r'https?://[^\s]*\.(?:youtube\.com|youtu\.be)/[^\s]+',
         ]
         
@@ -84,44 +98,17 @@ class MediaHandler:
         
         return list(set(urls))[:5]  # Убираем дубликаты, макс 5
     
-    async def _get_fallback_media(self, news_item) -> Optional[MediaItem]:
-        """Получение заглушки если нет медиа"""
-        # В зависимости от содержания новости
-        text = getattr(news_item, 'raw_text', '').lower()
-        
-        # Определяем тему для выбора заглушки
-        if any(word in text for word in ['btc', 'bitcoin']):
-            return MediaItem(
-                url='https://cryptoslate.com/wp-content/uploads/2023/10/bitcoin-price-2023.jpg',
-                type='photo'
-            )
-        elif any(word in text for word in ['eth', 'ethereum']):
-            return MediaItem(
-                url='https://cryptoslate.com/wp-content/uploads/2023/09/ethereum-price-2023.jpg',
-                type='photo'
-            )
-        elif any(word in text for word in ['sec', 'regulation', 'etf']):
-            return MediaItem(
-                url='https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=1200/https://s3.cointelegraph.com/uploads/2023-10/5678a7b4-2b9a-4e2d-9a6c-3c8b5d7e9f1a.jpg',
-                type='photo'
-            )
-        else:
-            # Общая крипто-картинка
-            return MediaItem(
-                url='https://cdn.pixabay.com/photo/2017/01/25/12/31/bitcoin-2007769_1280.jpg',
-                type='photo'
-            )
-    
     async def validate_media(self, media_item: MediaItem) -> bool:
         """Проверка доступности медиа"""
         try:
             if not self.session:
                 self.session = aiohttp.ClientSession()
             
-            # Проверяем только фото для скорости
-            if media_item.type != 'photo':
+            # Для Twitter URL не проверяем - Telegram сам умеет их скачивать
+            if any(domain in media_item.url.lower() for domain in ['twitter.com', 'twimg.com', 'pic.twitter.com']):
                 return True
             
+            # Проверяем только не-Twitter URL
             async with self.session.head(media_item.url, timeout=5) as response:
                 return response.status == 200
                 

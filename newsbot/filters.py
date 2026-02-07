@@ -20,35 +20,33 @@ class StrictMarketFilter:
     """Строгий фильтр для рыночных новостей"""
     
     def __init__(self):
-        """Инициализация паттернов"""
+        """Инициализация фильтра"""
         # Жесткое отклонение
         self.hard_reject = self._compile_patterns([
             r'\b(мнение|opinion|прогноз|forecast|predict|think)\b',
-            r'\b(дайджест|digest|recap|обзор|summary)\b',
-            r'\b(реклама|promo|airdrop|гивавей|subscribe|подписывайтесь)\b',
-            r'\b(вопрос\?|what do you think|как вы думаете)\b',
+            r'\b(дайджест|digest|рекап|recap|итоги|summary)\b',
+            r'\b(реклама|promo|airdrop|реферал|subscribe|рассылка)\b',
+            r'\b(что думаешь\?|what do you think|что вы думаете)\b',
         ])
         
         # Мягкое отклонение (штраф)
         self.soft_reject = self._compile_patterns([
-            r'\b(может быть|возможно|probably|could)\b',
-            r'\b(слух|rumor|according to sources)\b',
+            r'\b(может быть|вероятно|probably|could)\b',
+            r'\b(слухи|rumor|according to sources)\b',
         ])
         
-        # Обязательные сигналы
+        # Требуемые сигналы
         self.required_signals = self._compile_patterns([
             r'\$?\d+[.,]?\d*\s*(?:m|b|k|млн|млрд)\b',
             r'\b\d+[.,]?\d*\s*%\b',
             r'\b(btc|bitcoin|eth|ethereum|sec|etf|approve|reject|hack|transfer)\b',
         ])
         
-        # Статистика по паттернам
+        # Статистика по фильтру
         self.stats = {
             'hard_reject_patterns': len(self.hard_reject),
             'soft_reject_patterns': len(self.soft_reject),
             'required_signals': len(self.required_signals),
-            'boost_patterns': 0,
-            'entity_types': 0,
         }
     
     @staticmethod
@@ -59,7 +57,7 @@ class StrictMarketFilter:
     def quick_filter(self, text: str) -> FilterResult:
         """Быстрая фильтрация новости"""
         if not text or len(text.strip()) < 50:
-            return FilterResult(False, "Текст слишком короткий")
+            return FilterResult(False, "Слишком короткий текст")
         
         text_lower = text.lower()
         
@@ -79,14 +77,14 @@ class StrictMarketFilter:
         
         return FilterResult(
             passed=True,
-            reason=f"Пройдено ({signals} сигналов)",
+            reason=f"Прошло ({signals} сигналов)",
             score=max(0.3, score),
             matched_patterns=[],
             statistics={'signals_count': signals}
         )
     
     def analyze_content_quality(self, text: str) -> Dict:
-        """Полный анализ качества контента"""
+        """Анализ качества контента"""
         result = self.quick_filter(text)
         
         return {
@@ -102,5 +100,5 @@ class StrictMarketFilter:
         }
     
     def get_filter_stats(self) -> Dict:
-        """Получить статистику фильтров"""
+        """Получение статистики фильтра"""
         return self.stats

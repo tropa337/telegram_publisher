@@ -66,10 +66,10 @@ class SimpleFormatter:
             # Фолбэк на оригинальный текст
             text = getattr(processed_news.source_item, 'raw_text', '')
         
-        # Убираем лишние переносы строк
+        # Убираем лишние переносы строк (сохраняем структуру абзацев)
         text = re.sub(r'\n{3,}', '\n\n', text)
         
-        # Удаляем ВСЕ URL из текста
+        # Удаляем ВСЕ URL из текста (сохраняем только текст)
         text = self._remove_all_urls(text)
         
         # Удаляем служебные комментарии AI

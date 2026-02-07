@@ -1,4 +1,5 @@
 import asyncio
+import hashlib
 import logging
 import re
 from datetime import datetime, timezone
@@ -62,7 +63,8 @@ class TwitterRSSSource:
             'media_stats': {
                 'with_media': 0,
                 'without_media': 0,
-                'total_media_items': 0
+                'total_media_items': 0,
+                'media_by_type': {}
             }
         }
         
@@ -93,7 +95,6 @@ class TwitterRSSSource:
                 task = self._fetch_feed(session, label, url)
                 tasks.append(task)
             
-            # Параллельное выполнение запросов
             results = await asyncio.gather(*tasks, return_exceptions=True)
             
             for i, (label, url) in enumerate(self.feeds.items()):
@@ -108,9 +109,10 @@ class TwitterRSSSource:
                 all_items.extend(items)
                 self.stats['feed_stats'][label] = len(items)
                 
-                # Логируем статистику медиа для этого фида
                 with_media = sum(1 for item in items if hasattr(item, 'media_items') and item.media_items)
-                self.logger.info(f"✅ RSS {label}: {len(items)} новостей ({with_media} с медиа)")
+                total_media = sum(len(item.media_items) for item in items if hasattr(item, 'media_items') and item.media_items)
+                
+                self.logger.info(f"✅ RSS {label}: {len(items)} новостей ({with_media} с медиа, всего {total_media} медиафайлов)")
         
         # Фильтрация новостей
         if self.filters:
@@ -126,17 +128,25 @@ class TwitterRSSSource:
         self.stats['total_errors'] = self.error_count
         self.stats['last_fetch'] = datetime.now(timezone.utc).isoformat()
         
-        # Статистика медиа
+        # Детальная статистика медиа
         for item in all_items:
             if hasattr(item, 'media_items') and item.media_items:
                 self.stats['media_stats']['with_media'] += 1
                 self.stats['media_stats']['total_media_items'] += len(item.media_items)
+                
+                # Статистика по типам медиа
+                for media in item.media_items:
+                    media_type = media.type
+                    self.stats['media_stats']['media_by_type'][media_type] = \
+                        self.stats['media_stats']['media_by_type'].get(media_type, 0) + 1
             else:
                 self.stats['media_stats']['without_media'] += 1
         
         self.logger.info(f"Получено {len(all_items)} новостей после фильтрации")
-        self.logger.info(f"📊 Медиа статистика: {self.stats['media_stats']['with_media']} с медиа, "
-                        f"{self.stats['media_stats']['without_media']} без медиа")
+        
+        if self.stats['media_stats']['media_by_type']:
+            media_types_str = ", ".join([f"{count} {typ}" for typ, count in self.stats['media_stats']['media_by_type'].items()])
+            self.logger.info(f"📊 Детальная статистика медиа: {media_types_str}")
         
         return all_items
         
@@ -224,24 +234,32 @@ class TwitterRSSSource:
         raw_text = self._extract_text(entry)
         if not raw_text or len(raw_text.strip()) < 5:
             return None
-            
-        # Извлечение медиа и создание MediaItem объектов
-        media_urls = self._extract_media_urls(entry)
+        
+        # ИЗВЛЕЧЕНИЕ МЕДИА ИЗ RSS - КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ
+        media_urls = self._extract_rss_media_urls(entry)
+        
+        # Если нет медиа в RSS, проверяем текст
+        if not media_urls:
+            media_urls = self._extract_media_urls_from_text(raw_text)
+        
+        # Создаем MediaItem объекты
         media_items = []
-        for url in media_urls[:5]:  # Максимум 5 медиа
-            media_type = self._detect_media_type(url)
-            media_items.append(MediaItem(
-                url=url,
-                type=media_type
-            ))
+        for url in list(set(media_urls))[:5]:  # Уникальные, макс 5
+            if url and self._is_valid_media_url(url):
+                media_type = self._detect_media_type(url)
+                media_items.append(MediaItem(
+                    url=url,
+                    type=media_type,
+                    caption=None
+                ))
         
         # Логируем информацию о медиа
         if media_items:
-            self.logger.debug(f"📸 Найдено {len(media_items)} медиа для записи: {entry_id}")
-            for i, media in enumerate(media_items):
-                self.logger.debug(f"   Медиа {i+1}: {media.type} - {media.url[:60]}...")
+            self.logger.info(f"📸 RSS {source_label}: найдено {len(media_items)} медиа")
+            for i, media in enumerate(media_items[:3]):
+                self.logger.info(f"   Медиа {i+1}: {media.type} - {media.url[:100]}")
         else:
-            self.logger.debug(f"🚫 Нет медиа для записи: {entry_id}")
+            self.logger.debug(f"🚫 RSS {source_label}: нет медиа")
         
         # Извлечение автора
         author = self._extract_author(entry)
@@ -251,13 +269,13 @@ class TwitterRSSSource:
         if not url:
             url = f"twitter_rss:{source_label}:{entry_id}"
         
-        # Создание объекта новости с ПРАВИЛЬНЫМИ параметрами
+        # Создание объекта новости
         news_item = NewsItem(
             raw_text=raw_text,
             source=f"twitter_rss:{source_label}",
             url=url,
             created_at=created_at,
-            media_items=media_items,  # Используем media_items, а не media_urls
+            media_items=media_items,
             author=author
         )
         
@@ -267,6 +285,122 @@ class TwitterRSSSource:
         
         return news_item
 
+    def _extract_rss_media_urls(self, entry) -> List[str]:
+        """Извлечение медиа URL из RSS тегов (главное исправление)"""
+        media_urls = []
+        
+        try:
+            # 1. Проверяем media_content (feedparser помещает media:content сюда)
+            if hasattr(entry, 'media_content') and entry.media_content:
+                self.logger.debug(f"Найдено media_content: {len(entry.media_content)} элементов")
+                for i, media in enumerate(entry.media_content):
+                    if hasattr(media, 'url') and media.url:
+                        media_urls.append(media.url)
+                        self.logger.debug(f"  Медиа из media_content[{i}]: {media.url[:100]}")
+            
+            # 2. Проверяем media_thumbnail
+            if hasattr(entry, 'media_thumbnail') and entry.media_thumbnail:
+                thumbnails = entry.media_thumbnail
+                if isinstance(thumbnails, list):
+                    for thumb in thumbnails:
+                        if hasattr(thumb, 'url') and thumb.url:
+                            media_urls.append(thumb.url)
+                            self.logger.debug(f"  Медиа из media_thumbnail[list]: {thumb.url[:100]}")
+                elif isinstance(thumbnails, dict) and 'url' in thumbnails:
+                    media_urls.append(thumbnails['url'])
+                    self.logger.debug(f"  Медиа из media_thumbnail[dict]: {thumbnails['url'][:100]}")
+            
+            # 3. Проверяем все атрибуты на наличие url
+            for attr_name in dir(entry):
+                if not attr_name.startswith('_'):
+                    try:
+                        attr_value = getattr(entry, attr_name)
+                        if isinstance(attr_value, str) and attr_value.startswith('http'):
+                            if self._is_media_url(attr_value):
+                                media_urls.append(attr_value)
+                                self.logger.debug(f"  Медиа из атрибута {attr_name}: {attr_value[:100]}")
+                    except:
+                        pass
+            
+            # 4. Проверяем enclosures (вложения)
+            if hasattr(entry, 'enclosures') and entry.enclosures:
+                self.logger.debug(f"Найдено enclosures: {len(entry.enclosures)}")
+                for i, enclosure in enumerate(entry.enclosures):
+                    url = getattr(enclosure, 'href', None) or getattr(enclosure, 'url', None)
+                    if url and self._is_media_url(url):
+                        media_urls.append(url)
+                        self.logger.debug(f"  Медиа из enclosure[{i}]: {url[:100]}")
+            
+            # 5. Проверяем теги с медиа в названии
+            media_fields = ['media', 'image', 'photo', 'thumbnail', 'picture']
+            for field in media_fields:
+                for attr_name in dir(entry):
+                    if field in attr_name.lower() and not attr_name.startswith('_'):
+                        try:
+                            field_value = getattr(entry, attr_name)
+                            if isinstance(field_value, dict) and 'url' in field_value:
+                                media_urls.append(field_value['url'])
+                                self.logger.debug(f"  Медиа из {attr_name}[dict]: {field_value['url'][:100]}")
+                            elif isinstance(field_value, str) and field_value.startswith('http'):
+                                if self._is_media_url(field_value):
+                                    media_urls.append(field_value)
+                                    self.logger.debug(f"  Медиа из {attr_name}: {field_value[:100]}")
+                        except:
+                            pass
+            
+        except Exception as e:
+            self.logger.error(f"Ошибка извлечения медиа из RSS: {e}")
+        
+        # Удаляем дубликаты
+        unique_urls = []
+        seen = set()
+        for url in media_urls:
+            if url not in seen and self._is_valid_media_url(url):
+                unique_urls.append(url)
+                seen.add(url)
+        
+        return unique_urls[:10]
+
+    def _extract_media_urls_from_text(self, text: str) -> List[str]:
+        """Извлечение URL медиа из текста"""
+        if not text:
+            return []
+        
+        patterns = [
+            r'https?://[^\s]+\.(?:jpg|jpeg|png|gif|webp|bmp)(?:\?[^\s]*)?',
+            r'https?://[^\s]+\.(?:mp4|mov|avi|webm|mkv)(?:\?[^\s]*)?',
+            r'https?://(?:pbs\.twimg\.com|pic\.twitter\.com)/[^\s]+',
+            r'https?://[^\s]*\.(?:youtube\.com|youtu\.be)/[^\s]+',
+        ]
+        
+        urls = []
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            urls.extend(matches)
+        
+        return list(set(urls))[:5]
+
+    def _is_valid_media_url(self, url: str) -> bool:
+        """Проверка валидности медиа URL"""
+        try:
+            result = urlparse(url)
+            if result.scheme not in ['http', 'https']:
+                return False
+            
+            # Для Twitter URL всегда валидны
+            if any(domain in url.lower() for domain in ['twitter.com', 'twimg.com', 'x.com']):
+                return True
+            
+            # Проверяем расширения файлов
+            image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.svg']
+            for ext in image_extensions:
+                if url.lower().endswith(ext):
+                    return True
+            
+            return True
+        except:
+            return False
+
     def _detect_media_type(self, url: str) -> str:
         """Определение типа медиа по URL"""
         if not url:
@@ -274,38 +408,44 @@ class TwitterRSSSource:
         
         url_lower = url.lower()
         
+        # Twitter специфичные URL
+        if 'pbs.twimg.com' in url_lower:
+            if any(param in url_lower for param in ['format=jpg', 'format=png', 'name=large', '.jpg', '.png']):
+                return 'photo'
+            elif 'format=mp4' in url_lower or '.mp4' in url_lower:
+                return 'video'
+            elif 'format=gif' in url_lower or '.gif' in url_lower:
+                return 'animation'
+            elif 'card_img' in url_lower:
+                return 'photo'  # Карточки Twitter - всегда фото
+            else:
+                return 'photo'
+        
         # Изображения
         if any(ext in url_lower for ext in ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.svg']):
             return 'photo'
         
         # Видео
-        if any(ext in url_lower for ext in ['.mp4', '.webm', '.mov', '.avi', '.mkv']):
-            return 'video'
-        
-        # Документы
-        if any(ext in url_lower for ext in ['.pdf', '.doc', '.docx', '.txt']):
-            return 'document'
-        
-        # Проверяем домены
-        if any(domain in url_lower for domain in ['youtube.com', 'youtu.be', 'vimeo.com']):
+        if any(ext in url_lower for ext in ['.mp4', '.mov', '.avi', '.webm', '.mkv', '.flv']):
             return 'video'
         
         # По умолчанию фото
         return 'photo'
-
         
     def _get_entry_id(self, entry) -> Optional[str]:
         """Получение уникального ID записи"""
-        # Пробуем разные поля для ID
         id_fields = ['id', 'guid', 'link', 'published', 'updated']
         
         for field in id_fields:
             value = getattr(entry, field, None)
             if value:
-                # Нормализация ID
                 if isinstance(value, dict) and 'value' in value:
                     value = value['value']
-                return str(value).strip()
+                
+                id_str = str(value).strip()
+                if 'http' in id_str:
+                    return hashlib.md5(id_str.encode()).hexdigest()
+                return id_str
                 
         return None
         
@@ -317,13 +457,11 @@ class TwitterRSSSource:
             date_str = getattr(entry, field, None)
             if date_str:
                 try:
-                    # Иногда дата может быть в словаре
                     if isinstance(date_str, dict) and 'value' in date_str:
                         date_str = date_str['value']
                     
                     parsed_date = parser.parse(date_str)
                     
-                    # Если дата без часового пояса, считаем UTC
                     if parsed_date.tzinfo is None:
                         parsed_date = parsed_date.replace(tzinfo=timezone.utc)
                         
@@ -337,11 +475,11 @@ class TwitterRSSSource:
     def _extract_text(self, entry) -> str:
         """Извлечение текста из RSS-записи"""
         content_fields = [
-            ('content', 0, 'value'),  # content[0].value
-            ('summary_detail', None, 'value'),  # summary_detail.value
-            ('summary', None, None),  # summary
-            ('title', None, None),  # title
-            ('description', None, None)  # description
+            ('content', 0, 'value'),
+            ('summary_detail', None, 'value'),
+            ('summary', None, None),
+            ('title', None, None),
+            ('description', None, None)
         ]
         
         best_text = ""
@@ -351,7 +489,6 @@ class TwitterRSSSource:
             if not field_value:
                 continue
                 
-            # Обработка списков
             if isinstance(field_value, list) and index is not None:
                 if len(field_value) > index:
                     field_value = field_value[index]
@@ -360,7 +497,6 @@ class TwitterRSSSource:
                 else:
                     continue
                     
-            # Обработка объектов с атрибутом value
             elif hasattr(field_value, 'value'):
                 field_value = field_value.value
                 
@@ -376,219 +512,36 @@ class TwitterRSSSource:
         if not html:
             return ""
             
-        # Удаление тегов
         text = re.sub(r'<[^>]+>', ' ', html)
-        
-        # Декодирование HTML-сущностей
         text = unescape(text)
         
-        # Удаление URL
+        # Удаляем URL из текста (они уже извлечены отдельно)
         text = re.sub(r'https?://\S+', '', text)
         
         # Удаление подписей Twitter
         text = re.sub(r'\s*—\s*.*\(@\w+\)[^—]*$', '', text)
-        text = re.sub(r'pic\.twitter\.com/\w+', '', text)
+        text = re.sub(r'pic\.twitter\.com/\w+', '', text, flags=re.IGNORECASE)
         
-        # Удаление лишних пробелов и переносов строк
         text = re.sub(r'\s+', ' ', text)
         text = re.sub(r'\n+', ' ', text)
+        text = re.sub(r'[\x00-\x1F\x7F-\x9F]', '', text)
         
         return text.strip()
         
-    def _extract_media_urls(self, entry) -> List[str]:
-        """Извлечение ВСЕХ URL медиа из записи с улучшенным логированием"""
-        media_urls = []
-        
-        self.logger.debug(f"=== Начало извлечения медиа ===")
-        
-        # 1. Медиа контент (стандартное поле RSS)
-        if hasattr(entry, 'media_content'):
-            self.logger.debug(f"Найдено media_content: {len(entry.media_content)} элементов")
-            for i, media in enumerate(entry.media_content):
-                if hasattr(media, 'url') and media.url:
-                    media_urls.append(media.url)
-                    self.logger.debug(f"  Медиа из media_content[{i}]: {media.url[:80]}...")
-        
-        # 2. Вложения
-        if hasattr(entry, 'enclosures'):
-            self.logger.debug(f"Найдено enclosures: {len(entry.enclosures)} элементов")
-            for i, enclosure in enumerate(entry.enclosures):
-                url = getattr(enclosure, 'href', None) or getattr(enclosure, 'url', None)
-                if url and self._is_media_url(url):
-                    media_urls.append(url)
-                    self.logger.debug(f"  Медиа из enclosure[{i}]: {url[:80]}...")
-        
-        # 3. Парсим HTML контент на наличие медиа
-        content_fields = ['content', 'summary', 'description']
-        for field in content_fields:
-            field_value = getattr(entry, field, None)
-            if field_value:
-                html_content = ""
-                
-                if isinstance(field_value, list):
-                    for item in field_value:
-                        if hasattr(item, 'value'):
-                            html_content += item.value + " "
-                        else:
-                            html_content += str(item) + " "
-                else:
-                    html_content = str(field_value)
-                    
-                urls_from_html = self._extract_media_urls_from_html(html_content)
-                if urls_from_html:
-                    self.logger.debug(f"Найдено {len(urls_from_html)} медиа в поле {field}")
-                    media_urls.extend(urls_from_html)
-        
-        # 4. Twitter специфичные медиа
-        twitter_media = self._extract_twitter_media(entry)
-        if twitter_media:
-            self.logger.debug(f"Найдено {len(twitter_media)} Twitter-специфичных медиа")
-            media_urls.extend(twitter_media)
-        
-        # Удаляем дубликаты и невалидные URL
-        unique_urls = []
-        seen = set()
-        for url in media_urls:
-            if (url not in seen and 
-                self._is_media_url(url) and 
-                self._is_valid_url(url)):
-                unique_urls.append(url)
-                seen.add(url)
-        
-        self.logger.debug(f"Итог: {len(unique_urls)} уникальных медиа URL")
-        
-        return unique_urls[:10]  # Ограничиваем количество
-        
-    def _extract_media_urls_from_html(self, html: str) -> List[str]:
-        """Извлечение URL медиа из HTML"""
-        # Паттерны для изображений
-        img_patterns = [
-            r'src=["\']([^"\']+\.(?:jpg|jpeg|png|gif|webp|bmp)[^"\']*)["\']',
-            r'data-src=["\']([^"\']+\.(?:jpg|jpeg|png|gif|webp|bmp)[^"\']*)["\']',
-            r'data-url=["\']([^"\']+\.(?:jpg|jpeg|png|gif|webp|bmp)[^"\']*)["\']',
-            r'url\(["\']?([^"\'\)]+\.(?:jpg|jpeg|png|gif|webp|bmp)[^"\'\)]*)\)',
-        ]
-        
-        # Паттерны для видео
-        video_patterns = [
-            r'src=["\']([^"\']+\.(?:mp4|webm|mov|avi|mkv)[^"\']*)["\']',
-            r'data-video-url=["\']([^"\']+)["\']',
-            r'href=["\']([^"\']+\.(?:mp4|webm|mov)[^"\']*)["\']',
-        ]
-        
-        # Паттерны для embed-видео
-        embed_patterns = [
-            r'(https?://(?:www\.)?youtube\.com/watch\?v=[\w-]+)',
-            r'(https?://youtu\.be/[\w-]+)',
-            r'(https?://(?:www\.)?vimeo\.com/\d+)',
-            r'(https?://(?:www\.)?twitter\.com/\w+/status/\d+)',
-        ]
-        
-        all_patterns = img_patterns + video_patterns + embed_patterns
-        
-        urls = []
-        for pattern in all_patterns:
-            matches = re.findall(pattern, html, re.IGNORECASE)
-            urls.extend(matches)
-        
-        return urls
-    
-    def _extract_twitter_media(self, entry) -> List[str]:
-        """Извлечение Twitter-специфичных медиа"""
-        twitter_media = []
-        
-        # Проверяем Twitter-специфичные поля
-        twitter_fields = ['twitter_image', 'twitter_video', 'twitter_media']
-        
-        for field in twitter_fields:
-            value = getattr(entry, field, None)
-            if value:
-                if isinstance(value, list):
-                    twitter_media.extend(value)
-                else:
-                    twitter_media.append(value)
-        
-        return twitter_media
-    
-    def _is_media_url(self, url: str) -> bool:
-        """Проверка, является ли URL медиа файлом"""
-        if not url or not isinstance(url, str):
-            return False
-            
-        url_lower = url.lower()
-        
-        # Проверяем расширения файлов
-        image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.svg']
-        video_extensions = ['.mp4', '.webm', '.mov', '.avi', '.mkv', '.flv']
-        
-        for ext in image_extensions + video_extensions:
-            if url_lower.endswith(ext) or f'{ext}?' in url_lower:
-                return True
-        
-        # Проверяем домены и пути
-        media_domains = [
-            'twimg.com',
-            'pbs.twimg.com',
-            'cdn.twitter.com',
-            'imgur.com',
-            'i.imgur.com',
-            'i.redd.it',
-            'media.tweet',
-            'youtube.com',
-            'youtu.be',
-            'vimeo.com',
-            'giphy.com',
-            'tenor.com',
-            'gfycat.com',
-            'streamable.com'
-        ]
-        
-        for domain in media_domains:
-            if domain in url_lower:
-                return True
-        
-        # Проверяем пути
-        media_paths = [
-            '/media/',
-            '/photo/',
-            '/image/',
-            '/video/',
-            '/gif/',
-            '/thumb/',
-            '/avatar/',
-        ]
-        
-        for path in media_paths:
-            if path in url_lower:
-                return True
-        
-        return False
-    
-    def _is_valid_url(self, url: str) -> bool:
-        """Проверка валидности URL"""
-        try:
-            result = urlparse(url)
-            return all([result.scheme, result.netloc])
-        except:
-            return False
-    
     def _extract_author(self, entry) -> Optional[str]:
         """Извлечение автора"""
         author = getattr(entry, 'author', None)
         if author:
-            # Извлекаем имя из формата "Name (@handle)"
             match = re.search(r'([^(@]+)\(@', author)
             if match:
                 return match.group(1).strip()
             
-            # Удаляем email и другие метаданные
-            author = re.sub(r'<[^>]+>', '', author)  # Удаляем email в <>
-            author = re.sub(r'\([^)]+\)', '', author)  # Удаляем скобочные комментарии
-            author = re.sub(r'@\w+', '', author)  # Удаляем @упоминания
+            author = re.sub(r'<[^>]+>', '', author)
+            author = re.sub(r'\([^)]+\)', '', author)
+            author = re.sub(r'@\w+', '', author)
             
             return author.strip()
         
-        # Пробуем извлечь из title
         title = getattr(entry, 'title', '')
         if ':' in title:
             author_part = title.split(':', 1)[0]
@@ -599,7 +552,6 @@ class TwitterRSSSource:
     def _cleanup_cache(self):
         """Очистка кеша обработанных ID"""
         if len(self.processed_ids) > self.max_cache_size:
-            # Оставляем только последние записи
             items = list(self.processed_ids)
             self.processed_ids = set(items[-self.max_cache_size:])
             self.logger.info(f"Кеш очищен: {len(self.processed_ids)} элементов")

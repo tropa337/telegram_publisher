@@ -11,7 +11,7 @@ from .types import AnalyzedNews, NewsItem
 
 
 class CryptoNewsAnalyzer:
-    """AI анализатор крипто-новостей"""
+    """AI анализатор крипто-новостей с улучшенным переводом"""
     
     def __init__(self):
         """Инициализация"""
@@ -38,12 +38,18 @@ class CryptoNewsAnalyzer:
                     relevance_reason="Не соответствует критериям релевантности AI"
                 )
             
-            # 2. Качественный перевод на русский
-            translated = await self._translate_text(news_item.raw_text)
+            # 2. Предварительная нормализация текста
+            normalized_text = self._normalize_text(news_item.raw_text)
             
-            # 3. ТОЛЬКО перевод, без редакторских заметок и тегов
+            # 3. Качественный перевод на русский
+            translated = await self._translate_text(normalized_text)
+            
+            # 4. Пост-обработка перевода
+            translated = self._post_process_translation(translated)
+            
+            # 5. Возвращаем результат С медиа информацией из оригинала
             return AnalyzedNews(
-                source_item=news_item,
+                source_item=news_item,  # Сохраняем оригинал с медиа
                 is_relevant=True,
                 relevance_reason="Прошла AI анализ",
                 translated_text=translated,
@@ -54,7 +60,10 @@ class CryptoNewsAnalyzer:
                 metadata={
                     'ai_processed': True,
                     'original_language': 'en',
-                    'translation_quality': 'high'
+                    'translation_quality': 'high',
+                    'normalized': True,
+                    'has_media': len(news_item.media_items) > 0 if hasattr(news_item, 'media_items') else False,
+                    'media_count': len(news_item.media_items) if hasattr(news_item, 'media_items') else 0
                 }
             )
             
@@ -66,26 +75,81 @@ class CryptoNewsAnalyzer:
                 relevance_reason=f"Ошибка AI: {str(e)[:50]}"
             )
     
+    def _normalize_text(self, text: str) -> str:
+        """Нормализация текста перед переводом"""
+        # Исправляем кривые форматы чисел
+        text = re.sub(r'(\d+),(\d{3})', r'\1.\2', text)
+        text = re.sub(r'(\d),(\d{1,2}[MBK])', r'\1.\2', text)
+        text = re.sub(r'(\d),(\d{1,2})\s*([MBK])', r'\1.\2\3', text)
+        
+        # Исправляем лишние пробелы
+        text = re.sub(r'\s+', ' ', text)
+        text = re.sub(r'\s+([.,$%!?])', r'\1', text)
+        text = re.sub(r'([(])\s+', r'\1', text)
+        text = re.sub(r'\s+([)])', r'\1', text)
+        
+        # Форматирование валют
+        text = re.sub(r'(\$)\s*(\d+)', r'\1\2', text)
+        text = re.sub(r'(\d+)\s*([MBK])', r'\1\2', text)
+        
+        # Удаляем лишние символы
+        text = re.sub(r'…\s*\.+', '…', text)
+        text = re.sub(r'\.{3,}', '…', text)
+        
+        return text.strip()
+    
+    def _post_process_translation(self, text: str) -> str:
+        """Пост-обработка перевода"""
+        # Форматирование чисел в русском стиле
+        text = re.sub(r'(\d+)\.(\d+)\s*([млрдMBK])', r'\1,\2 \3', text)
+        text = re.sub(r'(\$)(\d+\.?\d*)\s*([млрдMBK]?)', r'\1\2\3', text)
+        
+        # Исправляем кривой перевод валют
+        text = re.sub(r'долларов\s*(\$)', r'\1', text)
+        text = re.sub(r'\$\s*долларов', r'$', text)
+        
+        # Убираем лишние пробелы после запятых и точек
+        text = re.sub(r'([.,])\s+', r'\1 ', text)
+        
+        # Форматирование процентов
+        text = re.sub(r'(\d+)\s*процентов', r'\1%', text)
+        text = re.sub(r'(\d+)%\s*процентов', r'\1%', text)
+        
+        # Удаляем дублированные знаки препинания
+        text = re.sub(r'([!?.,]){2,}', r'\1', text)
+        
+        # Корректируем пробелы вокруг тире
+        text = re.sub(r'\s*-\s*', ' — ', text)
+        
+        return text.strip()
+    
     async def _check_relevance(self, text: str) -> bool:
         """Проверка релевантности для крипторынка"""
         try:
+            normalized = self._normalize_text(text[:800])
+            
             prompt = f"""Ты анализатор крипто-новостей. Ответь ONLY 'RELEVANT' или 'IRRELEVANT'.
 
 RELEVANT если новость содержит:
 1. Конкретные рыночные события (листинг, делистинг, взломы, переводы)
 2. Регуляторные решения (SEC, CFTC, одобрения ETF)
-3. Институциональные действия (BlackRock, Fidelity)
+3. Институциональные действия (BlackRock, Fidelity, Binance, Coinbase)
 4. Крупные финансовые операции (>$1M)
 5. Важные обновления протоколов
+6. Движение крупных кошельков (китов)
+7. Ликвидации, данные по деривативам
+8. Политические новости, влияющие на крипто
 
 IRRELEVANT если:
-1. Мнения, прогнозы, speculation
-2. Реклама, промо, airdrop
-3. Образовательный контент, tutorials
+1. Мнения, прогнозы, speculation без конкретных данных
+2. Реклама, промо, airdrop, реферальные ссылки
+3. Образовательный контент, tutorials, how-to
 4. Мемы, юмор, несерьезный контент
 5. Общие обсуждения без конкретики
+6. Личные истории без рыночной значимости
+7. Спам, повторяющийся контент
 
-Новость: {text[:800]}
+Новость: {normalized}
 
 Ответ:"""
             
@@ -103,6 +167,7 @@ IRRELEVANT если:
             )
             
             answer = response.choices[0].message.content.strip().upper()
+            self.logger.debug(f"AI ответ на релевантность: {answer}")
             return "RELEVANT" in answer
             
         except asyncio.TimeoutError:
@@ -118,13 +183,18 @@ IRRELEVANT если:
             # Кэширование переводов
             text_hash = hash(text[:500])
             if text_hash in self.translation_cache:
+                self.logger.debug("Используем кэшированный перевод")
                 return self.translation_cache[text_hash]
             
             prompt = f"""Переведи этот крипто-новостной текст на русский язык профессионально и точно.
-Сохрани все числа, даты, имена компаний и технические термины без изменений.
-Сделай перевод естественным для русского читателя.
-НЕ добавляй никаких служебных комментариев, примечаний или пояснений.
-ТОЛЬКО перевод текста.
+ВАЖНЫЕ ПРАВИЛА:
+1. Сохрани все числа, даты, имена компаний и технические термины без изменений
+2. Форматируй числа в русском стиле: 1.5M → 1,5 млн
+3. Сохрани символы валют: $100 → $100 (не "100 долларов")
+4. Сделай перевод естественным для русского читателя
+5. НЕ добавляй никаких служебных комментариев, примечаний или пояснений
+6. ТОЛЬКО перевод текста, без вступлений и заключений
+7. Сохраняй оригинальную структуру предложений
 
 Текст для перевода:
 {text[:1500]}
@@ -146,18 +216,47 @@ IRRELEVANT если:
             # УДАЛЯЕМ ВСЕ служебные комментарии
             translated = self._remove_service_comments(translated)
             
+            # Дополнительная очистка
+            translated = self._clean_translation(translated)
+            
             # Сохраняем в кэш
             self.translation_cache[text_hash] = translated
             
             # Очистка кэша если слишком большой
             if len(self.translation_cache) > 100:
                 self.translation_cache.clear()
+                self.logger.info("Очищен кэш переводов")
             
             return translated
             
         except Exception as e:
             self.logger.error(f"❌ Ошибка перевода: {e}")
             return text[:1000]
+    
+    def _clean_translation(self, text: str) -> str:
+        """Дополнительная очистка перевода"""
+        text = re.sub(r'^(перевод|translation|переведено):\s*', '', text, flags=re.IGNORECASE)
+        text = re.sub(r'\s*\[конец перевода\]$', '', text, flags=re.IGNORECASE)
+        
+        text = re.sub(r'\(примечание:.*?\)', '', text)
+        text = re.sub(r'\[примечание.*?\]', '', text)
+        text = re.sub(r'\*примечание.*?\*', '', text)
+        
+        lines = text.split('\n')
+        cleaned_lines = []
+        for line in lines:
+            line_stripped = line.strip()
+            if line_stripped:
+                if not any(marker in line_stripped.lower() for marker in [
+                    'перевод текста', 'оригинальный текст', 'текст переведен',
+                    'note:', 'примечание:', 'комментарий перевода:'
+                ]):
+                    cleaned_lines.append(line_stripped)
+        
+        result = '\n'.join(cleaned_lines)
+        result = re.sub(r'\s+', ' ', result)
+        
+        return result.strip()
     
     def _remove_service_comments(self, text: str) -> str:
         """Удаление служебных комментариев AI"""
@@ -168,31 +267,33 @@ IRRELEVANT если:
         for line in lines:
             line_lower = line.lower().strip()
             
-            # Пропускаем служебные блоки
             if any(marker in line_lower for marker in [
                 'примечание:', 'заметка:', 'комментарий:', '---',
                 'сохранены', 'даты', 'текст адаптирован', 'via @',
-                'перевод:', 'translation:', 'note:'
+                'перевод:', 'translation:', 'note:', 'comment:',
+                'примечание перевода:', 'оригинал:', 'source:'
             ]):
                 in_service_block = True
                 continue
             
-            # Пропускаем пустые строки после служебных блоков
             if in_service_block and line.strip() == '':
                 in_service_block = False
                 continue
             
-            # Удаляем Twitter упоминания в любой строке
             line = re.sub(r'via\s+@\w+', '', line, flags=re.IGNORECASE)
             line = re.sub(r'@\w+', '', line)
+            
+            line = re.sub(r'pic\.twitter\.com/\w+', '', line, flags=re.IGNORECASE)
             
             if not in_service_block and line.strip():
                 cleaned_lines.append(line.strip())
         
         result = '\n'.join(cleaned_lines)
         
-        # Дополнительно удаляем короткие ссылки
         result = re.sub(r'\S+\.\.\.$', '', result)
+        
+        result = re.sub(r'^["\']+', '', result)
+        result = re.sub(r'["\']+$', '', result)
         
         return result.strip()
 

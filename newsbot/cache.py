@@ -160,6 +160,14 @@ class NewsCache:
             else:
                 metadata['created_at'] = str(news_item.created_at)
         
+        # Информация о медиа
+        if hasattr(news_item, 'media_items') and news_item.media_items:
+            metadata['has_media'] = True
+            metadata['media_count'] = len(news_item.media_items)
+            metadata['media_types'] = list(set([m.type for m in news_item.media_items[:3]]))
+        else:
+            metadata['has_media'] = False
+        
         entry = CacheEntry(
             item_hash=item_hash,
             timestamp=time.time(),

@@ -1,10 +1,12 @@
-
 import asyncio
+import hashlib
 import logging
+import re
 import sys
 import time
 from datetime import datetime, timezone
-from typing import List
+from difflib import SequenceMatcher
+from typing import Dict, List, Set
 
 from telethon import TelegramClient
 
@@ -34,8 +36,63 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+class QualityFilter:
+    """Фильтр качества контента"""
+    
+    def __init__(self):
+        self.min_length = 20
+        self.max_repetitions = 3
+        self.min_unique_words = 5
+    
+    def check(self, text: str) -> bool:
+        """Проверка качества текста"""
+        if not text or len(text.strip()) < self.min_length:
+            return False
+        
+        text_lower = text.lower()
+        
+        # Проверка на спам-паттерны
+        spam_patterns = [
+            r'buy\s+now',
+            r'click\s+here',
+            r'limited\s+time',
+            r'100%\s+free',
+            r'sign\s+up',
+            r'join\s+now',
+            r'exclusive\s+offer',
+            r'double\s+your',
+            r'make\s+money',
+            r'earn\s+free'
+        ]
+        
+        for pattern in spam_patterns:
+            if re.search(pattern, text_lower):
+                return False
+        
+        # Проверка на слишком много специальных символов
+        special_chars = len(re.findall(r'[!@#$%^&*()_+=|<>?{}\[\]~-]', text))
+        if special_chars > len(text) * 0.2:  # Более 20% спецсимволов
+            return False
+        
+        # Проверка уникальности слов
+        words = re.findall(r'\b\w{3,}\b', text_lower)
+        unique_words = set(words)
+        
+        if len(unique_words) < self.min_unique_words:
+            return False
+        
+        # Проверка на повторения
+        word_counts = {}
+        for word in words:
+            word_counts[word] = word_counts.get(word, 0) + 1
+            if word_counts[word] > self.max_repetitions:
+                return False
+        
+        return True
+
+
 class NewsBot:
-    """Основной класс новостного бота"""
+    """Основной класс новостного бота с улучшенной дедупликацией"""
     
     def __init__(self):
         """Инициализация"""
@@ -46,6 +103,7 @@ class NewsBot:
         self.cache = NewsCache()
         self.dedup = DeduplicationEngine()
         self.filter = StrictMarketFilter()
+        self.quality_filter = QualityFilter()
         self.analyzer = get_analyzer()
         
         # Новые компоненты
@@ -59,6 +117,11 @@ class NewsBot:
         self.sources = {}
         self.publisher_manager = PublisherManager()
         
+        # Для дедупликации в реальном времени
+        self.recent_news_hashes: Set[str] = set()
+        self.recent_news_texts: List[str] = []
+        self.max_recent_items = 50
+        
         # Статистика
         self.stats = {
             'fetched': 0,
@@ -70,7 +133,10 @@ class NewsBot:
             'start_time': datetime.now(),
             'with_media': 0,
             'without_media': 0,
-            'total_media_items': 0
+            'total_media_items': 0,
+            'duplicates_filtered': 0,
+            'quality_filtered': 0,
+            'media_failed': 0
         }
         
         # Флаг работы
@@ -79,7 +145,7 @@ class NewsBot:
         self._init_sources()
         self._init_publishers()
         
-        self.logger.info("🤖 Бот инициализирован с логированием медиа")
+        self.logger.info("🤖 Бот инициализирован с улучшенной фильтрацией")
     
     def _init_sources(self):
         """Инициализация источников"""
@@ -110,12 +176,63 @@ class NewsBot:
                     client=client,
                     channel=self.config.TARGET_CHANNEL,
                     max_media_per_post=self.config.MAX_MEDIA_PER_POST,
-                    always_include_media=True  # Публиковать с медиа если есть
+                    always_include_media=True
                 )
                 self.publisher_manager.add_publisher('telegram', telegram)
                 self.logger.info(f"✅ Telegram: {self.config.TARGET_CHANNEL} (публикуем все посты)")
             except Exception as e:
                 self.logger.error(f"❌ Ошибка Telegram: {e}")
+    
+    def _create_news_hash(self, news_item: NewsItem) -> str:
+        """Создание хеша для новости для дедупликации"""
+        text = news_item.raw_text.lower()
+        
+        # Извлекаем ключевые числа (суммы в долларах)
+        amounts = re.findall(r'\$[\d,.]+[mbk]?', text)
+        amounts_str = ''.join(sorted(amounts))
+        
+        # Извлекаем основные сущности
+        entities = []
+        for word in ['bitcoin', 'btc', 'ethereum', 'eth', 'blackrock', 'coinbase', 
+                     'binance', 'sec', 'etf', 'vitalik', 'saylor']:
+            if word in text:
+                entities.append(word)
+        
+        hash_content = f"{text[:200]}|{amounts_str}|{'|'.join(entities[:3])}"
+        return hashlib.md5(hash_content.encode()).hexdigest()
+    
+    def _is_duplicate_news(self, news_item: NewsItem) -> bool:
+        """Проверка, является ли новость дубликатом"""
+        news_hash = self._create_news_hash(news_item)
+        if news_hash in self.recent_news_hashes:
+            return True
+        
+        text = news_item.raw_text.lower()
+        amounts = set(re.findall(r'\$[\d,.]+[mbk]?', text))
+        
+        for recent_text in self.recent_news_texts[-10:]:
+            recent_amounts = set(re.findall(r'\$[\d,.]+[mbk]?', recent_text.lower()))
+            if amounts and recent_amounts and amounts == recent_amounts:
+                similarity = SequenceMatcher(None, text[:200], recent_text[:200]).ratio()
+                if similarity > 0.6:
+                    return True
+        
+        return False
+    
+    def _add_to_recent_news(self, news_item: NewsItem):
+        """Добавление новости в список недавних для дедупликации"""
+        news_hash = self._create_news_hash(news_item)
+        text = news_item.raw_text.lower()
+        
+        self.recent_news_hashes.add(news_hash)
+        self.recent_news_texts.append(text)
+        
+        if len(self.recent_news_hashes) > self.max_recent_items:
+            old_hash = next(iter(self.recent_news_hashes))
+            self.recent_news_hashes.remove(old_hash)
+        
+        if len(self.recent_news_texts) > self.max_recent_items:
+            self.recent_news_texts.pop(0)
     
     async def start(self):
         """Запуск бота в непрерывном режиме"""
@@ -179,17 +296,19 @@ class NewsBot:
         """Обработка и публикация ВСЕХ новостей (с медиа и без)"""
         processed = []
         
-        # Счетчики для отладки
         counters = {
             'total': 0,
             'cache': 0,
             'duplicate': 0,
             'filter': 0,
             'market': 0,
+            'quality': 0,
             'ai': 0,
             'passed': 0,
-            'with_media': 0,  # Новый счетчик для медиа
-            'without_media': 0  # Новый счетчик для постов без медиа
+            'with_media': 0,
+            'without_media': 0,
+            'real_time_duplicate': 0,
+            'media_failed': 0
         }
         
         items_to_process = news_items[:50]
@@ -198,124 +317,140 @@ class NewsBot:
         self.logger.info(f"🔍 Обработка {counters['total']} новостей")
         
         for i, item in enumerate(items_to_process):
-            # 1. Проверка кеша
-            if self.cache.is_processed(item):
-                counters['cache'] += 1
-                continue
-            
-            # 2. Проверка дубликатов
-            dedup_result = self.dedup.check(item)
-            if dedup_result.is_duplicate:
-                self.cache.mark_processed(item, 'rejected', 'duplicate')
-                counters['duplicate'] += 1
-                self._record_rejection('duplicate')
-                continue
-            
-            # 3. Быстрая фильтрация
-            filter_result = self.filter.quick_filter(item.raw_text)
-            if not filter_result.passed:
-                self.cache.mark_processed(item, 'rejected', f'filter_{filter_result.reason[:20]}')
-                counters['filter'] += 1
-                self.stats['rejected'] += 1
-                self._record_rejection('filter')
-                continue
-            
-            # 4. Проверка движения рынка
-            if not looks_market_moving(item.raw_text):
-                self.cache.mark_processed(item, 'rejected', 'no_market_move')
-                counters['market'] += 1
-                self.stats['rejected'] += 1
-                self._record_rejection('no_market_move')
-                continue
-            
-            # 5. AI анализ
             try:
-                analyzed = await self.analyzer.analyze_news(item)
-                if not analyzed.is_relevant:
-                    self.cache.mark_processed(item, 'rejected', 'ai_reject')
-                    counters['ai'] += 1
-                    self.stats['rejected'] += 1
-                    self._record_rejection('ai_reject')
+                self.logger.debug(f"Обработка новости {i+1}: {item.raw_text[:80]}...")
+                
+                # 1. Проверка кеша
+                if self.cache.is_processed(item):
+                    counters['cache'] += 1
+                    self.logger.debug(f"Новость уже в кеше")
                     continue
-            except Exception as e:
-                self.logger.error(f"❌ Ошибка AI анализа: {e}")
-                continue
-            
-            # 6. ПРОВЕРКА МЕДИА (НЕ ОТКЛОНЯЕМ, А ПРОСТО ЛОГИРУЕМ)
-            media_items = []
-            try:
-                # Проверяем, есть ли медиа в самом NewsItem
+                
+                # 2. Проверка дубликатов в реальном времени
+                if self._is_duplicate_news(item):
+                    counters['real_time_duplicate'] += 1
+                    self.stats['duplicates_filtered'] += 1
+                    self.cache.mark_processed(item, 'rejected', 'real_time_duplicate')
+                    self._record_rejection('real_time_duplicate')
+                    self.logger.debug(f"Дубликат в реальном времени")
+                    continue
+                
+                # 3. Проверка качества контента
+                if not self.quality_filter.check(item.raw_text):
+                    counters['quality'] += 1
+                    self.stats['quality_filtered'] += 1
+                    self.stats['rejected'] += 1
+                    self.cache.mark_processed(item, 'rejected', 'low_quality')
+                    self._record_rejection('low_quality')
+                    self.logger.debug(f"Низкое качество контента")
+                    continue
+                
+                # 4. Быстрая фильтрация
+                filter_result = self.filter.quick_filter(item.raw_text)
+                if not filter_result.passed:
+                    self.cache.mark_processed(item, 'rejected', f'filter_{filter_result.reason[:20]}')
+                    counters['filter'] += 1
+                    self.stats['rejected'] += 1
+                    self._record_rejection('filter')
+                    self.logger.debug(f"Не прошла фильтр: {filter_result.reason}")
+                    continue
+                
+                # 5. Проверка движения рынка
+                if not looks_market_moving(item.raw_text):
+                    self.cache.mark_processed(item, 'rejected', 'no_market_move')
+                    counters['market'] += 1
+                    self.stats['rejected'] += 1
+                    self._record_rejection('no_market_move')
+                    self.logger.debug(f"Нет движения рынка")
+                    continue
+                
+                # 6. AI анализ
+                try:
+                    analyzed = await self.analyzer.analyze_news(item)
+                    if not analyzed.is_relevant:
+                        self.cache.mark_processed(item, 'rejected', 'ai_reject')
+                        counters['ai'] += 1
+                        self.stats['rejected'] += 1
+                        self._record_rejection('ai_reject')
+                        self.logger.debug(f"Отклонено AI")
+                        continue
+                except Exception as e:
+                    self.logger.error(f"❌ Ошибка AI анализа: {e}")
+                    continue
+                
+                # 7. Проверка и логирование медиа
+                media_items = []
                 if hasattr(item, 'media_items') and item.media_items:
                     media_items = item.media_items
                     self.logger.info(f"📸 Новость имеет {len(media_items)} медиа-элементов")
                     self.stats['with_media'] += 1
                     self.stats['total_media_items'] += len(media_items)
                     counters['with_media'] += 1
+                    
+                    # Детальное логирование медиа
+                    for idx, media in enumerate(media_items):
+                        self.logger.info(f"  Медиа {idx+1}: {media.type} - {media.url[:100]}")
                 else:
-                    # Если нет медиа в NewsItem, пробуем получить через media_handler
-                    primary_media = await self.media_handler.get_primary_media(item)
-                    if primary_media:
-                        media_items = [primary_media]
-                        self.logger.info(f"📸 Медиа найдено через media_handler")
-                        self.stats['with_media'] += 1
-                        self.stats['total_media_items'] += 1
-                        counters['with_media'] += 1
-                    else:
-                        # НЕТ МЕДИА - НЕ ОТКЛОНЯЕМ, ПРОСТО ЛОГИРУЕМ
-                        self.logger.info(f"📭 Новость без медиа (все равно публикуем)")
-                        self.stats['without_media'] += 1
-                        counters['without_media'] += 1
-            except Exception as e:
-                self.logger.error(f"❌ Ошибка получения медиа: {e}")
-                # НЕ ОТКЛОНЯЕМ ИЗ-ЗА ОШИБКИ МЕДИА
-                self.stats['without_media'] += 1
-                counters['without_media'] += 1
-            
-            # 7. Форматирование текста
-            try:
-                formatted_text = self.formatter.format_post(
-                    ProcessedNews(
-                        source_item=item,
-                        analysis=analyzed,
-                        formatted_text="",
-                        media_items=media_items
+                    self.logger.info(f"📭 Новость без медиа (текстовый пост)")
+                    self.stats['without_media'] += 1
+                    counters['without_media'] += 1
+                
+                # 8. Форматирование текста
+                try:
+                    formatted_text = self.formatter.format_post(
+                        ProcessedNews(
+                            source_item=item,
+                            analysis=analyzed,
+                            formatted_text="",
+                            media_items=media_items
+                        )
                     )
+                except Exception as e:
+                    self.logger.error(f"❌ Ошибка форматирования: {e}")
+                    continue
+                
+                # 9. Создание ProcessedNews
+                proc_news = ProcessedNews(
+                    source_item=item,
+                    analysis=analyzed,
+                    formatted_text=formatted_text,
+                    media_items=media_items,
+                    metadata={
+                        'filter_score': filter_result.score,
+                        'dedup_similarity': 0,
+                        'processed_at': datetime.now().isoformat(),
+                        'has_media': len(media_items) > 0,
+                        'media_count': len(media_items),
+                        'news_hash': self._create_news_hash(item),
+                        'media_urls': [m.url for m in media_items] if media_items else []
+                    }
                 )
+                
+                processed.append(proc_news)
+                counters['passed'] += 1
+                self.stats['processed'] += 1
+                self.cache.mark_processed(item, 'approved', 'passed_all_filters')
+                
+                # Добавляем в список недавних новостей для дедупликации
+                self._add_to_recent_news(item)
+                
+                # Логируем результат с информацией о медиа
+                if media_items:
+                    media_info = ', '.join([f"{m.type}:{m.url[:30]}..." for m in media_items[:2]])
+                    self.logger.info(f"✅ Новость прошла ({len(media_items)} медиа): {media_info}")
+                else:
+                    self.logger.info(f"✅ Новость прошла (без медиа): {item.raw_text[:100]}...")
+                    
             except Exception as e:
-                self.logger.error(f"❌ Ошибка форматирования: {e}")
+                self.logger.error(f"❌ Ошибка обработки новости: {e}")
                 continue
-            
-            # 8. Создание ProcessedNews
-            proc_news = ProcessedNews(
-                source_item=item,
-                analysis=analyzed,
-                formatted_text=formatted_text,
-                media_items=media_items,
-                metadata={
-                    'filter_score': filter_result.score,
-                    'dedup_similarity': dedup_result.similarity,
-                    'processed_at': datetime.now().isoformat(),
-                    'has_media': len(media_items) > 0,
-                    'media_count': len(media_items)
-                }
-            )
-            
-            processed.append(proc_news)
-            counters['passed'] += 1
-            self.stats['processed'] += 1
-            self.cache.mark_processed(item, 'approved', 'passed_all_filters')
-            
-            # Логируем результат с информацией о медиа
-            if media_items:
-                self.logger.info(f"✅ Новость прошла ({len(media_items)} медиа)")
-            else:
-                self.logger.info(f"✅ Новость прошла (без медиа)")
         
-        # Вывод статистики отсева с информацией о медиа
+        # Вывод подробной статистики
         self.logger.info("📊 ДЕТАЛЬНАЯ СТАТИСТИКА ОТСЕВА:")
         self.logger.info(f"  Всего новостей: {counters['total']}")
         self.logger.info(f"  Уже в кеше: {counters['cache']}")
-        self.logger.info(f"  Дубликаты: {counters['duplicate']}")
+        self.logger.info(f"  Дубликаты в реальном времени: {counters['real_time_duplicate']}")
+        self.logger.info(f"  Низкое качество: {counters['quality']}")
         self.logger.info(f"  Не прошли фильтр: {counters['filter']}")
         self.logger.info(f"  Нет движения рынка: {counters['market']}")
         self.logger.info(f"  Отклонены AI: {counters['ai']}")
@@ -323,7 +458,7 @@ class NewsBot:
         self.logger.info(f"  БЕЗ МЕДИА: {counters['without_media']}")
         self.logger.info(f"  УСПЕШНО ПРОШЛИ: {counters['passed']}")
         
-        # 9. Публикация ВСЕХ новостей (и с медиа, и без)
+        # 10. Публикация ВСЕХ новостей
         if processed:
             self.logger.info(f"📤 Публикация {len(processed)} новостей (всех)...")
             
@@ -339,9 +474,10 @@ class NewsBot:
                         for i, post in enumerate(processed):
                             media_count = len(post.media_items) if post.media_items else 0
                             if media_count > 0:
-                                self.logger.info(f"📤 Пост {i+1}: {media_count} медиа")
+                                media_urls = [m.url[:50] + '...' for m in post.media_items[:3]]
+                                self.logger.info(f"📤 Пост {i+1}: {media_count} медиа, URL: {media_urls}")
                             else:
-                                self.logger.info(f"📤 Пост {i+1}: без медиа")
+                                self.logger.info(f"📤 Пост {i+1}: без медиа, текст: {post.formatted_text[:80]}...")
                             
                     else:
                         self.logger.warning(f"⚠️ {name}: ошибка публикации")
@@ -369,6 +505,8 @@ class NewsBot:
         self.logger.info(f"🔧 Обработано: {self.stats['processed']}")
         self.logger.info(f"📤 Опубликовано: {self.stats['published']}")
         self.logger.info(f"❌ Отклонено: {self.stats['rejected']}")
+        self.logger.info(f"🔄 Отфильтровано дубликатов: {self.stats['duplicates_filtered']}")
+        self.logger.info(f"⭐ Отфильтровано по качеству: {self.stats['quality_filtered']}")
         self.logger.info(f"📸 С медиа: {self.stats['with_media']}")
         self.logger.info(f"📭 Без медиа: {self.stats['without_media']}")
         self.logger.info(f"🖼️ Всего медиа: {self.stats['total_media_items']}")
@@ -379,7 +517,7 @@ class NewsBot:
                 percentage = (count / max(1, self.stats['rejected'])) * 100
                 self.logger.info(f"  {reason}: {count} ({percentage:.1f}%)")
         
-        # Сбрасываем счетчики (кроме статистики медиа)
+        # Сбрасываем счетчики
         self.stats['fetched'] = 0
         self.stats['processed'] = 0
         self.stats['published'] = 0

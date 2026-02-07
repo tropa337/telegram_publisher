@@ -49,12 +49,13 @@ class MediaItem:
         """Валидация при создании"""
         if not self.url or not isinstance(self.url, str):
             raise ValueError("URL должен быть непустой строкой")
-        if self.type not in ['photo', 'video', 'gif', 'document']:
-            raise ValueError(f"Неизвестный тип медиа: {self.type}")
+        if self.type not in ['photo', 'video', 'gif', 'document', 'animation', 'youtube']:
+            # Расширяем список поддерживаемых типов
+            self.type = 'photo'  # По умолчанию фото
     
     @property
     def is_image(self) -> bool:
-        return self.type in ['photo', 'gif']
+        return self.type in ['photo', 'gif', 'animation']
 
 
 @dataclass
@@ -93,7 +94,7 @@ class NewsItem:
 @dataclass
 class AnalyzedNews:
     """Проанализированная новость"""
-    source_item: NewsItem
+    source_item: NewsItem  # ✅ Сохраняем оригинал с медиа
     is_relevant: bool
     relevance_reason: str
     translated_text: str = ""
@@ -108,7 +109,17 @@ class AnalyzedNews:
         self.confidence = max(0.0, min(1.0, self.confidence))
         if not isinstance(self.tags, list):
             self.tags = []
-        self.tags = list(set(self.tags))[:10]  # Уникальные, макс 10
+        self.tags = list(set(self.tags))[:10]
+    
+    @property
+    def has_media(self) -> bool:
+        """Проверяем есть ли медиа в оригинальной новости"""
+        return self.source_item.has_media if hasattr(self.source_item, 'has_media') else False
+    
+    @property
+    def media_items(self) -> List[MediaItem]:
+        """Получаем медиа из оригинальной новости"""
+        return self.source_item.media_items if hasattr(self.source_item, 'media_items') else []
 
 
 @dataclass
@@ -123,14 +134,26 @@ class ProcessedNews:
     
     def __post_init__(self):
         """Инициализация метаданных"""
-        if not self.media_items and self.source_item.media_items:
+        # Если media_items не переданы, берем их из source_item
+        if not self.media_items and hasattr(self.source_item, 'media_items'):
             self.media_items = self.source_item.media_items[:5]
+        
+        # Если все еще нет медиа, проверяем в анализе
+        if not self.media_items and hasattr(self.analysis, 'media_items'):
+            self.media_items = self.analysis.media_items[:5]
         
         if not self.editor_note and self.analysis.editor_note:
             self.editor_note = self.analysis.editor_note
         
         if 'published_at' not in self.metadata:
             self.metadata['published_at'] = datetime.now().isoformat()
+        
+        # Добавляем информацию о медиа в метаданные
+        self.metadata['has_media'] = len(self.media_items) > 0
+        self.metadata['media_count'] = len(self.media_items)
+        if self.media_items:
+            self.metadata['media_types'] = list(set([m.type for m in self.media_items]))
+            self.metadata['media_urls'] = [m.url for m in self.media_items[:3]]
     
     @property
     def has_media(self) -> bool:
