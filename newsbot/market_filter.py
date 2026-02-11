@@ -35,6 +35,12 @@ SIGNALS = [
     r"\bbroker(ag|age|ing)?\b|\bброкер",
     r"\bcustody\b|\bкастоди",
     r"\bstandard chartered\b|\bblackrock\b|\bfidelity\b|\bcoinbase\b|\bbinance\b",
+
+    # движение цены / пробой уровней (часто встречается в RSS без слов "whale/funding")
+    r"\b(btc|bitcoin|eth|ethereum)\b.*\b(above|below|over|under|breaks?|breaks?\s+through|hits?|touches|tops?|drops?|falls?|plunges|surges?|rallies|pumps?|dumps?)\b",
+    r"\b(btc|bitcoin|eth|ethereum)\b.*\$\s*\d{1,3}(?:[.,]\d{1,2})?\s*(k|тыс|m|млн|b|млрд)\b",
+    r"\$\s*\d{1,3}(?:[.,]\d{1,2})?\s*(k|тыс)\b.*\b(btc|bitcoin|eth|ethereum)\b",
+    r"\b(price|цена)\b.*\b(btc|bitcoin|eth|ethereum)\b.*\b(\+|-)\s*\d+(?:[.,]\d+)?\s*%",
 ]
 
 def looks_market_moving(text: str) -> bool:

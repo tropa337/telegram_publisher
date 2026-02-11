@@ -78,8 +78,9 @@ class BotConfig:
         if not self.TG_API_HASH:
             errors.append("TG_API_HASH не установлен")
         
+        # MISTRAL_API_KEY может отсутствовать: тогда работаем в режиме без AI
         if not self.MISTRAL_API_KEY:
-            errors.append("MISTRAL_API_KEY не установлен")
+            logger.warning("⚠️ MISTRAL_API_KEY не установлен — бот будет работать без AI (без перевода/умной релевантности)")
         
         if not self.TARGET_CHANNEL:
             errors.append("TARGET_CHANNEL не установлен")

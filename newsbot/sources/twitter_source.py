@@ -286,81 +286,130 @@ class TwitterRSSSource:
         return news_item
 
     def _extract_rss_media_urls(self, entry) -> List[str]:
-        """Извлечение медиа URL из RSS тегов (главное исправление)"""
-        media_urls = []
-        
+        """Извлечение медиа URL из RSS тегов (исправлено: dict/object + нормализация Twitter URL)"""
+        media_urls: List[str] = []
+
+        def _get_url(obj, *keys) -> Optional[str]:
+            """Достаёт URL из dict или объекта (feedparser часто даёт dict)."""
+            if obj is None:
+                return None
+            if isinstance(obj, dict):
+                for k in keys:
+                    v = obj.get(k)
+                    if isinstance(v, str) and v:
+                        return v
+                return None
+            for k in keys:
+                v = getattr(obj, k, None)
+                if isinstance(v, str) and v:
+                    return v
+            return None
+
         try:
-            # 1. Проверяем media_content (feedparser помещает media:content сюда)
+            # 1) media:content -> entry.media_content
             if hasattr(entry, 'media_content') and entry.media_content:
                 self.logger.debug(f"Найдено media_content: {len(entry.media_content)} элементов")
-                for i, media in enumerate(entry.media_content):
-                    if hasattr(media, 'url') and media.url:
-                        media_urls.append(media.url)
-                        self.logger.debug(f"  Медиа из media_content[{i}]: {media.url[:100]}")
-            
-            # 2. Проверяем media_thumbnail
+                for idx, media in enumerate(entry.media_content):
+                    url = _get_url(media, 'url', 'href')
+                    if url:
+                        url = self._normalize_twitter_media_url(url)
+                        media_urls.append(url)
+                        self.logger.debug(f"  Медиа из media_content[{idx}]: {url[:100]}")
+
+            # 2) media:thumbnail -> entry.media_thumbnail
             if hasattr(entry, 'media_thumbnail') and entry.media_thumbnail:
                 thumbnails = entry.media_thumbnail
                 if isinstance(thumbnails, list):
                     for thumb in thumbnails:
-                        if hasattr(thumb, 'url') and thumb.url:
-                            media_urls.append(thumb.url)
-                            self.logger.debug(f"  Медиа из media_thumbnail[list]: {thumb.url[:100]}")
-                elif isinstance(thumbnails, dict) and 'url' in thumbnails:
-                    media_urls.append(thumbnails['url'])
-                    self.logger.debug(f"  Медиа из media_thumbnail[dict]: {thumbnails['url'][:100]}")
-            
-            # 3. Проверяем все атрибуты на наличие url
-            for attr_name in dir(entry):
-                if not attr_name.startswith('_'):
-                    try:
-                        attr_value = getattr(entry, attr_name)
-                        if isinstance(attr_value, str) and attr_value.startswith('http'):
-                            if self._is_media_url(attr_value):
-                                media_urls.append(attr_value)
-                                self.logger.debug(f"  Медиа из атрибута {attr_name}: {attr_value[:100]}")
-                    except:
-                        pass
-            
-            # 4. Проверяем enclosures (вложения)
+                        url = _get_url(thumb, 'url', 'href')
+                        if url:
+                            url = self._normalize_twitter_media_url(url)
+                            media_urls.append(url)
+                            self.logger.debug(f"  Медиа из media_thumbnail[list]: {url[:100]}")
+                else:
+                    url = _get_url(thumbnails, 'url', 'href')
+                    if url:
+                        url = self._normalize_twitter_media_url(url)
+                        media_urls.append(url)
+                        self.logger.debug(f"  Медиа из media_thumbnail: {url[:100]}")
+
+            # 3) enclosures (вложения)
             if hasattr(entry, 'enclosures') and entry.enclosures:
                 self.logger.debug(f"Найдено enclosures: {len(entry.enclosures)}")
-                for i, enclosure in enumerate(entry.enclosures):
-                    url = getattr(enclosure, 'href', None) or getattr(enclosure, 'url', None)
+                for idx, enclosure in enumerate(entry.enclosures):
+                    url = _get_url(enclosure, 'href', 'url')
                     if url and self._is_media_url(url):
+                        url = self._normalize_twitter_media_url(url)
                         media_urls.append(url)
-                        self.logger.debug(f"  Медиа из enclosure[{i}]: {url[:100]}")
-            
-            # 5. Проверяем теги с медиа в названии
+                        self.logger.debug(f"  Медиа из enclosure[{idx}]: {url[:100]}")
+
+            # 4) Проверяем все строковые атрибуты на наличие медиа URL
+            for attr_name in dir(entry):
+                if attr_name.startswith('_'):
+                    continue
+                try:
+                    attr_value = getattr(entry, attr_name)
+                    if isinstance(attr_value, str) and attr_value.startswith('http') and self._is_media_url(attr_value):
+                        url = self._normalize_twitter_media_url(attr_value)
+                        media_urls.append(url)
+                        self.logger.debug(f"  Медиа из атрибута {attr_name}: {url[:100]}")
+                except Exception:
+                    pass
+
+            # 5) Ищем поля с медиа в названии (dict/str)
             media_fields = ['media', 'image', 'photo', 'thumbnail', 'picture']
             for field in media_fields:
                 for attr_name in dir(entry):
-                    if field in attr_name.lower() and not attr_name.startswith('_'):
-                        try:
-                            field_value = getattr(entry, attr_name)
-                            if isinstance(field_value, dict) and 'url' in field_value:
-                                media_urls.append(field_value['url'])
-                                self.logger.debug(f"  Медиа из {attr_name}[dict]: {field_value['url'][:100]}")
-                            elif isinstance(field_value, str) and field_value.startswith('http'):
-                                if self._is_media_url(field_value):
-                                    media_urls.append(field_value)
-                                    self.logger.debug(f"  Медиа из {attr_name}: {field_value[:100]}")
-                        except:
-                            pass
-            
+                    if attr_name.startswith('_') or field not in attr_name.lower():
+                        continue
+                    try:
+                        field_value = getattr(entry, attr_name)
+                        url = _get_url(field_value, 'url', 'href')
+                        if url and self._is_media_url(url):
+                            url = self._normalize_twitter_media_url(url)
+                            media_urls.append(url)
+                            self.logger.debug(f"  Медиа из {attr_name}: {url[:100]}")
+                        elif isinstance(field_value, str) and field_value.startswith("http") and self._is_media_url(field_value):
+                            url = self._normalize_twitter_media_url(field_value)
+                            media_urls.append(url)
+                            self.logger.debug(f"  Медиа из {attr_name}[str]: {url[:100]}")
+                    except Exception:
+                        pass
+
         except Exception as e:
             self.logger.error(f"Ошибка извлечения медиа из RSS: {e}")
-        
-        # Удаляем дубликаты
-        unique_urls = []
-        seen = set()
+
+        # Дедуп + валидация
+        unique_urls: List[str] = []
+        seen: Set[str] = set()
         for url in media_urls:
-            if url not in seen and self._is_valid_media_url(url):
+            if not url or url in seen:
+                continue
+            if self._is_valid_media_url(url):
                 unique_urls.append(url)
                 seen.add(url)
-        
+
         return unique_urls[:10]
 
+    def _normalize_twitter_media_url(self, url: str) -> str:
+        """Нормализует Twitter/X media URL так, чтобы Telegram мог скачать файл."""
+        if not url:
+            return url
+        try:
+            u = url
+            ul = u.lower()
+            # pbs.twimg.com часто отдаёт картинку по ?format=jpg&name=800x419 без расширения
+            if 'pbs.twimg.com' in ul and 'format=' in ul:
+                # оставляем query, но добавляем расширение в путь, если его нет
+                if not re.search(r'\.(jpg|jpeg|png|gif|webp|mp4)(\?|$)', ul):
+                    m = re.search(r'(?:\?|&)format=([a-z0-9]+)', ul)
+                    if m:
+                        ext = m.group(1)
+                        base, q = (u.split('?', 1) + [''])[:2]
+                        u = base + f'.{ext}' + (('?' + q) if q else '')
+            return u
+        except Exception:
+            return url
     def _extract_media_urls_from_text(self, text: str) -> List[str]:
         """Извлечение URL медиа из текста"""
         if not text:

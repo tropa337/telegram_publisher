@@ -16,8 +16,9 @@ class CryptoNewsAnalyzer:
     def __init__(self):
         """Инициализация"""
         config = get_config()
-        self.client = Mistral(api_key=config.MISTRAL_API_KEY)
+        self.enabled = bool(config.MISTRAL_API_KEY)
         self.model = config.MISTRAL_MODEL
+        self.client = Mistral(api_key=config.MISTRAL_API_KEY) if self.enabled else None
         self.logger = logging.getLogger(__name__)
         
         # Кэш переводов для одинаковых текстов
@@ -28,6 +29,26 @@ class CryptoNewsAnalyzer:
                           market_signals: Optional[dict] = None) -> AnalyzedNews:
         """Анализ новости - ТОЛЬКО перевод и оценка релевантности"""
         try:
+            # Режим без AI: ничего не блокируем, просто нормализуем текст
+            if not self.enabled:
+                normalized_text = self._normalize_text(news_item.raw_text)
+                return AnalyzedNews(
+                    source_item=news_item,
+                    is_relevant=True,
+                    relevance_reason="AI отключен (нет MISTRAL_API_KEY)",
+                    translated_text=normalized_text,
+                    editor_note="",
+                    tags=[],
+                    confidence=0.65,
+                    market_impact='medium',
+                    metadata={
+                        'ai_processed': False,
+                        'ai_disabled': True,
+                        'has_media': len(news_item.media_items) > 0 if hasattr(news_item, 'media_items') else False,
+                        'media_count': len(news_item.media_items) if hasattr(news_item, 'media_items') else 0
+                    }
+                )
+
             # 1. Проверка релевантности
             is_relevant = await self._check_relevance(news_item.raw_text)
             
@@ -69,10 +90,23 @@ class CryptoNewsAnalyzer:
             
         except Exception as e:
             self.logger.error(f"❌ Ошибка анализа: {e}")
+            # Важный fallback: если AI упал, не стопорим весь бот — публикуем без AI.
+            normalized_text = self._normalize_text(news_item.raw_text)
             return AnalyzedNews(
                 source_item=news_item,
-                is_relevant=False,
-                relevance_reason=f"Ошибка AI: {str(e)[:50]}"
+                is_relevant=True,
+                relevance_reason=f"AI ошибка, fallback без AI: {str(e)[:80]}",
+                translated_text=normalized_text,
+                editor_note="",
+                tags=[],
+                confidence=0.55,
+                market_impact='medium',
+                metadata={
+                    'ai_processed': False,
+                    'ai_error': str(e)[:200],
+                    'has_media': len(news_item.media_items) > 0 if hasattr(news_item, 'media_items') else False,
+                    'media_count': len(news_item.media_items) if hasattr(news_item, 'media_items') else 0
+                }
             )
     
     def _normalize_text(self, text: str) -> str:
