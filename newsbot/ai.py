@@ -2,338 +2,396 @@ import asyncio
 import json
 import logging
 import re
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
 from mistralai import Mistral
 
 from .config import get_config
+from .text_cleaner import clean_source_text, clean_after_ai
 from .types import AnalyzedNews, NewsItem
 
 
-class CryptoNewsAnalyzer:
-    """AI анализатор крипто-новостей с улучшенным переводом"""
-    
-    def __init__(self):
-        """Инициализация"""
-        config = get_config()
-        self.enabled = bool(config.MISTRAL_API_KEY)
-        self.model = config.MISTRAL_MODEL
-        self.client = Mistral(api_key=config.MISTRAL_API_KEY) if self.enabled else None
-        self.logger = logging.getLogger(__name__)
-        
-        # Кэш переводов для одинаковых текстов
-        self.translation_cache = {}
-    
-    async def analyze_news(self, 
-                          news_item: NewsItem, 
-                          market_signals: Optional[dict] = None) -> AnalyzedNews:
-        """Анализ новости - ТОЛЬКО перевод и оценка релевантности"""
-        try:
-            # Режим без AI: ничего не блокируем, просто нормализуем текст
-            if not self.enabled:
-                normalized_text = self._normalize_text(news_item.raw_text)
-                return AnalyzedNews(
-                    source_item=news_item,
-                    is_relevant=True,
-                    relevance_reason="AI отключен (нет MISTRAL_API_KEY)",
-                    translated_text=normalized_text,
-                    editor_note="",
-                    tags=[],
-                    confidence=0.65,
-                    market_impact='medium',
-                    metadata={
-                        'ai_processed': False,
-                        'ai_disabled': True,
-                        'has_media': len(news_item.media_items) > 0 if hasattr(news_item, 'media_items') else False,
-                        'media_count': len(news_item.media_items) if hasattr(news_item, 'media_items') else 0
-                    }
-                )
+_ALLOWED_CATEGORIES = [
+    "MARKET_MOVE",
+    "WHALE_MOVE",
+    "ETF_FLOW",
+    "REGULATION",
+    "EXCHANGE",
+    "MACRO",
+    "ALERT",
+    "OTHER",
+]
 
-            # 1. Проверка релевантности
-            is_relevant = await self._check_relevance(news_item.raw_text)
-            
-            if not is_relevant:
+
+class CryptoNewsAnalyzer:
+    """AI анализатор: Extract(JSON) -> Render(шаблон)"""
+
+    def __init__(self):
+        config = get_config()
+        self.config = config
+        self.logger = logging.getLogger(__name__)
+        self.model = config.MISTRAL_MODEL
+        self.client: Optional[Mistral] = None
+        if config.MISTRAL_API_KEY:
+            self.client = Mistral(api_key=config.MISTRAL_API_KEY)
+
+        # простой кэш по очищенному тексту
+        self.extract_cache: Dict[str, Dict[str, Any]] = {}
+
+    async def analyze_news(self, news_item: NewsItem, market_signals: Optional[dict] = None) -> AnalyzedNews:
+        """Возвращает готовый RU-пост в translated_text + метаданные (category/priority/event_key)"""
+        try:
+            cleaned = clean_source_text(news_item.raw_text)
+            text = cleaned.text
+            if not text:
                 return AnalyzedNews(
                     source_item=news_item,
                     is_relevant=False,
-                    relevance_reason="Не соответствует критериям релевантности AI"
+                    relevance_reason="empty_after_clean",
                 )
-            
-            # 2. Предварительная нормализация текста
-            normalized_text = self._normalize_text(news_item.raw_text)
-            
-            # 3. Качественный перевод на русский
-            translated = await self._translate_text(normalized_text)
-            
-            # 4. Пост-обработка перевода
-            translated = self._post_process_translation(translated)
-            
-            # 5. Возвращаем результат С медиа информацией из оригинала
-            return AnalyzedNews(
-                source_item=news_item,  # Сохраняем оригинал с медиа
-                is_relevant=True,
-                relevance_reason="Прошла AI анализ",
-                translated_text=translated,
-                editor_note="",
-                tags=[],
-                confidence=0.85,
-                market_impact='medium',
-                metadata={
-                    'ai_processed': True,
-                    'original_language': 'en',
-                    'translation_quality': 'high',
-                    'normalized': True,
-                    'has_media': len(news_item.media_items) > 0 if hasattr(news_item, 'media_items') else False,
-                    'media_count': len(news_item.media_items) if hasattr(news_item, 'media_items') else 0
-                }
-            )
-            
-        except Exception as e:
-            self.logger.error(f"❌ Ошибка анализа: {e}")
-            # Важный fallback: если AI упал, не стопорим весь бот — публикуем без AI.
-            normalized_text = self._normalize_text(news_item.raw_text)
+
+            # Extract (AI или правила)
+            structured = await self.extract(text=text, url=news_item.url)
+
+            # Приоритет: 0..100 -> 0..1 для сравнения с MIN_PRIORITY_SCORE
+            pr = float(structured.get("priority", 50))
+            pr01 = max(0.0, min(1.0, pr / 100.0))
+
+            if not structured.get("is_news", True):
+                return AnalyzedNews(
+                    source_item=news_item,
+                    is_relevant=False,
+                    relevance_reason="ai_not_news",
+                    metadata={"structured": structured},
+                )
+
+            if pr01 < float(self.config.MIN_PRIORITY_SCORE):
+                return AnalyzedNews(
+                    source_item=news_item,
+                    is_relevant=False,
+                    relevance_reason=f"low_priority_{pr}",
+                    metadata={"structured": structured},
+                )
+
+            # Render
+            rendered = self.render(structured, source_url=news_item.url)
+            rendered = clean_after_ai(rendered)
+
             return AnalyzedNews(
                 source_item=news_item,
                 is_relevant=True,
-                relevance_reason=f"AI ошибка, fallback без AI: {str(e)[:80]}",
-                translated_text=normalized_text,
+                relevance_reason="ai_extract_render_ok" if self.client else "rules_extract_render_ok",
+                translated_text=rendered,
                 editor_note="",
-                tags=[],
-                confidence=0.55,
-                market_impact='medium',
+                tags=list(structured.get("tickers") or [])[:10],
+                confidence=0.85 if self.client else 0.65,
+                market_impact="medium",
                 metadata={
-                    'ai_processed': False,
-                    'ai_error': str(e)[:200],
-                    'has_media': len(news_item.media_items) > 0 if hasattr(news_item, 'media_items') else False,
-                    'media_count': len(news_item.media_items) if hasattr(news_item, 'media_items') else 0
-                }
+                    "structured": structured,
+                    "removed_urls": cleaned.removed_urls,
+                    "category": structured.get("category", "OTHER"),
+                    "priority": structured.get("priority", 50),
+                    "event_key": structured.get("event_key", ""),
+                    "risk": structured.get("risk", "low"),
+                    "has_media": len(news_item.media_items) > 0 if hasattr(news_item, "media_items") else False,
+                    "media_count": len(news_item.media_items) if hasattr(news_item, "media_items") else 0,
+                },
             )
-    
-    def _normalize_text(self, text: str) -> str:
-        """Нормализация текста перед переводом"""
-        # Исправляем кривые форматы чисел
-        text = re.sub(r'(\d+),(\d{3})', r'\1.\2', text)
-        text = re.sub(r'(\d),(\d{1,2}[MBK])', r'\1.\2', text)
-        text = re.sub(r'(\d),(\d{1,2})\s*([MBK])', r'\1.\2\3', text)
-        
-        # Исправляем лишние пробелы
-        text = re.sub(r'\s+', ' ', text)
-        text = re.sub(r'\s+([.,$%!?])', r'\1', text)
-        text = re.sub(r'([(])\s+', r'\1', text)
-        text = re.sub(r'\s+([)])', r'\1', text)
-        
-        # Форматирование валют
-        text = re.sub(r'(\$)\s*(\d+)', r'\1\2', text)
-        text = re.sub(r'(\d+)\s*([MBK])', r'\1\2', text)
-        
-        # Удаляем лишние символы
-        text = re.sub(r'…\s*\.+', '…', text)
-        text = re.sub(r'\.{3,}', '…', text)
-        
-        return text.strip()
-    
-    def _post_process_translation(self, text: str) -> str:
-        """Пост-обработка перевода"""
-        # Форматирование чисел в русском стиле
-        text = re.sub(r'(\d+)\.(\d+)\s*([млрдMBK])', r'\1,\2 \3', text)
-        text = re.sub(r'(\$)(\d+\.?\d*)\s*([млрдMBK]?)', r'\1\2\3', text)
-        
-        # Исправляем кривой перевод валют
-        text = re.sub(r'долларов\s*(\$)', r'\1', text)
-        text = re.sub(r'\$\s*долларов', r'$', text)
-        
-        # Убираем лишние пробелы после запятых и точек
-        text = re.sub(r'([.,])\s+', r'\1 ', text)
-        
-        # Форматирование процентов
-        text = re.sub(r'(\d+)\s*процентов', r'\1%', text)
-        text = re.sub(r'(\d+)%\s*процентов', r'\1%', text)
-        
-        # Удаляем дублированные знаки препинания
-        text = re.sub(r'([!?.,]){2,}', r'\1', text)
-        
-        # Корректируем пробелы вокруг тире
-        text = re.sub(r'\s*-\s*', ' — ', text)
-        
-        return text.strip()
-    
-    async def _check_relevance(self, text: str) -> bool:
-        """Проверка релевантности для крипторынка"""
-        try:
-            normalized = self._normalize_text(text[:800])
-            
-            prompt = f"""Ты анализатор крипто-новостей. Ответь ONLY 'RELEVANT' или 'IRRELEVANT'.
-
-RELEVANT если новость содержит:
-1. Конкретные рыночные события (листинг, делистинг, взломы, переводы)
-2. Регуляторные решения (SEC, CFTC, одобрения ETF)
-3. Институциональные действия (BlackRock, Fidelity, Binance, Coinbase)
-4. Крупные финансовые операции (>$1M)
-5. Важные обновления протоколов
-6. Движение крупных кошельков (китов)
-7. Ликвидации, данные по деривативам
-8. Политические новости, влияющие на крипто
-
-IRRELEVANT если:
-1. Мнения, прогнозы, speculation без конкретных данных
-2. Реклама, промо, airdrop, реферальные ссылки
-3. Образовательный контент, tutorials, how-to
-4. Мемы, юмор, несерьезный контент
-5. Общие обсуждения без конкретики
-6. Личные истории без рыночной значимости
-7. Спам, повторяющийся контент
-
-Новость: {normalized}
-
-Ответ:"""
-            
-            response = await asyncio.wait_for(
-                asyncio.to_thread(
-                    self.client.chat.complete,
-                    model=self.model,
-                    messages=[
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.1,
-                    max_tokens=10
-                ),
-                timeout=15
-            )
-            
-            answer = response.choices[0].message.content.strip().upper()
-            self.logger.debug(f"AI ответ на релевантность: {answer}")
-            return "RELEVANT" in answer
-            
-        except asyncio.TimeoutError:
-            self.logger.warning("⚠️ Таймаут при проверке релевантности")
-            return True
         except Exception as e:
-            self.logger.error(f"❌ Ошибка проверки релевантности: {e}")
-            return False
-    
-    async def _translate_text(self, text: str) -> str:
-        """Перевод текста на русский БЕЗ служебных комментариев"""
+            self.logger.error(f"❌ AI analyze_news error: {e}", exc_info=True)
+            return AnalyzedNews(
+                source_item=news_item,
+                is_relevant=False,
+                relevance_reason=f"ai_error_{type(e).__name__}",
+                metadata={"error": str(e)},
+            )
+
+    async def extract(self, text: str, url: str = "") -> Dict[str, Any]:
+        """Шаг 1: Extract JSON (AI, retry 1 раз) или rule-based fallback"""
+        cache_key = (text[:600] + "|" + (url or ""))[:900]
+        if cache_key in self.extract_cache:
+            return self.extract_cache[cache_key]
+
+        if not self.client:
+            data = self._rule_extract(text, url)
+            self.extract_cache[cache_key] = data
+            return data
+
+        prompt = self._build_extract_prompt(text, url)
+        data = await self._call_json(prompt)
+        if not data:
+            # retry строгим требованием
+            data = await self._call_json(prompt + "\n\nВерни СТРОГО валидный JSON без пояснений.")
+        if not data:
+            data = self._rule_extract(text, url)
+
+        data = self._normalize_structured(data, url=url, text=text)
+        self.extract_cache[cache_key] = data
+        return data
+
+    def render(self, structured: Dict[str, Any], source_url: str = "") -> str:
+        """Шаг 2: Render по шаблонам (макс 3 строки, 1-2 эмодзи)"""
+        cat = (structured.get("category") or "OTHER").upper()
+        if cat not in _ALLOWED_CATEGORIES:
+            cat = "OTHER"
+
+        tickers = structured.get("tickers") or []
+        tickers_str = " / ".join([f"${t}" for t in tickers[:3]]) if tickers else ""
+
+        facts = structured.get("key_facts") or []
+        facts = [str(x).strip("•- \t") for x in facts if str(x).strip()][:3]
+
+        nums = structured.get("numbers") or []
+        nums = [str(x) for x in nums][:3]
+        nums_str = ", ".join(nums)
+
+        link_needed = bool(structured.get("requires_source_link", False))
+        link = source_url if (link_needed and source_url) else ""
+
+        def line_join(*parts: str) -> str:
+            parts = [p.strip() for p in parts if p and p.strip()]
+            return " ".join(parts).strip()
+
+        if cat == "WHALE_MOVE":
+            header = "🐋 КИТЫ:"
+            l1 = line_join(header, facts[0] if facts else "")
+            l2 = line_join("Актив:", tickers_str) if tickers_str else ""
+            l3 = line_join("Объём:", nums_str) if nums_str else (facts[1] if len(facts) > 1 else "")
+        elif cat == "ETF_FLOW":
+            header = "📊 ETF:"
+            l1 = line_join(header, facts[0] if facts else "")
+            l2 = line_join("Данные:", nums_str) if nums_str else (facts[1] if len(facts) > 1 else "")
+            l3 = facts[2] if len(facts) > 2 else ""
+        elif cat == "EXCHANGE":
+            header = "🏦 Биржа:"
+            l1 = line_join(header, facts[0] if facts else "")
+            l2 = facts[1] if len(facts) > 1 else ""
+            l3 = link
+        elif cat == "REGULATION":
+            header = "⚖️ Регулирование:"
+            l1 = line_join(header, facts[0] if facts else "")
+            l2 = facts[1] if len(facts) > 1 else ""
+            l3 = link
+        elif cat == "ALERT":
+            header = "🚨 ALERT:"
+            l1 = line_join(header, facts[0] if facts else "")
+            l2 = line_join(tickers_str, nums_str) if (tickers_str or nums_str) else (facts[1] if len(facts) > 1 else "")
+            l3 = link
+        elif cat == "MARKET_MOVE":
+            header = "📉 Рынок:"
+            l1 = line_join(header, facts[0] if facts else "")
+            l2 = line_join(tickers_str, nums_str) if (tickers_str or nums_str) else (facts[1] if len(facts) > 1 else "")
+            l3 = link
+        elif cat == "MACRO":
+            header = "🌍 Макро:"
+            l1 = line_join(header, facts[0] if facts else "")
+            l2 = facts[1] if len(facts) > 1 else ""
+            l3 = link
+        else:
+            header = "🧩 Новость:"
+            l1 = line_join(header, facts[0] if facts else "")
+            l2 = facts[1] if len(facts) > 1 else ""
+            l3 = link
+
+        lines = [l for l in [l1, l2, l3] if l and l.strip()]
+        # максимум 3 строки
+        lines = lines[:3]
+        return "\n".join(lines).strip()
+
+    def _build_extract_prompt(self, text: str, url: str) -> str:
+        return f"""Ты — редактор крипто-новостного Telegram-канала.
+Вытащи структуру новости и верни СТРОГО валидный JSON (без markdown, без комментариев).
+
+Требования:
+- одна главная мысль
+- key_facts: 1-3 коротких факта (RU), без воды
+- tickers: список тикеров без $ (BTC, ETH, SOL ...)
+- numbers: нормализованные суммы/проценты (например $276.3M, -3%, $67K)
+- category: один из {', '.join(_ALLOWED_CATEGORIES)}
+- priority: 0..100 (важность для публикации)
+- risk: one of [scam, low, med, high]
+- event_key: короткий ключ события для дедупа в окне 6-12ч (например coinbase_outage, etf_flow_btc, sec_lawsuit, hack_exploit)
+- requires_source_link: true если без ссылки не ок
+
+JSON схема:
+{{
+  "is_news": true,
+  "category": "OTHER",
+  "tickers": [],
+  "key_facts": [],
+  "numbers": [],
+  "sentiment": "neutral",
+  "priority": 50,
+  "risk": "low",
+  "event_key": "",
+  "requires_source_link": false
+}}
+
+Текст:
+""" + text + f"""\n\nИсточник URL: {url}"""
+
+    async def _call_json(self, prompt: str) -> Optional[Dict[str, Any]]:
         try:
-            # Кэширование переводов
-            text_hash = hash(text[:500])
-            if text_hash in self.translation_cache:
-                self.logger.debug("Используем кэшированный перевод")
-                return self.translation_cache[text_hash]
-            
-            prompt = f"""Переведи этот крипто-новостной текст на русский язык профессионально и точно.
-ВАЖНЫЕ ПРАВИЛА:
-1. Сохрани все числа, даты, имена компаний и технические термины без изменений
-2. Форматируй числа в русском стиле: 1.5M → 1,5 млн
-3. Сохрани символы валют: $100 → $100 (не "100 долларов")
-4. Сделай перевод естественным для русского читателя
-5. НЕ добавляй никаких служебных комментариев, примечаний или пояснений
-6. ТОЛЬКО перевод текста, без вступлений и заключений
-7. Сохраняй оригинальную структуру предложений
-
-Текст для перевода:
-{text[:1500]}
-
-Перевод:"""
-            
-            response = await asyncio.to_thread(
+            resp = await asyncio.to_thread(
                 self.client.chat.complete,
                 model=self.model,
-                messages=[
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.3,
-                max_tokens=2000
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.2,
             )
-            
-            translated = response.choices[0].message.content.strip()
-            
-            # УДАЛЯЕМ ВСЕ служебные комментарии
-            translated = self._remove_service_comments(translated)
-            
-            # Дополнительная очистка
-            translated = self._clean_translation(translated)
-            
-            # Сохраняем в кэш
-            self.translation_cache[text_hash] = translated
-            
-            # Очистка кэша если слишком большой
-            if len(self.translation_cache) > 100:
-                self.translation_cache.clear()
-                self.logger.info("Очищен кэш переводов")
-            
-            return translated
-            
+            content = resp.choices[0].message.content if resp and resp.choices else ""
+            if not content:
+                return None
+            content = content.strip()
+            # иногда модель оборачивает в ```json
+            content = re.sub(r"^```(?:json)?\s*", "", content, flags=re.IGNORECASE).strip()
+            content = re.sub(r"```\s*$", "", content).strip()
+            return json.loads(content)
         except Exception as e:
-            self.logger.error(f"❌ Ошибка перевода: {e}")
-            return text[:1000]
-    
-    def _clean_translation(self, text: str) -> str:
-        """Дополнительная очистка перевода"""
-        text = re.sub(r'^(перевод|translation|переведено):\s*', '', text, flags=re.IGNORECASE)
-        text = re.sub(r'\s*\[конец перевода\]$', '', text, flags=re.IGNORECASE)
-        
-        text = re.sub(r'\(примечание:.*?\)', '', text)
-        text = re.sub(r'\[примечание.*?\]', '', text)
-        text = re.sub(r'\*примечание.*?\*', '', text)
-        
-        lines = text.split('\n')
-        cleaned_lines = []
-        for line in lines:
-            line_stripped = line.strip()
-            if line_stripped:
-                if not any(marker in line_stripped.lower() for marker in [
-                    'перевод текста', 'оригинальный текст', 'текст переведен',
-                    'note:', 'примечание:', 'комментарий перевода:'
-                ]):
-                    cleaned_lines.append(line_stripped)
-        
-        result = '\n'.join(cleaned_lines)
-        result = re.sub(r'\s+', ' ', result)
-        
-        return result.strip()
-    
-    def _remove_service_comments(self, text: str) -> str:
-        """Удаление служебных комментариев AI"""
-        lines = text.split('\n')
-        cleaned_lines = []
-        
-        in_service_block = False
-        for line in lines:
-            line_lower = line.lower().strip()
-            
-            if any(marker in line_lower for marker in [
-                'примечание:', 'заметка:', 'комментарий:', '---',
-                'сохранены', 'даты', 'текст адаптирован', 'via @',
-                'перевод:', 'translation:', 'note:', 'comment:',
-                'примечание перевода:', 'оригинал:', 'source:'
-            ]):
-                in_service_block = True
-                continue
-            
-            if in_service_block and line.strip() == '':
-                in_service_block = False
-                continue
-            
-            line = re.sub(r'via\s+@\w+', '', line, flags=re.IGNORECASE)
-            line = re.sub(r'@\w+', '', line)
-            
-            line = re.sub(r'pic\.twitter\.com/\w+', '', line, flags=re.IGNORECASE)
-            
-            if not in_service_block and line.strip():
-                cleaned_lines.append(line.strip())
-        
-        result = '\n'.join(cleaned_lines)
-        
-        result = re.sub(r'\S+\.\.\.$', '', result)
-        
-        result = re.sub(r'^["\']+', '', result)
-        result = re.sub(r'["\']+$', '', result)
-        
-        return result.strip()
+            self.logger.warning(f"AI json parse failed: {e}")
+            return None
+
+    def _normalize_structured(self, data: Dict[str, Any], url: str, text: str) -> Dict[str, Any]:
+        if not isinstance(data, dict):
+            data = {}
+        out: Dict[str, Any] = {}
+        out["is_news"] = bool(data.get("is_news", True))
+
+        cat = (data.get("category") or "OTHER").upper()
+        if cat not in _ALLOWED_CATEGORIES:
+            cat = "OTHER"
+        out["category"] = cat
+
+        tickers = data.get("tickers") or []
+        if isinstance(tickers, str):
+            tickers = re.findall(r"\b[A-Z]{2,6}\b", tickers.upper())
+        tickers = [t.strip().replace("$", "") for t in tickers if isinstance(t, str)]
+        tickers = [t for t in tickers if 2 <= len(t) <= 6]
+        out["tickers"] = list(dict.fromkeys(tickers))[:8]
+
+        facts = data.get("key_facts") or []
+        if isinstance(facts, str):
+            facts = [facts]
+        facts = [str(x).strip() for x in facts if str(x).strip()]
+        out["key_facts"] = facts[:3] if facts else self._fallback_facts(text)
+
+        numbers = data.get("numbers") or []
+        if isinstance(numbers, str):
+            numbers = [numbers]
+        numbers = [self._fix_number_str(str(x)) for x in numbers if str(x).strip()]
+        out["numbers"] = list(dict.fromkeys(numbers))[:6]
+
+        out["sentiment"] = (data.get("sentiment") or "neutral").lower()
+        try:
+            out["priority"] = int(float(data.get("priority", 50)))
+        except Exception:
+            out["priority"] = 50
+        out["priority"] = max(0, min(100, out["priority"]))
+
+        risk = (data.get("risk") or "low").lower()
+        if risk not in ["scam", "low", "med", "high"]:
+            risk = "low"
+        out["risk"] = risk
+
+        out["requires_source_link"] = bool(data.get("requires_source_link", False))
+
+        event_key = str(data.get("event_key") or "").strip()
+        if not event_key:
+            event_key = self._derive_event_key(text, url)
+        out["event_key"] = event_key[:64]
+
+        return out
+
+    def _fallback_facts(self, text: str) -> List[str]:
+        t = re.sub(r"\s+", " ", text).strip()
+        if len(t) > 180:
+            t = t[:180].rsplit(" ", 1)[0] + "…"
+        return [t] if t else []
+
+    def _fix_number_str(self, s: str) -> str:
+        s = s.strip()
+        s = s.replace(" ", "")
+        s = re.sub(r"\$(\d+),(\d)([KMB])\b", r"$\1.\2\3", s)
+        s = re.sub(r"\$(\d+),(\d{1,2})([KMB])\b", r"$\1.\2\3", s)
+        s = s.replace("USDT", "$").replace("USD", "$")
+        return s
+
+    def _derive_event_key(self, text: str, url: str = "") -> str:
+        t = text.lower()
+        if re.search(r"coinbase.*(down|outage|offline)", t):
+            return "coinbase_outage"
+        if re.search(r"binance.*(halt|outage|suspend)", t):
+            return "binance_issue"
+        if re.search(r"etf.*(inflow|outflow|flows)", t):
+            if "btc" in t or "bitcoin" in t:
+                return "etf_flow_btc"
+            if "eth" in t or "ethereum" in t:
+                return "etf_flow_eth"
+            return "etf_flow"
+        if re.search(r"sec|cftc|lawsuit|indict|arrest", t):
+            return "regulation_legal"
+        if re.search(r"hack|exploit|drain|breach", t):
+            return "hack_exploit"
+        if re.search(r"liquidat", t):
+            return "liquidations"
+        if re.search(r"whale|transferred|deposit(ed)?|withdraw(al)?", t):
+            return "whale_move"
+        # fallback: hash url/text
+        import hashlib
+        return "evt_" + hashlib.md5((url + "|" + text[:200]).encode("utf-8")).hexdigest()[:10]
+
+    def _rule_extract(self, text: str, url: str = "") -> Dict[str, Any]:
+        t = text.strip()
+        tl = t.lower()
+
+        tickers = re.findall(r"\$?\b([A-Z]{2,6})\b", t)
+        # убираем мусорные слова
+        stop = {"US", "SEC", "ETF", "FED", "CEO", "ATH", "USD"}
+        tickers = [x for x in tickers if x not in stop]
+
+        numbers = re.findall(r"(?:\$\d+[\d\.,]*\s?[KMB]?|[-+]?\d+(?:\.\d+)?%|\$\d+[KMB])", t)
+        numbers = [self._fix_number_str(x) for x in numbers][:6]
+
+        if re.search(r"etf", tl) and re.search(r"inflow|outflow|flows", tl):
+            cat = "ETF_FLOW"
+            pr = 75
+        elif re.search(r"hack|exploit|drain|breach", tl):
+            cat = "ALERT"
+            pr = 85
+        elif re.search(r"sec|cftc|lawsuit|indict|arrest|ban", tl):
+            cat = "REGULATION"
+            pr = 70
+        elif re.search(r"coinbase|binance|kraken|okx|bybit", tl) and re.search(r"down|outage|halt|suspend", tl):
+            cat = "EXCHANGE"
+            pr = 70
+        elif re.search(r"whale|transferred|deposit|withdraw", tl):
+            cat = "WHALE_MOVE"
+            pr = 65
+        elif re.search(r"liquidat|dump|pump|breaks|below|above|-\d+%|\+\d+%", tl):
+            cat = "MARKET_MOVE"
+            pr = 60
+        else:
+            cat = "OTHER"
+            pr = 50
+
+        facts = self._fallback_facts(t)
+
+        return {
+            "is_news": True,
+            "category": cat,
+            "tickers": list(dict.fromkeys([x.replace("$", "") for x in tickers]))[:8],
+            "key_facts": facts[:3],
+            "numbers": numbers,
+            "sentiment": "neutral",
+            "priority": pr,
+            "risk": "low",
+            "event_key": self._derive_event_key(t, url),
+            "requires_source_link": False,
+        }
 
 
 # Глобальный анализатор
 _analyzer: Optional[CryptoNewsAnalyzer] = None
+
 
 def get_analyzer() -> CryptoNewsAnalyzer:
     """Получить глобальный анализатор"""

@@ -37,6 +37,13 @@ class BotConfig:
     # Интервалы
     POLL_INTERVAL_RSS: int = field(default_factory=lambda: int(os.getenv("POLL_INTERVAL_RSS", "300")))
     MAX_WORKERS: int = field(default_factory=lambda: int(os.getenv("MAX_WORKERS", "3")))
+
+    # Публикация / rate limit
+    MAX_POSTS_PER_CYCLE: int = field(default_factory=lambda: int(os.getenv("MAX_POSTS_PER_CYCLE", "3")))
+    MIN_GAP_SECONDS: int = field(default_factory=lambda: int(os.getenv("MIN_GAP_SECONDS", "60")))
+
+    # Дедуп событий
+    EVENT_DEDUP_HOURS: int = field(default_factory=lambda: int(os.getenv("EVENT_DEDUP_HOURS", "12")))
     
     # Фильтры
     MIN_PRIORITY_SCORE: float = field(default_factory=lambda: float(os.getenv("MIN_PRIORITY_SCORE", "0.6")))

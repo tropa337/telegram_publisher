@@ -146,12 +146,13 @@ class ConsolePublisher:
 class TelegramPublisher:
     """Публикатор для Telegram с улучшенной поддержкой медиа"""
     
-    def __init__(self, 
+    def __init__(self,
                  client: TelegramClient,
                  channel: str,
                  max_media_per_post: int = 4,
                  parse_mode: str = 'html',
                  rate_limit_delay: float = 1.0,
+                 min_gap_seconds: int = 90,
                  always_include_media: bool = True):
         
         self.client = client
@@ -159,6 +160,7 @@ class TelegramPublisher:
         self.max_media_per_post = max_media_per_post
         self.parse_mode = parse_mode
         self.rate_limit_delay = rate_limit_delay
+        self.min_gap_seconds = int(min_gap_seconds) if min_gap_seconds else 0
         self.always_include_media = always_include_media
         
         self.is_connected = False
@@ -211,6 +213,17 @@ class TelegramPublisher:
                     else:
                         logger.info(f"📝 Пост без медиа (чистый текст)")
                     
+                    # Минимальный gap между постами (чтобы не спамить канал)
+                    try:
+                        now = datetime.now()
+                        gap = (now - self.last_post_time).total_seconds()
+                        if self.min_gap_seconds and gap < self.min_gap_seconds:
+                            need_sleep = float(self.min_gap_seconds - gap)
+                            logger.info(f"⏳ Gap {gap:.0f}s < {self.min_gap_seconds}s, спим {need_sleep:.0f}s")
+                            await asyncio.sleep(need_sleep)
+                    except Exception:
+                        pass
+
                     # Публикуем в зависимости от наличия медиа
                     if media_items:
                         result = await self._post_with_media(news_item, media_items)

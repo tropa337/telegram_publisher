@@ -35,6 +35,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Пропускаем важные события без явного движения цены
+ALLOW_WITHOUT_PRICE = re.compile(r"\b(sec|cftc|lawsuit|indict|arrest|sanction|hack|exploit|drain|coinbase\s+down|outage|offline|halt|suspend)\b", re.I)
+
 
 class QualityFilter:
     """Фильтр качества контента"""
@@ -102,6 +105,10 @@ class NewsBot:
         # Компоненты
         self.cache = NewsCache()
         self.dedup = DeduplicationEngine()
+        try:
+            self.dedup.set_event_window_hours(self.config.EVENT_DEDUP_HOURS)
+        except Exception:
+            pass
         self.filter = StrictMarketFilter()
         self.quality_filter = QualityFilter()
         self.analyzer = get_analyzer()
@@ -176,6 +183,8 @@ class NewsBot:
                     client=client,
                     channel=self.config.TARGET_CHANNEL,
                     max_media_per_post=self.config.MAX_MEDIA_PER_POST,
+                    rate_limit_delay=1.0,
+                    min_gap_seconds=self.config.MIN_GAP_SECONDS,
                     always_include_media=True
                 )
                 self.publisher_manager.add_publisher('telegram', telegram)
@@ -335,6 +344,17 @@ class NewsBot:
                     self.logger.debug(f"Дубликат в реальном времени")
                     continue
                 
+                # 2.5 Семантическая дедупликация (MinHash)
+                dedup_result = self.dedup.check(item)
+                if dedup_result.is_duplicate:
+                    counters['duplicate'] += 1
+                    self.stats['duplicates_filtered'] += 1
+                    self.stats['rejected'] += 1
+                    self.cache.mark_processed(item, 'rejected', f"dedup_{dedup_result.reason}")
+                    self._record_rejection('duplicate')
+                    self.logger.debug(f"Дубликат (sem): {dedup_result.reason} sim={dedup_result.similarity:.2f}")
+                    continue
+
                 # 3. Проверка качества контента
                 if not self.quality_filter.check(item.raw_text):
                     counters['quality'] += 1
@@ -356,7 +376,7 @@ class NewsBot:
                     continue
                 
                 # 5. Проверка движения рынка
-                if not looks_market_moving(item.raw_text):
+                if not looks_market_moving(item.raw_text) and not ALLOW_WITHOUT_PRICE.search(item.raw_text):
                     self.cache.mark_processed(item, 'rejected', 'no_market_move')
                     counters['market'] += 1
                     self.stats['rejected'] += 1
@@ -378,6 +398,23 @@ class NewsBot:
                     self.logger.error(f"❌ Ошибка AI анализа: {e}")
                     continue
                 
+                # 6.5 Event-key дедуп (анти-спам одинаковых событий 6-12ч)
+                try:
+                    event_key = ''
+                    if hasattr(analyzed, 'metadata') and isinstance(analyzed.metadata, dict):
+                        event_key = analyzed.metadata.get('event_key') or ''
+                        # если лежит внутри structured
+                        if not event_key and isinstance(analyzed.metadata.get('structured'), dict):
+                            event_key = analyzed.metadata['structured'].get('event_key') or ''
+                    if event_key and self.dedup.check_event_key(event_key):
+                        self.cache.mark_processed(item, 'rejected', 'event_duplicate')
+                        self.stats['rejected'] += 1
+                        self._record_rejection('event_duplicate')
+                        self.logger.debug(f"Event duplicate: {event_key}")
+                        continue
+                except Exception:
+                    pass
+
                 # 7. Проверка и логирование медиа
                 media_items = []
                 if hasattr(item, 'media_items') and item.media_items:
@@ -458,16 +495,32 @@ class NewsBot:
         self.logger.info(f"  БЕЗ МЕДИА: {counters['without_media']}")
         self.logger.info(f"  УСПЕШНО ПРОШЛИ: {counters['passed']}")
         
-        # 10. Публикация ВСЕХ новостей
-        if processed:
-            self.logger.info(f"📤 Публикация {len(processed)} новостей (всех)...")
+        # 10. Сортировка по приоритету + лимит постов за цикл
+        try:
+            processed = sorted(
+                processed,
+                key=lambda x: float(getattr(getattr(x, 'analysis', None), 'metadata', {}).get('priority', 50)),
+                reverse=True,
+            )
+        except Exception:
+            pass
+
+        max_cycle = getattr(self.config, 'MAX_POSTS_PER_CYCLE', 3) or 3
+        processed_to_post = processed[:max_cycle]
+        queued = processed[max_cycle:]
+        if queued:
+            self.logger.info(f"⏳ В очередь (на следующий цикл): {len(queued)}")
+
+        # 11. Публикация
+        if processed_to_post:
+            self.logger.info(f"📤 Публикация {len(processed_to_post)} новостей (top за цикл)...")
             
             for name, publisher in self.publisher_manager.publishers.items():
                 try:
-                    result = await publisher.publish(processed)
+                    result = await publisher.publish(processed_to_post)
                     
                     if result:
-                        self.stats['published'] += len(processed)
+                        self.stats['published'] += len(processed_to_post)
                         self.logger.info(f"✅ {name}: опубликовано {len(processed)} новостей")
                         
                         # Логируем информацию о медиа для каждого поста

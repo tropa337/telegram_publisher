@@ -26,6 +26,10 @@ class DeduplicationEngine:
         
         # Временное окно для дедупликации
         self.time_window_hours = 24
+
+        # Event-key дедуп (уровень C)
+        self.event_window_hours = 12
+        self.event_index: Dict[str, float] = {}
         
     def _normalize_text(self, text: str) -> str:
         """Нормализация текста для сравнения"""
@@ -206,6 +210,29 @@ class DeduplicationEngine:
         
         return DedupResult(False, best_similarity, "unique")
         
+
+    def set_event_window_hours(self, hours: int):
+        """Настроить окно event-key дедупликации"""
+        try:
+            self.event_window_hours = max(1, int(hours))
+        except Exception:
+            self.event_window_hours = 12
+
+    def check_event_key(self, event_key: str) -> bool:
+        """Вернёт True если event_key уже встречался в окне, иначе False и запишет его"""
+        if not event_key:
+            return False
+        now = datetime.now().timestamp()
+        cutoff = now - (self.event_window_hours * 3600)
+        # cleanup
+        for k, ts in list(self.event_index.items()):
+            if ts < cutoff:
+                self.event_index.pop(k, None)
+        if event_key in self.event_index:
+            return True
+        self.event_index[event_key] = now
+        return False
+
     def _cleanup_old_signatures(self):
         """Очистка старых сигнатур"""
         current_time = datetime.now().timestamp()

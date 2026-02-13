@@ -1,1574 +1,546 @@
 {
   "entries": {
-    "202d8bb41350f8e0471cb37ea91ca6ca": {
-      "item_hash": "202d8bb41350f8e0471cb37ea91ca6ca",
-      "timestamp": 1770830349.990482,
+    "f5a7bb16bf564252c057e2e9895024ca": {
+      "item_hash": "f5a7bb16bf564252c057e2e9895024ca",
+      "timestamp": 1771005735.7239099,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
+      "reason": "filter_Слишком короткий/пус",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Greece's economy is rebounding after its near-decade long financial crisis, but many Greeks are stru",
-        "created_at": "2026-02-11T17:15:00+00:00",
+        "text_preview": "Trump: Will visit Venezuela, we haven't decided when.",
+        "created_at": "2026-02-13T17:29:00+00:00",
         "has_media": false
       }
     },
-    "9b47b546f9a554c7f9bea9b150feebf5": {
-      "item_hash": "9b47b546f9a554c7f9bea9b150feebf5",
-      "timestamp": 1770830349.990558,
+    "11cd4516c677dc80606d3e9a0e8da098": {
+      "item_hash": "11cd4516c677dc80606d3e9a0e8da098",
+      "timestamp": 1771005735.7240238,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
+      "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Dutch court orders probe into Nexperia, dealing blow to Chinese parent reut.rs/46HWane reut.rs/46HWa",
-        "created_at": "2026-02-11T17:15:00+00:00",
+        "text_preview": "Trump: I think the Iran talks will be successful. If unsuccessful, it'll be a bad day for Iran.",
+        "created_at": "2026-02-13T17:24:00+00:00",
         "has_media": false
       }
     },
-    "72a2cd7680dfcaae00e865dfbd9ec03e": {
-      "item_hash": "72a2cd7680dfcaae00e865dfbd9ec03e",
-      "timestamp": 1770830349.9906657,
+    "0e9061b6ca9b4d7f73fb90759817ac6a": {
+      "item_hash": "0e9061b6ca9b4d7f73fb90759817ac6a",
+      "timestamp": 1771005735.7240703,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
+      "reason": "filter_Слишком короткий/пус",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Exclusive: CME is working on a plan to launch the world's first futures contract in rare earths, thr",
-        "created_at": "2026-02-11T17:15:00+00:00",
+        "text_preview": "*TRUMP: SECOND CARRIER JUST ARRIVED IN PERSIAN GULF",
+        "created_at": "2026-02-13T17:22:00+00:00",
         "has_media": false
       }
     },
-    "5f171cdb11292af664a5822667e8adcc": {
-      "item_hash": "5f171cdb11292af664a5822667e8adcc",
-      "timestamp": 1770830349.9908004,
+    "0cd6a15d2bfe0dd07fc127ae47cf0220": {
+      "item_hash": "0cd6a15d2bfe0dd07fc127ae47cf0220",
+      "timestamp": 1771005735.7241044,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
+      "reason": "filter_Слишком короткий/пус",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Exclusive: Ford Motor CEO Jim Farley told employees in a town hall that companywide bonuses would be",
-        "created_at": "2026-02-11T17:11:00+00:00",
+        "text_preview": "Trump: Russia wants a deal, Zelenskiy has to get moving.",
+        "created_at": "2026-02-13T17:22:00+00:00",
         "has_media": false
       }
     },
-    "f1ee720e4ab7cbc499164d66226b5a93": {
-      "item_hash": "f1ee720e4ab7cbc499164d66226b5a93",
-      "timestamp": 1770830349.990824,
+    "7591735bc8df8181d1db19db4482f4fb": {
+      "item_hash": "7591735bc8df8181d1db19db4482f4fb",
+      "timestamp": 1771005735.7241526,
       "status": "rejected",
-      "reason": "filter_Слишком короткий текст",
+      "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "EU tariffs on imports of China-made EVs",
-        "created_at": "2026-02-11T17:10:00+00:00",
+        "text_preview": "Trump: We'll need the aircraft carrier if there is no deal with Iran.",
+        "created_at": "2026-02-13T17:21:00+00:00",
         "has_media": false
       }
     },
-    "f460647e7b4cbbf01fc68b6f1fb09024": {
-      "item_hash": "f460647e7b4cbbf01fc68b6f1fb09024",
-      "timestamp": 1770830349.993588,
+    "f2136e4bda7bf7f604b1f0c2454050d3": {
+      "item_hash": "f2136e4bda7bf7f604b1f0c2454050d3",
+      "timestamp": 1771005735.7241826,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "*TRUMP: LOOKING AT A PRIME MINISTER FOR IRAQ",
+        "created_at": "2026-02-13T17:21:00+00:00",
+        "has_media": false
+      }
+    },
+    "279fe577cd38924bd41c5dbbd8bae9ed": {
+      "item_hash": "279fe577cd38924bd41c5dbbd8bae9ed",
+      "timestamp": 1771005735.7242134,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Trump: The second carrier just arrived in the Persian Gulf.",
+        "created_at": "2026-02-13T17:21:00+00:00",
+        "has_media": false
+      }
+    },
+    "09035da725c6d07454313de13b0275c0": {
+      "item_hash": "09035da725c6d07454313de13b0275c0",
+      "timestamp": 1771005735.7272143,
       "status": "rejected",
       "reason": "no_market_move",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Cointelegraph: 🔎 RESEARCH: VC appetite for Layer 2s collapsed in 2025, with just $162M raised",
-        "created_at": "2026-02-11T17:08:00+00:00",
+        "text_preview": "People loved $ETH at $4,000. Now they hate it around $2,000.",
+        "created_at": "2026-02-13T17:18:00+00:00",
         "has_media": false
       }
     },
-    "4f48a60a623303adb3ff1bb33525ecc7": {
-      "item_hash": "4f48a60a623303adb3ff1bb33525ecc7",
-      "timestamp": 1770830349.9936676,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Data Centers Are A Repeat Of History In PA's Coal Region zerohedge.com/political/data…",
-        "created_at": "2026-02-11T17:05:00+00:00",
-        "has_media": false
-      }
-    },
-    "c2af4a50edfb73b6d5b1708e57fbf6dc": {
-      "item_hash": "c2af4a50edfb73b6d5b1708e57fbf6dc",
-      "timestamp": 1770830349.993713,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "ECB's Schnabel: Europe is a continent with huge potential.",
-        "created_at": "2026-02-11T17:01:00+00:00",
-        "has_media": false
-      }
-    },
-    "78f7cf443a7eabe9aa07af9c0d7bea26": {
-      "item_hash": "78f7cf443a7eabe9aa07af9c0d7bea26",
-      "timestamp": 1770830349.9937532,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Kraft Heinz pauses split, new CEO says problems are 'fixable'",
-        "created_at": "2026-02-11T17:01:00+00:00",
-        "has_media": false
-      }
-    },
-    "c29e02d933a9ae14e1adc60cab2cbafd": {
-      "item_hash": "c29e02d933a9ae14e1adc60cab2cbafd",
-      "timestamp": 1770830349.99377,
-      "status": "rejected",
-      "reason": "too_short",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @TheBlock__:",
-        "created_at": "2026-02-11T16:55:00+00:00",
-        "has_media": false
-      }
-    },
-    "7d60ad6b03eb700f75d88e08f297142e": {
-      "item_hash": "7d60ad6b03eb700f75d88e08f297142e",
-      "timestamp": 1770830349.9947846,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Germany’s Chancellor Merz: EU companies are falling behind in AI due to complex rules.",
-        "created_at": "2026-02-11T16:53:00+00:00",
-        "has_media": false
-      }
-    },
-    "06f3746aba7123e22f8e8298492f4381": {
-      "item_hash": "06f3746aba7123e22f8e8298492f4381",
-      "timestamp": 1770830349.9948332,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Lufthansa says Thursday pilots strike is needless escalation",
-        "created_at": "2026-02-11T16:50:00+00:00",
-        "has_media": false
-      }
-    },
-    "2f96b0c841e528eafaf17e364e06da0d": {
-      "item_hash": "2f96b0c841e528eafaf17e364e06da0d",
-      "timestamp": 1770830349.994892,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*DISAGREEMENTS OVER DRONES LED TO EL PASO AIRSPACE CLOSURE: CBS *DISAGREEMENTS WERE RELATED TO DRONE",
-        "created_at": "2026-02-11T16:49:00+00:00",
-        "has_media": false
-      }
-    },
-    "76a0067884d5173fbe36fcf9f79adc58": {
-      "item_hash": "76a0067884d5173fbe36fcf9f79adc58",
-      "timestamp": 1770830349.9949648,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Germany’s Chancellor Merz: Europe need to close the growth gap with the US and China - Antwerp Indus",
-        "created_at": "2026-02-11T16:46:00+00:00",
-        "has_media": false
-      }
-    },
-    "5c3d0f76ed70a4aece1ee6c550bdd381": {
-      "item_hash": "5c3d0f76ed70a4aece1ee6c550bdd381",
-      "timestamp": 1770830349.995015,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Fed to hold rates through May, but Warsh may be too loose with policy, economists say",
-        "created_at": "2026-02-11T16:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "9ed7e557191b5d6110488001714f77ab": {
-      "item_hash": "9ed7e557191b5d6110488001714f77ab",
-      "timestamp": 1770830349.9950774,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "🇺🇸 ATKINS: I support to enact the CLARITY Act, a federal crypto framework is long overdue. pic.",
-        "created_at": "2026-02-11T16:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "a0c5348a3bc105e8c385deb86d21276e": {
-      "item_hash": "a0c5348a3bc105e8c385deb86d21276e",
-      "timestamp": 1770830349.9951243,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "'Disruption': Goldman Hedge Fund Honcho Warns \"Tectonic Plates Beneath The Market Are Shifting\"",
-        "created_at": "2026-02-11T16:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "925db5445b79f9fd45162c673246b456": {
-      "item_hash": "925db5445b79f9fd45162c673246b456",
-      "timestamp": 1770830349.9951737,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "CME to Launch Single Stock Futures and CME exploring launch of first-ever rare earth futures contrac",
-        "created_at": "2026-02-11T16:44:00+00:00",
-        "has_media": false
-      }
-    },
-    "0d2ebded7cfaf56bdf32a2858082eb37": {
-      "item_hash": "0d2ebded7cfaf56bdf32a2858082eb37",
-      "timestamp": 1770830349.9951935,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий текст",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Tomorrow is usually a bad day for Bitcoin.",
-        "created_at": "2026-02-11T16:42:00+00:00",
-        "has_media": false
-      }
-    },
-    "6fee93d9e8f00feb0d0bed8a2cc2b1f0": {
-      "item_hash": "6fee93d9e8f00feb0d0bed8a2cc2b1f0",
-      "timestamp": 1770830349.9953032,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигналов: 0",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "From @TheAthletic: ICE agents will form a “key part” of the security at this year’s men’s World Cup,",
-        "created_at": "2026-02-11T16:41:00+00:00",
-        "has_media": false
-      }
-    },
-    "f1468346e8cf7f5f7a65a2c693edbade": {
-      "item_hash": "f1468346e8cf7f5f7a65a2c693edbade",
-      "timestamp": 1770832745.1865869,
+    "76e849e31d224f4d8f1ec7eaa085b739": {
+      "item_hash": "76e849e31d224f4d8f1ec7eaa085b739",
+      "timestamp": 1771006218.5305674,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Meta Auditor EY Raised Red Flag on Data-Center Accounting -- WSJ Oh, so the auditor figured out the ",
-        "created_at": "2026-02-11T17:50:00+00:00",
+        "text_preview": "OpenaAI tapped for voice control tech in US drone swarm contest.",
+        "created_at": "2026-02-13T18:06:00+00:00",
         "has_media": false
       }
     },
-    "cdcd8ebcbe162c4c665953f1fc95e7c5": {
-      "item_hash": "cdcd8ebcbe162c4c665953f1fc95e7c5",
-      "timestamp": 1770832745.1866949,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий тек",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Fed bids for 10-year notes total $11.9 bln.",
-        "created_at": "2026-02-11T17:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "f407824376548572d7038c2fdd8efa08": {
-      "item_hash": "f407824376548572d7038c2fdd8efa08",
-      "timestamp": 1770832745.1868577,
+    "ba595120c3fb85428ea16a56b9b60e50": {
+      "item_hash": "ba595120c3fb85428ea16a56b9b60e50",
+      "timestamp": 1771006218.530644,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "London's FTSE 100 touches new peak, driven by housebuilders, energy stocks reut.rs/4aqcbiH reut.rs/4",
-        "created_at": "2026-02-11T17:45:00+00:00",
+        "text_preview": "Trump, asked if he would visit Venezuela, replied: I'm going to make a visit to Venezuela. [Did not ",
+        "created_at": "2026-02-13T17:59:00+00:00",
         "has_media": false
       }
     },
-    "958d2a457e82a62935639db510e166b2": {
-      "item_hash": "958d2a457e82a62935639db510e166b2",
-      "timestamp": 1770832745.1870139,
+    "a3b64a2d0bfc38d0fa0e81464cfc91cb": {
+      "item_hash": "a3b64a2d0bfc38d0fa0e81464cfc91cb",
+      "timestamp": 1771007654.7826114,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "CZ rejects 'contradicting' claims Binance fired investigators after Iran-linked probe findings thebl",
+        "created_at": "2026-02-13T18:25:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "3c77368f10945f6694f8b87bc36dc067": {
+      "item_hash": "3c77368f10945f6694f8b87bc36dc067",
+      "timestamp": 1771007654.7829993,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "The Trump Admin Just Won The Mask Decision... Now It Should Appeal zerohedge.com/political/trum…",
-        "created_at": "2026-02-11T17:45:00+00:00",
+        "text_preview": "China releases anti-monopoly guidelines for internet platforms reut.rs/3OgNNZB reut.rs/3OgNNZB",
+        "created_at": "2026-02-13T18:25:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "d17bd47950f7ac0cbac3d222051a2c14": {
+      "item_hash": "d17bd47950f7ac0cbac3d222051a2c14",
+      "timestamp": 1771007654.788372,
+      "status": "rejected",
+      "reason": "no_market_move",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Two Philadelphia Men Admit To AI-Assisted $3.5M Housing Aid Scam In Minnesota zerohedge.com/markets/",
+        "created_at": "2026-02-13T18:20:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "506b1ede33bed55d23e0778521053d58": {
+      "item_hash": "506b1ede33bed55d23e0778521053d58",
+      "timestamp": 1771007655.0152965,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "3 counterparties take $377.000m at Fed Reverse Repo Operation.",
+        "created_at": "2026-02-13T18:16:00+00:00",
         "has_media": false
       }
     },
-    "7ae53643113366cae6b95874c2fc155b": {
-      "item_hash": "7ae53643113366cae6b95874c2fc155b",
-      "timestamp": 1770832745.1872196,
+    "7ba56a20984ecea4c21b045a9c9d829e": {
+      "item_hash": "7ba56a20984ecea4c21b045a9c9d829e",
+      "timestamp": 1771007655.0156772,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "A brawl broke out in Turkey's parliament as opposition lawmakers tried to block Justice Minister Aki",
-        "created_at": "2026-02-11T17:45:00+00:00",
-        "has_media": false
+        "text_preview": "Alpine rescue teams dug out a hiker buried under snow after a large avalanche struck north of Italy'",
+        "created_at": "2026-02-13T18:15:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
       }
     },
-    "20a851b76c8d1a533ad800a64602cb69": {
-      "item_hash": "20a851b76c8d1a533ad800a64602cb69",
-      "timestamp": 1770832745.1874223,
+    "f54a2a42294ef4ef6a0ef73e32a06d8b": {
+      "item_hash": "f54a2a42294ef4ef6a0ef73e32a06d8b",
+      "timestamp": 1771007655.219442,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "INSIGHT: Selling pressure on Coinbase persists as the negative premium gap marks its longest stretch",
+        "created_at": "2026-02-13T18:15:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "937c64dd50ff10957b8d2d549ea5b162": {
+      "item_hash": "937c64dd50ff10957b8d2d549ea5b162",
+      "timestamp": 1771007655.4364083,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "TRUMP MEDIA EYES NEW CRYPTO ETFS Trump Media & Technology Group is seeking to launch a Bitcoin and E",
+        "created_at": "2026-02-13T18:12:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "6798c522b86a70de5d58c6665dc650f7": {
+      "item_hash": "6798c522b86a70de5d58c6665dc650f7",
+      "timestamp": 1771007655.4366627,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Trump: Too busy to be a defendant but plenty of time to sue",
+        "created_at": "2026-02-13T18:05:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "a485536198b2be41ecfdd96b1911075f": {
+      "item_hash": "a485536198b2be41ecfdd96b1911075f",
+      "timestamp": 1771007655.4379692,
+      "status": "rejected",
+      "reason": "no_market_move",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "French police arrested nine people in an investigation into a Louvre ticket fraud that may have cost",
+        "created_at": "2026-02-13T18:05:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "080d0bf86d5cd0a2c099c5c9a8524f42": {
+      "item_hash": "080d0bf86d5cd0a2c099c5c9a8524f42",
+      "timestamp": 1771007655.6707842,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Trump Media and Technology Group files two new crypto ETF proposals following SEC delay",
+        "created_at": "2026-02-13T18:02:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "421e02728952c6f4812eaae6f8aa8d92": {
+      "item_hash": "421e02728952c6f4812eaae6f8aa8d92",
+      "timestamp": 1771007655.6719804,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Thousands were evacuated after heavy rains flooded several rural areas in storm-hit Portugal, where ",
-        "created_at": "2026-02-11T17:40:00+00:00",
-        "has_media": false
+        "text_preview": "Financial Nihilism & The Trap Young Investors Are Walking Into",
+        "created_at": "2026-02-13T18:00:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
       }
     },
-    "64c9c1dfd334a9771d9182b84991d769": {
-      "item_hash": "64c9c1dfd334a9771d9182b84991d769",
-      "timestamp": 1770832745.1874852,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий тек",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Morning Bid: Retail softens as jobs loom",
-        "created_at": "2026-02-11T17:40:00+00:00",
-        "has_media": false
-      }
-    },
-    "ad2074ce40a568df55518873f21d1b9e": {
-      "item_hash": "ad2074ce40a568df55518873f21d1b9e",
-      "timestamp": 1770832745.1877844,
+    "14879941859b37c01e10792b1f7760f6": {
+      "item_hash": "14879941859b37c01e10792b1f7760f6",
+      "timestamp": 1771007655.672096,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @TheBlock__: BlockFills paused client withdrawals late last week. Kind of surprised we're only",
-        "created_at": "2026-02-11T17:39:00+00:00",
+        "text_preview": "US Secretary of State Rubio skips the Ukraine meeting with European leaders in Munich - FT.",
+        "created_at": "2026-02-13T17:55:00+00:00",
         "has_media": false
       }
     },
-    "b3892043024760cd4d737c30c7337797": {
-      "item_hash": "b3892043024760cd4d737c30c7337797",
-      "timestamp": 1770832745.1879048,
+    "9d594df2f67df5d0810962761a4111a0": {
+      "item_hash": "9d594df2f67df5d0810962761a4111a0",
+      "timestamp": 1771007655.6721878,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Shopify issues upbeat quarterly forecasts, $2 billion stock buyback plan",
-        "created_at": "2026-02-11T17:35:00+00:00",
-        "has_media": false
+        "text_preview": "Safran cautious over stepping into Airbus engine dispute with Pratt",
+        "created_at": "2026-02-13T17:50:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
       }
     },
-    "4fa1df98ac808553b0a3884ea1286506": {
-      "item_hash": "4fa1df98ac808553b0a3884ea1286506",
-      "timestamp": 1770832745.1880138,
+    "7384f21a78be7126e10392d1cd8ab0a2": {
+      "item_hash": "7384f21a78be7126e10392d1cd8ab0a2",
+      "timestamp": 1771007655.6723719,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "From @TheAthletic: If you were watching on TV, you couldn’t see Lindsey Vonn’s injury close up. You ",
+        "created_at": "2026-02-13T17:48:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "7e02b62e8609453b0a7c1bee515f16df": {
+      "item_hash": "7e02b62e8609453b0a7c1bee515f16df",
+      "timestamp": 1771007655.672449,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "China holds roundtable meeting with German companies",
+        "created_at": "2026-02-13T17:45:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "4b639fc83448c8a4d16c878c1a1a622e": {
+      "item_hash": "4b639fc83448c8a4d16c878c1a1a622e",
+      "timestamp": 1771007655.6725755,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "🇺🇸BESSENT: CLARITY BILL WILL GIVE 'COMFORT' TO THE MARKET “In a time when we are having one of these",
+        "created_at": "2026-02-13T17:43:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "718f2fbe63b124d2a290dad6f6e78345": {
+      "item_hash": "718f2fbe63b124d2a290dad6f6e78345",
+      "timestamp": 1771007655.672612,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Lunar New Year bowing service in China stokes controversy",
+        "created_at": "2026-02-13T17:40:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "5a7f32b18aaf55124347c5dd205f799a": {
+      "item_hash": "5a7f32b18aaf55124347c5dd205f799a",
+      "timestamp": 1771007655.6727543,
+      "status": "rejected",
+      "reason": "no_market_move",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Turkey detains 16 in OnlyFans probe, seizes $6.9 mln in assets",
+        "created_at": "2026-02-13T17:30:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "dd0e825ae57925a975ed34105a3f758d": {
+      "item_hash": "dd0e825ae57925a975ed34105a3f758d",
+      "timestamp": 1771007655.672829,
       "status": "rejected",
       "reason": "low_quality",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "From @TheAthletic: Stuffed animals of Tina and Milo, the two mascot stoats representing the Winter O",
-        "created_at": "2026-02-11T17:35:00+00:00",
-        "has_media": false
+        "text_preview": "RT by @zerohedge: Sprott's stock $SII is up 312% in the past 5yrs, which is unusual for the stock of",
+        "created_at": "2026-02-13T17:29:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
       }
     },
-    "479cc64328f9e31b7332b7575415e571": {
-      "item_hash": "479cc64328f9e31b7332b7575415e571",
-      "timestamp": 1770832745.190367,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "🇺🇸 HUGE: U.S. hiring in 2025 is the worst non-recession year since 2003 at just 181,000 jobs added. ",
-        "created_at": "2026-02-11T17:34:00+00:00",
-        "has_media": false
-      }
-    },
-    "0feab245fe1b2efa8d4e38e22aa55d10": {
-      "item_hash": "0feab245fe1b2efa8d4e38e22aa55d10",
-      "timestamp": 1770832745.1904588,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Cointelegraph: BESSENT: 🇺🇸 JOBS REPORT CRUSHED EXPECTATIONS. pic.",
-        "created_at": "2026-02-11T17:32:00+00:00",
-        "has_media": false
-      }
-    },
-    "7984ec0bac06a3a9c2eada3730283bfa": {
-      "item_hash": "7984ec0bac06a3a9c2eada3730283bfa",
-      "timestamp": 1770832745.1907215,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "💥 🇺🇸 Attorney General Pam Bondi crashes out over Epstein: \"The Dow is over 50,000 dollars!\" \"The S&P",
-        "created_at": "2026-02-11T17:31:00+00:00",
-        "has_media": false
-      }
-    },
-    "53ed25ba29382e449f1ea48f2a4ee592": {
-      "item_hash": "53ed25ba29382e449f1ea48f2a4ee592",
-      "timestamp": 1770832745.1909654,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Kenyan skier Issa Laborde prepares for his first Olympics with IOC funding, while teammate Sabrina S",
-        "created_at": "2026-02-11T17:30:00+00:00",
-        "has_media": false
-      }
-    },
-    "83856a65c9571b8ccd8613c4da4c7fda": {
-      "item_hash": "83856a65c9571b8ccd8613c4da4c7fda",
-      "timestamp": 1770832745.19116,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "🇺🇸 US records lowest job growth in 2025 for a non-recession year since 2003. pic.",
-        "created_at": "2026-02-11T17:30:00+00:00",
-        "has_media": false
-      }
-    },
-    "1ec4f204b36a377023606c25f649e527": {
-      "item_hash": "1ec4f204b36a377023606c25f649e527",
-      "timestamp": 1770832745.1913102,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Activist investor Ancora to oppose Netflix-Warner Bros deal, backs Paramount bid",
-        "created_at": "2026-02-11T17:30:00+00:00",
-        "has_media": false
-      }
-    },
-    "525361ed2b467727003fd6db6e6e73af": {
-      "item_hash": "525361ed2b467727003fd6db6e6e73af",
-      "timestamp": 1770832745.1914315,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Russia Will Stick To Nuclear Arms Limits If US Does The Same",
-        "created_at": "2026-02-11T17:25:00+00:00",
-        "has_media": false
-      }
-    },
-    "9dd6724d54057fd7bc8e698663da959a": {
-      "item_hash": "9dd6724d54057fd7bc8e698663da959a",
-      "timestamp": 1770832745.1915798,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent: Jobs numbers have exceeded expectations - Post on X.",
-        "created_at": "2026-02-11T17:25:00+00:00",
-        "has_media": false
-      }
-    },
-    "81d0fda0bc9151bbd8d8340d49f3392e": {
-      "item_hash": "81d0fda0bc9151bbd8d8340d49f3392e",
-      "timestamp": 1770832745.191844,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "A visibly upset Prime Minister Mark Carney promised Canadians would get through what he called a 'te",
-        "created_at": "2026-02-11T17:25:00+00:00",
-        "has_media": false
-      }
-    },
-    "915cc1b0372549b32a020634da859700": {
-      "item_hash": "915cc1b0372549b32a020634da859700",
-      "timestamp": 1770832745.1993716,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Cointelegraph: Bitcoin's price slides again, media outlets jump on it — we've seen this story",
-        "created_at": "2026-02-11T17:25:00+00:00",
-        "has_media": false
-      }
-    },
-    "a6034ee1a4f4d6e86924d6516d22df5a": {
-      "item_hash": "a6034ee1a4f4d6e86924d6516d22df5a",
-      "timestamp": 1770832745.201204,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий тек",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Bitcoin didn't top on euphoria this time.",
-        "created_at": "2026-02-11T17:18:00+00:00",
-        "has_media": false
-      }
-    },
-    "30827648b40615da3ce326013a02f0a4": {
-      "item_hash": "30827648b40615da3ce326013a02f0a4",
-      "timestamp": 1770832745.2012877,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "UK's Chancellor Reeves: We could have deeper EU alignment in some sectors.",
-        "created_at": "2026-02-11T17:16:00+00:00",
-        "has_media": false
-      }
-    },
-    "f8f148f58765b331d27d8370a63729ae": {
-      "item_hash": "f8f148f58765b331d27d8370a63729ae",
-      "timestamp": 1770832745.2013824,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Greece's economy is rebounding after its near-decade long financial crisis, but many Greeks are stru",
-        "created_at": "2026-02-11T17:15:00+00:00",
-        "has_media": false
-      }
-    },
-    "5a8a443743523deffa108a3f09c4d430": {
-      "item_hash": "5a8a443743523deffa108a3f09c4d430",
-      "timestamp": 1770832805.553377,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Ukraine’s President Zelenskiy rejects the FT report on announcing Ukraine's election plan on Februar",
-        "created_at": "2026-02-11T17:56:00+00:00",
-        "has_media": false
-      }
-    },
-    "1f57ef0e28f3e2c6b6146d1a4f607f9e": {
-      "item_hash": "1f57ef0e28f3e2c6b6146d1a4f607f9e",
-      "timestamp": 1770832805.553522,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Ukraine’s President Zelenskiy: Russia so far isn't ready for an energy truce, there is no answer fro",
-        "created_at": "2026-02-11T17:55:00+00:00",
-        "has_media": false
-      }
-    },
-    "9c2be02f3f665c5807b76cdc73d7fd45": {
-      "item_hash": "9c2be02f3f665c5807b76cdc73d7fd45",
-      "timestamp": 1770832807.071429,
-      "status": "approved",
-      "reason": "passed_all_filters",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "$ETH and $BTC network 2025 revenues are miles below 2021 highs. $ETH down from $9.9B to $665.6M, $BT",
-        "created_at": "2026-02-11T17:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "8929bcca130dea25bb752e49def75b98": {
-      "item_hash": "8929bcca130dea25bb752e49def75b98",
-      "timestamp": 1770832934.9982116,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @TheBlock__: One of the most underlooked sectors in crypto: Options@IthacaProtocol and @Derive",
-        "created_at": "2026-02-11T17:50:00+00:00",
-        "has_media": false
-      }
-    },
-    "cca95122cc5a893f4db5387a3d403e7d": {
-      "item_hash": "cca95122cc5a893f4db5387a3d403e7d",
-      "timestamp": 1770832995.4486067,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "CHICAGO CRYPTO FIRM SUSPENDS CLIENT WITHDRAWALS Chicago-based trading firm BlockFills, which handled",
-        "created_at": "2026-02-11T17:56:00+00:00",
-        "has_media": false
-      }
-    },
-    "b954b520df4dce225a34aacce4bbb0f3": {
-      "item_hash": "b954b520df4dce225a34aacce4bbb0f3",
-      "timestamp": 1770833055.751383,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "El Paso airspace reopens after US says cartel drone threat neutralized reut.rs/4a9vkqs reut.rs/4a9vk",
-        "created_at": "2026-02-11T18:00:00+00:00",
-        "has_media": false
-      }
-    },
-    "7d917d4a1f724e757e7e230f66ed4206": {
-      "item_hash": "7d917d4a1f724e757e7e230f66ed4206",
-      "timestamp": 1770833055.751549,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "How do Olympic figure skating and ice dance actually work? Reuters Global Sports Editor Ossian Shine",
-        "created_at": "2026-02-11T18:00:00+00:00",
-        "has_media": false
-      }
-    },
-    "170ee1ecdbe21736b3b2224ce71eafac": {
-      "item_hash": "170ee1ecdbe21736b3b2224ce71eafac",
-      "timestamp": 1770833055.7542243,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Swiss golden boy Von Allmen wins super-G to complete Milano Cortina hat-trick",
-        "created_at": "2026-02-11T17:50:00+00:00",
-        "has_media": false
-      }
-    },
-    "abb77afa838a989a0bbf065ff13b9ea5": {
-      "item_hash": "abb77afa838a989a0bbf065ff13b9ea5",
-      "timestamp": 1770833296.8674107,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Mama's Boy? Sam Bankman-Fried, Represented By His Mother, Files For New Trial In FTX Implosion Case ",
-        "created_at": "2026-02-11T18:05:00+00:00",
-        "has_media": false
-      }
-    },
-    "5ee65255f0c89633c75153bef5fbc2b2": {
-      "item_hash": "5ee65255f0c89633c75153bef5fbc2b2",
-      "timestamp": 1770833296.8674982,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Ugly auction: 10Y high yield 4.177% WI 4.163%, 1.4bps tail. Biggest tail since Aug 2024",
-        "created_at": "2026-02-11T18:03:00+00:00",
-        "has_media": false
-      }
-    },
-    "07d9a6ab9142f5e82aeba3bbf782d926": {
-      "item_hash": "07d9a6ab9142f5e82aeba3bbf782d926",
-      "timestamp": 1770833296.8675556,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*ZELENSKIY SAYS HE WON'T AGREE TO PEACE TALKS IN RUSSIA, BELARUS",
-        "created_at": "2026-02-11T17:55:00+00:00",
-        "has_media": false
-      }
-    },
-    "e8a9fcf8020179f5c43f249f41132698": {
-      "item_hash": "e8a9fcf8020179f5c43f249f41132698",
-      "timestamp": 1770833296.8676214,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @zerohedge: TPUSA Announces 'All-American Olympics' Featuring Kid Rock Competing In Every Spor",
-        "created_at": "2026-02-11T17:54:00+00:00",
-        "has_media": false
-      }
-    },
-    "3e809cf363245dabff66270574bd17b9": {
-      "item_hash": "3e809cf363245dabff66270574bd17b9",
-      "timestamp": 1770833598.4683816,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Less Jobs. Soaring markets. Make sure the own assets.",
-        "created_at": "2026-02-11T18:03:00+00:00",
-        "has_media": false
-      }
-    },
-    "d508eb935e96d9925788c651b0647e3c": {
-      "item_hash": "d508eb935e96d9925788c651b0647e3c",
-      "timestamp": 1770833719.0024629,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Ackman's Pershing Square has a stake in Meta - WSJ $META",
-        "created_at": "2026-02-11T18:05:00+00:00",
-        "has_media": false
-      }
-    },
-    "2ac9cad5c77696333c0b30a78a5a76e2": {
-      "item_hash": "2ac9cad5c77696333c0b30a78a5a76e2",
-      "timestamp": 1770833719.0026007,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US 10-Year Note Auction High Yield 4.177% (Tailed by 1.4 basis points) Bid-to-cover 2.39 Sells $42 b",
-        "created_at": "2026-02-11T18:02:00+00:00",
-        "has_media": false
-      }
-    },
-    "2009bbfb8665975405d62a92550232ea": {
-      "item_hash": "2009bbfb8665975405d62a92550232ea",
-      "timestamp": 1770833719.0026646,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Treasury WI 10-year yield 4.163% before $42 billion auction.",
-        "created_at": "2026-02-11T18:00:00+00:00",
-        "has_media": false
-      }
-    },
-    "c3aaef61a64c1db33cd826bdd2fc6577": {
-      "item_hash": "c3aaef61a64c1db33cd826bdd2fc6577",
-      "timestamp": 1770833779.2818458,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "DCG's Barry Silbert: 5%-10% of Bitcoin 'is going to find its way into privacy-focused crypto,' like ",
-        "created_at": "2026-02-11T18:15:00+00:00",
-        "has_media": false
-      }
-    },
-    "53ac10b80c3af197a10d66726dc58251": {
-      "item_hash": "53ac10b80c3af197a10d66726dc58251",
-      "timestamp": 1770833779.2838383,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "TotalEnergies halves buybacks, maintains growth plans as low oil, gas prices weigh on profits reut.r",
-        "created_at": "2026-02-11T18:15:00+00:00",
-        "has_media": false
-      }
-    },
-    "39d965896e083d489bd2e135ce3d6115": {
-      "item_hash": "39d965896e083d489bd2e135ce3d6115",
-      "timestamp": 1770833779.2839057,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Activist investor Elliott builds LSEG stake to push for change, source says",
-        "created_at": "2026-02-11T18:10:00+00:00",
-        "has_media": false
-      }
-    },
-    "dccf45a72739b271160856c128be98ca": {
-      "item_hash": "dccf45a72739b271160856c128be98ca",
-      "timestamp": 1770833779.2839622,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Exclusive: India sticks to e-cigarette ban in snub for Philip Morris",
-        "created_at": "2026-02-11T18:05:00+00:00",
-        "has_media": false
-      }
-    },
-    "7a4b87f34ea400e7f8a80f9d1591f0f0": {
-      "item_hash": "7a4b87f34ea400e7f8a80f9d1591f0f0",
-      "timestamp": 1770834201.9958072,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*FED TO DROP SOME PRIOR DEMANDS FOR BANKS TO FIX FLAWS",
-        "created_at": "2026-02-11T18:20:00+00:00",
-        "has_media": false
-      }
-    },
-    "289115483000b25c7e45cad6b30a8af7": {
-      "item_hash": "289115483000b25c7e45cad6b30a8af7",
-      "timestamp": 1770834201.9959085,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "10Y auction high yield: Dec 25: 4.175% Jan 26: 4.173% Feb 26: 4.177%",
-        "created_at": "2026-02-11T18:11:00+00:00",
-        "has_media": false
-      }
-    },
-    "882c3d075c01aa14a0739b05494901ae": {
-      "item_hash": "882c3d075c01aa14a0739b05494901ae",
-      "timestamp": 1770834322.66647,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "🇺🇸 ATKINS: I feel strongly that we can and we should be the crypto capital of the world. pic.",
-        "created_at": "2026-02-11T18:15:00+00:00",
-        "has_media": false
-      }
-    },
-    "e358007129c38659e9c947c17a0a140a": {
-      "item_hash": "e358007129c38659e9c947c17a0a140a",
-      "timestamp": 1770834503.685018,
+    "b52a12ffde0d97e04f7e12cf26c7e233": {
+      "item_hash": "b52a12ffde0d97e04f7e12cf26c7e233",
+      "timestamp": 1771007897.1119778,
       "status": "rejected",
       "reason": "low_quality",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "INSIDERS ARE DUMPING STOCKS AT THE FASTEST PACE EVER In the recent weeks, stock insiders have accele",
-        "created_at": "2026-02-11T18:13:00+00:00",
-        "has_media": false
+        "text_preview": "Record lows.",
+        "created_at": "2026-02-13T18:36:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
       }
     },
-    "549dd4109d0c5843ef616425262547fa": {
-      "item_hash": "549dd4109d0c5843ef616425262547fa",
-      "timestamp": 1770834624.5475297,
+    "c028d3100da98346a56ef52473076ec2": {
+      "item_hash": "c028d3100da98346a56ef52473076ec2",
+      "timestamp": 1771007957.4557483,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "The Fed is to drop some prior demands for banks to fix flaws.",
-        "created_at": "2026-02-11T18:19:00+00:00",
+        "text_preview": "*SPACEX IS SAID TO WEIGH DUAL-CLASS IPO SHARES TO EMPOWER MUSK",
+        "created_at": "2026-02-13T18:31:00+00:00",
         "has_media": false
       }
     },
-    "271cd33f817b7bd90c8cfc9c57009056": {
-      "item_hash": "271cd33f817b7bd90c8cfc9c57009056",
-      "timestamp": 1770834625.4640934,
-      "status": "approved",
-      "reason": "passed_all_filters",
+    "45ea7cb5df905e52e9a57c94eb3d37df": {
+      "item_hash": "45ea7cb5df905e52e9a57c94eb3d37df",
+      "timestamp": 1771008017.8224866,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "6 counterparties take $1.048b at the Fed reverse repo operation.",
-        "created_at": "2026-02-11T18:16:00+00:00",
+        "text_preview": "Trump: Inflation and product costs are way down.",
+        "created_at": "2026-02-13T18:36:00+00:00",
         "has_media": false
       }
     },
-    "75a80101bb069d0dc6662424899d45f3": {
-      "item_hash": "75a80101bb069d0dc6662424899d45f3",
-      "timestamp": 1770834867.890566,
+    "849069a7e3d044e75f05ae587c64c34d": {
+      "item_hash": "849069a7e3d044e75f05ae587c64c34d",
+      "timestamp": 1771008017.822916,
+      "status": "rejected",
+      "reason": "no_market_move",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Exclusive: ByteDance in talks to sell gaming unit Moonton for more than $6 billion, sources say",
+        "created_at": "2026-02-13T18:00:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "260c53bffe484d7364082fa52ea9b116": {
+      "item_hash": "260c53bffe484d7364082fa52ea9b116",
+      "timestamp": 1771008319.7036917,
+      "status": "rejected",
+      "reason": "filter_Запрещенный паттерн",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "RT by @Reuters: US judge orders Trump administration to facilitate deported college student Any Luci",
+        "created_at": "2026-02-13T18:43:00+00:00",
+        "has_media": false
+      }
+    },
+    "4b9e23f533f2654a9d548af315174deb": {
+      "item_hash": "4b9e23f533f2654a9d548af315174deb",
+      "timestamp": 1771008319.7037818,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "A medal from the first modern Olympics in 1896 is set to go under the hammer at a Danish auction hou",
-        "created_at": "2026-02-11T18:30:00+00:00",
-        "has_media": false
+        "text_preview": "US withdraws newly updated list of firms allegedly aiding China's military reut.rs/4ams8GE reut.rs/4",
+        "created_at": "2026-02-13T18:40:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
       }
     },
-    "e054a27b48485fab2bb27f6d30310138": {
-      "item_hash": "e054a27b48485fab2bb27f6d30310138",
-      "timestamp": 1770834867.8927493,
+    "dab057f5a635a900877bc33434dbdf3b": {
+      "item_hash": "dab057f5a635a900877bc33434dbdf3b",
+      "timestamp": 1771008319.7038562,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Europe, Asia lead equity fund inflows as US records weekly outflow reut.rs/4kGbDKE reut.rs/4kGbDKE",
+        "created_at": "2026-02-13T18:35:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "e145b29bc2a386f2eecb23b1f7015467": {
+      "item_hash": "e145b29bc2a386f2eecb23b1f7015467",
+      "timestamp": 1771008319.7039456,
+      "status": "rejected",
+      "reason": "filter_Запрещенный паттерн",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "RT by @Reuters: President Trump’s post‑election litigation strategy is prompting legal battles over ",
+        "created_at": "2026-02-13T18:31:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "78eba1a0eb235c96f6fdabb7cbbee9af": {
+      "item_hash": "78eba1a0eb235c96f6fdabb7cbbee9af",
+      "timestamp": 1771008319.7040682,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
         "text_preview": "💘 Dating apps promise love — but every successful match costs them two customers. So how does the bu",
-        "created_at": "2026-02-11T18:30:00+00:00",
-        "has_media": false
-      }
-    },
-    "3800029954ebdcc3b364b3b3acbc5f18": {
-      "item_hash": "3800029954ebdcc3b364b3b3acbc5f18",
-      "timestamp": 1770834867.8928466,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Dreadful 10Y Auction Sees Biggest Tail Since 2024, Foreign Demand Slides zerohedge.com/markets/dread",
-        "created_at": "2026-02-11T18:25:00+00:00",
-        "has_media": false
-      }
-    },
-    "bd2f32c4ae1aa44c319d7103c4da721b": {
-      "item_hash": "bd2f32c4ae1aa44c319d7103c4da721b",
-      "timestamp": 1770834867.892915,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "IOC 'begs' Ukraine's Heraskevych to race without war dead helmet but athlete is defiant",
-        "created_at": "2026-02-11T18:25:00+00:00",
-        "has_media": false
-      }
-    },
-    "b6bb86e3ee080187553d1208c3c60657": {
-      "item_hash": "b6bb86e3ee080187553d1208c3c60657",
-      "timestamp": 1770834867.8929856,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Democratic Governors Threaten Boycott Of White House Gathering zerohedge.com/political/demo…",
-        "created_at": "2026-02-11T18:25:00+00:00",
-        "has_media": false
-      }
-    },
-    "1b6dc9157713632455d7e7293dce3831": {
-      "item_hash": "1b6dc9157713632455d7e7293dce3831",
-      "timestamp": 1770834867.8930945,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Attorney General Pam Bondi attacked Democrats and praised Trump as she faced criticism from lawma",
-        "created_at": "2026-02-11T18:20:00+00:00",
-        "has_media": false
-      }
-    },
-    "622bc7ecbc0b2b279173493705389662": {
-      "item_hash": "622bc7ecbc0b2b279173493705389662",
-      "timestamp": 1770834928.2858112,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Jobs report came in strong. Probably no rate cuts in March again.",
-        "created_at": "2026-02-11T18:32:00+00:00",
-        "has_media": false
-      }
-    },
-    "6fbee6b39a564a810f5eea288ef4382e": {
-      "item_hash": "6fbee6b39a564a810f5eea288ef4382e",
-      "timestamp": 1770834928.2858646,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "💥 Pengu announced its own Visa card in collaboration with KAST!Pudgy Penguins (@pudgypenguins)Today,",
-        "created_at": "2026-02-11T18:27:00+00:00",
-        "has_media": false
-      }
-    },
-    "dcdf1d52c4f902fdad392c72173c000e": {
-      "item_hash": "dcdf1d52c4f902fdad392c72173c000e",
-      "timestamp": 1770835876.8690805,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Gunman who fired shots in Thai school detained after wounding teacher and girl reut.rs/4bPZZdB reut.",
-        "created_at": "2026-02-11T18:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "1f23a2baae1bc7cb2e35f6ca2f16fdf1": {
-      "item_hash": "1f23a2baae1bc7cb2e35f6ca2f16fdf1",
-      "timestamp": 1770835876.870241,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Attorney General Pam Bondi attacked Democrats and praised President Donald Trump as she faced critic",
-        "created_at": "2026-02-11T18:43:00+00:00",
-        "has_media": false
-      }
-    },
-    "545257d4041526e54874c40733443dfc": {
-      "item_hash": "545257d4041526e54874c40733443dfc",
-      "timestamp": 1770835876.870582,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "LIVE: Buddhist monks hold gathering at Lincoln Memorial pic.",
-        "created_at": "2026-02-11T18:41:00+00:00",
-        "has_media": false
-      }
-    },
-    "4535246e4859d5be50bf34fb67e84120": {
-      "item_hash": "4535246e4859d5be50bf34fb67e84120",
-      "timestamp": 1770835876.8841736,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Cyclone Gezani tears through Madagascar, kills at least 31",
-        "created_at": "2026-02-11T18:40:00+00:00",
-        "has_media": false
-      }
-    },
-    "1fce6c8b6be9cbc9dba564ee465dff4b": {
-      "item_hash": "1fce6c8b6be9cbc9dba564ee465dff4b",
-      "timestamp": 1770835876.8845022,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "LIVE: Seattle Seahawks celebrate Super Bowl win pic.",
-        "created_at": "2026-02-11T18:40:00+00:00",
-        "has_media": false
-      }
-    },
-    "a6553ba811f49020c100753daecd21a3": {
-      "item_hash": "a6553ba811f49020c100753daecd21a3",
-      "timestamp": 1770835876.8852603,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "BoC: Events in Venezuela, Iran, and Greenland cause turbulence. Agreed it needs to maintain optional",
-        "created_at": "2026-02-11T18:37:00+00:00",
-        "has_media": false
-      }
-    },
-    "7c2ea0d325a9f856e239d9d8b83d2253": {
-      "item_hash": "7c2ea0d325a9f856e239d9d8b83d2253",
-      "timestamp": 1770835876.8856,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Exclusive: India's JSW warns of delay in first car launch over China parts licence, letter shows",
-        "created_at": "2026-02-11T18:35:00+00:00",
-        "has_media": false
-      }
-    },
-    "96fba274b94b12a2a9263cee852083fa": {
-      "item_hash": "96fba274b94b12a2a9263cee852083fa",
-      "timestamp": 1770835876.8859618,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "'XRP is the North Star for Ripple': Garlinghouse keeps door open for more M&A in second half of 2026",
-        "created_at": "2026-02-11T18:34:00+00:00",
-        "has_media": false
-      }
-    },
-    "2bffe518a2b8dd54976cf9124a93c6bb": {
-      "item_hash": "2bffe518a2b8dd54976cf9124a93c6bb",
-      "timestamp": 1770835998.5307963,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Nomura Warns \"Massive Dispersion\" In US Stocks Has Not Ended Well In The Past zerohedge.com/markets/",
-        "created_at": "2026-02-11T18:40:00+00:00",
-        "has_media": false
-      }
-    },
-    "99bff97ae0d63f9a881a290e22320ee9": {
-      "item_hash": "99bff97ae0d63f9a881a290e22320ee9",
-      "timestamp": 1770836059.3334281,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Solana DAT Upexi posts $179 million loss as SOL price slide hits treasury despite revenue doubling t",
-        "created_at": "2026-02-11T18:53:00+00:00",
-        "has_media": false
-      }
-    },
-    "e9e1c5daeab7d9ba5c7e08eb12e39e51": {
-      "item_hash": "e9e1c5daeab7d9ba5c7e08eb12e39e51",
-      "timestamp": 1770836059.333809,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "The Daily: White House stablecoin meeting ends in impasse, BlackRock taps Uniswap for direct onchain",
-        "created_at": "2026-02-11T18:46:00+00:00",
-        "has_media": false
-      }
-    },
-    "2ef6035b0541c798ebcfca25eb8d2c4a": {
-      "item_hash": "2ef6035b0541c798ebcfca25eb8d2c4a",
-      "timestamp": 1770836375.4059825,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "INSIGHT: 82% odds of another US government shutdown before Feb 14, per Polymarket.",
-        "created_at": "2026-02-11T18:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "4174039904a86356e6fbd6a0d854bc38": {
-      "item_hash": "4174039904a86356e6fbd6a0d854bc38",
-      "timestamp": 1770836436.217213,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Breaking News from @TheAthletic: Speedskater Jordan Stolz broke an Olympic record in the 1,000-meter",
-        "created_at": "2026-02-11T18:59:00+00:00",
-        "has_media": false
-      }
-    },
-    "18ed7c3ced3248144df66d68ed6458a3": {
-      "item_hash": "18ed7c3ced3248144df66d68ed6458a3",
-      "timestamp": 1770836436.2287252,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: The preference is to make a deal with Iran.",
-        "created_at": "2026-02-11T18:56:00+00:00",
-        "has_media": false
-      }
-    },
-    "d5a540799086700ffa13c598622e898a": {
-      "item_hash": "d5a540799086700ffa13c598622e898a",
-      "timestamp": 1770836436.2288916,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: Nothing definitive was reached other than I insisted that negotiations with Iran continue.",
-        "created_at": "2026-02-11T18:56:00+00:00",
-        "has_media": false
-      }
-    },
-    "29ff17b542c08c11899bd8ccb2803315": {
-      "item_hash": "29ff17b542c08c11899bd8ccb2803315",
-      "timestamp": 1770836436.2289789,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий тек",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: I insisted that talks with Iran continue.",
-        "created_at": "2026-02-11T18:55:00+00:00",
-        "has_media": false
-      }
-    },
-    "5dc9d58bdb5da4f9d6490d495919ed8d": {
-      "item_hash": "5dc9d58bdb5da4f9d6490d495919ed8d",
-      "timestamp": 1770836436.229123,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump on Iran: Hopefully, this time, they will be more reasonable and responsible.",
-        "created_at": "2026-02-11T18:55:00+00:00",
-        "has_media": false
-      }
-    },
-    "29cd3741d822c02543d6e7da9239561e": {
-      "item_hash": "29cd3741d822c02543d6e7da9239561e",
-      "timestamp": 1770836679.2009408,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "'You're not there to pop off about politics,' JD Vance said about US Olympic athletes after the US v",
-        "created_at": "2026-02-11T19:00:00+00:00",
-        "has_media": false
-      }
-    },
-    "f7cdd0eb0ca1d0bfc1c8668acece45db": {
-      "item_hash": "f7cdd0eb0ca1d0bfc1c8668acece45db",
-      "timestamp": 1770836679.2011662,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "AirAsia to place order for small jets, drop Airbus A330neo reut.rs/46MAq9Q reut.rs/46MAq9Q",
-        "created_at": "2026-02-11T19:00:00+00:00",
-        "has_media": false
-      }
-    },
-    "7474928289c3a03edf2d9f5011f93b7b": {
-      "item_hash": "7474928289c3a03edf2d9f5011f93b7b",
-      "timestamp": 1770836679.2025197,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Passengers exited a crashed Fokker 50 aircraft along the shoreline of Somalia’s capital after the pl",
-        "created_at": "2026-02-11T18:55:00+00:00",
-        "has_media": false
-      }
-    },
-    "2a8a53cc678bb923f8d972cb6f69c00a": {
-      "item_hash": "2a8a53cc678bb923f8d972cb6f69c00a",
-      "timestamp": 1770836679.2029572,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Moderna shares fall as FDA refusal to review flu vaccine adds to regulatory uncertainty",
-        "created_at": "2026-02-11T18:50:00+00:00",
-        "has_media": false
-      }
-    },
-    "9e2da9e594e096aa647a257f58abff7e": {
-      "item_hash": "9e2da9e594e096aa647a257f58abff7e",
-      "timestamp": 1770836679.2036626,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Five months after Israel's Supreme Court ruled that its prisons were failing to provide enough food ",
-        "created_at": "2026-02-11T18:50:00+00:00",
-        "has_media": false
-      }
-    },
-    "5c9e6710b956b43f8f5a95dde3edda81": {
-      "item_hash": "5c9e6710b956b43f8f5a95dde3edda81",
-      "timestamp": 1770836921.6398222,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Elon Musk Vows To Establish A Moon City Within 10 Years zerohedge.com/technology/elo…",
-        "created_at": "2026-02-11T19:00:00+00:00",
-        "has_media": false
-      }
-    },
-    "fbc23bd6dcce491aad92538ee3ad4b20": {
-      "item_hash": "fbc23bd6dcce491aad92538ee3ad4b20",
-      "timestamp": 1770836921.653153,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "CASEY WASSERMAN TO REMAIN HEAD OF LA OLYMPICS COMMITTEE",
-        "created_at": "2026-02-11T18:58:00+00:00",
-        "has_media": false
-      }
-    },
-    "6e3a16835ff9ba2bca182d0a90bd0502": {
-      "item_hash": "6e3a16835ff9ba2bca182d0a90bd0502",
-      "timestamp": 1770837224.8628013,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "💥 Pentagon prepares second aircraft carrier to deploy to Middle East.",
-        "created_at": "2026-02-11T19:11:00+00:00",
-        "has_media": false
-      }
-    },
-    "ca4bf944b7573fda63260ca36c4d70ce": {
-      "item_hash": "ca4bf944b7573fda63260ca36c4d70ce",
-      "timestamp": 1770837224.8629243,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий тек",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "No new investors for Bitcoin here.",
-        "created_at": "2026-02-11T19:03:00+00:00",
-        "has_media": false
-      }
-    },
-    "ac2d5edec2a12dc6ecbf8d33aaa30d47": {
-      "item_hash": "ac2d5edec2a12dc6ecbf8d33aaa30d47",
-      "timestamp": 1770837285.3865674,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Cointelegraph: LATEST: 🇺🇸 U.S. BUDGET DEFICIT HITS $95 BILLION IN JANUARY AND SURPASSES EXPEC",
-        "created_at": "2026-02-11T19:12:00+00:00",
-        "has_media": false
-      }
-    },
-    "88652446ec520674f9b3100c7f91ed61": {
-      "item_hash": "88652446ec520674f9b3100c7f91ed61",
-      "timestamp": 1770837345.8480058,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump has not given official order to deploy the carrier - WSJ.",
-        "created_at": "2026-02-11T19:14:00+00:00",
-        "has_media": false
-      }
-    },
-    "952a0f3f22662ef6bc9353a9047ac0ff": {
-      "item_hash": "952a0f3f22662ef6bc9353a9047ac0ff",
-      "timestamp": 1770837345.8495932,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "🔴 Pentagon prepares second aircraft carrier to deploy to Middle East, as Trump raises pressure on Ir",
-        "created_at": "2026-02-11T19:12:00+00:00",
-        "has_media": false
-      }
-    },
-    "29e14af2c443fddda4f6ed7dd1ea913b": {
-      "item_hash": "29e14af2c443fddda4f6ed7dd1ea913b",
-      "timestamp": 1770837345.8499527,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Pentagon prepares second aircraft carrier to deploy to middle east, sources say - WSJ",
-        "created_at": "2026-02-11T19:09:00+00:00",
-        "has_media": false
-      }
-    },
-    "d4b2721274f0dc2b65ea720e9fe22e23": {
-      "item_hash": "d4b2721274f0dc2b65ea720e9fe22e23",
-      "timestamp": 1770837345.850257,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "French central bank sees Q1 quarterly growth of 0.2-0.3% after 0.2% in Q4.",
-        "created_at": "2026-02-11T19:02:00+00:00",
-        "has_media": false
-      }
-    },
-    "f83f1cd0a9b29938530c03384a726fe3": {
-      "item_hash": "f83f1cd0a9b29938530c03384a726fe3",
-      "timestamp": 1770837345.8506227,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US fiscal 2026 year-to-date deficit $697 bln vs comparable fiscal 2025 deficit $840 bln.",
-        "created_at": "2026-02-11T19:01:00+00:00",
-        "has_media": false
-      }
-    },
-    "041cd4e5122700e7f6e17a2366261cbc": {
-      "item_hash": "041cd4e5122700e7f6e17a2366261cbc",
-      "timestamp": 1770837345.850875,
-      "status": "rejected",
-      "reason": "filter_Обнаружен запрещенны",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Federal Budget Balance Actual -95.00B (Forecast -94.35B, Previous -145.00B)",
-        "created_at": "2026-02-11T19:00:00+00:00",
-        "has_media": false
-      }
-    },
-    "3c29fc09e31dafd731bdebe85eba0832": {
-      "item_hash": "3c29fc09e31dafd731bdebe85eba0832",
-      "timestamp": 1770837407.6358285,
-      "status": "approved",
-      "reason": "passed_all_filters",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Democrats press SEC's Atkins over dropped crypto cases, Trump industry ties as agency shifts strateg",
-        "created_at": "2026-02-11T19:12:00+00:00",
-        "has_media": false
-      }
-    },
-    "eef784dd3aa1aa499949ebc8050cc71e": {
-      "item_hash": "eef784dd3aa1aa499949ebc8050cc71e",
-      "timestamp": 1770837407.6381254,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @TheBlock__: DCG's Barry Silbert: 5%-10% of bitcoin 'will find its way into privacy-focused cr",
-        "created_at": "2026-02-11T19:10:00+00:00",
-        "has_media": false
-      }
-    },
-    "5565add595efaed025952bd22aabc713": {
-      "item_hash": "5565add595efaed025952bd22aabc713",
-      "timestamp": 1770837591.07274,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Philippines urges China to keep tone 'calm' as rhetoric heats up reut.rs/4rdAqrS reut.rs/4rdAqrS",
-        "created_at": "2026-02-11T19:15:00+00:00",
-        "has_media": false
-      }
-    },
-    "5d7ac1f1d292ee67ba2ad0b6b1d815ae": {
-      "item_hash": "5d7ac1f1d292ee67ba2ad0b6b1d815ae",
-      "timestamp": 1770837591.0728703,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий тек",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "How widespread is gun ownership in Canada?",
-        "created_at": "2026-02-11T19:10:00+00:00",
-        "has_media": false
-      }
-    },
-    "218e0c56a3ebd5aec0b4dde29f363856": {
-      "item_hash": "218e0c56a3ebd5aec0b4dde29f363856",
-      "timestamp": 1770837591.073034,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Qatar Emir, Trump discuss de-escalation as US, Iran pursue diplomacy",
-        "created_at": "2026-02-11T19:05:00+00:00",
-        "has_media": false
-      }
-    },
-    "add5592c2c5f7189bdbaaff7cfd5f154": {
-      "item_hash": "add5592c2c5f7189bdbaaff7cfd5f154",
-      "timestamp": 1770837833.1510103,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "State Department Hones In On Left-Wing NGOs As Vectors Of Chinese Influence Operations zerohedge.com",
-        "created_at": "2026-02-11T19:20:00+00:00",
-        "has_media": false
-      }
-    },
-    "e040303c542c8b20aa9a98f59d3a67ea": {
-      "item_hash": "e040303c542c8b20aa9a98f59d3a67ea",
-      "timestamp": 1770837833.1511178,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "wsj.com/politics/national-se…",
-        "created_at": "2026-02-11T19:10:00+00:00",
-        "has_media": false
-      }
-    },
-    "bd6bf8ad82912f213d3dde9c761ebc5f": {
-      "item_hash": "bd6bf8ad82912f213d3dde9c761ebc5f",
-      "timestamp": 1770837833.1513808,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*PENTAGON PREPARES SECOND AIRCRAFT CARRIER TO DEPLOY TO MIDDLE EAST, SOURCES SAY -- WSJ *PENTAGON MO",
-        "created_at": "2026-02-11T19:09:00+00:00",
-        "has_media": false
-      }
-    },
-    "879a5b48d459f114dfacf0bf517d7652": {
-      "item_hash": "879a5b48d459f114dfacf0bf517d7652",
-      "timestamp": 1770838075.1828277,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Cointelegraph: LATEST: 🇺🇸 TRUMP FORECASTS POTENTIAL 15-20% GROWTH EXPLOSION FOR THE U.S. ECON",
-        "created_at": "2026-02-11T19:21:00+00:00",
-        "has_media": false
-      }
-    },
-    "e7d351bbe2df2d4479703a199bf375c6": {
-      "item_hash": "e7d351bbe2df2d4479703a199bf375c6",
-      "timestamp": 1770838256.6519504,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent ends an interview on Fox News.",
-        "created_at": "2026-02-11T19:26:00+00:00",
-        "has_media": false
-      }
-    },
-    "c7cda3669e65a44e35895a9e972c5bef": {
-      "item_hash": "c7cda3669e65a44e35895a9e972c5bef",
-      "timestamp": 1770838256.6644337,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent: Tracking Iran leadership, their money sent round world.",
-        "created_at": "2026-02-11T19:23:00+00:00",
-        "has_media": false
-      }
-    },
-    "e97ab3065691df6729da9f98603488fb": {
-      "item_hash": "e97ab3065691df6729da9f98603488fb",
-      "timestamp": 1770838256.6647506,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent: Trump has an open mind on Iran.",
-        "created_at": "2026-02-11T19:21:00+00:00",
-        "has_media": false
-      }
-    },
-    "146099f82fb4ac914ce7d53b6511424e": {
-      "item_hash": "146099f82fb4ac914ce7d53b6511424e",
-      "timestamp": 1770838256.6651297,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent: Mortgage rates and 10-yr yields are down.",
-        "created_at": "2026-02-11T19:20:00+00:00",
-        "has_media": false
-      }
-    },
-    "6a964596d9336d9ce57727c2170160e5": {
-      "item_hash": "6a964596d9336d9ce57727c2170160e5",
-      "timestamp": 1770838256.6655765,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent: Trump is laser-focused on the housing market.",
-        "created_at": "2026-02-11T19:19:00+00:00",
-        "has_media": false
-      }
-    },
-    "0d33aeb98f8d717790b5766c6107db65": {
-      "item_hash": "0d33aeb98f8d717790b5766c6107db65",
-      "timestamp": 1770838256.6660466,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent: I see a pickup in manufacturing jobs in the coming months.",
-        "created_at": "2026-02-11T19:17:00+00:00",
-        "has_media": false
-      }
-    },
-    "90e4828f4589fa684c5da4f611f4dbf4": {
-      "item_hash": "90e4828f4589fa684c5da4f611f4dbf4",
-      "timestamp": 1770838256.6664507,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent: I expect a continued pickup in construction jobs.",
-        "created_at": "2026-02-11T19:16:00+00:00",
-        "has_media": false
-      }
-    },
-    "fc497c5bdd6fea94e4753f4fcb35c101": {
-      "item_hash": "fc497c5bdd6fea94e4753f4fcb35c101",
-      "timestamp": 1770838256.6668386,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Treasury Secretary Bessent: US growth might have come to 3% for 2025 - Fox News.",
-        "created_at": "2026-02-11T19:15:00+00:00",
-        "has_media": false
-      }
-    },
-    "2da564469ef62f51d9c3bb86d0b35d4c": {
-      "item_hash": "2da564469ef62f51d9c3bb86d0b35d4c",
-      "timestamp": 1770838317.4268749,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Tether could become 'top 10 T-bill buyer' this year, USAT CEO Bo Hines says",
-        "created_at": "2026-02-11T19:21:00+00:00",
-        "has_media": false
-      }
-    },
-    "2b1e87a8f5a692c48642c27410fe9fd5": {
-      "item_hash": "2b1e87a8f5a692c48642c27410fe9fd5",
-      "timestamp": 1770838498.9539328,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US job growth surges in January, but labor market far from turning around reut.rs/406b7fa reut.rs/40",
-        "created_at": "2026-02-11T19:30:00+00:00",
-        "has_media": false
-      }
-    },
-    "8e4a6a6548971a207ccfd451fd034786": {
-      "item_hash": "8e4a6a6548971a207ccfd451fd034786",
-      "timestamp": 1770838498.9541981,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Portugal's Interior Minister resigns over storm response",
-        "created_at": "2026-02-11T19:25:00+00:00",
-        "has_media": false
-      }
-    },
-    "ef0fe220866794d81193678bbe55a7a1": {
-      "item_hash": "ef0fe220866794d81193678bbe55a7a1",
-      "timestamp": 1770840930.0336576,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Spot Vol Beta (SPX) compares how much volatility options are pricing in versus what SPX’s recent pri",
-        "created_at": "2026-02-11T20:03:00+00:00",
+        "created_at": "2026-02-13T18:30:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -1576,15 +548,15 @@
         ]
       }
     },
-    "9781ff56a72fb545b8fce2da2b86a315": {
-      "item_hash": "9781ff56a72fb545b8fce2da2b86a315",
-      "timestamp": 1770840930.034006,
+    "d47c76e644f040e3a67e44f961c48277": {
+      "item_hash": "d47c76e644f040e3a67e44f961c48277",
+      "timestamp": 1771008862.6162765,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "James Van Der Beek, the titular character and star of 'Dawson's Creek,' died at the age of 48 after ",
-        "created_at": "2026-02-11T20:02:00+00:00",
+        "text_preview": "The Bigger Problem That The Tim Walz NGO Scandal Has Exposed",
+        "created_at": "2026-02-13T18:40:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -1592,432 +564,24 @@
         ]
       }
     },
-    "98f00b97112cd87a1857669a48ba5789": {
-      "item_hash": "98f00b97112cd87a1857669a48ba5789",
-      "timestamp": 1770840930.034376,
+    "527dc73f11c5d03ea556c6069b3255d7": {
+      "item_hash": "527dc73f11c5d03ea556c6069b3255d7",
+      "timestamp": 1771008922.995511,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Humanoid startup Apptronik raises $520 million with backing from Google and Mercedes-Benz reut.rs/3O",
-        "created_at": "2026-02-11T20:01:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "267624deb12f7412373bc15733e20d0f": {
-      "item_hash": "267624deb12f7412373bc15733e20d0f",
-      "timestamp": 1770840930.0348845,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "🔊 Decades of economic cooperation are under threat from political division and military rivalry. In ",
-        "created_at": "2026-02-11T20:00:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "d9e1289c4b2b6944e9bfa553581ab933": {
-      "item_hash": "d9e1289c4b2b6944e9bfa553581ab933",
-      "timestamp": 1770840930.0351946,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Public Trust In US Government Nears Historic Lows zerohedge.com/political/publ…",
-        "created_at": "2026-02-11T20:00:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "b592024c3c4f91aec6f8ff26f6f9299a": {
-      "item_hash": "b592024c3c4f91aec6f8ff26f6f9299a",
-      "timestamp": 1770840930.035339,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Canadian authorities hold briefing on school shooting",
-        "created_at": "2026-02-11T19:51:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "f2689e883729441eab2f63c0bc241331": {
-      "item_hash": "f2689e883729441eab2f63c0bc241331",
-      "timestamp": 1770840930.0354967,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US employment growth through March revised down by 862,000 jobs",
-        "created_at": "2026-02-11T19:50:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "bb64642f5cfe8fc49b113e2c75ca06d6": {
-      "item_hash": "bb64642f5cfe8fc49b113e2c75ca06d6",
-      "timestamp": 1770840930.0357468,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "White House expects GOP defections on Canada tariff vote - politico citing White House Official",
-        "created_at": "2026-02-11T19:49:00+00:00",
-        "has_media": false
-      }
-    },
-    "95343b610e8949c1cd1be798bedd3872": {
-      "item_hash": "95343b610e8949c1cd1be798bedd3872",
-      "timestamp": 1770840930.0359294,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*APPLE HITS SNAGS WITH LONG-DELAYED ATTEMPT TO LAUNCH NEW SIRI",
-        "created_at": "2026-02-11T19:46:00+00:00",
-        "has_media": false
-      }
-    },
-    "84c3b4a7a0ef9cfe94ab7ea2ee7ea0af": {
-      "item_hash": "84c3b4a7a0ef9cfe94ab7ea2ee7ea0af",
-      "timestamp": 1770840930.0361445,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump-Netanyahu meeting live: US president says 'nothing definitive' decided on Iran, also discussed",
-        "created_at": "2026-02-11T19:45:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "d94a8ddffd8eb7a80d2c7adb83ac1949": {
-      "item_hash": "d94a8ddffd8eb7a80d2c7adb83ac1949",
-      "timestamp": 1770840930.0521235,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Hours-Long Netanyahu Meeting Concludes Away From Cameras, Trump Committed To Iran Talks",
-        "created_at": "2026-02-11T19:44:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "2deab899b25b33d6b8fd9213ea639c20": {
-      "item_hash": "2deab899b25b33d6b8fd9213ea639c20",
-      "timestamp": 1770840930.052338,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "If you're still here, you're doing better than most. The biggest gains are made during bear markets.",
-        "created_at": "2026-02-11T19:42:00+00:00",
-        "has_media": false
-      }
-    },
-    "fd56facc131fe8ad6aa7970c3b9e36dc": {
-      "item_hash": "fd56facc131fe8ad6aa7970c3b9e36dc",
-      "timestamp": 1770840930.0524912,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Fed's interest rate pause bolstered by jobs data, but concerns linger",
-        "created_at": "2026-02-11T19:40:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "36e820c07c46b2edaf835e53dada35c3": {
-      "item_hash": "36e820c07c46b2edaf835e53dada35c3",
-      "timestamp": 1770840931.212767,
-      "status": "approved",
-      "reason": "passed_all_filters",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "BIG: SEC’s Paul Atkins confirms Token Taxonomy guidance is coming to support U.S. leadership in digi",
-        "created_at": "2026-02-11T19:40:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "276dd706cc581faf4086655976be46aa": {
-      "item_hash": "276dd706cc581faf4086655976be46aa",
-      "timestamp": 1770840931.214632,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "'No Privacy' CBDCs Will Come, Warns Billionaire Ray Dalio zerohedge.com/crypto/no-priv…",
-        "created_at": "2026-02-11T19:40:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "a63fa85fff0d6800005f5a2abc6480ff": {
-      "item_hash": "a63fa85fff0d6800005f5a2abc6480ff",
-      "timestamp": 1770840931.2158313,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Exclusive: A US security firm that deployed armed veterans to guard Gaza aid sites is in talks with ",
-        "created_at": "2026-02-11T19:39:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "40ad1ac6de9835853ba0412f514b91c4": {
-      "item_hash": "40ad1ac6de9835853ba0412f514b91c4",
-      "timestamp": 1770840931.2165074,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US FAA reopens El Paso airspace, says no threat to commercial aviation",
-        "created_at": "2026-02-11T19:35:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "9e5d71d200fdfd5b5522485dd9cf6aa7": {
-      "item_hash": "9e5d71d200fdfd5b5522485dd9cf6aa7",
-      "timestamp": 1770840931.2170982,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "NYMEX Natural Gas March futures settle at $3.1590/MMBTU. NYMEX Diesel March futures settle at $2.440",
-        "created_at": "2026-02-11T19:32:00+00:00",
-        "has_media": false
-      }
-    },
-    "3fd6c4f52bc871a1d3802a2a8e1ec841": {
-      "item_hash": "3fd6c4f52bc871a1d3802a2a8e1ec841",
-      "timestamp": 1770840931.2176871,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US job growth surges in January, but labor market far from turning around",
-        "created_at": "2026-02-11T19:30:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "29712650f3b324bad8dfa4700de1e491": {
-      "item_hash": "29712650f3b324bad8dfa4700de1e491",
-      "timestamp": 1770840995.8702514,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Breaking News: James Van Der Beek, best known as a teen heartthrob on the TV series “Dawson’s Creek,",
-        "created_at": "2026-02-11T20:13:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "cad0ebf9878dc74cc41a8a731fee4a95": {
-      "item_hash": "cad0ebf9878dc74cc41a8a731fee4a95",
-      "timestamp": 1770840995.8867905,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Paxful crypto platform fined $4 million after prosecutors say it 'profited from moving money for cri",
-        "created_at": "2026-02-11T20:07:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "51d51f7399572a4ec4871521c3a1eeca": {
-      "item_hash": "51d51f7399572a4ec4871521c3a1eeca",
-      "timestamp": 1770841178.08751,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Canadian police identified the person who carried out a school massacre as an 18-year-old woman with",
-        "created_at": "2026-02-11T20:18:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "f8f46a61e8cea8c22a3d6d75c9fcc9d7": {
-      "item_hash": "f8f46a61e8cea8c22a3d6d75c9fcc9d7",
-      "timestamp": 1770841178.087721,
-      "status": "rejected",
-      "reason": "filter_Обнаружен запрещенны",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Unity shares plummet as downbeat forecast sparks fears of a demand slump reut.rs/4txhNAB reut.rs/4tx",
-        "created_at": "2026-02-11T20:15:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "b5f2eb99ca8b8a6d124b88e91995ff4c": {
-      "item_hash": "b5f2eb99ca8b8a6d124b88e91995ff4c",
-      "timestamp": 1770841178.0880802,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US job growth unexpectedly accelerated in January and the unemployment rate fell to 4.3%, signs of l",
-        "created_at": "2026-02-11T20:15:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "82844dd81eb673edaecf08f10c275959": {
-      "item_hash": "82844dd81eb673edaecf08f10c275959",
-      "timestamp": 1770841178.088187,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий тек",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Major U-turns on corporate splits in recent years",
-        "created_at": "2026-02-11T20:10:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "ab1cf51385f115e8c445de44c5ce0e83": {
-      "item_hash": "ab1cf51385f115e8c445de44c5ce0e83",
-      "timestamp": 1770841423.0004115,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Here we go again: \"the birth-death model boosted job growth in January by about 70k relative to Dece",
-        "created_at": "2026-02-11T20:21:00+00:00",
-        "has_media": false
-      }
-    },
-    "c91f96e51e6fcff6e34841a14da8c45e": {
-      "item_hash": "c91f96e51e6fcff6e34841a14da8c45e",
-      "timestamp": 1770841423.0007858,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Apple Slides On Report Latest Attempt To Re-Launch Siri Runs Into \"Snags\" zerohedge.com/markets/appl",
-        "created_at": "2026-02-11T20:20:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "74793a99c022ebf7eaed60cf58085e25": {
-      "item_hash": "74793a99c022ebf7eaed60cf58085e25",
-      "timestamp": 1770841423.000913,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Tech-related employment",
-        "created_at": "2026-02-11T20:20:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "bd7480937b92f43c4b0071a6c6427ff0": {
-      "item_hash": "bd7480937b92f43c4b0071a6c6427ff0",
-      "timestamp": 1770841423.001119,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*WHITE HOUSE EXPECTS GOP DEFECTIONS ON TARIFF VOTE: POLITICO",
-        "created_at": "2026-02-11T20:11:00+00:00",
-        "has_media": false
-      }
-    },
-    "e4f35624d09afa561a2f86b550fbddaf": {
-      "item_hash": "e4f35624d09afa561a2f86b550fbddaf",
-      "timestamp": 1770841423.00144,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*APPLE HITS SNAGS WITH LONG-DELAYED ATTEMPT TO LAUNCH NEW SIRI *APPLE SIRI HITCHES THREATEN TO DELAY",
-        "created_at": "2026-02-11T19:45:00+00:00",
+        "text_preview": "France’s President Macron: In talks with Germany’s Chancellor Merz and others on nuclear arms.",
+        "created_at": "2026-02-13T18:47:00+00:00",
         "has_media": false
       }
     }
   },
   "stats": {
-    "hits": 7,
-    "misses": 160,
-    "total_processed": 160,
+    "hits": 9,
+    "misses": 200,
+    "total_processed": 200,
     "total_published": 0
   },
-  "timestamp": 1770841423.006725
+  "timestamp": 1771008922.9958282
 }
