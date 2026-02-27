@@ -1,134 +1,14 @@
 {
   "entries": {
-    "f5a7bb16bf564252c057e2e9895024ca": {
-      "item_hash": "f5a7bb16bf564252c057e2e9895024ca",
-      "timestamp": 1771005735.7239099,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: Will visit Venezuela, we haven't decided when.",
-        "created_at": "2026-02-13T17:29:00+00:00",
-        "has_media": false
-      }
-    },
-    "11cd4516c677dc80606d3e9a0e8da098": {
-      "item_hash": "11cd4516c677dc80606d3e9a0e8da098",
-      "timestamp": 1771005735.7240238,
+    "688c0e7c5d0fc5cb43e49982be0c1f82": {
+      "item_hash": "688c0e7c5d0fc5cb43e49982be0c1f82",
+      "timestamp": 1772190114.7056983,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: I think the Iran talks will be successful. If unsuccessful, it'll be a bad day for Iran.",
-        "created_at": "2026-02-13T17:24:00+00:00",
-        "has_media": false
-      }
-    },
-    "0e9061b6ca9b4d7f73fb90759817ac6a": {
-      "item_hash": "0e9061b6ca9b4d7f73fb90759817ac6a",
-      "timestamp": 1771005735.7240703,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*TRUMP: SECOND CARRIER JUST ARRIVED IN PERSIAN GULF",
-        "created_at": "2026-02-13T17:22:00+00:00",
-        "has_media": false
-      }
-    },
-    "0cd6a15d2bfe0dd07fc127ae47cf0220": {
-      "item_hash": "0cd6a15d2bfe0dd07fc127ae47cf0220",
-      "timestamp": 1771005735.7241044,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: Russia wants a deal, Zelenskiy has to get moving.",
-        "created_at": "2026-02-13T17:22:00+00:00",
-        "has_media": false
-      }
-    },
-    "7591735bc8df8181d1db19db4482f4fb": {
-      "item_hash": "7591735bc8df8181d1db19db4482f4fb",
-      "timestamp": 1771005735.7241526,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: We'll need the aircraft carrier if there is no deal with Iran.",
-        "created_at": "2026-02-13T17:21:00+00:00",
-        "has_media": false
-      }
-    },
-    "f2136e4bda7bf7f604b1f0c2454050d3": {
-      "item_hash": "f2136e4bda7bf7f604b1f0c2454050d3",
-      "timestamp": 1771005735.7241826,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*TRUMP: LOOKING AT A PRIME MINISTER FOR IRAQ",
-        "created_at": "2026-02-13T17:21:00+00:00",
-        "has_media": false
-      }
-    },
-    "279fe577cd38924bd41c5dbbd8bae9ed": {
-      "item_hash": "279fe577cd38924bd41c5dbbd8bae9ed",
-      "timestamp": 1771005735.7242134,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: The second carrier just arrived in the Persian Gulf.",
-        "created_at": "2026-02-13T17:21:00+00:00",
-        "has_media": false
-      }
-    },
-    "09035da725c6d07454313de13b0275c0": {
-      "item_hash": "09035da725c6d07454313de13b0275c0",
-      "timestamp": 1771005735.7272143,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "People loved $ETH at $4,000. Now they hate it around $2,000.",
-        "created_at": "2026-02-13T17:18:00+00:00",
-        "has_media": false
-      }
-    },
-    "76e849e31d224f4d8f1ec7eaa085b739": {
-      "item_hash": "76e849e31d224f4d8f1ec7eaa085b739",
-      "timestamp": 1771006218.5305674,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "OpenaAI tapped for voice control tech in US drone swarm contest.",
-        "created_at": "2026-02-13T18:06:00+00:00",
-        "has_media": false
-      }
-    },
-    "ba595120c3fb85428ea16a56b9b60e50": {
-      "item_hash": "ba595120c3fb85428ea16a56b9b60e50",
-      "timestamp": 1771006218.530644,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump, asked if he would visit Venezuela, replied: I'm going to make a visit to Venezuela. [Did not ",
-        "created_at": "2026-02-13T17:59:00+00:00",
-        "has_media": false
-      }
-    },
-    "a3b64a2d0bfc38d0fa0e81464cfc91cb": {
-      "item_hash": "a3b64a2d0bfc38d0fa0e81464cfc91cb",
-      "timestamp": 1771007654.7826114,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "CZ rejects 'contradicting' claims Binance fired investigators after Iran-linked probe findings thebl",
-        "created_at": "2026-02-13T18:25:00+00:00",
+        "text_preview": "How do Pakistan and Taliban Afghan militaries stack up as tensions flare? reut.rs/4bdUZyE reut.rs/4b",
+        "created_at": "2026-02-27T10:50:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -136,363 +16,39 @@
         ]
       }
     },
-    "3c77368f10945f6694f8b87bc36dc067": {
-      "item_hash": "3c77368f10945f6694f8b87bc36dc067",
-      "timestamp": 1771007654.7829993,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "China releases anti-monopoly guidelines for internet platforms reut.rs/3OgNNZB reut.rs/3OgNNZB",
-        "created_at": "2026-02-13T18:25:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "d17bd47950f7ac0cbac3d222051a2c14": {
-      "item_hash": "d17bd47950f7ac0cbac3d222051a2c14",
-      "timestamp": 1771007654.788372,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Two Philadelphia Men Admit To AI-Assisted $3.5M Housing Aid Scam In Minnesota zerohedge.com/markets/",
-        "created_at": "2026-02-13T18:20:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "506b1ede33bed55d23e0778521053d58": {
-      "item_hash": "506b1ede33bed55d23e0778521053d58",
-      "timestamp": 1771007655.0152965,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "3 counterparties take $377.000m at Fed Reverse Repo Operation.",
-        "created_at": "2026-02-13T18:16:00+00:00",
-        "has_media": false
-      }
-    },
-    "7ba56a20984ecea4c21b045a9c9d829e": {
-      "item_hash": "7ba56a20984ecea4c21b045a9c9d829e",
-      "timestamp": 1771007655.0156772,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Alpine rescue teams dug out a hiker buried under snow after a large avalanche struck north of Italy'",
-        "created_at": "2026-02-13T18:15:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "f54a2a42294ef4ef6a0ef73e32a06d8b": {
-      "item_hash": "f54a2a42294ef4ef6a0ef73e32a06d8b",
-      "timestamp": 1771007655.219442,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "INSIGHT: Selling pressure on Coinbase persists as the negative premium gap marks its longest stretch",
-        "created_at": "2026-02-13T18:15:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "937c64dd50ff10957b8d2d549ea5b162": {
-      "item_hash": "937c64dd50ff10957b8d2d549ea5b162",
-      "timestamp": 1771007655.4364083,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "TRUMP MEDIA EYES NEW CRYPTO ETFS Trump Media & Technology Group is seeking to launch a Bitcoin and E",
-        "created_at": "2026-02-13T18:12:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "6798c522b86a70de5d58c6665dc650f7": {
-      "item_hash": "6798c522b86a70de5d58c6665dc650f7",
-      "timestamp": 1771007655.4366627,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: Too busy to be a defendant but plenty of time to sue",
-        "created_at": "2026-02-13T18:05:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "a485536198b2be41ecfdd96b1911075f": {
-      "item_hash": "a485536198b2be41ecfdd96b1911075f",
-      "timestamp": 1771007655.4379692,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "French police arrested nine people in an investigation into a Louvre ticket fraud that may have cost",
-        "created_at": "2026-02-13T18:05:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "080d0bf86d5cd0a2c099c5c9a8524f42": {
-      "item_hash": "080d0bf86d5cd0a2c099c5c9a8524f42",
-      "timestamp": 1771007655.6707842,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump Media and Technology Group files two new crypto ETF proposals following SEC delay",
-        "created_at": "2026-02-13T18:02:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "421e02728952c6f4812eaae6f8aa8d92": {
-      "item_hash": "421e02728952c6f4812eaae6f8aa8d92",
-      "timestamp": 1771007655.6719804,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Financial Nihilism & The Trap Young Investors Are Walking Into",
-        "created_at": "2026-02-13T18:00:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "14879941859b37c01e10792b1f7760f6": {
-      "item_hash": "14879941859b37c01e10792b1f7760f6",
-      "timestamp": 1771007655.672096,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US Secretary of State Rubio skips the Ukraine meeting with European leaders in Munich - FT.",
-        "created_at": "2026-02-13T17:55:00+00:00",
-        "has_media": false
-      }
-    },
-    "9d594df2f67df5d0810962761a4111a0": {
-      "item_hash": "9d594df2f67df5d0810962761a4111a0",
-      "timestamp": 1771007655.6721878,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Safran cautious over stepping into Airbus engine dispute with Pratt",
-        "created_at": "2026-02-13T17:50:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "7384f21a78be7126e10392d1cd8ab0a2": {
-      "item_hash": "7384f21a78be7126e10392d1cd8ab0a2",
-      "timestamp": 1771007655.6723719,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "From @TheAthletic: If you were watching on TV, you couldn’t see Lindsey Vonn’s injury close up. You ",
-        "created_at": "2026-02-13T17:48:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "7e02b62e8609453b0a7c1bee515f16df": {
-      "item_hash": "7e02b62e8609453b0a7c1bee515f16df",
-      "timestamp": 1771007655.672449,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "China holds roundtable meeting with German companies",
-        "created_at": "2026-02-13T17:45:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "4b639fc83448c8a4d16c878c1a1a622e": {
-      "item_hash": "4b639fc83448c8a4d16c878c1a1a622e",
-      "timestamp": 1771007655.6725755,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "🇺🇸BESSENT: CLARITY BILL WILL GIVE 'COMFORT' TO THE MARKET “In a time when we are having one of these",
-        "created_at": "2026-02-13T17:43:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "718f2fbe63b124d2a290dad6f6e78345": {
-      "item_hash": "718f2fbe63b124d2a290dad6f6e78345",
-      "timestamp": 1771007655.672612,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Lunar New Year bowing service in China stokes controversy",
-        "created_at": "2026-02-13T17:40:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "5a7f32b18aaf55124347c5dd205f799a": {
-      "item_hash": "5a7f32b18aaf55124347c5dd205f799a",
-      "timestamp": 1771007655.6727543,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Turkey detains 16 in OnlyFans probe, seizes $6.9 mln in assets",
-        "created_at": "2026-02-13T17:30:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "dd0e825ae57925a975ed34105a3f758d": {
-      "item_hash": "dd0e825ae57925a975ed34105a3f758d",
-      "timestamp": 1771007655.672829,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @zerohedge: Sprott's stock $SII is up 312% in the past 5yrs, which is unusual for the stock of",
-        "created_at": "2026-02-13T17:29:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "b52a12ffde0d97e04f7e12cf26c7e233": {
-      "item_hash": "b52a12ffde0d97e04f7e12cf26c7e233",
-      "timestamp": 1771007897.1119778,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Record lows.",
-        "created_at": "2026-02-13T18:36:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "c028d3100da98346a56ef52473076ec2": {
-      "item_hash": "c028d3100da98346a56ef52473076ec2",
-      "timestamp": 1771007957.4557483,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*SPACEX IS SAID TO WEIGH DUAL-CLASS IPO SHARES TO EMPOWER MUSK",
-        "created_at": "2026-02-13T18:31:00+00:00",
-        "has_media": false
-      }
-    },
-    "45ea7cb5df905e52e9a57c94eb3d37df": {
-      "item_hash": "45ea7cb5df905e52e9a57c94eb3d37df",
-      "timestamp": 1771008017.8224866,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: Inflation and product costs are way down.",
-        "created_at": "2026-02-13T18:36:00+00:00",
-        "has_media": false
-      }
-    },
-    "849069a7e3d044e75f05ae587c64c34d": {
-      "item_hash": "849069a7e3d044e75f05ae587c64c34d",
-      "timestamp": 1771008017.822916,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Exclusive: ByteDance in talks to sell gaming unit Moonton for more than $6 billion, sources say",
-        "created_at": "2026-02-13T18:00:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "260c53bffe484d7364082fa52ea9b116": {
-      "item_hash": "260c53bffe484d7364082fa52ea9b116",
-      "timestamp": 1771008319.7036917,
+    "aeaa1bcf89b88e25e77e56155d17b201": {
+      "item_hash": "aeaa1bcf89b88e25e77e56155d17b201",
+      "timestamp": 1772190114.7070906,
       "status": "rejected",
       "reason": "filter_Запрещенный паттерн",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Reuters: US judge orders Trump administration to facilitate deported college student Any Luci",
-        "created_at": "2026-02-13T18:43:00+00:00",
+        "text_preview": "RT @ReutersOI: Gold beat the Dow Jones in a milestone rally in early 2026 after a sharp upturn in th",
+        "created_at": "2026-02-27T10:47:00+00:00",
         "has_media": false
       }
     },
-    "4b9e23f533f2654a9d548af315174deb": {
-      "item_hash": "4b9e23f533f2654a9d548af315174deb",
-      "timestamp": 1771008319.7037818,
+    "bf95b93ec6f7423086d1268f910d50a1": {
+      "item_hash": "bf95b93ec6f7423086d1268f910d50a1",
+      "timestamp": 1772190114.7078319,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "EU clears €1.1B French cleantech manufacturing aid",
+        "created_at": "2026-02-27T10:47:00+00:00",
+        "has_media": false
+      }
+    },
+    "e2caac6f6c93ff80874a36349d51afe4": {
+      "item_hash": "e2caac6f6c93ff80874a36349d51afe4",
+      "timestamp": 1772190114.7084017,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "US withdraws newly updated list of firms allegedly aiding China's military reut.rs/4ams8GE reut.rs/4",
-        "created_at": "2026-02-13T18:40:00+00:00",
+        "text_preview": "💥 🇨🇳🇮🇷 China has called on its citizens to leave Iran immediately.",
+        "created_at": "2026-02-27T10:46:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -500,15 +56,27 @@
         ]
       }
     },
-    "dab057f5a635a900877bc33434dbdf3b": {
-      "item_hash": "dab057f5a635a900877bc33434dbdf3b",
-      "timestamp": 1771008319.7038562,
+    "f7608957db36fbd73bb07f30255237be": {
+      "item_hash": "f7608957db36fbd73bb07f30255237be",
+      "timestamp": 1772190114.709038,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Europe, Asia lead equity fund inflows as US records weekly outflow reut.rs/4kGbDKE reut.rs/4kGbDKE",
-        "created_at": "2026-02-13T18:35:00+00:00",
+        "text_preview": "German government spokesperson: Germany assumes future US tariffs on EU products will not exceed the",
+        "created_at": "2026-02-27T10:46:00+00:00",
+        "has_media": false
+      }
+    },
+    "9a4e353e0ad77cfc8850d1a70542017a": {
+      "item_hash": "9a4e353e0ad77cfc8850d1a70542017a",
+      "timestamp": 1772190114.710948,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "A Hong Kong court sentenced the father of a wanted pro-democracy activist to eight months in prison ",
+        "created_at": "2026-02-27T10:45:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -516,15 +84,31 @@
         ]
       }
     },
-    "e145b29bc2a386f2eecb23b1f7015467": {
-      "item_hash": "e145b29bc2a386f2eecb23b1f7015467",
-      "timestamp": 1771008319.7039456,
+    "0ae99c3c71c3454ae71c50c551d4e896": {
+      "item_hash": "0ae99c3c71c3454ae71c50c551d4e896",
+      "timestamp": 1772190114.7118866,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Chocolate Market Enters New Phase As \"Double-Digit Raw Material Deflation\" Eases Costs",
+        "created_at": "2026-02-27T10:45:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "eb3fee24db393e3b6c0f12b3df74a5c5": {
+      "item_hash": "eb3fee24db393e3b6c0f12b3df74a5c5",
+      "timestamp": 1772190114.7130978,
       "status": "rejected",
       "reason": "filter_Запрещенный паттерн",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Reuters: President Trump’s post‑election litigation strategy is prompting legal battles over ",
-        "created_at": "2026-02-13T18:31:00+00:00",
+        "text_preview": "RT by @Reuters: Gold beat the Dow Jones in a milestone rally in early 2026 after a sharp upturn in t",
+        "created_at": "2026-02-27T10:44:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -532,15 +116,51 @@
         ]
       }
     },
-    "78eba1a0eb235c96f6fdabb7cbbee9af": {
-      "item_hash": "78eba1a0eb235c96f6fdabb7cbbee9af",
-      "timestamp": 1771008319.7040682,
+    "c3b399d67cceb825be707e4e56c6b570": {
+      "item_hash": "c3b399d67cceb825be707e4e56c6b570",
+      "timestamp": 1772190114.713953,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "💘 Dating apps promise love — but every successful match costs them two customers. So how does the bu",
-        "created_at": "2026-02-13T18:30:00+00:00",
+        "text_preview": "German Government Spokesperson: Germany wants to preserve US-EU tariff deal",
+        "created_at": "2026-02-27T10:44:00+00:00",
+        "has_media": false
+      }
+    },
+    "d2c4439b6973a4fb07c110237a63cec2": {
+      "item_hash": "d2c4439b6973a4fb07c110237a63cec2",
+      "timestamp": 1772190114.7146175,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Druzhba pipeline damage assessment to be ready soon, time uncertain - Naftogaz",
+        "created_at": "2026-02-27T10:43:00+00:00",
+        "has_media": false
+      }
+    },
+    "50ff889e05a9c11ee075305392935a39": {
+      "item_hash": "50ff889e05a9c11ee075305392935a39",
+      "timestamp": 1772190114.719065,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "German Government Spokesperson reiterates Europeans will take coordinated action in the tariffs disp",
+        "created_at": "2026-02-27T10:39:00+00:00",
+        "has_media": false
+      }
+    },
+    "a8126d26aab665ca2ec96661cca3ac56": {
+      "item_hash": "a8126d26aab665ca2ec96661cca3ac56",
+      "timestamp": 1772190114.7195907,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "What AI windfall? Debt will still weigh on big economies",
+        "created_at": "2026-02-27T10:35:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -548,15 +168,15 @@
         ]
       }
     },
-    "d47c76e644f040e3a67e44f961c48277": {
-      "item_hash": "d47c76e644f040e3a67e44f961c48277",
-      "timestamp": 1771008862.6162765,
+    "7a3990c4fd837384790240b8b43b0454": {
+      "item_hash": "7a3990c4fd837384790240b8b43b0454",
+      "timestamp": 1772190114.7200215,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
+      "reason": "filter_Слишком короткий/пус",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "The Bigger Problem That The Tim Walz NGO Scandal Has Exposed",
-        "created_at": "2026-02-13T18:40:00+00:00",
+        "text_preview": "$8,700,000,000 in Bitcoin & Ethereum options expire.",
+        "created_at": "2026-02-27T10:33:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -564,24 +184,120 @@
         ]
       }
     },
-    "527dc73f11c5d03ea556c6069b3255d7": {
-      "item_hash": "527dc73f11c5d03ea556c6069b3255d7",
-      "timestamp": 1771008922.995511,
+    "12e2b4a0fc445f93c9e49ca89151d015": {
+      "item_hash": "12e2b4a0fc445f93c9e49ca89151d015",
+      "timestamp": 1772190122.7922795,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "The micro → macro shift is happening. Binance crossed $70B in commodity volume after launching gold ",
+        "created_at": "2026-02-27T10:33:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "3c7a03743d480b6be18b1f4709df3e2a": {
+      "item_hash": "3c7a03743d480b6be18b1f4709df3e2a",
+      "timestamp": 1772190122.7935205,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "France’s President Macron: In talks with Germany’s Chancellor Merz and others on nuclear arms.",
-        "created_at": "2026-02-13T18:47:00+00:00",
+        "text_preview": "Connecticut State Police released footage of former WWE executive Vince McMahon crashing into anothe",
+        "created_at": "2026-02-27T10:30:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "460c77992c2b305e098f672d3b9e25c4": {
+      "item_hash": "460c77992c2b305e098f672d3b9e25c4",
+      "timestamp": 1772190122.8000712,
+      "status": "rejected",
+      "reason": "no_market_move",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "US margin debt rises to a record $1.28T, up $53B in January, marking the 9th monthly gain in a row. ",
+        "created_at": "2026-02-27T10:30:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "bac6c575ccb22b7739377e898c100580": {
+      "item_hash": "bac6c575ccb22b7739377e898c100580",
+      "timestamp": 1772190122.8006878,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Breakingviews - EU’s markets Big Bang depends on local fireworks",
+        "created_at": "2026-02-27T10:25:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "d37b22c71613207f8556ca0fe75370e9": {
+      "item_hash": "d37b22c71613207f8556ca0fe75370e9",
+      "timestamp": 1772190122.8013706,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Pakistan launched air and ground strikes on Taliban sites across Afghanistan, jolting Kabul resident",
+        "created_at": "2026-02-27T10:20:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "b473c6303bcb0f682b0d7f271ec8428d": {
+      "item_hash": "b473c6303bcb0f682b0d7f271ec8428d",
+      "timestamp": 1772190122.8018198,
+      "status": "rejected",
+      "reason": "filter_Слишком короткий/пус",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Bitcoin never closed both January and February in the RED.",
+        "created_at": "2026-02-27T10:18:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "5a9f21ebbb86a601b5b96f75902d0036": {
+      "item_hash": "5a9f21ebbb86a601b5b96f75902d0036",
+      "timestamp": 1772190122.8023264,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Senator Schatz plans to introduce two AI labor bills - Axios",
+        "created_at": "2026-02-27T10:13:00+00:00",
         "has_media": false
       }
     }
   },
   "stats": {
-    "hits": 9,
-    "misses": 200,
-    "total_processed": 200,
+    "hits": 12,
+    "misses": 230,
+    "total_processed": 230,
     "total_published": 0
   },
-  "timestamp": 1771008922.9958282
+  "timestamp": 1772190122.8027139
 }

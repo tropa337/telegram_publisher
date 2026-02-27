@@ -1,8 +1,9 @@
 import asyncio
+import io
 import logging
 import re
 from datetime import datetime, timedelta
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import aiohttp
 from telethon import TelegramClient, errors
@@ -350,7 +351,8 @@ class TelegramPublisher:
                     file=media_list[0],
                     caption=text,
                     parse_mode=self.parse_mode,
-                    link_preview=False
+                    link_preview=False,
+                    force_document=False
                 )
                 logger.debug(f"✅ Отправлено одно медиа")
             else:
@@ -361,7 +363,8 @@ class TelegramPublisher:
                     file=media_list,
                     caption=text,
                     parse_mode=self.parse_mode,
-                    link_preview=False
+                    link_preview=False,
+                    force_document=False
                 )
                 logger.debug(f"✅ Отправлено {len(media_list)} медиа в альбоме")
                     
@@ -369,6 +372,48 @@ class TelegramPublisher:
             logger.error(f"❌ Ошибка отправки медиа: {e}", exc_info=True)
             raise
     
+    def _ext_from_content_type(self, content_type: str) -> str:
+        ct = (content_type or "").split(";")[0].strip().lower()
+        mapping = {
+            "image/jpeg": "jpg",
+            "image/jpg": "jpg",
+            "image/png": "png",
+            "image/webp": "webp",
+            "image/gif": "gif",
+        }
+        return mapping.get(ct, "bin")
+
+    async def _download_media_filelike(self, url: str, *, idx: int) -> Union[io.BytesIO, str]:
+        """
+        Скачивает *картинку* в память и возвращает BytesIO с именем файла.
+        Это помогает Telegram/Telethon отправлять её как *фото* (inline), а не как документ,
+        когда исходная ссылка не содержит расширение (часто у Twitter CDN).
+        """
+        try:
+            timeout = aiohttp.ClientTimeout(total=25)
+            headers = {"User-Agent": "Mozilla/5.0"}
+            async with aiohttp.ClientSession(timeout=timeout, headers=headers) as session:
+                async with session.get(url, allow_redirects=True) as resp:
+                    if resp.status != 200:
+                        logger.warning(f"Не удалось скачать медиа (HTTP {resp.status}): {url}")
+                        return url
+
+                    content_type = resp.headers.get("Content-Type", "")
+                    data = await resp.read()
+
+            # Только для изображений. Видео/прочее оставляем ссылкой.
+            if not (content_type or "").lower().startswith("image/"):
+                return url
+
+            ext = self._ext_from_content_type(content_type)
+            bio = io.BytesIO(data)
+            bio.name = f"image_{idx}.{ext}"  # Telethon использует name как filename/extension
+            return bio
+
+        except Exception as e:
+            logger.warning(f"Ошибка скачивания медиа: {e} ({url})")
+            return url
+
     async def _prepare_media(self, media_items: List[MediaItem]) -> Optional[List]:
         """Подготовка медиафайлов для публикации"""
         if not media_items:
@@ -378,51 +423,35 @@ class TelegramPublisher:
         # Ограничиваем количество медиа
         media_items = media_items[: self.max_media_per_post]
 
-        # Telethon умеет отправлять URL напрямую через send_file.
-        telegram_media: List[str] = []
-        for i, media_item in enumerate(media_items, start=1):
-            try:
-                raw_url = getattr(media_item, 'url', None) or ""
-                url = self._normalize_media_url(raw_url)
+        media_list: List[Union[str, io.BytesIO]] = []
 
-                if not url:
-                    logger.warning("⚠️ Пустой URL медиа")
-                    self.media_stats['failed'] += 1
-                    continue
-
-                low = url.lower()
-                is_twitter_like = any(d in low for d in ['twitter.com', 'twimg.com', 'pic.twitter.com', 'x.com'])
-
-                # Twitter/X: Telegram чаще всего сам скачивает — не HEAD'аем
-                if is_twitter_like:
-                    telegram_media.append(url)
-                    media_type = getattr(media_item, 'type', 'unknown')
-                    self.media_stats['by_type'][media_type] = self.media_stats['by_type'].get(media_type, 0) + 1
-                    logger.debug(f"✅ Twitter/X медиа добавлено ({media_type}): {url[:120]}")
-                    continue
-
-                # Для остальных URL проверяем доступность
-                if await self._is_media_accessible(url):
-                    telegram_media.append(url)
-                    media_type = getattr(media_item, 'type', 'unknown')
-                    self.media_stats['by_type'][media_type] = self.media_stats['by_type'].get(media_type, 0) + 1
-                    logger.debug(f"✅ Медиа {i}: {media_type} - добавлено")
-                else:
-                    logger.warning(f"⚠️ Медиа недоступно: {url[:120]}")
-                    self.media_stats['failed'] += 1
-
-            except Exception as e:
-                logger.warning(f"⚠️ Ошибка обработки медиа {i}: {e}")
-                self.media_stats['failed'] += 1
+        for idx, item in enumerate(media_items):
+            url = getattr(item, "url", None)
+            if not url:
                 continue
 
-        if telegram_media:
-            logger.info(f"✅ Подготовлено {len(telegram_media)} медиа URL")
-            return telegram_media
+            # Normalize URL (Twitter CDN etc.)
+            url = self._normalize_media_url(url)
 
-        logger.error("❌ Не удалось подготовить ни одного медиа URL")
-        return None
-    
+            # Check accessibility first
+            if not await self._is_media_accessible(url):
+                logger.warning(f"⚠️ Медиа недоступно, пропускаем: {url}")
+                continue
+
+            media_type = (getattr(item, "type", "") or "").lower()
+
+            # Для изображений скачиваем в память, чтобы Telegram показал как фото в посте
+            if media_type in {"image", "photo", "picture"}:
+                media_list.append(await self._download_media_filelike(url, idx=idx))
+            else:
+                media_list.append(url)
+
+        if not media_list:
+            logger.warning("⚠️ Не удалось подготовить ни одного медиа")
+            return None
+
+        logger.debug(f"✅ Подготовлено медиа: {len(media_list)} шт.")
+        return media_list
     async def _is_media_accessible(self, url: str) -> bool:
         """Проверка доступности медиа по URL"""
         try:

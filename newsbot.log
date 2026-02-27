@@ -10608,3 +10608,123 @@ AttributeError: 'TwitterRSSSource' object has no attribute '_normalize_twitter_m
 2026-02-13 21:07:51,784 - __main__ - INFO - 📉 Причины отклонений:
 2026-02-13 21:07:51,784 - __main__ - INFO -   filter: 1 (100.0%)
 2026-02-13 21:07:51,784 - __main__ - INFO - ⏳ Ожидание 60 секунд до следующего цикла...
+2026-02-13 21:14:40,729 - newsbot.config - INFO - ✅ Конфигурация валидна
+2026-02-13 21:14:41,583 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Инициализирован источник Twitter RSS с 1 фидами
+2026-02-13 21:14:41,583 - __main__ - INFO - ✅ RSS источники: 1 фидов
+2026-02-13 21:14:41,583 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: console
+2026-02-13 21:14:41,586 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: telegram
+2026-02-13 21:14:41,586 - __main__ - INFO - ✅ Telegram: @aitop1234 (публикуем все посты)
+2026-02-13 21:14:41,586 - __main__ - INFO - 🤖 Бот инициализирован с улучшенной фильтрацией
+2026-02-13 21:14:41,586 - __main__ - INFO - 🚀 Запуск бота в непрерывном режиме...
+2026-02-13 21:14:41,586 - __main__ - INFO - 🔄 Цикл #1 (интервал: 60 сек)
+2026-02-13 21:14:41,587 - __main__ - INFO - 📡 Начало сбора новостей...
+2026-02-13 21:14:41,587 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 1 источников
+2026-02-13 21:14:46,464 - newsbot.config - INFO - ✅ Конфигурация валидна
+2026-02-13 21:14:47,296 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Инициализирован источник Twitter RSS с 1 фидами
+2026-02-13 21:14:47,297 - __main__ - INFO - ✅ RSS источники: 1 фидов
+2026-02-13 21:14:47,297 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: console
+2026-02-13 21:14:47,298 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: telegram
+2026-02-13 21:14:47,299 - __main__ - INFO - ✅ Telegram: @aitop1234 (публикуем все посты)
+2026-02-13 21:14:47,299 - __main__ - INFO - 🤖 Бот инициализирован с улучшенной фильтрацией
+2026-02-13 21:14:47,299 - __main__ - INFO - 🚀 Запуск бота в непрерывном режиме...
+2026-02-13 21:14:47,300 - __main__ - INFO - 🔄 Цикл #1 (интервал: 60 сек)
+2026-02-13 21:14:47,300 - __main__ - INFO - 📡 Начало сбора новостей...
+2026-02-13 21:14:47,300 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 1 источников
+2026-02-13 21:14:47,603 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 22 новостей (16 с медиа, всего 16 медиафайлов)
+2026-02-13 21:14:47,603 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 22 новостей после фильтрации
+2026-02-13 21:14:47,604 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - 📊 Детальная статистика медиа: 16 photo
+2026-02-13 21:14:47,604 - __main__ - INFO - 📥 twitter_rss: 22 новостей
+2026-02-13 21:14:47,605 - __main__ - INFO - 🔍 Обработка 22 новостей
+2026-02-13 21:14:49,264 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-13 21:14:49,272 - __main__ - INFO - 📸 Новость имеет 1 медиа-элементов
+2026-02-13 21:14:49,273 - __main__ - INFO -   Медиа 1: photo - https://pbs.twimg.com/media/HBDxWAWXsAA-DyT.jpg
+2026-02-13 21:14:49,276 - __main__ - INFO - ✅ Новость прошла (1 медиа): photo:https://pbs.twimg.com/media/HB...
+2026-02-13 21:14:50,779 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-13 21:14:50,791 - __main__ - INFO - 📊 ДЕТАЛЬНАЯ СТАТИСТИКА ОТСЕВА:
+2026-02-13 21:14:50,792 - __main__ - INFO -   Всего новостей: 22
+2026-02-13 21:14:50,792 - __main__ - INFO -   Уже в кеше: 9
+2026-02-13 21:14:50,793 - __main__ - INFO -   Дубликаты в реальном времени: 0
+2026-02-13 21:14:50,794 - __main__ - INFO -   Низкое качество: 1
+2026-02-13 21:14:50,794 - __main__ - INFO -   Не прошли фильтр: 8
+2026-02-13 21:14:50,795 - __main__ - INFO -   Нет движения рынка: 2
+2026-02-13 21:14:50,796 - __main__ - INFO -   Отклонены AI: 1
+2026-02-13 21:14:50,796 - __main__ - INFO -   С МЕДИА: 1
+2026-02-13 21:14:50,797 - __main__ - INFO -   БЕЗ МЕДИА: 0
+2026-02-13 21:14:50,798 - __main__ - INFO -   УСПЕШНО ПРОШЛИ: 1
+2026-02-13 21:14:50,799 - __main__ - INFO - 📤 Публикация 1 новостей (top за цикл)...
+2026-02-13 21:14:50,807 - __main__ - INFO - ✅ console: опубликовано 1 новостей
+2026-02-13 21:14:50,807 - __main__ - INFO - 📤 Пост 1: 1 медиа, URL: ['https://pbs.twimg.com/media/HBDxWAWXsAA-DyT.jpg...']
+2026-02-13 21:14:50,808 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.92:443/TcpFull...
+2026-02-13 21:14:50,844 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.92:443/TcpFull complete!
+2026-02-13 21:14:51,351 - newsbot.publishers.telegram_publisher - INFO - ✅ Telegram подключен к каналу: @aitop1234
+2026-02-13 21:14:51,352 - newsbot.publishers.telegram_publisher - INFO - 📤 Начало публикации поста 1/1
+2026-02-13 21:14:51,352 - newsbot.publishers.telegram_publisher - INFO - 📸 Пост имеет 1 медиа-элементов
+2026-02-13 21:14:51,353 - newsbot.publishers.telegram_publisher - INFO -   Медиа 1: photo - https://pbs.twimg.com/media/HBDxWAWXsAA-DyT.jpg
+2026-02-13 21:14:51,353 - newsbot.publishers.telegram_publisher - INFO - ⏳ Gap 14s < 60s, спим 46s
+2026-02-27 13:01:49,515 - newsbot.config - INFO - ✅ Конфигурация валидна
+2026-02-27 13:01:51,273 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Инициализирован источник Twitter RSS с 1 фидами
+2026-02-27 13:01:51,274 - __main__ - INFO - ✅ RSS источники: 1 фидов
+2026-02-27 13:01:51,274 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: console
+2026-02-27 13:01:51,334 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: telegram
+2026-02-27 13:01:51,335 - __main__ - INFO - ✅ Telegram: @aitop1234 (публикуем все посты)
+2026-02-27 13:01:51,336 - __main__ - INFO - 🤖 Бот инициализирован с улучшенной фильтрацией
+2026-02-27 13:01:51,337 - __main__ - INFO - 🚀 Запуск бота в непрерывном режиме...
+2026-02-27 13:01:51,338 - __main__ - INFO - 🔄 Цикл #1 (интервал: 60 сек)
+2026-02-27 13:01:51,339 - __main__ - INFO - 📡 Начало сбора новостей...
+2026-02-27 13:01:51,340 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 1 источников
+2026-02-27 13:01:54,691 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 25 новостей (17 с медиа, всего 17 медиафайлов)
+2026-02-27 13:01:54,694 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 25 новостей после фильтрации
+2026-02-27 13:01:54,695 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - 📊 Детальная статистика медиа: 17 photo
+2026-02-27 13:01:54,697 - __main__ - INFO - 📥 twitter_rss: 25 новостей
+2026-02-27 13:01:54,698 - __main__ - INFO - 🔍 Обработка 25 новостей
+2026-02-27 13:02:02,774 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-27 13:02:07,193 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-27 13:02:25,779 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-27 13:02:25,797 - __main__ - INFO - 📸 Новость имеет 1 медиа-элементов
+2026-02-27 13:02:25,799 - __main__ - INFO -   Медиа 1: photo - https://pbs.twimg.com/card_img/2026650889335808000/lFjlCzrR?format=jpg&name=800x419
+2026-02-27 13:02:25,806 - __main__ - INFO - ✅ Новость прошла (1 медиа): photo:https://pbs.twimg.com/card_img...
+2026-02-27 13:02:25,809 - __main__ - INFO - 📊 ДЕТАЛЬНАЯ СТАТИСТИКА ОТСЕВА:
+2026-02-27 13:02:25,810 - __main__ - INFO -   Всего новостей: 25
+2026-02-27 13:02:25,811 - __main__ - INFO -   Уже в кеше: 0
+2026-02-27 13:02:25,812 - __main__ - INFO -   Дубликаты в реальном времени: 0
+2026-02-27 13:02:25,813 - __main__ - INFO -   Низкое качество: 0
+2026-02-27 13:02:25,816 - __main__ - INFO -   Не прошли фильтр: 20
+2026-02-27 13:02:25,817 - __main__ - INFO -   Нет движения рынка: 2
+2026-02-27 13:02:25,818 - __main__ - INFO -   Отклонены AI: 2
+2026-02-27 13:02:25,819 - __main__ - INFO -   С МЕДИА: 1
+2026-02-27 13:02:25,820 - __main__ - INFO -   БЕЗ МЕДИА: 0
+2026-02-27 13:02:25,821 - __main__ - INFO -   УСПЕШНО ПРОШЛИ: 1
+2026-02-27 13:02:25,822 - __main__ - INFO - 📤 Публикация 1 новостей (top за цикл)...
+2026-02-27 13:02:25,833 - __main__ - INFO - ✅ console: опубликовано 1 новостей
+2026-02-27 13:02:25,834 - __main__ - INFO - 📤 Пост 1: 1 медиа, URL: ['https://pbs.twimg.com/card_img/2026650889335808000...']
+2026-02-27 13:02:25,835 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.92:443/TcpFull...
+2026-02-27 13:02:25,966 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.92:443/TcpFull complete!
+2026-02-27 13:02:27,110 - newsbot.publishers.telegram_publisher - INFO - ✅ Telegram подключен к каналу: @aitop1234
+2026-02-27 13:02:27,111 - newsbot.publishers.telegram_publisher - INFO - 📤 Начало публикации поста 1/1
+2026-02-27 13:02:27,112 - newsbot.publishers.telegram_publisher - INFO - 📸 Пост имеет 1 медиа-элементов
+2026-02-27 13:02:27,113 - newsbot.publishers.telegram_publisher - INFO -   Медиа 1: photo - https://pbs.twimg.com/card_img/2026650889335808000/lFjlCzrR?format=jpg&name=800x419
+2026-02-27 13:02:27,114 - newsbot.publishers.telegram_publisher - INFO - ⏳ Gap 46s < 60s, спим 14s
+2026-02-27 13:02:42,978 - newsbot.publishers.telegram_publisher - INFO - 🖼️ Отправка поста с 1 медиа...
+2026-02-27 13:02:42,979 - newsbot.publishers.telegram_publisher - INFO - 📤 Отправка 1 медиа с подписью
+2026-02-27 13:02:43,000 - telethon.client.uploads - INFO - Uploading file of 57912 bytes in 1 chunks of 131072
+2026-02-27 13:02:46,058 - newsbot.publishers.telegram_publisher - INFO - ✅ Пост успешно опубликован с 1 медиа
+2026-02-27 13:02:47,062 - newsbot.publishers.telegram_publisher - INFO - 📊 Итог публикации: 1 успешно, 0 неудачно
+2026-02-27 13:02:47,063 - newsbot.publishers.telegram_publisher - INFO - 📊 Статистика медиа: 1/1 успешно (100.0%)
+2026-02-27 13:02:47,064 - __main__ - INFO - ✅ telegram: опубликовано 1 новостей
+2026-02-27 13:02:47,065 - __main__ - INFO - 📤 Пост 1: 1 медиа, URL: ['https://pbs.twimg.com/card_img/2026650889335808000...']
+2026-02-27 13:02:47,066 - __main__ - INFO - 📊 СТАТИСТИКА [Цикл #1]
+2026-02-27 13:02:47,067 - __main__ - INFO - ⏱️  Время работы: 0ч 0м 55с
+2026-02-27 13:02:47,068 - __main__ - INFO - 📥 Получено: 25
+2026-02-27 13:02:47,069 - __main__ - INFO - 🔧 Обработано: 1
+2026-02-27 13:02:47,070 - __main__ - INFO - 📤 Опубликовано: 2
+2026-02-27 13:02:47,071 - __main__ - INFO - ❌ Отклонено: 24
+2026-02-27 13:02:47,072 - __main__ - INFO - 🔄 Отфильтровано дубликатов: 0
+2026-02-27 13:02:47,073 - __main__ - INFO - ⭐ Отфильтровано по качеству: 0
+2026-02-27 13:02:47,074 - __main__ - INFO - 📸 С медиа: 1
+2026-02-27 13:02:47,076 - __main__ - INFO - 📭 Без медиа: 0
+2026-02-27 13:02:47,078 - __main__ - INFO - 🖼️ Всего медиа: 1
+2026-02-27 13:02:47,079 - __main__ - INFO - 📉 Причины отклонений:
+2026-02-27 13:02:47,080 - __main__ - INFO -   filter: 20 (83.3%)
+2026-02-27 13:02:47,080 - __main__ - INFO -   ai_reject: 2 (8.3%)
+2026-02-27 13:02:47,081 - __main__ - INFO -   no_market_move: 2 (8.3%)
+2026-02-27 13:02:47,082 - __main__ - INFO - ⏳ Ожидание 60 секунд до следующего цикла...
