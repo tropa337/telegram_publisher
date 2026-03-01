@@ -22,6 +22,7 @@ from newsbot.publishers.telegram_publisher import (ConsolePublisher,
                                                    TelegramPublisher)
 from newsbot.simple_formatter import SimpleFormatter
 from newsbot.sources.twitter_source import TwitterRSSSource
+from newsbot.sources.telegram_source import TelegramSource
 from newsbot.types import NewsItem, ProcessedNews
 
 # Логирование
@@ -123,6 +124,10 @@ class NewsBot:
         # Источники и публикаторы
         self.sources = {}
         self.publisher_manager = PublisherManager()
+        # Очередь новостей из Telegram-каналов (реактивный источник)
+        self.tg_queue: asyncio.Queue = asyncio.Queue(maxsize=500)
+        self._tg_client = None
+        self._tg_source = None
         
         # Для дедупликации в реальном времени
         self.recent_news_hashes: Set[str] = set()
@@ -165,6 +170,24 @@ class NewsBot:
             self.sources['twitter_rss'] = twitter
             self.logger.info(f"✅ RSS источники: {len(self.config.TWITTER_RSS_FEEDS)} фидов")
     
+
+        if self.config.SOURCE_TG_CHANNELS:
+            try:
+                self._tg_client = TelegramClient(
+                    'source_session',
+                    self.config.TG_API_ID,
+                    self.config.TG_API_HASH
+                )
+                self._tg_source = TelegramSource(
+                    client=self._tg_client,
+                    channels=self.config.SOURCE_TG_CHANNELS
+                )
+                self.sources['telegram'] = self._tg_source
+                self.logger.info(f"✅ Telegram источники: {len(self.config.SOURCE_TG_CHANNELS)} каналов")
+            except Exception as e:
+                self.logger.error(f"❌ Ошибка инициализации TelegramSource: {e}", exc_info=True)
+
+
     def _init_publishers(self):
         """Инициализация публикаторов"""
         # Консоль для отладки
@@ -243,10 +266,27 @@ class NewsBot:
         if len(self.recent_news_texts) > self.max_recent_items:
             self.recent_news_texts.pop(0)
     
+
+    async def _start_reactive_sources(self):
+        """Старт источников, которые пушат события (Telegram)."""
+        if self._tg_source and self._tg_client:
+            await self._tg_client.start()
+            await self._tg_source.start_monitoring(self._on_tg_item)
+            self.logger.info("📡 TelegramSource мониторинг запущен")
+
+    async def _on_tg_item(self, item: NewsItem):
+        """Callback из TelegramSource -> кладём в очередь."""
+        try:
+            self.tg_queue.put_nowait(item)
+        except asyncio.QueueFull:
+            self.logger.warning("⚠️ TG очередь переполнена, пропускаю новость")
+
+
     async def start(self):
         """Запуск бота в непрерывном режиме"""
         self.running = True
         self.logger.info("🚀 Запуск бота в непрерывном режиме...")
+        await self._start_reactive_sources()
         
         poll_interval = self.config.POLL_INTERVAL_RSS
         
@@ -286,6 +326,18 @@ class NewsBot:
         self.logger.info("📡 Начало сбора новостей...")
         
         news_items = []
+        # 0) Сначала забираем новости из очереди Telegram (если есть)
+        drained_tg = 0
+        while True:
+            try:
+                tg_item = self.tg_queue.get_nowait()
+                news_items.append(tg_item)
+                drained_tg += 1
+            except asyncio.QueueEmpty:
+                break
+        if drained_tg:
+            self.logger.info(f"📥 telegram(realtime): {drained_tg} новостей")
+            self.stats['fetched'] += drained_tg
         for name, source in self.sources.items():
             try:
                 items = await source.fetch()
@@ -374,16 +426,6 @@ class NewsBot:
                     self._record_rejection('filter')
                     self.logger.debug(f"Не прошла фильтр: {filter_result.reason}")
                     continue
-                
-                # 5. Проверка движения рынка
-                if not looks_market_moving(item.raw_text) and not ALLOW_WITHOUT_PRICE.search(item.raw_text):
-                    self.cache.mark_processed(item, 'rejected', 'no_market_move')
-                    counters['market'] += 1
-                    self.stats['rejected'] += 1
-                    self._record_rejection('no_market_move')
-                    self.logger.debug(f"Нет движения рынка")
-                    continue
-                
                 # 6. AI анализ
                 try:
                     analyzed = await self.analyzer.analyze_news(item)
@@ -398,6 +440,30 @@ class NewsBot:
                     self.logger.error(f"❌ Ошибка AI анализа: {e}")
                     continue
                 
+
+                # 5. Проверка движения рынка (после AI):
+                #    - если нет явных цен/%, но AI пометил как сильное MACRO/REGULATION/ALERT — пропускаем
+                structured = {}
+                try:
+                    if hasattr(analyzed, 'metadata') and isinstance(analyzed.metadata, dict):
+                        structured = analyzed.metadata.get('structured') or {}
+                except Exception:
+                    structured = {}
+                cat = str((structured.get('category') or (analyzed.metadata.get('category') if hasattr(analyzed, 'metadata') else '') or 'OTHER')).upper()
+                try:
+                    pr = int(float(structured.get('priority') or (analyzed.metadata.get('priority') if hasattr(analyzed, 'metadata') else 0) or 0))
+                except Exception:
+                    pr = 0
+                allow_macro = (cat in {'MACRO','REGULATION','ALERT','EXCHANGE','ETF_FLOW'}) and pr >= 70
+                if not allow_macro:
+                    if not looks_market_moving(item.raw_text) and not ALLOW_WITHOUT_PRICE.search(item.raw_text):
+                        self.cache.mark_processed(item, 'rejected', 'no_market_move')
+                        counters['market'] += 1
+                        self.stats['rejected'] += 1
+                        self._record_rejection('no_market_move')
+                        self.logger.debug(f"Нет движения рынка")
+                        continue
+
                 # 6.5 Event-key дедуп (анти-спам одинаковых событий 6-12ч)
                 try:
                     event_key = ''

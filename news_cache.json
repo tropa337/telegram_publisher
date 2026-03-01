@@ -1,14 +1,14 @@
 {
   "entries": {
-    "688c0e7c5d0fc5cb43e49982be0c1f82": {
-      "item_hash": "688c0e7c5d0fc5cb43e49982be0c1f82",
-      "timestamp": 1772190114.7056983,
+    "dd5a25100361bbd9208443a305ff3082": {
+      "item_hash": "dd5a25100361bbd9208443a305ff3082",
+      "timestamp": 1772368126.4317174,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "How do Pakistan and Taliban Afghan militaries stack up as tensions flare? reut.rs/4bdUZyE reut.rs/4b",
-        "created_at": "2026-02-27T10:50:00+00:00",
+        "text_preview": "HUGE: V-shaped recovery for the Bitcoin Hashrate.",
+        "created_at": "2026-03-01T12:20:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -16,39 +16,151 @@
         ]
       }
     },
-    "aeaa1bcf89b88e25e77e56155d17b201": {
-      "item_hash": "aeaa1bcf89b88e25e77e56155d17b201",
-      "timestamp": 1772190114.7070906,
+    "431e2bee795aa4ead7b4637d4474b05c": {
+      "item_hash": "431e2bee795aa4ead7b4637d4474b05c",
+      "timestamp": 1772368126.431972,
       "status": "rejected",
-      "reason": "filter_Запрещенный паттерн",
+      "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "RT @ReutersOI: Gold beat the Dow Jones in a milestone rally in early 2026 after a sharp upturn in th",
-        "created_at": "2026-02-27T10:47:00+00:00",
+        "text_preview": "Marshall Islands crude oil tanker MKD Vyom struck and damaged by projectile off coast of Oman – mari",
+        "created_at": "2026-03-01T12:19:00+00:00",
         "has_media": false
       }
     },
-    "bf95b93ec6f7423086d1268f910d50a1": {
-      "item_hash": "bf95b93ec6f7423086d1268f910d50a1",
-      "timestamp": 1772190114.7078319,
+    "234dc0bfc296fca58e2844191ae782d8": {
+      "item_hash": "234dc0bfc296fca58e2844191ae782d8",
+      "timestamp": 1772368126.432147,
       "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
+      "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "EU clears €1.1B French cleantech manufacturing aid",
-        "created_at": "2026-02-27T10:47:00+00:00",
+        "text_preview": "Belgium seizes suspected Russian shadow fleet tanker reut.rs/404kkEU reut.rs/404kkEU",
+        "created_at": "2026-03-01T12:15:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "c11eb5496dca93b3b44007f259545790": {
+      "item_hash": "c11eb5496dca93b3b44007f259545790",
+      "timestamp": 1772368126.432284,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "In polarised Iran, Khamenei's death triggers celebrations and grief reut.rs/4u3ysMp reut.rs/4u3ysMp",
+        "created_at": "2026-03-01T12:10:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "85bab009a8527ff8c4e98578f735d281": {
+      "item_hash": "85bab009a8527ff8c4e98578f735d281",
+      "timestamp": 1772368126.4324164,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "76ers C Joel Embiid (oblique) out at least 3 games reut.rs/4rUhTko reut.rs/4rUhTko",
+        "created_at": "2026-03-01T12:05:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "fe287699e2a93be48082d34a6239507c": {
+      "item_hash": "fe287699e2a93be48082d34a6239507c",
+      "timestamp": 1772368126.4325585,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Iranians took to the streets mourning Supreme Leader Ali Khamenei after he was killed in US and Isra",
+        "created_at": "2026-03-01T12:00:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "fcaae94aa1864c885a8105a4e9b25e49": {
+      "item_hash": "fcaae94aa1864c885a8105a4e9b25e49",
+      "timestamp": 1772368126.4327033,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "In Sensational Ruling, Court Prohibits German State From Classifying AfD As A \"Confirmed Right-Wing ",
+        "created_at": "2026-03-01T12:00:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "5919b1ceb6d0cbc57afd20d112ee3575": {
+      "item_hash": "5919b1ceb6d0cbc57afd20d112ee3575",
+      "timestamp": 1772368126.4328241,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Gulf stocks slide, Kuwait suspends trading as Iran responds to US, Israeli attacks",
+        "created_at": "2026-03-01T12:00:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "4c1242fd42d7b85a3e8389bbc8566afd": {
+      "item_hash": "4c1242fd42d7b85a3e8389bbc8566afd",
+      "timestamp": 1772368126.4330223,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Crowds in the Iranian town of Galleh Dar toppled a monument dedicated to the Islamic Republic's foun",
+        "created_at": "2026-03-01T11:57:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "dd5085429ce4f31307d110dbccdf2bac": {
+      "item_hash": "dd5085429ce4f31307d110dbccdf2bac",
+      "timestamp": 1772368126.4331293,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "OPEC and eight countries to meet next on April 5th.",
+        "created_at": "2026-03-01T11:56:00+00:00",
         "has_media": false
       }
     },
-    "e2caac6f6c93ff80874a36349d51afe4": {
-      "item_hash": "e2caac6f6c93ff80874a36349d51afe4",
-      "timestamp": 1772190114.7084017,
+    "a42bd1fed850de32e31730d560e402fd": {
+      "item_hash": "a42bd1fed850de32e31730d560e402fd",
+      "timestamp": 1772368126.434376,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
+      "reason": "low_quality",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "💥 🇨🇳🇮🇷 China has called on its citizens to leave Iran immediately.",
-        "created_at": "2026-02-27T10:46:00+00:00",
+        "text_preview": "Footage shows the Palau-flagged oil tanker Skylight on fire after Iranian strikes near the Strait of",
+        "created_at": "2026-03-01T11:52:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -56,27 +168,59 @@
         ]
       }
     },
-    "f7608957db36fbd73bb07f30255237be": {
-      "item_hash": "f7608957db36fbd73bb07f30255237be",
-      "timestamp": 1772190114.709038,
+    "ec1d4603b664e8b8f74393d1f58b4b12": {
+      "item_hash": "ec1d4603b664e8b8f74393d1f58b4b12",
+      "timestamp": 1772368126.4345427,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "German government spokesperson: Germany assumes future US tariffs on EU products will not exceed the",
-        "created_at": "2026-02-27T10:46:00+00:00",
+        "text_preview": "Drone footage revealed extensive damage to a residential building in Tel Aviv after a rocket launche",
+        "created_at": "2026-03-01T11:45:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "0faad6e5c9c501eb98bb36abd90260fe": {
+      "item_hash": "0faad6e5c9c501eb98bb36abd90260fe",
+      "timestamp": 1772368126.434708,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Vladimir Putin described the killing of Ayatollah Khamenei as murder and said it violated all the no",
+        "created_at": "2026-03-01T11:40:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "cd7899e1a3ae5a40d24e126d2a5eb452": {
+      "item_hash": "cd7899e1a3ae5a40d24e126d2a5eb452",
+      "timestamp": 1772368126.4349248,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "🔴 OPEC+: 8 members to raise oil output by 206,000 barrels per day in April - statement.",
+        "created_at": "2026-03-01T11:39:00+00:00",
         "has_media": false
       }
     },
-    "9a4e353e0ad77cfc8850d1a70542017a": {
-      "item_hash": "9a4e353e0ad77cfc8850d1a70542017a",
-      "timestamp": 1772190114.710948,
+    "94ddf97b056ea3a487489d1ab223e37a": {
+      "item_hash": "94ddf97b056ea3a487489d1ab223e37a",
+      "timestamp": 1772368126.435234,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "A Hong Kong court sentenced the father of a wanted pro-democracy activist to eight months in prison ",
-        "created_at": "2026-02-27T10:45:00+00:00",
+        "text_preview": "X now bans paid partnership promotions for financial products including crypto, prohibiting influenc",
+        "created_at": "2026-03-01T11:33:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -84,15 +228,15 @@
         ]
       }
     },
-    "0ae99c3c71c3454ae71c50c551d4e896": {
-      "item_hash": "0ae99c3c71c3454ae71c50c551d4e896",
-      "timestamp": 1772190114.7118866,
+    "8075af34bdd413aa1d979e371425c1d0": {
+      "item_hash": "8075af34bdd413aa1d979e371425c1d0",
+      "timestamp": 1772368126.4354162,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Chocolate Market Enters New Phase As \"Double-Digit Raw Material Deflation\" Eases Costs",
-        "created_at": "2026-02-27T10:45:00+00:00",
+        "text_preview": "💥 🇺🇸🇮🇷 More U.S. Air Force tankers and military assets are heading from Europe to the Middle East.",
+        "created_at": "2026-03-01T11:31:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -100,15 +244,15 @@
         ]
       }
     },
-    "eb3fee24db393e3b6c0f12b3df74a5c5": {
-      "item_hash": "eb3fee24db393e3b6c0f12b3df74a5c5",
-      "timestamp": 1772190114.7130978,
+    "41c24ca009ff027dd5598fe3cebee92a": {
+      "item_hash": "41c24ca009ff027dd5598fe3cebee92a",
+      "timestamp": 1772368126.435648,
       "status": "rejected",
-      "reason": "filter_Запрещенный паттерн",
+      "reason": "low_quality",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Reuters: Gold beat the Dow Jones in a milestone rally in early 2026 after a sharp upturn in t",
-        "created_at": "2026-02-27T10:44:00+00:00",
+        "text_preview": "Reporter: Will you refund the roughly $134 billion in revenue taken by these emergency tariffs? Scot",
+        "created_at": "2026-03-01T11:30:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -116,99 +260,483 @@
         ]
       }
     },
-    "c3b399d67cceb825be707e4e56c6b570": {
-      "item_hash": "c3b399d67cceb825be707e4e56c6b570",
-      "timestamp": 1772190114.713953,
+    "4345fdcbcd8c1a8f850b911c6b87fe4d": {
+      "item_hash": "4345fdcbcd8c1a8f850b911c6b87fe4d",
+      "timestamp": 1772368126.435859,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "German Government Spokesperson: Germany wants to preserve US-EU tariff deal",
-        "created_at": "2026-02-27T10:44:00+00:00",
+        "text_preview": "The US military released footage and photographs of what it described as strike equipment used attac",
+        "created_at": "2026-03-01T11:30:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "0faa87a5de280c20ea926d6bed460f70": {
+      "item_hash": "0faa87a5de280c20ea926d6bed460f70",
+      "timestamp": 1772368126.4359972,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "💥 🇺🇸🇨🇳🇮🇷 China calls the US-Israel attacks on Iran \"unacceptable.\"",
+        "created_at": "2026-03-01T11:21:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "fc98868480057cba9482254c88e91d57": {
+      "item_hash": "fc98868480057cba9482254c88e91d57",
+      "timestamp": 1772368126.4361756,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "The US military released a video and photographs showing what it said was equipment being used in ai",
+        "created_at": "2026-03-01T11:19:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "b48e8060d01ff5e4d331cb3a653a08a4": {
+      "item_hash": "b48e8060d01ff5e4d331cb3a653a08a4",
+      "timestamp": 1772368886.728315,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Germany To Scrap Subsidy For Rooftop Solar zerohedge.com/energy/germany…",
+        "created_at": "2026-03-01T12:35:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "61e5d848e677756ee8704e21aec8463b": {
+      "item_hash": "61e5d848e677756ee8704e21aec8463b",
+      "timestamp": 1772368886.7284684,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Kenyan MP among six people killed in helicopter crash reut.rs/4rHxzr8 reut.rs/4rHxzr8",
+        "created_at": "2026-03-01T12:25:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "7ace5ea5cecfc92a352641e2d54141f9": {
+      "item_hash": "7ace5ea5cecfc92a352641e2d54141f9",
+      "timestamp": 1772368886.728717,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "A group of people were seen dancing in the streets of Karaj city, near Tehran, celebrating the death",
+        "created_at": "2026-03-01T12:20:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "91f3524f7639b8c231e82c8b804a058e": {
+      "item_hash": "91f3524f7639b8c231e82c8b804a058e",
+      "timestamp": 1772368886.728837,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "In polarised Iran, Khamenei's death triggers celebrations and grief",
+        "created_at": "2026-03-01T12:10:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "eb9f23ea3a2a88d73af0d3f741fcbc62": {
+      "item_hash": "eb9f23ea3a2a88d73af0d3f741fcbc62",
+      "timestamp": 1772368886.7290294,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "India's goods and services tax collections rise 7.9% in February",
+        "created_at": "2026-03-01T11:15:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "df2e04eb2ca202889e949d1cb34f945c": {
+      "item_hash": "df2e04eb2ca202889e949d1cb34f945c",
+      "timestamp": 1772368886.7291846,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Most important support & resistance levels for Bitcoin.",
+        "created_at": "2026-03-01T11:03:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "aa5d73a9f16ef518ff3adc85d73b76f4": {
+      "item_hash": "aa5d73a9f16ef518ff3adc85d73b76f4",
+      "timestamp": 1772368886.7294374,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Several people have been killed at protests outside the US consulate in Karachi. US and Iranian inst",
+        "created_at": "2026-03-01T12:39:00+00:00",
         "has_media": false
       }
     },
-    "d2c4439b6973a4fb07c110237a63cec2": {
-      "item_hash": "d2c4439b6973a4fb07c110237a63cec2",
-      "timestamp": 1772190114.7146175,
+    "a289b26b3fc93c49ccd0caaf0d0e1237": {
+      "item_hash": "a289b26b3fc93c49ccd0caaf0d0e1237",
+      "timestamp": 1772368886.7296317,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
+      "reason": "low_quality",
       "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Druzhba pipeline damage assessment to be ready soon, time uncertain - Naftogaz",
-        "created_at": "2026-02-27T10:43:00+00:00",
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Israel has struck the Iranian capital on the second day of its joint operation with the US. Presiden",
+        "created_at": "2026-03-01T10:31:00+00:00",
         "has_media": false
       }
     },
-    "50ff889e05a9c11ee075305392935a39": {
-      "item_hash": "50ff889e05a9c11ee075305392935a39",
-      "timestamp": 1772190114.719065,
+    "4da930d6a1afbfc868accdde4921ad97": {
+      "item_hash": "4da930d6a1afbfc868accdde4921ad97",
+      "timestamp": 1772368886.729863,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "German Government Spokesperson reiterates Europeans will take coordinated action in the tariffs disp",
-        "created_at": "2026-02-27T10:39:00+00:00",
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Belgium's Defense Ministry said its forces boarded an oil tanker believed to be part of Russia's ill",
+        "created_at": "2026-03-01T09:59:00+00:00",
         "has_media": false
       }
     },
-    "a8126d26aab665ca2ec96661cca3ac56": {
-      "item_hash": "a8126d26aab665ca2ec96661cca3ac56",
-      "timestamp": 1772190114.7195907,
+    "bffe72062df36f345c734cb01815efa5": {
+      "item_hash": "bffe72062df36f345c734cb01815efa5",
+      "timestamp": 1772368886.7300735,
       "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
+      "reason": "filter_Недостаточно сигнало",
       "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "What AI windfall? Debt will still weigh on big economies",
-        "created_at": "2026-02-27T10:35:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "US President Trump has carried out his threat to attack Iran, shifting attention to the Strait of Ho",
+        "created_at": "2026-03-01T09:05:00+00:00",
+        "has_media": false
       }
     },
-    "7a3990c4fd837384790240b8b43b0454": {
-      "item_hash": "7a3990c4fd837384790240b8b43b0454",
-      "timestamp": 1772190114.7200215,
+    "8b8e81fd2d63fe6ac3ab553e3e1afc71": {
+      "item_hash": "8b8e81fd2d63fe6ac3ab553e3e1afc71",
+      "timestamp": 1772368886.7317617,
       "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
+      "reason": "filter_Недостаточно сигнало",
       "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "$8,700,000,000 in Bitcoin & Ethereum options expire.",
-        "created_at": "2026-02-27T10:33:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Ayatollah Ali Khamenei, Iran's supreme leader since 1989, has been killed by an Israeli airstrike at",
+        "created_at": "2026-03-01T01:55:00+00:00",
+        "has_media": false
       }
     },
-    "12e2b4a0fc445f93c9e49ca89151d015": {
-      "item_hash": "12e2b4a0fc445f93c9e49ca89151d015",
-      "timestamp": 1772190122.7922795,
+    "ba7463b2d340cb58059f7e05c784acae": {
+      "item_hash": "ba7463b2d340cb58059f7e05c784acae",
+      "timestamp": 1772368886.731893,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The US said a wide range of military personnel, from the army to the coast guard, were involved in t",
+        "created_at": "2026-02-28T23:18:00+00:00",
+        "has_media": false
+      }
+    },
+    "7056c1ec337d5a4c1e0bdf6a3d6db271": {
+      "item_hash": "7056c1ec337d5a4c1e0bdf6a3d6db271",
+      "timestamp": 1772368886.7320435,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Following US and Israeli strikes on Tehran, Iran state media confirmed the death of Ali Khamenei. DW",
+        "created_at": "2026-02-28T22:16:00+00:00",
+        "has_media": false
+      }
+    },
+    "834cb1e0954c28fa600f05daf358744b": {
+      "item_hash": "834cb1e0954c28fa600f05daf358744b",
+      "timestamp": 1772368886.7322114,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "So far, many Israelis support their government's decision to attack Iran — but there are also critic",
+        "created_at": "2026-02-28T20:36:00+00:00",
+        "has_media": false
+      }
+    },
+    "8e7123577edff810f24f7c691b1a3d1a": {
+      "item_hash": "8e7123577edff810f24f7c691b1a3d1a",
+      "timestamp": 1772368886.7323787,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Talks in Geneva went well, participants said. But hours later, the US and Israel attacked Iran. Were",
+        "created_at": "2026-02-28T18:21:00+00:00",
+        "has_media": false
+      }
+    },
+    "22dd00b4b3768ec0ea793caf72539c31": {
+      "item_hash": "22dd00b4b3768ec0ea793caf72539c31",
+      "timestamp": 1772368886.7325847,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The US has launched \"major combat operations\" against Iran, with President Donald Trump delineating ",
+        "created_at": "2026-02-28T14:25:00+00:00",
+        "has_media": false
+      }
+    },
+    "9483d51f511d8a5797159a419080e101": {
+      "item_hash": "9483d51f511d8a5797159a419080e101",
+      "timestamp": 1772368886.7328382,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "More than 300 Afghan Taliban fighters were killed in the latest airstrikes and border clashes, accor",
+        "created_at": "2026-02-28T12:21:00+00:00",
+        "has_media": false
+      }
+    },
+    "2f0f4d8adea50c9275b1089ad748326b": {
+      "item_hash": "2f0f4d8adea50c9275b1089ad748326b",
+      "timestamp": 1772368886.7329915,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Iceland is a close partner of the EU but not a full member. That could change if Icelanders vote to ",
+        "created_at": "2026-02-28T11:48:00+00:00",
+        "has_media": false
+      }
+    },
+    "61811bf6a2a775101e99854148d09301": {
+      "item_hash": "61811bf6a2a775101e99854148d09301",
+      "timestamp": 1772368886.7332144,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "A blockade on oil imports is leaving Cuba with few resources. US Secretary of State Marco Rubio want",
+        "created_at": "2026-02-28T11:15:00+00:00",
+        "has_media": false
+      }
+    },
+    "89e0ffec7bde19de0414cd6b681c0704": {
+      "item_hash": "89e0ffec7bde19de0414cd6b681c0704",
+      "timestamp": 1772368886.733415,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "While Lebanon's government opposes getting involved, Hezbollah has said it would view an attack on I",
+        "created_at": "2026-02-28T09:39:00+00:00",
+        "has_media": false
+      }
+    },
+    "bc441d57963c6e7da3e55f0d2ea2ff19": {
+      "item_hash": "bc441d57963c6e7da3e55f0d2ea2ff19",
+      "timestamp": 1772368886.735581,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Argentina's sweeping new reform is meant to create more formal jobs by reducing the burden on employ",
+        "created_at": "2026-02-28T08:36:00+00:00",
+        "has_media": false
+      }
+    },
+    "20c64f8ab242462adf30f1f7e9bea272": {
+      "item_hash": "20c64f8ab242462adf30f1f7e9bea272",
+      "timestamp": 1772368887.6187003,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "The micro → macro shift is happening. Binance crossed $70B in commodity volume after launching gold ",
-        "created_at": "2026-02-27T10:33:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "During talks between the US and Iran, the Houthis continued to voice support for their backers in Te",
+        "created_at": "2026-02-28T08:06:00+00:00",
+        "has_media": false
       }
     },
-    "3c7a03743d480b6be18b1f4709df3e2a": {
-      "item_hash": "3c7a03743d480b6be18b1f4709df3e2a",
-      "timestamp": 1772190122.7935205,
+    "c2d229146007cfb923e7884a1ad1df2a": {
+      "item_hash": "c2d229146007cfb923e7884a1ad1df2a",
+      "timestamp": 1772368887.6190467,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Israel's attack comes amid soaring tensions between Iran and the United States over Tehran's nuclear",
+        "created_at": "2026-02-28T06:36:00+00:00",
+        "has_media": false
+      }
+    },
+    "b28f9d08ee6ba0ecd91ea91cb911c56e": {
+      "item_hash": "b28f9d08ee6ba0ecd91ea91cb911c56e",
+      "timestamp": 1772368887.6193836,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The latest forecasts predict a sharp decline in the population. One reason is that too few children ",
+        "created_at": "2026-02-28T06:12:00+00:00",
+        "has_media": false
+      }
+    },
+    "7adc1c6bd2ca27b17ce55cc42df63bcb": {
+      "item_hash": "7adc1c6bd2ca27b17ce55cc42df63bcb",
+      "timestamp": 1772368887.6196654,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Sedaka's upbeat music charmed America in the post-Elvis and pre-Beatles era with songs like \"Breakin",
+        "created_at": "2026-02-28T04:40:00+00:00",
+        "has_media": false
+      }
+    },
+    "39103328f2aa2869bd256b7ee364e5d7": {
+      "item_hash": "39103328f2aa2869bd256b7ee364e5d7",
+      "timestamp": 1772368887.619996,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The White House had demanded Anthropic to allow unrestricted military use of its AI technology or fa",
+        "created_at": "2026-02-28T03:52:00+00:00",
+        "has_media": false
+      }
+    },
+    "1102a061bcbfad8fdde2d0d09ca4bfc3": {
+      "item_hash": "1102a061bcbfad8fdde2d0d09ca4bfc3",
+      "timestamp": 1772368887.6202369,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The military cargo plane was carrying Bolivian banknotes which scattered on the highway upon impact.",
+        "created_at": "2026-02-28T02:11:00+00:00",
+        "has_media": false
+      }
+    },
+    "15f4e24c8f3de67018f8a794d3ed9f7d": {
+      "item_hash": "15f4e24c8f3de67018f8a794d3ed9f7d",
+      "timestamp": 1772368887.6204371,
+      "status": "rejected",
+      "reason": "dedup_similar_content",
+      "metadata": {
+        "source": "twitter_rss:twitter_3",
+        "text_preview": "Belgium's Defense Ministry said its forces boarded an oil tanker believed to be part of Russia's ill",
+        "created_at": "2026-03-01T09:59:00+00:00",
+        "has_media": false
+      }
+    },
+    "8bd104be0cca7543344ed9b1acc1f26f": {
+      "item_hash": "8bd104be0cca7543344ed9b1acc1f26f",
+      "timestamp": 1772368887.620638,
+      "status": "rejected",
+      "reason": "dedup_similar_content",
+      "metadata": {
+        "source": "twitter_rss:twitter_3",
+        "text_preview": "US President Trump has carried out his threat to attack Iran, shifting attention to the Strait of Ho",
+        "created_at": "2026-03-01T09:05:00+00:00",
+        "has_media": false
+      }
+    },
+    "fa5f5f7d4dd302cbe6b9d5da61ba1078": {
+      "item_hash": "fa5f5f7d4dd302cbe6b9d5da61ba1078",
+      "timestamp": 1772368887.6208203,
+      "status": "rejected",
+      "reason": "dedup_similar_content",
+      "metadata": {
+        "source": "twitter_rss:twitter_3",
+        "text_preview": "Ayatollah Ali Khamenei, Iran's supreme leader since 1989, has been killed by an Israeli airstrike at",
+        "created_at": "2026-03-01T01:55:00+00:00",
+        "has_media": false
+      }
+    },
+    "fc37d44d92438296c2979048ee726d29": {
+      "item_hash": "fc37d44d92438296c2979048ee726d29",
+      "timestamp": 1772368887.623968,
+      "status": "rejected",
+      "reason": "dedup_similar_content",
+      "metadata": {
+        "source": "twitter_rss:twitter_3",
+        "text_preview": "The US said a wide range of military personnel, from the army to the coast guard, were involved in t",
+        "created_at": "2026-02-28T23:18:00+00:00",
+        "has_media": false
+      }
+    },
+    "a5f5354526d1fb6870b479afe076c53c": {
+      "item_hash": "a5f5354526d1fb6870b479afe076c53c",
+      "timestamp": 1772368887.6241455,
+      "status": "rejected",
+      "reason": "dedup_similar_content",
+      "metadata": {
+        "source": "twitter_rss:twitter_3",
+        "text_preview": "So far, many Israelis support their government's decision to attack Iran — but there are also critic",
+        "created_at": "2026-02-28T20:36:00+00:00",
+        "has_media": false
+      }
+    },
+    "a7085ec9e0117e394be4e28d0060bc5a": {
+      "item_hash": "a7085ec9e0117e394be4e28d0060bc5a",
+      "timestamp": 1772368887.6243112,
+      "status": "rejected",
+      "reason": "dedup_similar_content",
+      "metadata": {
+        "source": "twitter_rss:twitter_3",
+        "text_preview": "Talks in Geneva went well, participants said. But hours later, the US and Israel attacked Iran. Were",
+        "created_at": "2026-02-28T18:21:00+00:00",
+        "has_media": false
+      }
+    },
+    "73d0a4484e6cb4b46b60d514c3fafdcb": {
+      "item_hash": "73d0a4484e6cb4b46b60d514c3fafdcb",
+      "timestamp": 1772369008.210999,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Connecticut State Police released footage of former WWE executive Vince McMahon crashing into anothe",
-        "created_at": "2026-02-27T10:30:00+00:00",
+        "text_preview": "💥 Iran Guards say launched 'large-scale' attack against 'enemy'",
+        "created_at": "2026-03-01T12:28:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -216,31 +744,15 @@
         ]
       }
     },
-    "460c77992c2b305e098f672d3b9e25c4": {
-      "item_hash": "460c77992c2b305e098f672d3b9e25c4",
-      "timestamp": 1772190122.8000712,
-      "status": "rejected",
-      "reason": "no_market_move",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "US margin debt rises to a record $1.28T, up $53B in January, marking the 9th monthly gain in a row. ",
-        "created_at": "2026-02-27T10:30:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "bac6c575ccb22b7739377e898c100580": {
-      "item_hash": "bac6c575ccb22b7739377e898c100580",
-      "timestamp": 1772190122.8006878,
+    "24dee4c06aeb22b935898756ff96d4dc": {
+      "item_hash": "24dee4c06aeb22b935898756ff96d4dc",
+      "timestamp": 1772369189.2688231,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Breakingviews - EU’s markets Big Bang depends on local fireworks",
-        "created_at": "2026-02-27T10:25:00+00:00",
+        "text_preview": "NBA roundup: Luka Doncic's birthday gift is a Lakers victory reut.rs/4l2MucV reut.rs/4l2MucV",
+        "created_at": "2026-03-01T12:45:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -248,15 +760,15 @@
         ]
       }
     },
-    "d37b22c71613207f8556ca0fe75370e9": {
-      "item_hash": "d37b22c71613207f8556ca0fe75370e9",
-      "timestamp": 1772190122.8013706,
+    "fc8d10c03924831ce05dd7e9fe1dd4c3": {
+      "item_hash": "fc8d10c03924831ce05dd7e9fe1dd4c3",
+      "timestamp": 1772369189.2693465,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Pakistan launched air and ground strikes on Taliban sites across Afghanistan, jolting Kabul resident",
-        "created_at": "2026-02-27T10:20:00+00:00",
+        "text_preview": "Cole Hocker fastest in 3K at national indoor track championship reut.rs/3P8Lic8 reut.rs/3P8Lic8",
+        "created_at": "2026-03-01T12:40:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -264,40 +776,72 @@
         ]
       }
     },
-    "b473c6303bcb0f682b0d7f271ec8428d": {
-      "item_hash": "b473c6303bcb0f682b0d7f271ec8428d",
-      "timestamp": 1772190122.8018198,
-      "status": "rejected",
-      "reason": "filter_Слишком короткий/пус",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Bitcoin never closed both January and February in the RED.",
-        "created_at": "2026-02-27T10:18:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "5a9f21ebbb86a601b5b96f75902d0036": {
-      "item_hash": "5a9f21ebbb86a601b5b96f75902d0036",
-      "timestamp": 1772190122.8023264,
+    "7e39d8706882a46ed2bba99b542ed506": {
+      "item_hash": "7e39d8706882a46ed2bba99b542ed506",
+      "timestamp": 1772369189.2700984,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Senator Schatz plans to introduce two AI labor bills - Axios",
-        "created_at": "2026-02-27T10:13:00+00:00",
+        "text_preview": "Crowds in Galleh Dar, Iran, toppled a monument to Islamic Republic founder Ayatollah Ruhollah Khomei",
+        "created_at": "2026-03-01T12:40:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "fadea15dfb16807b788959a5e6a8522a": {
+      "item_hash": "fadea15dfb16807b788959a5e6a8522a",
+      "timestamp": 1772369189.2705731,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Rangers come back to beat Penguins in shootout reut.rs/4l0ekqx reut.rs/4l0ekqx",
+        "created_at": "2026-03-01T12:35:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "7e58012c21c5523590aae9e74fd6f275": {
+      "item_hash": "7e58012c21c5523590aae9e74fd6f275",
+      "timestamp": 1772369189.2710505,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Aftermath of Iranian rocket attack on Israeli home x.com/i/broadcasts/1oKMvRNbk…",
+        "created_at": "2026-03-01T12:32:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "cea46bf48afaf7080a3fc6de93cac411": {
+      "item_hash": "cea46bf48afaf7080a3fc6de93cac411",
+      "timestamp": 1772369431.0219078,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Foreign ministers from Gulf Arab states to hold video call on Sunday to discuss response to Iran's r",
+        "created_at": "2026-03-01T12:40:00+00:00",
         "has_media": false
       }
     }
   },
   "stats": {
-    "hits": 12,
-    "misses": 230,
-    "total_processed": 230,
+    "hits": 29,
+    "misses": 290,
+    "total_processed": 290,
     "total_published": 0
   },
-  "timestamp": 1772190122.8027139
+  "timestamp": 1772369431.0221674
 }

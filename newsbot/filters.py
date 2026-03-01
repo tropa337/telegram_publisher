@@ -20,10 +20,12 @@ class StrictMarketFilter:
             r'\b\d+[\.,]?\d*\s*%\b',
             r'\$\d',
             r'\b(btc|eth|sol|sec|cftc|etf|binance|coinbase)\b',
-        ]]
+            r'\b(fed|fomc|interest\s+rate|rate\s+cut|rate\s+hike|cpi|inflation|dxy|dollar\s+index|bond\s+yields?|treasur(y|ies)|recession|gdp|jobs\s+report|nonfarm|ppi)\b',
+            r'\b(sanction|tariff|geopolitic|war|ceasefire|election|imf|world\s+bank|brics|g7|g20)\b',
+]]
     def quick_filter(self, text: str) -> FilterResult:
         t=(text or '').strip()
-        if len(t) < 60:
+        if len(t) < 30:
             return FilterResult(False, 'Слишком короткий/пустой текст', 0.0)
         for p in self.hard:
             if p.search(t):
