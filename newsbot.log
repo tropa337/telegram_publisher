@@ -12325,3 +12325,119 @@ ConnectionError: Connection to Telegram failed 5 time(s)
 2026-03-16 22:47:20,520 - __main__ - INFO - 📤 Пост 2: 1 медиа, URL: ['https://pbs.twimg.com/card_img/2033479889441927168...']
 2026-03-16 22:47:20,521 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.92:443/TcpFull...
 2026-03-16 22:47:20,600 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.92:443/TcpFull complete!
+2026-03-17 14:46:23,981 - newsbot.config - INFO - ✅ Конфигурация валидна
+2026-03-17 14:46:24,901 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Инициализирован источник Twitter RSS с 4 фидами
+2026-03-17 14:46:24,902 - __main__ - INFO - ✅ RSS источники: 4 фидов
+2026-03-17 14:46:24,918 - __main__ - INFO - ✅ Telegram источники: 1 каналов
+2026-03-17 14:46:24,918 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: console
+2026-03-17 14:46:24,921 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: telegram
+2026-03-17 14:46:24,921 - __main__ - INFO - ✅ Telegram: @onchain_20226 (публикуем все посты)
+2026-03-17 14:46:24,921 - __main__ - INFO - 🤖 Бот инициализирован с улучшенной фильтрацией
+2026-03-17 14:46:24,922 - __main__ - INFO - 🚀 Запуск бота в непрерывном режиме...
+2026-03-17 14:46:24,922 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.91:443/TcpFull...
+2026-03-17 14:46:34,934 - telethon.network.mtprotosender - WARNING - Attempt 1 at connecting failed: TimeoutError: 
+2026-03-17 14:46:45,941 - telethon.network.mtprotosender - WARNING - Attempt 2 at connecting failed: TimeoutError: 
+2026-03-17 14:46:56,956 - telethon.network.mtprotosender - WARNING - Attempt 3 at connecting failed: TimeoutError: 
+2026-03-17 14:47:07,968 - telethon.network.mtprotosender - WARNING - Attempt 4 at connecting failed: TimeoutError: 
+2026-03-17 14:47:18,990 - telethon.network.mtprotosender - WARNING - Attempt 5 at connecting failed: TimeoutError: 
+2026-03-17 14:47:30,005 - telethon.network.mtprotosender - WARNING - Attempt 6 at connecting failed: TimeoutError: 
+2026-03-17 14:47:31,014 - __main__ - ERROR - 💥 Критическая ошибка: Connection to Telegram failed 5 time(s)
+Traceback (most recent call last):
+  File "d:\TgChanelPost\main.py", line 658, in main
+    await bot.start()
+  File "d:\TgChanelPost\main.py", line 289, in start
+    await self._start_reactive_sources()
+  File "d:\TgChanelPost\main.py", line 273, in _start_reactive_sources
+    await self._tg_client.start()
+  File "D:\TgChanelPost\.venv\Lib\site-packages\telethon\client\auth.py", line 135, in _start
+    await self.connect()
+  File "D:\TgChanelPost\.venv\Lib\site-packages\telethon\client\telegrambaseclient.py", line 552, in connect
+    if not await self._sender.connect(self._connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )):
+    ^^
+  File "D:\TgChanelPost\.venv\Lib\site-packages\telethon\network\mtprotosender.py", line 133, in connect
+    await self._connect()
+  File "D:\TgChanelPost\.venv\Lib\site-packages\telethon\network\mtprotosender.py", line 266, in _connect
+    raise ConnectionError('Connection to Telegram failed {} time(s)'.format(self._retries))
+ConnectionError: Connection to Telegram failed 5 time(s)
+2026-03-18 19:32:46,205 - newsbot.config - INFO - ✅ Конфигурация валидна
+2026-03-18 19:32:48,645 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Инициализирован источник Twitter RSS с 4 фидами
+2026-03-18 19:32:48,646 - __main__ - INFO - ✅ RSS источники: 4 фидов
+2026-03-18 19:32:48,679 - __main__ - INFO - ✅ Telegram источники: 1 каналов
+2026-03-18 19:32:48,680 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: console
+2026-03-18 19:32:48,689 - newsbot.publishers.telegram_publisher - INFO - ✅ Добавлен публикатор: telegram
+2026-03-18 19:32:48,691 - __main__ - INFO - ✅ Telegram: @onchain_20226 (публикуем все посты)
+2026-03-18 19:32:48,692 - __main__ - INFO - 🤖 Бот инициализирован с улучшенной фильтрацией
+2026-03-18 19:32:48,692 - __main__ - INFO - 🚀 Запуск бота в непрерывном режиме...
+2026-03-18 19:32:48,693 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.91:443/TcpFull...
+2026-03-18 19:32:48,737 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.91:443/TcpFull complete!
+2026-03-18 19:32:49,111 - __main__ - INFO - 📡 TelegramSource мониторинг запущен
+2026-03-18 19:32:49,112 - __main__ - INFO - 🔄 Цикл #1 (интервал: 60 сек)
+2026-03-18 19:32:49,113 - __main__ - INFO - 📡 Начало сбора новостей...
+2026-03-18 19:32:49,113 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Начинаем получение новостей из 4 источников
+2026-03-18 19:32:49,555 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_1: 23 новостей (16 с медиа, всего 16 медиафайлов)
+2026-03-18 19:32:49,555 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_2: 21 новостей (0 с медиа, всего 0 медиафайлов)
+2026-03-18 19:32:49,556 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_3: 11 новостей (0 с медиа, всего 0 медиафайлов)
+2026-03-18 19:32:49,556 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - ✅ RSS twitter_4: 10 новостей (0 с медиа, всего 0 медиафайлов)
+2026-03-18 19:32:49,560 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - Получено 65 новостей после фильтрации
+2026-03-18 19:32:49,561 - newsbot.sources.twitter_source.TwitterRSSSource - INFO - 📊 Детальная статистика медиа: 16 photo
+2026-03-18 19:32:49,561 - __main__ - INFO - 📥 twitter_rss: 65 новостей
+2026-03-18 19:32:49,562 - __main__ - INFO - 🔍 Обработка 50 новостей
+2026-03-18 19:32:50,944 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:32:52,146 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:32:58,739 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:32:59,776 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:00,878 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:02,262 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:02,282 - __main__ - INFO - 📭 Новость без медиа (текстовый пост)
+2026-03-18 19:33:02,290 - __main__ - INFO - ✅ Новость прошла (без медиа): *COINBASE DIVES INTO AI AGENT PAYMENTS - THE INFORMATION *COINBASE IS COMPETING FOR A CLOUDFLARE PAR...
+2026-03-18 19:33:03,257 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:04,472 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:05,593 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:15,505 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:16,709 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:18,109 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:19,420 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 19:33:19,448 - __main__ - INFO - 📊 ДЕТАЛЬНАЯ СТАТИСТИКА ОТСЕВА:
+2026-03-18 19:33:19,451 - __main__ - INFO -   Всего новостей: 50
+2026-03-18 19:33:19,452 - __main__ - INFO -   Уже в кеше: 0
+2026-03-18 19:33:19,452 - __main__ - INFO -   Дубликаты в реальном времени: 0
+2026-03-18 19:33:19,454 - __main__ - INFO -   Низкое качество: 3
+2026-03-18 19:33:19,455 - __main__ - INFO -   Не прошли фильтр: 28
+2026-03-18 19:33:19,456 - __main__ - INFO -   Нет движения рынка: 1
+2026-03-18 19:33:19,458 - __main__ - INFO -   Отклонены AI: 11
+2026-03-18 19:33:19,461 - __main__ - INFO -   С МЕДИА: 0
+2026-03-18 19:33:19,464 - __main__ - INFO -   БЕЗ МЕДИА: 1
+2026-03-18 19:33:19,464 - __main__ - INFO -   УСПЕШНО ПРОШЛИ: 1
+2026-03-18 19:33:19,464 - __main__ - INFO - 📤 Публикация 1 новостей (top за цикл)...
+2026-03-18 19:33:19,477 - __main__ - INFO - ✅ console: опубликовано 1 новостей
+2026-03-18 19:33:19,481 - __main__ - INFO - 📤 Пост 1: без медиа, текст: 🏦 Биржа: Coinbase ведет переговоры с Cloudflare о выпуске стейблкоина для AI-пла...
+2026-03-18 19:33:19,482 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.92:443/TcpFull...
+2026-03-18 19:33:19,522 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.92:443/TcpFull complete!
+2026-03-18 19:36:40,470 - newsbot.publishers.telegram_publisher - INFO - ✅ Telegram подключен к каналу: @onchain_20226
+2026-03-18 19:36:40,471 - newsbot.publishers.telegram_publisher - INFO - 📤 Начало публикации поста 1/1
+2026-03-18 19:36:40,472 - newsbot.publishers.telegram_publisher - INFO - 📝 Пост без медиа (чистый текст)
+2026-03-18 19:36:40,780 - newsbot.publishers.telegram_publisher - INFO - ✅ Текстовый пост успешно опубликован
+2026-03-18 19:36:41,787 - newsbot.publishers.telegram_publisher - INFO - 📊 Итог публикации: 1 успешно, 0 неудачно
+2026-03-18 19:36:41,791 - __main__ - INFO - ✅ telegram: опубликовано 1 новостей
+2026-03-18 19:36:41,791 - __main__ - INFO - 📤 Пост 1: без медиа, текст: 🏦 Биржа: Coinbase ведет переговоры с Cloudflare о выпуске стейблкоина для AI-пла...
+2026-03-18 19:36:41,792 - __main__ - INFO - 📊 СТАТИСТИКА [Цикл #1]
+2026-03-18 19:36:41,792 - __main__ - INFO - ⏱️  Время работы: 0ч 3м 53с
+2026-03-18 19:36:41,792 - __main__ - INFO - 📥 Получено: 65
+2026-03-18 19:36:41,793 - __main__ - INFO - 🔧 Обработано: 1
+2026-03-18 19:36:41,793 - __main__ - INFO - 📤 Опубликовано: 2
+2026-03-18 19:36:41,793 - __main__ - INFO - ❌ Отклонено: 49
+2026-03-18 19:36:41,794 - __main__ - INFO - 🔄 Отфильтровано дубликатов: 6
+2026-03-18 19:36:41,794 - __main__ - INFO - ⭐ Отфильтровано по качеству: 3
+2026-03-18 19:36:41,794 - __main__ - INFO - 📸 С медиа: 0
+2026-03-18 19:36:41,795 - __main__ - INFO - 📭 Без медиа: 1
+2026-03-18 19:36:41,795 - __main__ - INFO - 🖼️ Всего медиа: 0
+2026-03-18 19:36:41,796 - __main__ - INFO - 📉 Причины отклонений:
+2026-03-18 19:36:41,796 - __main__ - INFO -   filter: 28 (57.1%)
+2026-03-18 19:36:41,796 - __main__ - INFO -   ai_reject: 11 (22.4%)
+2026-03-18 19:36:41,796 - __main__ - INFO -   duplicate: 6 (12.2%)
+2026-03-18 19:36:41,797 - __main__ - INFO -   low_quality: 3 (6.1%)
+2026-03-18 19:36:41,797 - __main__ - INFO -   no_market_move: 1 (2.0%)
+2026-03-18 19:36:41,797 - __main__ - INFO - ⏳ Ожидание 60 секунд до следующего цикла...

@@ -1,14 +1,14 @@
 {
   "entries": {
-    "55ebadccf652068c382b67412c938a60": {
-      "item_hash": "55ebadccf652068c382b67412c938a60",
-      "timestamp": 1773694030.497533,
+    "06529b72f2b2055977e103ee7d99236b": {
+      "item_hash": "06529b72f2b2055977e103ee7d99236b",
+      "timestamp": 1773855170.9521174,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
+      "reason": "ai_reject",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Behind fashion week glamour, Argentina's textile backbone buckles",
-        "created_at": "2026-03-16T20:40:00+00:00",
+        "text_preview": "Don't expect big changes to the FOMC statement today, but Goldman sees small downgrade of labor mark",
+        "created_at": "2026-03-18T17:28:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -16,15 +16,195 @@
         ]
       }
     },
-    "59c02db209879a73bcd8631c473d51e1": {
-      "item_hash": "59c02db209879a73bcd8631c473d51e1",
-      "timestamp": 1773694032.3993587,
+    "294ba34058dc4858b065f56a6479b39c": {
+      "item_hash": "294ba34058dc4858b065f56a6479b39c",
+      "timestamp": 1773855170.952775,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "From @TheAthletic: \"What’s with this guy? Does he really care?\" This narrative has followed Darryn P",
+        "created_at": "2026-03-18T17:26:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "677b803fcb9f508f5a29649465d1bd17": {
+      "item_hash": "677b803fcb9f508f5a29649465d1bd17",
+      "timestamp": 1773855170.953274,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "John Roberts Calls For Restraint After Years Of Judicial Overreach zerohedge.com/political/john…",
+        "created_at": "2026-03-18T17:25:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "0e5c6c11259fe580ef51952f15f2ade5": {
+      "item_hash": "0e5c6c11259fe580ef51952f15f2ade5",
+      "timestamp": 1773855170.9537022,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Supporters mark one year since mayor’s arrest in Istanbul x.com/i/broadcasts/1jGXgeapN…",
+        "created_at": "2026-03-18T17:21:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "5b1fc106860f601e58e9d35c0072d595": {
+      "item_hash": "5b1fc106860f601e58e9d35c0072d595",
+      "timestamp": 1773855172.155545,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "TRUMP CALLED FOR AN EMERGENCY RATE CUT Trump reportedly pushed for an emergency Fed cut, while his e",
+        "created_at": "2026-03-18T17:16:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "9f03a2634373168f9dddeb74d4a1fe04": {
+      "item_hash": "9f03a2634373168f9dddeb74d4a1fe04",
+      "timestamp": 1773855172.1560059,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Damaged Russian LNG tanker has reached Libyan waters, Italy says",
+        "created_at": "2026-03-18T17:15:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "7d35ca7dec50f1ed9311cdd9d3e363ce": {
+      "item_hash": "7d35ca7dec50f1ed9311cdd9d3e363ce",
+      "timestamp": 1773855172.1564474,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Iran warns of strikes on Gulf oil facilities 'in coming hours', state media reports",
+        "created_at": "2026-03-18T17:14:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "14f7a919e739f7b54e018dfabbc29dc0": {
+      "item_hash": "14f7a919e739f7b54e018dfabbc29dc0",
+      "timestamp": 1773855172.157038,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "UK's Chancellor Reeves: UK Defence investment plan being kept under review.",
+        "created_at": "2026-03-18T17:14:00+00:00",
+        "has_media": false
+      }
+    },
+    "a2965c9817307d2e16d113dec5022b76": {
+      "item_hash": "a2965c9817307d2e16d113dec5022b76",
+      "timestamp": 1773855178.7557235,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Coinbase plans infrastructure for AI agent payments - Information. $COIN",
+        "created_at": "2026-03-18T17:13:00+00:00",
+        "has_media": false
+      }
+    },
+    "de9889ba68495980e09b526881441e4a": {
+      "item_hash": "de9889ba68495980e09b526881441e4a",
+      "timestamp": 1773855179.815131,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Ford COO: The Iran war has not yet affected Ford's supply chain, and it's too soon to say if the war",
+        "created_at": "2026-03-18T17:13:00+00:00",
+        "has_media": false
+      }
+    },
+    "ac2128b67ab947df7fae1ee7d87840eb": {
+      "item_hash": "ac2128b67ab947df7fae1ee7d87840eb",
+      "timestamp": 1773855179.8185847,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "*S&P 500, NASDAQ 100 BOTH FALL TO SESSION LOWS, DOWN 0.8%",
+        "created_at": "2026-03-18T17:13:00+00:00",
+        "has_media": false
+      }
+    },
+    "80502b7e419cb6a8ac94266b27542121": {
+      "item_hash": "80502b7e419cb6a8ac94266b27542121",
+      "timestamp": 1773855179.8190858,
+      "status": "rejected",
+      "reason": "filter_Запрещенный паттерн",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "RT by @Reuters: A group of three dozen states, cities and counties challenge Trump decision to revok",
+        "created_at": "2026-03-18T17:13:00+00:00",
+        "has_media": false
+      }
+    },
+    "abf625aa6e1a6bc862f4cb96988c5f3e": {
+      "item_hash": "abf625aa6e1a6bc862f4cb96988c5f3e",
+      "timestamp": 1773855180.8856597,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "*COINBASE PLANS INFRASTRUCTURE FOR AI AGENT PAYMENTS:INFORMATION",
+        "created_at": "2026-03-18T17:12:00+00:00",
+        "has_media": false
+      }
+    },
+    "5505c37a14436e01169fd4f3bacb8b26": {
+      "item_hash": "5505c37a14436e01169fd4f3bacb8b26",
+      "timestamp": 1773855182.2902322,
       "status": "approved",
       "reason": "passed_all_filters",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Nvidia CEO Huang sees at least $1 trillion of AI chip revenue opportunity through 2027",
-        "created_at": "2026-03-16T20:35:00+00:00",
+        "text_preview": "*COINBASE DIVES INTO AI AGENT PAYMENTS - THE INFORMATION *COINBASE IS COMPETING FOR A CLOUDFLARE PAR",
+        "created_at": "2026-03-18T17:11:00+00:00",
+        "has_media": false
+      }
+    },
+    "bed0395c6294cd29962116203d56ea6b": {
+      "item_hash": "bed0395c6294cd29962116203d56ea6b",
+      "timestamp": 1773855182.2915654,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "theinformation.com/articles/…",
+        "created_at": "2026-03-18T17:11:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -32,87 +212,15 @@
         ]
       }
     },
-    "23212a7c5c69236d6ff75a9ece959e35": {
-      "item_hash": "23212a7c5c69236d6ff75a9ece959e35",
-      "timestamp": 1773694032.4002142,
+    "aae527f0670456934b1902d19d4e08e6": {
+      "item_hash": "aae527f0670456934b1902d19d4e08e6",
+      "timestamp": 1773855182.2924197,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump on Starmer: I told him we don't want your aircraft carriers.",
-        "created_at": "2026-03-16T20:35:00+00:00",
-        "has_media": false
-      }
-    },
-    "aebdd4cada409c758a807a52d2c82303": {
-      "item_hash": "aebdd4cada409c758a807a52d2c82303",
-      "timestamp": 1773694032.4004884,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump on Kharg island: At some point, something is going to happen with pipes.",
-        "created_at": "2026-03-16T20:34:00+00:00",
-        "has_media": false
-      }
-    },
-    "04c00a472c06ef9d9e99dec6b4bfbef2": {
-      "item_hash": "04c00a472c06ef9d9e99dec6b4bfbef2",
-      "timestamp": 1773694032.4007308,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: We've demolished Iran's missile factories; more is coming.",
-        "created_at": "2026-03-16T20:33:00+00:00",
-        "has_media": false
-      }
-    },
-    "934ea51a783ed4b2819b41e405386b8d": {
-      "item_hash": "934ea51a783ed4b2819b41e405386b8d",
-      "timestamp": 1773694032.400917,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: China, Japan, and South Korea should be helping us.",
-        "created_at": "2026-03-16T20:33:00+00:00",
-        "has_media": false
-      }
-    },
-    "58a1ff6f73248da2bf5e26a83baddfb3": {
-      "item_hash": "58a1ff6f73248da2bf5e26a83baddfb3",
-      "timestamp": 1773694032.4010754,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: Other countries should be thanking me.",
-        "created_at": "2026-03-16T20:32:00+00:00",
-        "has_media": false
-      }
-    },
-    "80eb2e65be6ef119ca4063ee5bd1a4ed": {
-      "item_hash": "80eb2e65be6ef119ca4063ee5bd1a4ed",
-      "timestamp": 1773694032.4012647,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump on actions in Iran: I'm very proud of what we did.",
-        "created_at": "2026-03-16T20:31:00+00:00",
-        "has_media": false
-      }
-    },
-    "154eef1932e81dd5fe8951b80227be91": {
-      "item_hash": "154eef1932e81dd5fe8951b80227be91",
-      "timestamp": 1773694032.4014897,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Exclusive: UAE crude output falls by more than half as Hormuz closure forces shut-ins",
-        "created_at": "2026-03-16T20:30:00+00:00",
+        "text_preview": "From a third-generation humanoid robot designed for physically demanding and hazardous industrial jo",
+        "created_at": "2026-03-18T17:10:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -120,51 +228,47 @@
         ]
       }
     },
-    "bbb86706766a38d4854ff056c7773a04": {
-      "item_hash": "bbb86706766a38d4854ff056c7773a04",
-      "timestamp": 1773694033.596294,
+    "6b7757c42c1c4013d7b08e62a9646ece": {
+      "item_hash": "6b7757c42c1c4013d7b08e62a9646ece",
+      "timestamp": 1773855182.2933307,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "💥 🇺🇸 Trump's net approval rating hits a historic low at -15.3%.",
+        "created_at": "2026-03-18T17:08:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "e624dceab7c79adf6698487b13e97ae1": {
+      "item_hash": "e624dceab7c79adf6698487b13e97ae1",
+      "timestamp": 1773855182.2939231,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Saudi Arabia Has Already Revived More Than Half Its Oil Exports Via Hormuz Bypass",
+        "created_at": "2026-03-18T17:06:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "be393da8c938f73e5d3a6fb9564925c3": {
+      "item_hash": "be393da8c938f73e5d3a6fb9564925c3",
+      "timestamp": 1773855183.2714288,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump on Iran: Had we not done this, there would be nuclear war.",
-        "created_at": "2026-03-16T20:29:00+00:00",
-        "has_media": false
-      }
-    },
-    "113f2555cddc65e3e9feb8c1e0414155": {
-      "item_hash": "113f2555cddc65e3e9feb8c1e0414155",
-      "timestamp": 1773694033.598184,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Nvidia: Full-Stack robotaxis to launch with Uber across 28 markets by 2028, beginning with Los Angel",
-        "created_at": "2026-03-16T20:28:00+00:00",
-        "has_media": false
-      }
-    },
-    "6ed13a49dfa5ba219d0dab962b27d91e": {
-      "item_hash": "6ed13a49dfa5ba219d0dab962b27d91e",
-      "timestamp": 1773694033.5983484,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Nvidia CEO unveils Nissan. Byd, Hyundai, and Geely as a robo-taxi-ready partner. $NVDA",
-        "created_at": "2026-03-16T20:27:00+00:00",
-        "has_media": false
-      }
-    },
-    "164e630b6ac01029cc0af0a27f85c48c": {
-      "item_hash": "164e630b6ac01029cc0af0a27f85c48c",
-      "timestamp": 1773694034.9241116,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Italy's Amplifon to buy hearing device maker GN Hearing for $2.6 billion",
-        "created_at": "2026-03-16T20:25:00+00:00",
+        "text_preview": "Saudi Arabia to host Arab, Islamic ministers to discuss war",
+        "created_at": "2026-03-18T17:05:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -172,15 +276,15 @@
         ]
       }
     },
-    "15e130505b929780baa154206e7e71df": {
-      "item_hash": "15e130505b929780baa154206e7e71df",
-      "timestamp": 1773694034.9246178,
+    "6e8b01f48659355775b04486f09c6ce8": {
+      "item_hash": "6e8b01f48659355775b04486f09c6ce8",
+      "timestamp": 1773855183.2719734,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "\"...The Entire Internet Has Doomer Fatigue\"",
-        "created_at": "2026-03-16T20:25:00+00:00",
+        "text_preview": "5 years of pain for 0 months of glory. RIP Altcoin Holders...",
+        "created_at": "2026-03-18T17:03:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -188,63 +292,15 @@
         ]
       }
     },
-    "4587c7ed3424602992b5f44231d8688d": {
-      "item_hash": "4587c7ed3424602992b5f44231d8688d",
-      "timestamp": 1773694034.9251046,
+    "c640675bb4af97770be803e4d278f6d2": {
+      "item_hash": "c640675bb4af97770be803e4d278f6d2",
+      "timestamp": 1773855184.487802,
       "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
+      "reason": "no_market_move",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Amazon and Nvidia collaborate on advanced AI assistants for cars. - $NVDA $AMZN",
-        "created_at": "2026-03-16T20:24:00+00:00",
-        "has_media": false
-      }
-    },
-    "d599f3305dbc10bc080e919a44449744": {
-      "item_hash": "d599f3305dbc10bc080e919a44449744",
-      "timestamp": 1773694034.9255266,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Trump: I want wars less than almost anybody.",
-        "created_at": "2026-03-16T20:24:00+00:00",
-        "has_media": false
-      }
-    },
-    "bcc2d4bf3669a309a2437d3daa9d14db": {
-      "item_hash": "bcc2d4bf3669a309a2437d3daa9d14db",
-      "timestamp": 1773694034.9259696,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*IRAN SAYS REPORTS OF RECENT CONTACTS WITH US ARE FALSE: TASNIM",
-        "created_at": "2026-03-16T20:22:00+00:00",
-        "has_media": false
-      }
-    },
-    "6028e003becf136205bb84c91c2ca4b0": {
-      "item_hash": "6028e003becf136205bb84c91c2ca4b0",
-      "timestamp": 1773694034.9264023,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Iran: Reports of recent contacts with us are false - Tasnim.",
-        "created_at": "2026-03-16T20:22:00+00:00",
-        "has_media": false
-      }
-    },
-    "e219dee32b202414a1dd9584d351da39": {
-      "item_hash": "e219dee32b202414a1dd9584d351da39",
-      "timestamp": 1773694034.926898,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "The Bitcoin funding rates are extremely negative. We all know what this means...",
-        "created_at": "2026-03-16T20:18:00+00:00",
+        "text_preview": "FTX Recovery Trust will distribute approximately $2.2B to creditors in its fourth payout on March 31",
+        "created_at": "2026-03-18T17:01:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -252,15 +308,15 @@
         ]
       }
     },
-    "0a8caf2c5b17c33e0286864ad706e1c2": {
-      "item_hash": "0a8caf2c5b17c33e0286864ad706e1c2",
-      "timestamp": 1773694036.28478,
-      "status": "approved",
-      "reason": "passed_all_filters",
+    "d2669a8cb61bc0b1cc2b6189426971cd": {
+      "item_hash": "d2669a8cb61bc0b1cc2b6189426971cd",
+      "timestamp": 1773855184.488575,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Nebius signs AI infrastructure deals with Meta worth up to $27 billion over 5 years",
-        "created_at": "2026-03-16T20:15:00+00:00",
+        "text_preview": "Which key Iranian figures have been killed in US-Israeli strikes?",
+        "created_at": "2026-03-18T17:01:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -268,15 +324,15 @@
         ]
       }
     },
-    "5908143bed0c97b13b4e23e3c2caab0b": {
-      "item_hash": "5908143bed0c97b13b4e23e3c2caab0b",
-      "timestamp": 1773694036.2874248,
+    "797a714421c51892961fa5734cdc9112": {
+      "item_hash": "797a714421c51892961fa5734cdc9112",
+      "timestamp": 1773855184.4892704,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Several US allies, including Germany, said they have no immediate plans to send military ships to th",
-        "created_at": "2026-03-16T20:15:00+00:00",
+        "text_preview": "Adam Smith's The Wealth of Nations, 250 years later. Listen for more on this week's Reuters Econ Wor",
+        "created_at": "2026-03-18T17:00:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -284,360 +340,336 @@
         ]
       }
     },
-    "3e8c12be50153571a1e51aac133bae7f": {
-      "item_hash": "3e8c12be50153571a1e51aac133bae7f",
-      "timestamp": 1773694036.2878842,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "The Trump Administration has begun discussing a new board of trade with China to try to balance what",
-        "created_at": "2026-03-16T20:12:00+00:00",
-        "has_media": false
-      }
-    },
-    "11febfc2058a5134644e0ed069b04901": {
-      "item_hash": "11febfc2058a5134644e0ed069b04901",
-      "timestamp": 1773694036.2883837,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "The Cuban government said it is probing a \"complete disconnection\" of the nation's electrical system",
-        "created_at": "2026-03-16T19:37:00+00:00",
-        "has_media": false
-      }
-    },
-    "0c4b06a04dc10e3fde6678f3f233d3ce": {
-      "item_hash": "0c4b06a04dc10e3fde6678f3f233d3ce",
-      "timestamp": 1773694036.2887886,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Berlin-Brandenburg Airport is to ground all flights amid a strike called for Wednesday. Meanwhile, C",
-        "created_at": "2026-03-16T18:04:00+00:00",
-        "has_media": false
-      }
-    },
-    "5f5c9ff60eef74c8051f00865a268ffe": {
-      "item_hash": "5f5c9ff60eef74c8051f00865a268ffe",
-      "timestamp": 1773694036.2891405,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "As Trump dials up pressure on Europe to guard the Strait of Hormuz, Russia is taking advantage of th",
-        "created_at": "2026-03-16T17:20:00+00:00",
-        "has_media": false
-      }
-    },
-    "395f99b09f59411589ce6aa1574102fb": {
-      "item_hash": "395f99b09f59411589ce6aa1574102fb",
-      "timestamp": 1773694036.2895994,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "German Chancellor Friedrich Merz said NATO is a defensive alliance, not one for military interventio",
-        "created_at": "2026-03-16T16:49:00+00:00",
-        "has_media": false
-      }
-    },
-    "7d5d418407657fb17cb376261b5c137a": {
-      "item_hash": "7d5d418407657fb17cb376261b5c137a",
-      "timestamp": 1773694037.5817828,
+    "9324466e66d9abbf851f82f45ee2db4c": {
+      "item_hash": "9324466e66d9abbf851f82f45ee2db4c",
+      "timestamp": 1773855185.599694,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Chancellor Friedrich Merz has changed his tune and voiced criticism of the US President Donald Trump",
-        "created_at": "2026-03-16T16:48:00+00:00",
+        "text_preview": "Donald Trump’s visit to Beijing was meant to stabilize a fragile ceasefire in the trade and tech con",
+        "created_at": "2026-03-18T17:04:00+00:00",
         "has_media": false
       }
     },
-    "f36a827e31468e1def85e9f2b57761eb": {
-      "item_hash": "f36a827e31468e1def85e9f2b57761eb",
-      "timestamp": 1773694037.5825133,
+    "f9cd8999f40fb1d3735826a92f4c0969": {
+      "item_hash": "f9cd8999f40fb1d3735826a92f4c0969",
+      "timestamp": 1773855185.60112,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Carlos Mazon, president of the Valencia regional government, is facing scrutiny over his handling of",
-        "created_at": "2026-03-16T16:36:00+00:00",
+        "text_preview": "Cross-border fighting between Pakistan and the Taliban in Afghanistan is set to pause for the end of",
+        "created_at": "2026-03-18T16:59:00+00:00",
         "has_media": false
       }
     },
-    "29e9b64ac1ba6ebe0dfefda97a2da67e": {
-      "item_hash": "29e9b64ac1ba6ebe0dfefda97a2da67e",
-      "timestamp": 1773694037.5832005,
+    "61d133a917653065ec0d201f6528f74e": {
+      "item_hash": "61d133a917653065ec0d201f6528f74e",
+      "timestamp": 1773855185.6022136,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Critics see the law as allowing authorities in Beijing more room to frame ethnic groups' demands for",
-        "created_at": "2026-03-16T15:49:00+00:00",
+        "text_preview": "EU officials are warning Israel against a ground offensive in Lebanon. But can they compel Hezbollah",
+        "created_at": "2026-03-18T16:48:00+00:00",
         "has_media": false
       }
     },
-    "c4ea18f559833b68cbb8a94295d606df": {
-      "item_hash": "c4ea18f559833b68cbb8a94295d606df",
-      "timestamp": 1773694038.8699653,
+    "ca96357b577636e395ca19df13684d39": {
+      "item_hash": "ca96357b577636e395ca19df13684d39",
+      "timestamp": 1773855185.6028063,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The Russian Orthodox Church is slowly but surely gaining a foothold in Africa. Experts say Russia is",
+        "created_at": "2026-03-18T16:18:00+00:00",
+        "has_media": false
+      }
+    },
+    "ff9dce1943473bb8ed53e0d3832741d4": {
+      "item_hash": "ff9dce1943473bb8ed53e0d3832741d4",
+      "timestamp": 1773855185.603587,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "All passenger flights at the Berlin Brandenburg Airport, the German capital’s only major hub, have b",
+        "created_at": "2026-03-18T16:03:00+00:00",
+        "has_media": false
+      }
+    },
+    "b09b9cf2e260b0d824a3a5442c79eca7": {
+      "item_hash": "b09b9cf2e260b0d824a3a5442c79eca7",
+      "timestamp": 1773855195.509136,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Gold is typically seen as a safe haven, especially in times of war and other crises. Notwithstanding",
-        "created_at": "2026-03-16T15:31:00+00:00",
+        "text_preview": "Chancellor Friedrich Merz has again ruled out Germany taking a role in the war on Iran adding that B",
+        "created_at": "2026-03-18T15:48:00+00:00",
         "has_media": false
       }
     },
-    "930c58e178af19e40f4eb20df7317cb9": {
-      "item_hash": "930c58e178af19e40f4eb20df7317cb9",
-      "timestamp": 1773694038.872563,
+    "1f3b7f6f7db0e9852b018d1752be1192": {
+      "item_hash": "1f3b7f6f7db0e9852b018d1752be1192",
+      "timestamp": 1773855195.5098572,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Foreign Minister Musalia Mudavadi said Nairobi and Moscow had come to an agreement to end Russian ar",
-        "created_at": "2026-03-16T14:57:00+00:00",
+        "text_preview": "Rubble doesn't have to be rubbish. Urban mining is transforming old structures into low‑carbon build",
+        "created_at": "2026-03-18T15:30:00+00:00",
         "has_media": false
       }
     },
-    "b83dc1e6ccc7541ed4342e8105603479": {
-      "item_hash": "b83dc1e6ccc7541ed4342e8105603479",
-      "timestamp": 1773694038.8731863,
+    "b7a3a6db0a59a0caeaf7474adeab4e42": {
+      "item_hash": "b7a3a6db0a59a0caeaf7474adeab4e42",
+      "timestamp": 1773855195.5149422,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "An electrical short circuit caused the blaze on an intensive care floor in Cuttack city. Short circu",
-        "created_at": "2026-03-16T14:46:00+00:00",
+        "text_preview": "The government's decision to introduce voluntary health education at schools caused uproar last year",
+        "created_at": "2026-03-18T14:35:00+00:00",
         "has_media": false
       }
     },
-    "b9c31bb33998b2b58082741400f9b4d4": {
-      "item_hash": "b9c31bb33998b2b58082741400f9b4d4",
-      "timestamp": 1773694038.8737626,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Germany has managed to meet its climate target for 2025. But only just. Environment Minister Schneid",
-        "created_at": "2026-03-16T14:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "59cd9d14e31c5861a5c026c2ba097fd7": {
-      "item_hash": "59cd9d14e31c5861a5c026c2ba097fd7",
-      "timestamp": 1773694040.3911147,
+    "df589e76907547d853325963b238ded3": {
+      "item_hash": "df589e76907547d853325963b238ded3",
+      "timestamp": 1773855196.7141757,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Could African oil-producing countries such as Nigeria and Angola increase production in the short te",
-        "created_at": "2026-03-16T14:00:00+00:00",
+        "text_preview": "As the fallout from the US-Israeli war on Iran widens, BRICS countries face mounting pressure to res",
+        "created_at": "2026-03-18T14:24:00+00:00",
         "has_media": false
       }
     },
-    "916898f463a8417fd21156a8ace11af4": {
-      "item_hash": "916898f463a8417fd21156a8ace11af4",
-      "timestamp": 1773694040.3916273,
+    "a8c045c0a28165c951bebefdffec3a15": {
+      "item_hash": "a8c045c0a28165c951bebefdffec3a15",
+      "timestamp": 1773855196.7153964,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "A renowned lawyer who has become India's first openly queer member of parliament, Menaka Guruswamy f",
-        "created_at": "2026-03-16T13:45:00+00:00",
+        "text_preview": "An airstrike killed Iranian Intelligence Minister Esmaeil Khatib, Iran's president said, confirming ",
+        "created_at": "2026-03-18T14:21:00+00:00",
         "has_media": false
       }
     },
-    "4d580bf837c8cf814c2149d55ac0f8b5": {
-      "item_hash": "4d580bf837c8cf814c2149d55ac0f8b5",
-      "timestamp": 1773694040.3920557,
+    "a8f322d26c65b3c317f7fbf20f79792f": {
+      "item_hash": "a8f322d26c65b3c317f7fbf20f79792f",
+      "timestamp": 1773855196.7164395,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Reports indicate the US is redeploying some Patriot and THAAD air defense batteries from South Korea",
-        "created_at": "2026-03-16T13:08:00+00:00",
+        "text_preview": "Prosecutors have called for a sentence of seven years and seven months for Marius Borg Hoiby, the st",
+        "created_at": "2026-03-18T13:53:00+00:00",
         "has_media": false
       }
     },
-    "0b28a5ec767573ae38f13288e1f04c5e": {
-      "item_hash": "0b28a5ec767573ae38f13288e1f04c5e",
-      "timestamp": 1773694040.3925128,
+    "3b8a73fa3504b5b5b7c56ee5b8c2bbfe": {
+      "item_hash": "3b8a73fa3504b5b5b7c56ee5b8c2bbfe",
+      "timestamp": 1773855196.7173355,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "French citizen Martin Ryan pled guilty to some of the accusations that he was collecting intelligenc",
-        "created_at": "2026-03-16T10:36:00+00:00",
+        "text_preview": "After Senegal were stripped of their title and Morocco were crowned winners, African football faces ",
+        "created_at": "2026-03-18T13:37:00+00:00",
         "has_media": false
       }
     },
-    "07bda07adcb033929b5f7fc7b0644c05": {
-      "item_hash": "07bda07adcb033929b5f7fc7b0644c05",
-      "timestamp": 1773694040.3930414,
+    "ce334b3a1df9ae78366611e819b635f8": {
+      "item_hash": "ce334b3a1df9ae78366611e819b635f8",
+      "timestamp": 1773855198.1132164,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "From smartphone maps to precision weapons, satellite navigation underpins modern life and war. Globa",
+        "created_at": "2026-03-18T13:35:00+00:00",
+        "has_media": false
+      }
+    },
+    "e90e33bd6ad6cd0d296dbbbf680e26d4": {
+      "item_hash": "e90e33bd6ad6cd0d296dbbbf680e26d4",
+      "timestamp": 1773855199.4243019,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Kim Jong Un has for years said nuclear weapons were critical to the survival of his regime. Experts ",
+        "created_at": "2026-03-18T12:41:00+00:00",
+        "has_media": false
+      }
+    },
+    "efa1e6bb90f7966ba0970b56205fd401": {
+      "item_hash": "efa1e6bb90f7966ba0970b56205fd401",
+      "timestamp": 1773855199.425152,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "The number of female representatives has increased since 2000 in parliaments across Africa. In some ",
-        "created_at": "2026-03-16T10:33:00+00:00",
+        "text_preview": "Rising tensions in the Middle East are rattling high-end chipmakers. Among all the latest geopolitic",
+        "created_at": "2026-03-18T12:41:00+00:00",
         "has_media": false
       }
     },
-    "1b04b071a188469299593cedd79872c4": {
-      "item_hash": "1b04b071a188469299593cedd79872c4",
-      "timestamp": 1773694040.3934805,
+    "c720e9e2850269460f875ead956ca815": {
+      "item_hash": "c720e9e2850269460f875ead956ca815",
+      "timestamp": 1773855199.4263024,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "\"Chaotic, frightening times\": Diverse Academy Awards presenters and winners called out Trump's wars ",
-        "created_at": "2026-03-16T10:24:00+00:00",
+        "text_preview": "Pete Hegseth calls himself a Christian patriot; critics say hes a far-right agitator. Above all, Heg",
+        "created_at": "2026-03-18T11:12:00+00:00",
         "has_media": false
       }
     },
-    "062bb6c558248323dce173a63b7d903c": {
-      "item_hash": "062bb6c558248323dce173a63b7d903c",
-      "timestamp": 1773694040.3940413,
+    "e57c7d5b2f28e89b66c36422b84a0b71": {
+      "item_hash": "e57c7d5b2f28e89b66c36422b84a0b71",
+      "timestamp": 1773855199.4271767,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Donald Trump has mobilized around right-wing coded sports like MMA and wrestling, but his soccer Wor",
-        "created_at": "2026-03-16T10:10:00+00:00",
+        "text_preview": "Provisional results announced showed Nguesso with nearly 95% of the vote; his closest rival received",
+        "created_at": "2026-03-18T09:18:00+00:00",
         "has_media": false
       }
     },
-    "1c810f6d91dbf5b9613e4f85c0523191": {
-      "item_hash": "1c810f6d91dbf5b9613e4f85c0523191",
-      "timestamp": 1773694040.3968608,
+    "a9a2cd46bfeb8f8c6516974af53cd800": {
+      "item_hash": "a9a2cd46bfeb8f8c6516974af53cd800",
+      "timestamp": 1773855199.4346054,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Despite arguments over the Strait of Hormuz and claims of widespread forced labor in China, the two ",
-        "created_at": "2026-03-16T09:21:00+00:00",
+        "text_preview": "Thirty years ago, countercultural thinkers declared the internet an independent space. Today, it's c",
+        "created_at": "2026-03-18T07:24:00+00:00",
         "has_media": false
       }
     },
-    "9c775a83a6c0f887802af21e3a86d3a9": {
-      "item_hash": "9c775a83a6c0f887802af21e3a86d3a9",
-      "timestamp": 1773694040.3971643,
+    "de11f5a82d91d835d4823c2019736101": {
+      "item_hash": "de11f5a82d91d835d4823c2019736101",
+      "timestamp": 1773855199.4354832,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Cuba's leader says the US is inflicting \"collective punishment\" on the Cuban people amid plans to se",
+        "created_at": "2026-03-18T06:55:00+00:00",
+        "has_media": false
+      }
+    },
+    "d8a5052ca9eae03ffe3e8cea47777b30": {
+      "item_hash": "d8a5052ca9eae03ffe3e8cea47777b30",
+      "timestamp": 1773855199.436479,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Voters overwhelmingly approved sweeping reforms in a referendum that could tighten presidential cont",
-        "created_at": "2026-03-16T06:09:00+00:00",
+        "text_preview": "The Jag Laadki has arrived in western India carrying crude from the UAE, amid a severe LPG shortage.",
+        "created_at": "2026-03-18T06:45:00+00:00",
         "has_media": false
       }
     },
-    "23d37e831d606451518b582e25f313bf": {
-      "item_hash": "23d37e831d606451518b582e25f313bf",
-      "timestamp": 1773694040.397552,
+    "2bba89eb0633289fa41a009264928686": {
+      "item_hash": "2bba89eb0633289fa41a009264928686",
+      "timestamp": 1773855199.4373918,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Mexico City sets new world record after more than 9,000 people took part in a massive open-air socce",
-        "created_at": "2026-03-16T04:50:00+00:00",
+        "text_preview": "With the center-right increasingly teaming up with the far-right in the European Parliament, EU poli",
+        "created_at": "2026-03-18T05:37:00+00:00",
         "has_media": false
       }
     },
-    "501d697109bca02d09e168ffb747ae1e": {
-      "item_hash": "501d697109bca02d09e168ffb747ae1e",
-      "timestamp": 1773694040.3977206,
+    "62f172061c7e2bc5fe9ab85d76bfbd96": {
+      "item_hash": "62f172061c7e2bc5fe9ab85d76bfbd96",
+      "timestamp": 1773855199.4379556,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "As Trump dials up pressure on Europe to guard the Strait of Hormuz, Russia is taking advantage of th",
-        "created_at": "2026-03-16T17:20:00+00:00",
+        "text_preview": "The Russian Orthodox Church is slowly but surely gaining a foothold in Africa. Experts say Russia is",
+        "created_at": "2026-03-18T16:18:00+00:00",
         "has_media": false
       }
     },
-    "e85028f9bbccc0227c166488a9634fa6": {
-      "item_hash": "e85028f9bbccc0227c166488a9634fa6",
-      "timestamp": 1773694040.3979874,
+    "5e5679255c709af00b9919675c53ba6b": {
+      "item_hash": "5e5679255c709af00b9919675c53ba6b",
+      "timestamp": 1773855199.438619,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "Carlos Mazon, president of the Valencia regional government, is facing scrutiny over his handling of",
-        "created_at": "2026-03-16T16:36:00+00:00",
+        "text_preview": "The government's decision to introduce voluntary health education at schools caused uproar last year",
+        "created_at": "2026-03-18T14:35:00+00:00",
         "has_media": false
       }
     },
-    "4c772e3cc3e2ddddfc31ad6af56aca9e": {
-      "item_hash": "4c772e3cc3e2ddddfc31ad6af56aca9e",
-      "timestamp": 1773694040.3983212,
+    "a982b6ec4cb85ad538a3261a84839560": {
+      "item_hash": "a982b6ec4cb85ad538a3261a84839560",
+      "timestamp": 1773855199.439279,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "Critics see the law as allowing authorities in Beijing more room to frame ethnic groups' demands for",
-        "created_at": "2026-03-16T15:49:00+00:00",
+        "text_preview": "As the fallout from the US-Israeli war on Iran widens, BRICS countries face mounting pressure to res",
+        "created_at": "2026-03-18T14:24:00+00:00",
         "has_media": false
       }
     },
-    "20f000037a09808d01e087cc88a7dc52": {
-      "item_hash": "20f000037a09808d01e087cc88a7dc52",
-      "timestamp": 1773694040.3987887,
+    "2931779c396fb0bd02f333812578107f": {
+      "item_hash": "2931779c396fb0bd02f333812578107f",
+      "timestamp": 1773855199.440244,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "Could African oil-producing countries such as Nigeria and Angola increase production in the short te",
-        "created_at": "2026-03-16T14:00:00+00:00",
+        "text_preview": "Kim Jong Un has for years said nuclear weapons were critical to the survival of his regime. Experts ",
+        "created_at": "2026-03-18T12:41:00+00:00",
         "has_media": false
       }
     },
-    "49cfe94b6009de8dfeb000057b79c659": {
-      "item_hash": "49cfe94b6009de8dfeb000057b79c659",
-      "timestamp": 1773694040.399386,
+    "b9abeacf4d029d4b247bf1ec5262c7e5": {
+      "item_hash": "b9abeacf4d029d4b247bf1ec5262c7e5",
+      "timestamp": 1773855199.4412124,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "A renowned lawyer who has become India's first openly queer member of parliament, Menaka Guruswamy f",
-        "created_at": "2026-03-16T13:45:00+00:00",
+        "text_preview": "Pete Hegseth calls himself a Christian patriot; critics say hes a far-right agitator. Above all, Heg",
+        "created_at": "2026-03-18T11:12:00+00:00",
         "has_media": false
       }
     },
-    "eeb6fe4cde43877ad18c866936985881": {
-      "item_hash": "eeb6fe4cde43877ad18c866936985881",
-      "timestamp": 1773694040.3998451,
+    "45b9d7ac6bd1da1fe35394b4faacd247": {
+      "item_hash": "45b9d7ac6bd1da1fe35394b4faacd247",
+      "timestamp": 1773855199.4418144,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "Reports indicate the US is redeploying some Patriot and THAAD air defense batteries from South Korea",
-        "created_at": "2026-03-16T13:08:00+00:00",
-        "has_media": false
-      }
-    },
-    "508ac67572e7339d095b685863e3cd25": {
-      "item_hash": "508ac67572e7339d095b685863e3cd25",
-      "timestamp": 1773694040.4001637,
-      "status": "rejected",
-      "reason": "dedup_similar_content",
-      "metadata": {
-        "source": "twitter_rss:twitter_3",
-        "text_preview": "French citizen Martin Ryan pled guilty to some of the accusations that he was collecting intelligenc",
-        "created_at": "2026-03-16T10:36:00+00:00",
+        "text_preview": "Provisional results announced showed Nguesso with nearly 95% of the vote; his closest rival received",
+        "created_at": "2026-03-18T09:18:00+00:00",
         "has_media": false
       }
     }
   },
   "stats": {
     "hits": 29,
-    "misses": 340,
-    "total_processed": 340,
+    "misses": 390,
+    "total_processed": 390,
     "total_published": 0
   },
-  "timestamp": 1773694040.4006047
+  "timestamp": 1773855199.4426363
 }
