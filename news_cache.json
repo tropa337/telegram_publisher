@@ -1,46 +1,50 @@
 {
   "entries": {
-    "06529b72f2b2055977e103ee7d99236b": {
-      "item_hash": "06529b72f2b2055977e103ee7d99236b",
-      "timestamp": 1773855170.9521174,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Don't expect big changes to the FOMC statement today, but Goldman sees small downgrade of labor mark",
-        "created_at": "2026-03-18T17:28:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "294ba34058dc4858b065f56a6479b39c": {
-      "item_hash": "294ba34058dc4858b065f56a6479b39c",
-      "timestamp": 1773855170.952775,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "From @TheAthletic: \"What’s with this guy? Does he really care?\" This narrative has followed Darryn P",
-        "created_at": "2026-03-18T17:26:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "677b803fcb9f508f5a29649465d1bd17": {
-      "item_hash": "677b803fcb9f508f5a29649465d1bd17",
-      "timestamp": 1773855170.953274,
+    "2d6bfbdc55d674d2161c9650e7544ff7": {
+      "item_hash": "2d6bfbdc55d674d2161c9650e7544ff7",
+      "timestamp": 1774259340.1498983,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "John Roberts Calls For Restraint After Years Of Judicial Overreach zerohedge.com/political/john…",
-        "created_at": "2026-03-18T17:25:00+00:00",
+        "text_preview": "NYC Congestion Toll Linked To Rising Subway Ridership zerohedge.com/markets/nyc-co…",
+        "created_at": "2026-03-23T09:45:00+00:00",
+        "has_media": false
+      }
+    },
+    "c981d613494f154e6c4796819478469a": {
+      "item_hash": "c981d613494f154e6c4796819478469a",
+      "timestamp": 1774259340.1500509,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Japan's PM Takaichi: The Middle East won't immediately impact oil products here",
+        "created_at": "2026-03-23T09:42:00+00:00",
+        "has_media": false
+      }
+    },
+    "f6e7da194a4ee3b059d4a7d9dcc2e685": {
+      "item_hash": "f6e7da194a4ee3b059d4a7d9dcc2e685",
+      "timestamp": 1774259340.1501873,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Japan's PM Takaichi: Will set up a panel to discuss the Middle East impact on Tuesday",
+        "created_at": "2026-03-23T09:42:00+00:00",
+        "has_media": false
+      }
+    },
+    "ae42daab70abed05c13dbe7a9d6ab3f2": {
+      "item_hash": "ae42daab70abed05c13dbe7a9d6ab3f2",
+      "timestamp": 1774259340.1503425,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Both pilots killed after passenger jet hits ground truck at New York's LaGuardia airport reut.rs/4bq",
+        "created_at": "2026-03-23T09:35:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -48,259 +52,91 @@
         ]
       }
     },
-    "0e5c6c11259fe580ef51952f15f2ade5": {
-      "item_hash": "0e5c6c11259fe580ef51952f15f2ade5",
-      "timestamp": 1773855170.9537022,
+    "4489def7deda2ee50ed1df1669b24178": {
+      "item_hash": "4489def7deda2ee50ed1df1669b24178",
+      "timestamp": 1774259340.1504488,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Supporters mark one year since mayor’s arrest in Istanbul x.com/i/broadcasts/1jGXgeapN…",
-        "created_at": "2026-03-18T17:21:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "5b1fc106860f601e58e9d35c0072d595": {
-      "item_hash": "5b1fc106860f601e58e9d35c0072d595",
-      "timestamp": 1773855172.155545,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "TRUMP CALLED FOR AN EMERGENCY RATE CUT Trump reportedly pushed for an emergency Fed cut, while his e",
-        "created_at": "2026-03-18T17:16:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "9f03a2634373168f9dddeb74d4a1fe04": {
-      "item_hash": "9f03a2634373168f9dddeb74d4a1fe04",
-      "timestamp": 1773855172.1560059,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Damaged Russian LNG tanker has reached Libyan waters, Italy says",
-        "created_at": "2026-03-18T17:15:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "7d35ca7dec50f1ed9311cdd9d3e363ce": {
-      "item_hash": "7d35ca7dec50f1ed9311cdd9d3e363ce",
-      "timestamp": 1773855172.1564474,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Iran warns of strikes on Gulf oil facilities 'in coming hours', state media reports",
-        "created_at": "2026-03-18T17:14:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "14f7a919e739f7b54e018dfabbc29dc0": {
-      "item_hash": "14f7a919e739f7b54e018dfabbc29dc0",
-      "timestamp": 1773855172.157038,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "UK's Chancellor Reeves: UK Defence investment plan being kept under review.",
-        "created_at": "2026-03-18T17:14:00+00:00",
+        "text_preview": "ECB's Kazimir: Supply chains beyond energy are at risk",
+        "created_at": "2026-03-23T09:32:00+00:00",
         "has_media": false
       }
     },
-    "a2965c9817307d2e16d113dec5022b76": {
-      "item_hash": "a2965c9817307d2e16d113dec5022b76",
-      "timestamp": 1773855178.7557235,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Coinbase plans infrastructure for AI agent payments - Information. $COIN",
-        "created_at": "2026-03-18T17:13:00+00:00",
-        "has_media": false
-      }
-    },
-    "de9889ba68495980e09b526881441e4a": {
-      "item_hash": "de9889ba68495980e09b526881441e4a",
-      "timestamp": 1773855179.815131,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Ford COO: The Iran war has not yet affected Ford's supply chain, and it's too soon to say if the war",
-        "created_at": "2026-03-18T17:13:00+00:00",
-        "has_media": false
-      }
-    },
-    "ac2128b67ab947df7fae1ee7d87840eb": {
-      "item_hash": "ac2128b67ab947df7fae1ee7d87840eb",
-      "timestamp": 1773855179.8185847,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*S&P 500, NASDAQ 100 BOTH FALL TO SESSION LOWS, DOWN 0.8%",
-        "created_at": "2026-03-18T17:13:00+00:00",
-        "has_media": false
-      }
-    },
-    "80502b7e419cb6a8ac94266b27542121": {
-      "item_hash": "80502b7e419cb6a8ac94266b27542121",
-      "timestamp": 1773855179.8190858,
-      "status": "rejected",
-      "reason": "filter_Запрещенный паттерн",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "RT by @Reuters: A group of three dozen states, cities and counties challenge Trump decision to revok",
-        "created_at": "2026-03-18T17:13:00+00:00",
-        "has_media": false
-      }
-    },
-    "abf625aa6e1a6bc862f4cb96988c5f3e": {
-      "item_hash": "abf625aa6e1a6bc862f4cb96988c5f3e",
-      "timestamp": 1773855180.8856597,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "*COINBASE PLANS INFRASTRUCTURE FOR AI AGENT PAYMENTS:INFORMATION",
-        "created_at": "2026-03-18T17:12:00+00:00",
-        "has_media": false
-      }
-    },
-    "5505c37a14436e01169fd4f3bacb8b26": {
-      "item_hash": "5505c37a14436e01169fd4f3bacb8b26",
-      "timestamp": 1773855182.2902322,
+    "c3b64d87e280ce41d2241bdd1d11ffea": {
+      "item_hash": "c3b64d87e280ce41d2241bdd1d11ffea",
+      "timestamp": 1774259341.429616,
       "status": "approved",
       "reason": "passed_all_filters",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "*COINBASE DIVES INTO AI AGENT PAYMENTS - THE INFORMATION *COINBASE IS COMPETING FOR A CLOUDFLARE PAR",
-        "created_at": "2026-03-18T17:11:00+00:00",
+        "text_preview": "Whale 0x9e8b opened a 20x long on 1,772 xyz:GOLD($7.61M) 1 hour ago. Liquidation price: $1,583.12 hy",
+        "created_at": "2026-03-23T09:32:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "862646c0d2e7cde620414c03f681baa3": {
+      "item_hash": "862646c0d2e7cde620414c03f681baa3",
+      "timestamp": 1774259341.4301937,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "ECB's Kazimir: Every future meeting is open and live",
+        "created_at": "2026-03-23T09:32:00+00:00",
         "has_media": false
       }
     },
-    "bed0395c6294cd29962116203d56ea6b": {
-      "item_hash": "bed0395c6294cd29962116203d56ea6b",
-      "timestamp": 1773855182.2915654,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "theinformation.com/articles/…",
-        "created_at": "2026-03-18T17:11:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "aae527f0670456934b1902d19d4e08e6": {
-      "item_hash": "aae527f0670456934b1902d19d4e08e6",
-      "timestamp": 1773855182.2924197,
+    "ed5b7d086f89d94d511de293f3026944": {
+      "item_hash": "ed5b7d086f89d94d511de293f3026944",
+      "timestamp": 1774259341.4304907,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "From a third-generation humanoid robot designed for physically demanding and hazardous industrial jo",
-        "created_at": "2026-03-18T17:10:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
+        "text_preview": "ECB's Kazimir: We're yet to leave our \"good place.\"",
+        "created_at": "2026-03-23T09:32:00+00:00",
+        "has_media": false
       }
     },
-    "6b7757c42c1c4013d7b08e62a9646ece": {
-      "item_hash": "6b7757c42c1c4013d7b08e62a9646ece",
-      "timestamp": 1773855182.2933307,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "💥 🇺🇸 Trump's net approval rating hits a historic low at -15.3%.",
-        "created_at": "2026-03-18T17:08:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "e624dceab7c79adf6698487b13e97ae1": {
-      "item_hash": "e624dceab7c79adf6698487b13e97ae1",
-      "timestamp": 1773855182.2939231,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_1",
-        "text_preview": "Saudi Arabia Has Already Revived More Than Half Its Oil Exports Via Hormuz Bypass",
-        "created_at": "2026-03-18T17:06:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
-      }
-    },
-    "be393da8c938f73e5d3a6fb9564925c3": {
-      "item_hash": "be393da8c938f73e5d3a6fb9564925c3",
-      "timestamp": 1773855183.2714288,
+    "9acd60c851c2113b0f3a0b6273922bd7": {
+      "item_hash": "9acd60c851c2113b0f3a0b6273922bd7",
+      "timestamp": 1774259342.3487294,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Saudi Arabia to host Arab, Islamic ministers to discuss war",
-        "created_at": "2026-03-18T17:05:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
+        "text_preview": "ECB's Kazimir: We can do little about the inflation spike in the next few months",
+        "created_at": "2026-03-23T09:31:00+00:00",
+        "has_media": false
       }
     },
-    "6e8b01f48659355775b04486f09c6ce8": {
-      "item_hash": "6e8b01f48659355775b04486f09c6ce8",
-      "timestamp": 1773855183.2719734,
+    "a7e17d24bc2cd9dab99dc2a02fd970d9": {
+      "item_hash": "a7e17d24bc2cd9dab99dc2a02fd970d9",
+      "timestamp": 1774259342.348894,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "5 years of pain for 0 months of glory. RIP Altcoin Holders...",
-        "created_at": "2026-03-18T17:03:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
+        "text_preview": "Japan's PM Takaichi: Vital to spread wage hike momentum to SMEs",
+        "created_at": "2026-03-23T09:30:00+00:00",
+        "has_media": false
       }
     },
-    "c640675bb4af97770be803e4d278f6d2": {
-      "item_hash": "c640675bb4af97770be803e4d278f6d2",
-      "timestamp": 1773855184.487802,
+    "7aa0c7e32a9ae29cc044fa6716f03ea9": {
+      "item_hash": "7aa0c7e32a9ae29cc044fa6716f03ea9",
+      "timestamp": 1774259343.291692,
       "status": "rejected",
       "reason": "no_market_move",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "FTX Recovery Trust will distribute approximately $2.2B to creditors in its fourth payout on March 31",
-        "created_at": "2026-03-18T17:01:00+00:00",
+        "text_preview": "ALERT: $103M liquidated across crypto in 4 hours, mostly tied to metals longs exposure. pic.",
+        "created_at": "2026-03-23T09:30:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -308,31 +144,63 @@
         ]
       }
     },
-    "d2669a8cb61bc0b1cc2b6189426971cd": {
-      "item_hash": "d2669a8cb61bc0b1cc2b6189426971cd",
-      "timestamp": 1773855184.488575,
+    "762c31b79c499601c6ae8b6c0e70f524": {
+      "item_hash": "762c31b79c499601c6ae8b6c0e70f524",
+      "timestamp": 1774259343.291859,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Which key Iranian figures have been killed in US-Israeli strikes?",
-        "created_at": "2026-03-18T17:01:00+00:00",
-        "has_media": true,
-        "media_count": 1,
-        "media_types": [
-          "photo"
-        ]
+        "text_preview": "Japan's PM Takaichi: Will ensure predictability with fiscal policy",
+        "created_at": "2026-03-23T09:30:00+00:00",
+        "has_media": false
       }
     },
-    "797a714421c51892961fa5734cdc9112": {
-      "item_hash": "797a714421c51892961fa5734cdc9112",
-      "timestamp": 1773855184.4892704,
+    "7d62b0b848ac6c5d7e038b72d81eba42": {
+      "item_hash": "7d62b0b848ac6c5d7e038b72d81eba42",
+      "timestamp": 1774259343.2919974,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_1",
-        "text_preview": "Adam Smith's The Wealth of Nations, 250 years later. Listen for more on this week's Reuters Econ Wor",
-        "created_at": "2026-03-18T17:00:00+00:00",
+        "text_preview": "Japan's PM Takaichi: Government economic measures encouraged employers to hike wages",
+        "created_at": "2026-03-23T09:30:00+00:00",
+        "has_media": false
+      }
+    },
+    "0463cab287f272dd9380193e63c6ea99": {
+      "item_hash": "0463cab287f272dd9380193e63c6ea99",
+      "timestamp": 1774259344.4972682,
+      "status": "rejected",
+      "reason": "ai_reject",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "UK PM Starmer on Iran war: Number one priority is to protect British interests",
+        "created_at": "2026-03-23T09:29:00+00:00",
+        "has_media": false
+      }
+    },
+    "10c745708e960ed0e48e61deda09d848": {
+      "item_hash": "10c745708e960ed0e48e61deda09d848",
+      "timestamp": 1774259344.497472,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "UAE restarts Habshan gas plant and idles most LNG output - Person familiar",
+        "created_at": "2026-03-23T09:29:00+00:00",
+        "has_media": false
+      }
+    },
+    "f7318ba8040949adb92f140ed93973fe": {
+      "item_hash": "f7318ba8040949adb92f140ed93973fe",
+      "timestamp": 1774259344.497667,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Japan's top currency diplomat alert to forex volatility linked to speculative oil trade reut.rs/4t8e",
+        "created_at": "2026-03-23T09:25:00+00:00",
         "has_media": true,
         "media_count": 1,
         "media_types": [
@@ -340,336 +208,436 @@
         ]
       }
     },
-    "9324466e66d9abbf851f82f45ee2db4c": {
-      "item_hash": "9324466e66d9abbf851f82f45ee2db4c",
-      "timestamp": 1773855185.599694,
+    "52e55bd4e8645bfbc07c1b9c9ae3f7cf": {
+      "item_hash": "52e55bd4e8645bfbc07c1b9c9ae3f7cf",
+      "timestamp": 1774259345.4220953,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Donald Trump’s visit to Beijing was meant to stabilize a fragile ceasefire in the trade and tech con",
-        "created_at": "2026-03-18T17:04:00+00:00",
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "UK's PM Starmer: We will discuss every lever there is on cost of living due to Iran war",
+        "created_at": "2026-03-23T09:17:00+00:00",
         "has_media": false
       }
     },
-    "f9cd8999f40fb1d3735826a92f4c0969": {
-      "item_hash": "f9cd8999f40fb1d3735826a92f4c0969",
-      "timestamp": 1773855185.60112,
+    "20adb70bce6e1f123fc37e44a0a0f57b": {
+      "item_hash": "20adb70bce6e1f123fc37e44a0a0f57b",
+      "timestamp": 1774259345.422261,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Cross-border fighting between Pakistan and the Taliban in Afghanistan is set to pause for the end of",
-        "created_at": "2026-03-18T16:59:00+00:00",
-        "has_media": false
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "UN weather agency confirms hottest decade on record",
+        "created_at": "2026-03-23T09:15:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
       }
     },
-    "61d133a917653065ec0d201f6528f74e": {
-      "item_hash": "61d133a917653065ec0d201f6528f74e",
-      "timestamp": 1773855185.6022136,
+    "13fe64c929fda172a1f3c529378f4410": {
+      "item_hash": "13fe64c929fda172a1f3c529378f4410",
+      "timestamp": 1774259346.8819547,
+      "status": "approved",
+      "reason": "passed_all_filters",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "A US-operated Patriot air defense battery likely fired the interceptor missile involved in an explos",
+        "created_at": "2026-03-23T09:11:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "56319b43dfe127de63d6b1e4af9f3f7f": {
+      "item_hash": "56319b43dfe127de63d6b1e4af9f3f7f",
+      "timestamp": 1774259346.8823936,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "EU officials are warning Israel against a ground offensive in Lebanon. But can they compel Hezbollah",
-        "created_at": "2026-03-18T16:48:00+00:00",
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "China January-February non-financial ODI in Yuan terms falls 11.1% YoY",
+        "created_at": "2026-03-23T09:10:00+00:00",
         "has_media": false
       }
     },
-    "ca96357b577636e395ca19df13684d39": {
-      "item_hash": "ca96357b577636e395ca19df13684d39",
-      "timestamp": 1773855185.6028063,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "The Russian Orthodox Church is slowly but surely gaining a foothold in Africa. Experts say Russia is",
-        "created_at": "2026-03-18T16:18:00+00:00",
-        "has_media": false
-      }
-    },
-    "ff9dce1943473bb8ed53e0d3832741d4": {
-      "item_hash": "ff9dce1943473bb8ed53e0d3832741d4",
-      "timestamp": 1773855185.603587,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "All passenger flights at the Berlin Brandenburg Airport, the German capital’s only major hub, have b",
-        "created_at": "2026-03-18T16:03:00+00:00",
-        "has_media": false
-      }
-    },
-    "b09b9cf2e260b0d824a3a5442c79eca7": {
-      "item_hash": "b09b9cf2e260b0d824a3a5442c79eca7",
-      "timestamp": 1773855195.509136,
+    "0b89e2ccdd80af1d63efd56726414b3d": {
+      "item_hash": "0b89e2ccdd80af1d63efd56726414b3d",
+      "timestamp": 1774259348.0343297,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Chancellor Friedrich Merz has again ruled out Germany taking a role in the war on Iran adding that B",
-        "created_at": "2026-03-18T15:48:00+00:00",
-        "has_media": false
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "Exclusive: Japan considers cutting inflation-linked bond buybacks as demand rises, sources say",
+        "created_at": "2026-03-23T09:10:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
       }
     },
-    "1f3b7f6f7db0e9852b018d1752be1192": {
-      "item_hash": "1f3b7f6f7db0e9852b018d1752be1192",
-      "timestamp": 1773855195.5098572,
+    "839fa643082c2426fab96b5d2d05c9fe": {
+      "item_hash": "839fa643082c2426fab96b5d2d05c9fe",
+      "timestamp": 1774259349.2362835,
+      "status": "approved",
+      "reason": "passed_all_filters",
+      "metadata": {
+        "source": "twitter_rss:twitter_1",
+        "text_preview": "💥 Gold has wiped out $7.3 TRILLION in market cap since the Iran war began. That’s roughly the combin",
+        "created_at": "2026-03-23T09:08:00+00:00",
+        "has_media": true,
+        "media_count": 1,
+        "media_types": [
+          "photo"
+        ]
+      }
+    },
+    "02cbce5bd0eff42bdc258824376ef3f3": {
+      "item_hash": "02cbce5bd0eff42bdc258824376ef3f3",
+      "timestamp": 1774259349.2369523,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Rubble doesn't have to be rubbish. Urban mining is transforming old structures into low‑carbon build",
-        "created_at": "2026-03-18T15:30:00+00:00",
+        "text_preview": "Germany's most famous female footballer has signed for a third-division team. The transfer will have",
+        "created_at": "2026-03-23T09:25:00+00:00",
         "has_media": false
       }
     },
-    "b7a3a6db0a59a0caeaf7474adeab4e42": {
-      "item_hash": "b7a3a6db0a59a0caeaf7474adeab4e42",
-      "timestamp": 1773855195.5149422,
+    "fcfe7957092a7fcca07bac066e4febcc": {
+      "item_hash": "fcfe7957092a7fcca07bac066e4febcc",
+      "timestamp": 1774259349.2373714,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "The government's decision to introduce voluntary health education at schools caused uproar last year",
-        "created_at": "2026-03-18T14:35:00+00:00",
+        "text_preview": "A regional passenger jet collided with a ground vehicle upon landing at LaGuardia Airport, prompting",
+        "created_at": "2026-03-23T08:07:00+00:00",
         "has_media": false
       }
     },
-    "df589e76907547d853325963b238ded3": {
-      "item_hash": "df589e76907547d853325963b238ded3",
-      "timestamp": 1773855196.7141757,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "As the fallout from the US-Israeli war on Iran widens, BRICS countries face mounting pressure to res",
-        "created_at": "2026-03-18T14:24:00+00:00",
-        "has_media": false
-      }
-    },
-    "a8c045c0a28165c951bebefdffec3a15": {
-      "item_hash": "a8c045c0a28165c951bebefdffec3a15",
-      "timestamp": 1773855196.7153964,
+    "896d96c1a46077229cdb1b6b6c9a81b7": {
+      "item_hash": "896d96c1a46077229cdb1b6b6c9a81b7",
+      "timestamp": 1774259349.237803,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "An airstrike killed Iranian Intelligence Minister Esmaeil Khatib, Iran's president said, confirming ",
-        "created_at": "2026-03-18T14:21:00+00:00",
+        "text_preview": "Defense Minister Boris Pistorius has ruled out a change of leadership at the top of his center-left ",
+        "created_at": "2026-03-23T07:47:00+00:00",
         "has_media": false
       }
     },
-    "a8f322d26c65b3c317f7fbf20f79792f": {
-      "item_hash": "a8f322d26c65b3c317f7fbf20f79792f",
-      "timestamp": 1773855196.7164395,
+    "9f1f4426320b74b08e2810cfc7ca789f": {
+      "item_hash": "9f1f4426320b74b08e2810cfc7ca789f",
+      "timestamp": 1774259349.2380626,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Prosecutors have called for a sentence of seven years and seven months for Marius Borg Hoiby, the st",
-        "created_at": "2026-03-18T13:53:00+00:00",
+        "text_preview": "Transparency activists and journalists say the new law could curb access to information. Meanwhile, ",
+        "created_at": "2026-03-23T07:15:00+00:00",
         "has_media": false
       }
     },
-    "3b8a73fa3504b5b5b7c56ee5b8c2bbfe": {
-      "item_hash": "3b8a73fa3504b5b5b7c56ee5b8c2bbfe",
-      "timestamp": 1773855196.7173355,
+    "0e029e5309ca9665cd57f1a48ebfb9ff": {
+      "item_hash": "0e029e5309ca9665cd57f1a48ebfb9ff",
+      "timestamp": 1774259349.2382784,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "After Senegal were stripped of their title and Morocco were crowned winners, African football faces ",
-        "created_at": "2026-03-18T13:37:00+00:00",
+        "text_preview": "After seemingly switching sides, a pro-government blogger in Russia who criticized President Vladimi",
+        "created_at": "2026-03-23T06:55:00+00:00",
         "has_media": false
       }
     },
-    "ce334b3a1df9ae78366611e819b635f8": {
-      "item_hash": "ce334b3a1df9ae78366611e819b635f8",
-      "timestamp": 1773855198.1132164,
+    "8fd78bc36fdf3508860ee94ca16cc3d8": {
+      "item_hash": "8fd78bc36fdf3508860ee94ca16cc3d8",
+      "timestamp": 1774259349.2384877,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "British police have launched an investigation into an apparent arson attack on ambulances belonging ",
+        "created_at": "2026-03-23T06:36:00+00:00",
+        "has_media": false
+      }
+    },
+    "9c278aa60e9bcc87fe0f42b81a3f55fe": {
+      "item_hash": "9c278aa60e9bcc87fe0f42b81a3f55fe",
+      "timestamp": 1774259349.2386675,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "German automakers are in a crisis due to stagnant sales, falling profits and constant strategy shift",
+        "created_at": "2026-03-23T05:27:00+00:00",
+        "has_media": false
+      }
+    },
+    "740bb496d5074599ddd106c5d53369a8": {
+      "item_hash": "740bb496d5074599ddd106c5d53369a8",
+      "timestamp": 1774259349.2388277,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The Columbus statue installed near the White House is a replica of the one tossed in Baltimore's Inn",
+        "created_at": "2026-03-23T05:19:00+00:00",
+        "has_media": false
+      }
+    },
+    "cb2dc902b349c6b5658322938850e1f3": {
+      "item_hash": "cb2dc902b349c6b5658322938850e1f3",
+      "timestamp": 1774259349.2403238,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The world's oceans have broken heat records for nine straight years, glaciers are retreating and ext",
+        "created_at": "2026-03-23T04:00:00+00:00",
+        "has_media": false
+      }
+    },
+    "bd625f679ca59b763e8a5a9b4e6653e5": {
+      "item_hash": "bd625f679ca59b763e8a5a9b4e6653e5",
+      "timestamp": 1774259349.2405312,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "International Energy Agency chief Fatih Birol said the Hormuz crisis could be worse than the oil cri",
+        "created_at": "2026-03-23T02:54:00+00:00",
+        "has_media": false
+      }
+    },
+    "6e99c60fa6dfafcbe4886e16220126f0": {
+      "item_hash": "6e99c60fa6dfafcbe4886e16220126f0",
+      "timestamp": 1774259349.2407644,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Prime Minister Robert Golob's governing liberal Freedom Movement of Slovenia was almost perfectly ti",
+        "created_at": "2026-03-22T22:32:00+00:00",
+        "has_media": false
+      }
+    },
+    "e0c8ba690d245dcafffdef87a4661188": {
+      "item_hash": "e0c8ba690d245dcafffdef87a4661188",
+      "timestamp": 1774259349.2409654,
+      "status": "rejected",
+      "reason": "low_quality",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Gregoire replaces fellow socialist Anne Hidalgo as the French capital’s mayor. The local elections a",
+        "created_at": "2026-03-22T21:32:00+00:00",
+        "has_media": false
+      }
+    },
+    "b8efc591b76d141c6186f1ee3a82fe69": {
+      "item_hash": "b8efc591b76d141c6186f1ee3a82fe69",
+      "timestamp": 1774259349.2411423,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "The protests in the capital Damascus reflect growing fears that the Islamist authorities may curtail",
+        "created_at": "2026-03-22T18:39:00+00:00",
+        "has_media": false
+      }
+    },
+    "ceadaa3c995790436e89e4577456e96e": {
+      "item_hash": "ceadaa3c995790436e89e4577456e96e",
+      "timestamp": 1774259349.2413795,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Starting Monday, immigration agents will be deployed to US airports to ease congestion at security c",
+        "created_at": "2026-03-22T15:58:00+00:00",
+        "has_media": false
+      }
+    },
+    "8b1118b46bedb13a177621054713711d": {
+      "item_hash": "8b1118b46bedb13a177621054713711d",
+      "timestamp": 1774259349.2416236,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Israeli settlers rampaged through Palestinian areas in the West Bank on Saturday night. Property was",
+        "created_at": "2026-03-22T15:19:00+00:00",
+        "has_media": false
+      }
+    },
+    "6b6e63eee3a7b1bd31a08f69ca145efd": {
+      "item_hash": "6b6e63eee3a7b1bd31a08f69ca145efd",
+      "timestamp": 1774259349.2418618,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "A Russian oil and gas tanker that was likely targeted by drones is adrift in the Mediterranean with ",
+        "created_at": "2026-03-22T11:54:00+00:00",
+        "has_media": false
+      }
+    },
+    "e1a7d24b80d89201afe1b79b391e63db": {
+      "item_hash": "e1a7d24b80d89201afe1b79b391e63db",
+      "timestamp": 1774259349.2421465,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Germany needs new talent for its labor market — and fresh ideas to ensure that foreign workers not o",
+        "created_at": "2026-03-22T10:40:00+00:00",
+        "has_media": false
+      }
+    },
+    "71eb33642ffcf19c974d1a628bc99ea0": {
+      "item_hash": "71eb33642ffcf19c974d1a628bc99ea0",
+      "timestamp": 1774259349.2423425,
+      "status": "rejected",
+      "reason": "filter_Недостаточно сигнало",
+      "metadata": {
+        "source": "twitter_rss:twitter_2",
+        "text_preview": "Indigenous peoples and the Amazon rainforest have often been exoticized. A new exhibition challenges",
+        "created_at": "2026-03-22T09:58:00+00:00",
+        "has_media": false
+      }
+    },
+    "e310ebb8393e7e3dd095abc183d58386": {
+      "item_hash": "e310ebb8393e7e3dd095abc183d58386",
+      "timestamp": 1774259350.3389778,
       "status": "rejected",
       "reason": "ai_reject",
       "metadata": {
         "source": "twitter_rss:twitter_2",
         "text_preview": "From smartphone maps to precision weapons, satellite navigation underpins modern life and war. Globa",
-        "created_at": "2026-03-18T13:35:00+00:00",
+        "created_at": "2026-03-22T09:21:00+00:00",
         "has_media": false
       }
     },
-    "e90e33bd6ad6cd0d296dbbbf680e26d4": {
-      "item_hash": "e90e33bd6ad6cd0d296dbbbf680e26d4",
-      "timestamp": 1773855199.4243019,
-      "status": "rejected",
-      "reason": "ai_reject",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Kim Jong Un has for years said nuclear weapons were critical to the survival of his regime. Experts ",
-        "created_at": "2026-03-18T12:41:00+00:00",
-        "has_media": false
-      }
-    },
-    "efa1e6bb90f7966ba0970b56205fd401": {
-      "item_hash": "efa1e6bb90f7966ba0970b56205fd401",
-      "timestamp": 1773855199.425152,
+    "e6d061cb7283f7f637ddd53355cca4b1": {
+      "item_hash": "e6d061cb7283f7f637ddd53355cca4b1",
+      "timestamp": 1774259350.3392823,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Rising tensions in the Middle East are rattling high-end chipmakers. Among all the latest geopolitic",
-        "created_at": "2026-03-18T12:41:00+00:00",
+        "text_preview": "Despite her age, Yayoi Kusama's art and its subject matter remain highly relevant. A retrospective o",
+        "created_at": "2026-03-22T08:26:00+00:00",
         "has_media": false
       }
     },
-    "c720e9e2850269460f875ead956ca815": {
-      "item_hash": "c720e9e2850269460f875ead956ca815",
-      "timestamp": 1773855199.4263024,
+    "86507d2d466f9ef22e88e15038ba5a64": {
+      "item_hash": "86507d2d466f9ef22e88e15038ba5a64",
+      "timestamp": 1774259350.3395426,
       "status": "rejected",
       "reason": "filter_Недостаточно сигнало",
       "metadata": {
         "source": "twitter_rss:twitter_2",
-        "text_preview": "Pete Hegseth calls himself a Christian patriot; critics say hes a far-right agitator. Above all, Heg",
-        "created_at": "2026-03-18T11:12:00+00:00",
+        "text_preview": "Provisional results show that Friedrich Merz's conservative Christian Democratic Union (CDU) has won",
+        "created_at": "2026-03-22T06:46:00+00:00",
         "has_media": false
       }
     },
-    "e57c7d5b2f28e89b66c36422b84a0b71": {
-      "item_hash": "e57c7d5b2f28e89b66c36422b84a0b71",
-      "timestamp": 1773855199.4271767,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Provisional results announced showed Nguesso with nearly 95% of the vote; his closest rival received",
-        "created_at": "2026-03-18T09:18:00+00:00",
-        "has_media": false
-      }
-    },
-    "a9a2cd46bfeb8f8c6516974af53cd800": {
-      "item_hash": "a9a2cd46bfeb8f8c6516974af53cd800",
-      "timestamp": 1773855199.4346054,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Thirty years ago, countercultural thinkers declared the internet an independent space. Today, it's c",
-        "created_at": "2026-03-18T07:24:00+00:00",
-        "has_media": false
-      }
-    },
-    "de11f5a82d91d835d4823c2019736101": {
-      "item_hash": "de11f5a82d91d835d4823c2019736101",
-      "timestamp": 1773855199.4354832,
-      "status": "rejected",
-      "reason": "low_quality",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "Cuba's leader says the US is inflicting \"collective punishment\" on the Cuban people amid plans to se",
-        "created_at": "2026-03-18T06:55:00+00:00",
-        "has_media": false
-      }
-    },
-    "d8a5052ca9eae03ffe3e8cea47777b30": {
-      "item_hash": "d8a5052ca9eae03ffe3e8cea47777b30",
-      "timestamp": 1773855199.436479,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "The Jag Laadki has arrived in western India carrying crude from the UAE, amid a severe LPG shortage.",
-        "created_at": "2026-03-18T06:45:00+00:00",
-        "has_media": false
-      }
-    },
-    "2bba89eb0633289fa41a009264928686": {
-      "item_hash": "2bba89eb0633289fa41a009264928686",
-      "timestamp": 1773855199.4373918,
-      "status": "rejected",
-      "reason": "filter_Недостаточно сигнало",
-      "metadata": {
-        "source": "twitter_rss:twitter_2",
-        "text_preview": "With the center-right increasingly teaming up with the far-right in the European Parliament, EU poli",
-        "created_at": "2026-03-18T05:37:00+00:00",
-        "has_media": false
-      }
-    },
-    "62f172061c7e2bc5fe9ab85d76bfbd96": {
-      "item_hash": "62f172061c7e2bc5fe9ab85d76bfbd96",
-      "timestamp": 1773855199.4379556,
+    "28c6a7d6147703de047d363def393b1f": {
+      "item_hash": "28c6a7d6147703de047d363def393b1f",
+      "timestamp": 1774259350.3396997,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "The Russian Orthodox Church is slowly but surely gaining a foothold in Africa. Experts say Russia is",
-        "created_at": "2026-03-18T16:18:00+00:00",
+        "text_preview": "After seemingly switching sides, a pro-government blogger in Russia who criticized President Vladimi",
+        "created_at": "2026-03-23T06:55:00+00:00",
         "has_media": false
       }
     },
-    "5e5679255c709af00b9919675c53ba6b": {
-      "item_hash": "5e5679255c709af00b9919675c53ba6b",
-      "timestamp": 1773855199.438619,
+    "8cfe39ae7a9006b17e359732a032e843": {
+      "item_hash": "8cfe39ae7a9006b17e359732a032e843",
+      "timestamp": 1774259350.3398483,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "The government's decision to introduce voluntary health education at schools caused uproar last year",
-        "created_at": "2026-03-18T14:35:00+00:00",
+        "text_preview": "The Columbus statue installed near the White House is a replica of the one tossed in Baltimore's Inn",
+        "created_at": "2026-03-23T05:19:00+00:00",
         "has_media": false
       }
     },
-    "a982b6ec4cb85ad538a3261a84839560": {
-      "item_hash": "a982b6ec4cb85ad538a3261a84839560",
-      "timestamp": 1773855199.439279,
+    "1c1fff9f19a6edfe8db30e26f036aea2": {
+      "item_hash": "1c1fff9f19a6edfe8db30e26f036aea2",
+      "timestamp": 1774259350.3400052,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "As the fallout from the US-Israeli war on Iran widens, BRICS countries face mounting pressure to res",
-        "created_at": "2026-03-18T14:24:00+00:00",
+        "text_preview": "Prime Minister Robert Golob's governing liberal Freedom Movement of Slovenia was almost perfectly ti",
+        "created_at": "2026-03-22T22:32:00+00:00",
         "has_media": false
       }
     },
-    "2931779c396fb0bd02f333812578107f": {
-      "item_hash": "2931779c396fb0bd02f333812578107f",
-      "timestamp": 1773855199.440244,
+    "a94f153f94f89c3116825ceb6bba1511": {
+      "item_hash": "a94f153f94f89c3116825ceb6bba1511",
+      "timestamp": 1774259350.340178,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "Kim Jong Un has for years said nuclear weapons were critical to the survival of his regime. Experts ",
-        "created_at": "2026-03-18T12:41:00+00:00",
+        "text_preview": "Gregoire replaces fellow socialist Anne Hidalgo as the French capital’s mayor. The local elections a",
+        "created_at": "2026-03-22T21:32:00+00:00",
         "has_media": false
       }
     },
-    "b9abeacf4d029d4b247bf1ec5262c7e5": {
-      "item_hash": "b9abeacf4d029d4b247bf1ec5262c7e5",
-      "timestamp": 1773855199.4412124,
+    "6d3f7970454fafe93e4ee662197a0ef2": {
+      "item_hash": "6d3f7970454fafe93e4ee662197a0ef2",
+      "timestamp": 1774259350.3403041,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "Pete Hegseth calls himself a Christian patriot; critics say hes a far-right agitator. Above all, Heg",
-        "created_at": "2026-03-18T11:12:00+00:00",
+        "text_preview": "The protests in the capital Damascus reflect growing fears that the Islamist authorities may curtail",
+        "created_at": "2026-03-22T18:39:00+00:00",
         "has_media": false
       }
     },
-    "45b9d7ac6bd1da1fe35394b4faacd247": {
-      "item_hash": "45b9d7ac6bd1da1fe35394b4faacd247",
-      "timestamp": 1773855199.4418144,
+    "e523b75b1d27b2acae46d5ebcb656f48": {
+      "item_hash": "e523b75b1d27b2acae46d5ebcb656f48",
+      "timestamp": 1774259350.3404562,
       "status": "rejected",
       "reason": "dedup_similar_content",
       "metadata": {
         "source": "twitter_rss:twitter_3",
-        "text_preview": "Provisional results announced showed Nguesso with nearly 95% of the vote; his closest rival received",
-        "created_at": "2026-03-18T09:18:00+00:00",
+        "text_preview": "Starting Monday, immigration agents will be deployed to US airports to ease congestion at security c",
+        "created_at": "2026-03-22T15:58:00+00:00",
+        "has_media": false
+      }
+    },
+    "ac2862fb177d7b513dc57859d4d728e6": {
+      "item_hash": "ac2862fb177d7b513dc57859d4d728e6",
+      "timestamp": 1774259350.3406124,
+      "status": "rejected",
+      "reason": "dedup_similar_content",
+      "metadata": {
+        "source": "twitter_rss:twitter_3",
+        "text_preview": "Israeli settlers rampaged through Palestinian areas in the West Bank on Saturday night. Property was",
+        "created_at": "2026-03-22T15:19:00+00:00",
         "has_media": false
       }
     }
   },
   "stats": {
     "hits": 29,
-    "misses": 390,
-    "total_processed": 390,
+    "misses": 440,
+    "total_processed": 440,
     "total_published": 0
   },
-  "timestamp": 1773855199.4426363
+  "timestamp": 1774259350.3408296
 }
